@@ -6,7 +6,7 @@ import Login from "./views/Login.vue";
 import Profile from "./views/Profile.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
-import Main from "./views/main.vue"
+import Main from "./views/Main.vue"
 
 Vue.use(Router);
 
