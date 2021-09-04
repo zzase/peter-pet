@@ -6,6 +6,7 @@ import Login from "./views/Login.vue";
 import Profile from "./views/Profile.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
+import Regist from "./views/Regist.vue"
 import Main from "./views/Main.vue"
 
 
@@ -23,6 +24,15 @@ export default new Router({
       }
     },
     
+    {
+      path: "/regist",
+      name: "regist",
+      components: { default: Regist, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
     {
       path: "/index",
       name: "index",

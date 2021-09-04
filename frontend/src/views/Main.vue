@@ -13,7 +13,7 @@
                         <md-button
                             href="#/regist"
                             class="md-success md-lg"
-                            target="_blank">
+                            >
                             
                            <b>반려견 등록하기</b></md-button >
                                  
