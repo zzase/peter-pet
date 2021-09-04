@@ -12,11 +12,12 @@
                         </h4>
                         <br/>
                         <md-button
-                            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                        
+                            href="/"
                             class="md-success md-lg"
                             target="_blank">
                             <i class="fas fa-play"></i>
-                            Go to registration</md-button >
+                            Go to register Animals</md-button >
                     </div>
                 </div>
             </div>

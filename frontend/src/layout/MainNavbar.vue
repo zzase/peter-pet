@@ -9,7 +9,11 @@
     <div class="md-toolbar-row md-collapse-lateral">
       <div class="md-toolbar-section-start">
         <!-- <h3 class="md-title">Vue Material Kit</h3> -->
-       <a class="navbar-brand" href="#"><span><img alt="brand" src="@/assets/img/logo.png"></span></a>
+        <a class="navbar-brand" href="#">
+          <span>
+            <img alt="brand" src="@/assets/img/logo.png" />
+          </span>
+        </a>
       </div>
       <div class="md-toolbar-section-end">
         <md-button
@@ -33,44 +37,13 @@
                   href="javascript:void(0)"
                   class="md-list-item-router md-list-item-container md-button-clean dropdown"
                 >
-                  <div class="md-list-item-content">
-                    <drop-down direction="down">
-                      <md-button
-                        slot="title"
-                        class="md-button md-button-link md-white md-simple dropdown-toggle"
-                        data-toggle="dropdown"
-                      >
-                        <i class="material-icons">apps</i>
-                        <p>Components</p>
-                      </md-button>
-                      <ul class="dropdown-menu dropdown-with-icons">
-                        <li>
-                          <a href="#/">
-                            <i class="material-icons">layers</i>
-                            <p>All Components</p>
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="https://demos.creative-tim.com/vue-material-kit/documentation/"
-                          >
-                            <i class="material-icons">content_paste</i>
-                            <p>Documentation</p>
-                          </a>
-                        </li>
-                      </ul>
-                    </drop-down>
-                  </div>
+                  <div class="md-list-item-content"></div>
                 </a>
               </li>
 
-              <md-list-item
-                href="https://demos.creative-tim.com/vue-material-kit/documentation/"
-                target="_blank"
-                v-if="showDownload"
-              >
-                <i class="material-icons">content_paste</i>
-                <p>Documentation</p>
+              <md-list-item a href="#" target="_blank" v-if="showDownload">
+                <p>About</p>
+                <md-tooltip md-direction="bottom">Peter Pet ?</md-tooltip>
               </md-list-item>
 
               <md-list-item
@@ -78,8 +51,26 @@
                 @click="scrollToElement()"
                 v-if="showDownload"
               >
-                <i class="material-icons">cloud_download</i>
-                <p>Download</p>
+                <p>Animal registration</p>
+                <md-tooltip md-direction="bottom">Animal registration</md-tooltip>
+              </md-list-item>
+
+              <md-list-item
+                href="javascript:void(0)"
+                @click="scrollToElement()"
+                v-if="showDownload"
+              >
+                <p>External Device/Recognition ID</p>
+                <md-tooltip md-direction="bottom">Tinkerbell</md-tooltip>
+              </md-list-item>
+
+              <md-list-item
+                href="javascript:void(0)"
+                @click="scrollToElement()"
+                v-if="showDownload"
+              >
+                <p>NAVERLAND</p>
+                <md-tooltip md-direction="bottom">NAVERLAND</md-tooltip>
               </md-list-item>
 
               <li class="md-list-item" v-else>
@@ -121,46 +112,6 @@
                   </div>
                 </a>
               </li>
-              <md-list-item
-                href="https://twitter.com/CreativeTim"
-                target="_blank"
-              >
-                <i class="fab fa-twitter"></i>
-                <p class="hidden-lg">Neverland</p>
-                <md-tooltip md-direction="bottom"
-                  >Follow us on Twitter</md-tooltip
-                >
-              </md-list-item>
-              <md-list-item
-                href="https://twitter.com/CreativeTim"
-                target="_blank"
-              >
-                <i class="fab fa-twitter"></i>
-                <p class="hidden-lg">Twitter</p>
-                <md-tooltip md-direction="bottom"
-                  >Follow us on Twitter</md-tooltip
-                >
-              </md-list-item>
-              <md-list-item
-                href="https://www.facebook.com/CreativeTim"
-                target="_blank"
-              >
-                <i class="fab fa-facebook-square"></i>
-                <p class="hidden-lg">Facebook</p>
-                <md-tooltip md-direction="bottom"
-                  >Like us on Facebook</md-tooltip
-                >
-              </md-list-item>
-              <md-list-item
-                href="https://www.instagram.com/CreativeTimOfficial"
-                target="_blank"
-              >
-                <i class="fab fa-instagram"></i>
-                <p class="hidden-lg">Instagram</p>
-                <md-tooltip md-direction="bottom"
-                  >Follow us on Instagram</md-tooltip
-                >
-              </md-list-item>
             </md-list>
           </div>
         </div>
@@ -186,7 +137,7 @@ function resizeThrottler(actualResizeHandler) {
 import MobileMenu from "@/layout/MobileMenu";
 export default {
   components: {
-    MobileMenu
+    MobileMenu,
   },
   props: {
     type: {
@@ -200,26 +151,26 @@ export default {
           "danger",
           "success",
           "warning",
-          "info"
+          "info",
         ].includes(value);
-      }
+      },
     },
     colorOnScroll: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
   data() {
     return {
       extraNavClasses: "",
-      toggledClass: false
+      toggledClass: false,
     };
   },
   computed: {
     showDownload() {
       const excludedRoutes = ["login", "landing", "profile"];
-      return excludedRoutes.every(r => r !== this.$route.name);
-    }
+      return excludedRoutes.every((r) => r !== this.$route.name);
+    },
   },
   methods: {
     bodyClick() {
@@ -265,13 +216,13 @@ export default {
       if (element_id) {
         element_id.scrollIntoView({ block: "end", behavior: "smooth" });
       }
-    }
+    },
   },
   mounted() {
     document.addEventListener("scroll", this.scrollListener);
   },
   beforeDestroy() {
     document.removeEventListener("scroll", this.scrollListener);
-  }
+  },
 };
 </script>

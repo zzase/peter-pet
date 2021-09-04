@@ -8,6 +8,7 @@ import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 import Main from "./views/main.vue"
 
+
 Vue.use(Router);
 
 export default new Router({
@@ -21,6 +22,7 @@ export default new Router({
         footer: { backgroundColor: "black" }
       }
     },
+    
     {
       path: "/index",
       name: "index",
