@@ -9,7 +9,7 @@
     <div class="md-toolbar-row md-collapse-lateral">
       <div class="md-toolbar-section-start">
         <!-- <h3 class="md-title">Vue Material Kit</h3> -->
-       <a class="navbar-brand" href="#"><span><img alt="brand" src="@/assets/img/logo.png"></span></a>
+       <a class="navbar-brand" href="#"><span><img alt="brand" src="@/assets/img/Main/logo.png"></span></a>
       </div>
       <div class="md-toolbar-section-end">
         <md-button
