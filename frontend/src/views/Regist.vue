@@ -201,7 +201,7 @@
             props: {
                 header: {
                     type: String,
-                    default: require("@/assets/img/001.jpg")
+                    default: require("@/assets/img/Main/peterpet.jpg")
                 },
                 img: {
                     type: String,
