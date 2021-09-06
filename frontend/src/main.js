@@ -15,12 +15,12 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-
+import VueComp from '@vue/composition-api';
 import MaterialKit from "./plugins/material-kit";
 
 Vue.config.productionTip = false;
-
 Vue.use(MaterialKit);
+Vue.use(VueComp);
 
 const NavbarStore = {
   showNavbar: false
@@ -38,3 +38,7 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount("#app");
+
+new Vue({
+	render: h => h(App),
+}).$mount('#app');
