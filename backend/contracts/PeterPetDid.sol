@@ -29,6 +29,7 @@ contract PeterPetDID is Ownable {
     mapping(string => PeterPet) didToPetMapper;
     mapping(address => PeterPet[]) addressToPetMapper;
 
+    
 
     function makeDid(uint _index) public view returns (string memory) {
         return string(abi.encodePacked(didPre,toString(keccak256(abi.encodePacked(msg.sender,_index))))) ;
@@ -55,11 +56,29 @@ contract PeterPetDID is Ownable {
 
     function getPetInfoByDid(string memory _did) public view returns(string memory _name, string memory _birth, string memory _breedOfDog, string memory _gender, string memory _adoptionDate, 
     bool _isNeutering, string memory _furColor, string memory _vaccinationHistory, string memory _notes) {
-        
+        _name = didToPetMapper[_did].name;
+        _birth = didToPetMapper[_did].birth;
+        _breedOfDog = didToPetMapper[_did].breedOfDog;
+        _gender = didToPetMapper[_did].gender;
+        _adoptionDate = didToPetMapper[_did].adoptionDate;
+        _isNeutering = didToPetMapper[_did].isNeutering;
+        _furColor = didToPetMapper[_did].furColor;
+        _vaccinationHistory = didToPetMapper[_did].vaccinationHistory;
+        _notes = didToPetMapper[_did].notes;
     }
 
-    function getPetInfoByAddress(address owner) public {
+    function getPetInfoByAddress(address _owner, uint _index) public view returns (string memory _name, string memory _birth, string memory _breedOfDog, string memory _gender, string memory _adoptionDate, 
+    bool _isNeutering, string memory _furColor, string memory _vaccinationHistory, string memory _notes) {
         
+        _name = addressToPetMapper[_owner][_index].name;
+        _birth = addressToPetMapper[_owner][_index].birth;
+        _breedOfDog = addressToPetMapper[_owner][_index].breedOfDog;
+        _gender = addressToPetMapper[_owner][_index].gender;
+        _adoptionDate = addressToPetMapper[_owner][_index].adoptionDate;
+        _isNeutering = addressToPetMapper[_owner][_index].isNeutering;
+        _furColor = addressToPetMapper[_owner][_index].furColor;
+        _vaccinationHistory = addressToPetMapper[_owner][_index].vaccinationHistory;
+        _notes = addressToPetMapper[_owner][_index].notes;
     }
 
     function checkLength(uint _peterPetsLength, uint _didsLength) public pure returns (bool) {
