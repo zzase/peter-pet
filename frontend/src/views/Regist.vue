@@ -40,9 +40,7 @@
                                                                 <div>
                                                                     file : <input type="file" name="file" accept="image/*">
                                                                 </div>
-                                                                
                                                                 <input type="submit">
-
                                                                 </form>
                                                         </div>
                                                     </div>         
@@ -60,13 +58,23 @@
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <md-icon>wc</md-icon>
-                                                    <label>성별</label>
-                                                    <div id='example-3'>
+                                                    <label for="label-a">성별</label><br><br>
+                                                        <ul class="clearfix">
+                                                        <li>남자아이<md-icon>male</md-icon></li>
+                                                    <input type="checkbox" name="chkAll" id="chk" class="chkAll">
+                                                        </ul>
+                                                    <br>
+                                                        <ul class="clearfix">
+                                                        <li>여자아이<md-icon>female</md-icon></li>
+                                                    <input type="checkbox" name="chkAll" id="chk" class="chkAll">
+                                                        </ul>
+                                                   
+                                                    <!-- <div id='example-3'>
                                                     <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
                                                     <label for="jack">남자아이<md-icon>male</md-icon></label><br>
                                                     <input type="checkbox" id="john" value="John" v-model="checkedNames">
                                                     <label for="john">여자아이<md-icon>female</md-icon></label><br>
-                                                    </div>
+                                                    </div> -->
                                                     <!-- 
                                                     <input type="radio" id="one" value="One" v-model="picked">
                                                     <label for="one"><md-icon>male</md-icon></label>
@@ -94,6 +102,16 @@
                                                     <label>중성화 여부</label>
                                                    <select v-model="selected">
                                              <option disabled value="">Please select one</option>
+                                                 <option>중성화 O</option>
+                                                 <option>중성화 X</option>
+                                                    </select>
+                                                    <md-input v-model="password"></md-input>
+                                                </md-field>
+                                                <md-field class="md-form-group" slot="inputs">
+                                                    <md-icon>saved_search</md-icon>
+                                                    <label>모색</label>
+                                                    <select v-model="selected">
+                                             <option disabled value="">Please select one</option>
                                                  <option>검정색</option>
                                                  <option>혼합색</option>
                                                  <option>검정&은색</option>
@@ -110,16 +128,6 @@
                                                     <md-input v-model="password"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>saved_search</md-icon>
-                                                    <label>모색</label>
-                                                    <select v-model="selected">
-                                             <option disabled value="">Please select one</option>
-                                                 <option>중성화 O</option>
-                                                 <option>중성화 X</option>
-                                                    </select>
-                                                    <md-input v-model="password"></md-input>
-                                                </md-field>
-                                                <md-field class="md-form-group" slot="inputs">
                                                     <md-icon>sticky_note_2</md-icon>
                                                                                                        
                                                     <p style="white-space: pre-line">{{ message }}</p><br>
@@ -131,7 +139,7 @@
                                                  
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <md-icon>medical_services</md-icon>
-                                                    <label>접종내역</label>
+                                                    <label for="name">접종내역</label> <input type="number" id="name"> <br><br><br><br><br>
                                                     
                                                 <div>
                                                  <md-checkbox v-model="array" value="1">종합백신(홍역/간염/장염/기관지염/신장염) </md-checkbox>
@@ -212,7 +220,7 @@
                                                            <th>상세주소</th>
                                                        <td>
                                                           <input type="text" id="addrDetail" style="width:40%" value="">
-                                                          input type="text" id="roadAddrPart2"  style="width:40%" value="">
+                                                          <input type="text" id="roadAddrPart2"  style="width:40%" value="">
                                                        </td>
                                                     </tr>
                                                  </tbody>
@@ -361,6 +369,19 @@
 
         Vue.use(checkbox);
         Vue.use(VMdDateRangePicker);
+
+        function setThumbnail(event){
+		var reader = new FileReader();
+		
+		reader.onload = function(event){
+			var img = document.createElement("img");
+			img.setAttribute("src", event.target.result);
+			img.setAttribute("class", "col-lg-6");
+			document.querySelector("div#image_container").appendChild(img);
+		};
+		
+		reader.readAsDataURL(event.target.files[0]);
+	}
 
         export default {
 
@@ -517,5 +538,15 @@
         .container{
             top: -80px;
         }
-
+        input[id="chk"] {
+            position: relative;
+            margin-left: 20px;
+        }
+        textarea{
+            width:700px; 
+            height:150px; 
+            resize:none;/* 크기고정 */ 
+        /* resize: horizontal; // 가로크기만 조절가능 
+            resize: vertical;  세로크기만 조절가능  */
+        }
     </style>
