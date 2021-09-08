@@ -2,8 +2,9 @@
 pragma solidity ^0.5.6;
 
 import "./Ownable.sol";
+import "./String.sol";
 
-contract PeterPetDID is Ownable {
+contract PeterPetDID is Ownable, ToString {
     struct PeterPet {
         string name;
         string birth;
@@ -67,47 +68,22 @@ contract PeterPetDID is Ownable {
         _notes = didToPetMapper[_did].notes;
     }
 
-    function getPetInfoByAddress(address _owner, uint _index) public view returns (string memory _name, string memory _birth, string memory _breedOfDog, string memory _gender, string memory _adoptionDate, 
-    bool _isNeutering, string memory _furColor, string memory _vaccinationHistory, string memory _notes) {
+    // function getPetInfoByAddress(address _owner, uint _index) public view returns (string memory _name, string memory _birth, string memory _breedOfDog, string memory _gender, string memory _adoptionDate, 
+    // bool _isNeutering, string memory _furColor, string memory _vaccinationHistory, string memory _notes) {
         
-        _name = addressToPetMapper[_owner][_index].name;
-        _birth = addressToPetMapper[_owner][_index].birth;
-        _breedOfDog = addressToPetMapper[_owner][_index].breedOfDog;
-        _gender = addressToPetMapper[_owner][_index].gender;
-        _adoptionDate = addressToPetMapper[_owner][_index].adoptionDate;
-        _isNeutering = addressToPetMapper[_owner][_index].isNeutering;
-        _furColor = addressToPetMapper[_owner][_index].furColor;
-        _vaccinationHistory = addressToPetMapper[_owner][_index].vaccinationHistory;
-        _notes = addressToPetMapper[_owner][_index].notes;
-    }
+    //     _name = addressToPetMapper[_owner][_index].name;
+    //     _birth = addressToPetMapper[_owner][_index].birth;
+    //     _breedOfDog = addressToPetMapper[_owner][_index].breedOfDog;
+    //     _gender = addressToPetMapper[_owner][_index].gender;
+    //     _adoptionDate = addressToPetMapper[_owner][_index].adoptionDate;
+    //     _isNeutering = addressToPetMapper[_owner][_index].isNeutering;
+    //     _furColor = addressToPetMapper[_owner][_index].furColor;
+    //     _vaccinationHistory = addressToPetMapper[_owner][_index].vaccinationHistory;
+    //     _notes = addressToPetMapper[_owner][_index].notes;
+    // }
 
     function checkLength(uint _peterPetsLength, uint _didsLength) public pure returns (bool) {
         if(_peterPetsLength == _didsLength) return true;
         else return false;
-    }
-
-    function toString(address account) public pure returns(string memory) {
-        return toString(abi.encodePacked(account));
-    }
-
-    function toString(uint256 value) public pure returns(string memory) {
-        return toString(abi.encodePacked(value));
-    }
-
-    function toString(bytes32 value) public pure returns(string memory) {
-        return toString(abi.encodePacked(value));
-    }
-
-    function toString(bytes memory data) public pure returns(string memory) {
-        bytes memory alphabet = "0123456789abcdef";
-
-        bytes memory str = new bytes(2 + data.length * 2);
-        str[0] = "0";
-        str[1] = "x";
-        for (uint i = 0; i < data.length; i++) {
-            str[2+i*2] = alphabet[uint(uint8(data[i] >> 4))];
-            str[3+i*2] = alphabet[uint(uint8(data[i] & 0x0f))];
-        }
-        return string(str);
     }
 }
