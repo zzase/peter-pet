@@ -1,4 +1,4 @@
-<template>
+ <template>
     <div class="wrapper">
         <parallax class="section page-header" :style="headerStyle"></parallax>
         <div class="main main-raised">
@@ -24,14 +24,30 @@
                                 plain="plain"
                                 nav-pills-icons="nav-pills-icons"
                                 color-button="success">
+   
                                 <!-- here you can add your content for tab-content -->
                                 <template slot="tab-pane-1">
                                     <div class="md-layout">
                                         <div class="md-layout-item md-size-100 ml-auto">
                                             <login-card header-color="green">
                                                 <h2 slot="title" class="card-title">Peter-Pet</h2>
-                                                <p slot="description" class="description">Or Be Classical</p>
-                                      
+                                                <md-field class="md-form-group" slot="inputs">
+                                                    <div class="container">
+                                                        <div class="md-layout">
+                                                    <div class="md-layout-item md-size-66 md-xsmall-size-100 ">
+                                                            <form method="post" action="upload" enctype="multipart/form-data">
+                                                            <h3 class="info-title">사진등록</h3>
+                                                                <div>
+                                                                    file : <input type="file" name="file" accept="image/*">
+                                                                </div>
+                                                                
+                                                                <input type="submit">
+
+                                                                </form>
+                                                        </div>
+                                                    </div>         
+                                                    </div>
+                                                </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <md-icon>face</md-icon>
                                                     <label>이름</label>
@@ -45,12 +61,19 @@
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <md-icon>wc</md-icon>
                                                     <label>성별</label>
+                                                    <div id='example-3'>
+                                                    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+                                                    <label for="jack">남자아이<md-icon>male</md-icon></label><br>
+                                                    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+                                                    <label for="john">여자아이<md-icon>female</md-icon></label><br>
+                                                    </div>
+                                                    <!-- 
                                                     <input type="radio" id="one" value="One" v-model="picked">
                                                     <label for="one"><md-icon>male</md-icon></label>
                                                     <br>
                                                     <input type="radio" id="two" value="Two" v-model="picked">
                                                     <label for="two"><md-icon>female</md-icon></label>
-                                                    <br>
+                                                    <br> -->
                                                 <md-input v-model="password"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
@@ -118,7 +141,6 @@
                                                  <md-checkbox v-model="boolean">구충제</md-checkbox>
                                                  <md-checkbox v-model="boolean">심장사상충 예방</md-checkbox>
                                                  <md-checkbox v-model="boolean">종합구충</md-checkbox>
-                                                 <md-checkbox v-model="indeterminate" indeterminate>Indeterminate</md-checkbox>
                                                 </div>
                                                     <md-input v-model="password"></md-input>
                                                 </md-field>
@@ -126,6 +148,15 @@
                                                     등록완료
                                                 </md-button>
                                             </login-card>
+                                            <div id='example-3'>
+                                            <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+                                            <label for="jack">Jack</label><br>
+                                            <input type="checkbox" id="john" value="John" v-model="checkedNames">
+                                            <label for="john">John</label><br>
+                                            <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+                                            <label for="mike">Mike</label><br>
+                                            <br>
+                                            </div>
                                         </div>
                                     </div>
                                 </template>
@@ -134,7 +165,6 @@
                                         <div class="md-layout-item md-size-100 ml-auto">
                                             <login-card header-color="orange">
                                                 <h2 slot="title" class="card-title">Wenddy</h2>
-                                                <p slot="description" class="description">Or Be Classical</p>
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <md-icon>person_outline</md-icon>
                                                     <label>이름</label>
@@ -161,32 +191,32 @@
                                                     <title>주소 입력 샘플</title>
                                                     <body>
                                                         <form name="form" id="form" method="post">
-	                                            <table >
-			                                      <colgroup>
-				                                    <col style="width:20%"><col>
-			                                          </colgroup>
-			                                             <tbody>
-				                                            <tr>
-					                                            <th>우편번호</th>
-					                                        <td>
-					                                            <input type="hidden" id="confmKey" name="confmKey" value=""  >
-						                                        <input type="text" id="zipNo" name="zipNo" readonly style="width:100px">
-						                                        <input type="button"  value="주소검색" onclick="goPopup();">
-					                                        </td>
-				                                            </tr>
-				                                         <tr>
-					                                        <th>도로명주소</th>
-					                                    <td><input type="text" id="roadAddrPart1" style="width:85%"></td>
-				                                        </tr>
-				                                        <tr>
-					                                            <th>상세주소</th>
-					                                        <td>
-						                                        <input type="text" id="addrDetail" style="width:40%" value="">
-						                                        input type="text" id="roadAddrPart2"  style="width:40%" value="">
-					                                        </td>
-				                                        </tr>
-			                                        </tbody>
-		                                        </table>
+                                               <table >
+                                               <colgroup>
+                                                <col style="width:20%"><col>
+                                                   </colgroup>
+                                                      <tbody>
+                                                        <tr>
+                                                           <th>우편번호</th>
+                                                       <td>
+                                                           <input type="hidden" id="confmKey" name="confmKey" value=""  >
+                                                          <input type="text" id="zipNo" name="zipNo" readonly style="width:100px">
+                                                          <input type="button"  value="주소검색" onclick="goPopup();">
+                                                       </td>
+                                                        </tr>
+                                                     <tr>
+                                                       <th>도로명주소</th>
+                                                   <td><input type="text" id="roadAddrPart1" style="width:85%"></td>
+                                                    </tr>
+                                                    <tr>
+                                                           <th>상세주소</th>
+                                                       <td>
+                                                          <input type="text" id="addrDetail" style="width:40%" value="">
+                                                          input type="text" id="roadAddrPart2"  style="width:40%" value="">
+                                                       </td>
+                                                    </tr>
+                                                 </tbody>
+                                              </table>
                                              </form>
                                                     </body>
                                                     <md-input v-model="phonenumber" type="email"></md-input>
@@ -254,8 +284,6 @@
                                                     </ul>
                                                   </form>
                                                 </md-field>
-
-
                                                 <md-button slot="footer" class="md-success md-lg">
                                                     동의
                                                 </md-button>
@@ -268,24 +296,47 @@
                                         <div class="md-layout-item md-size-100 ml-auto">
                                             <login-card header-color="red">
                                                 <h2 slot="title" class="card-title">Tinkerbell</h2>
-                                                <p slot="description" class="description">Or Be Classical</p>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>face</md-icon>
-                                                    <label>First Name...</label>
-                                                    <md-input v-model="firstname"></md-input>
+                                                    <div class="md-layout">
+                                                    <div class="md-layout-item md-medium-size-60 md-small-size-100">
+                                                    <div class="info">
+                                                    <img alt="brand" src="@/assets/img/Regist/necklace1.jpg">
+                                                    <h4 class="title text-center">외장칩 목걸이</h4>
+                                                    <p>
+                                                        Divide details about your product or agency work into parts.
+                                                        Write a few lines about each one. A paragraph describing a
+                                                        feature will be enough.
+                                                    </p>
+                                                    <input
+                                                    type="checkbox"
+                                                    v-model="toggle"
+                                                    true-value="yes"
+                                                    false-value="no"
+                                                    >
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="md-layout-item md-medium-size-60 md-small-size-100">
+                                                    <div class="info">
+                                                    <img alt="brand" src="@/assets/img/Regist/necklace2.jpg">
+                                                    <h4 class="title text-center">내장칩 목걸이</h4>
+                                                    <p>
+                                                        Divide details about your product or agency work into parts.
+                                                        Write a few lines about each one. A paragraph describing a
+                                                        feature will be enough.
+                                                    </p>
+                                                    <input
+                                                    type="checkbox"
+                                                    v-model="toggle"
+                                                    true-value="yes"
+                                                    false-value="no"
+                                                    >
+                                                    </div>
+                                                </div>
+                                                    </div>
                                                 </md-field>
-                                                <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>email</md-icon>
-                                                    <label>Email...</label>
-                                                    <md-input v-model="email" type="email"></md-input>
-                                                </md-field>
-                                                <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>lock_outline</md-icon>
-                                                    <label>Password...</label>
-                                                    <md-input v-model="password"></md-input>
-                                                </md-field>
-                                                <md-button slot="footer" class="md-simple md-success md-lg">
-                                                    Get Started
+                                                <md-button slot="footer" class="md-success md-lg">
+                                                   선택 완료
                                                 </md-button>
                                             </login-card>
                                         </div>
@@ -300,13 +351,7 @@
     </template>
 
 
-
-
-    
-
-
-
-    <script>
+     <script>
         
         import {Tabs} from "@/components";
         import {LoginCard} from "@/components";
@@ -318,9 +363,11 @@
         Vue.use(VMdDateRangePicker);
 
         export default {
+
             components: {
                 Tabs,
-                LoginCard
+                LoginCard,
+                
             },
             bodyClass: "profile-page", 
             data() {
@@ -381,6 +428,8 @@
             }
         };
     </script>
+
+
 
     <style lang="scss" scoped="scoped">
 
@@ -465,5 +514,8 @@
             background-color: lightseagreen;
             color: #fff
         }
-        
+        .container{
+            top: -80px;
+        }
+
     </style>
