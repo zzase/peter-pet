@@ -1,4 +1,4 @@
-<template>
+ <template>
     <div class="wrapper">
         <parallax class="section page-header" :style="headerStyle"></parallax>
         <div class="main main-raised">
@@ -12,75 +12,159 @@
                                         <img :src="img" alt="Circle Image" class="img-raised rounded-circle img-fluid"/>
                                     </div>
                                     <div class="name">
-                                        <h1 class="title">Regist Your
+                                        <h1 class="title">Register Your
                                             <br>Peter-Pet</h1>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             <tabs
                                 :tab-name="['Peter-Pet', 'Wenddy', 'Tinkerbell']"
                                 :tab-icon="['pets', 'people', 'reddit']"
                                 plain="plain"
                                 nav-pills-icons="nav-pills-icons"
                                 color-button="success">
+   
                                 <!-- here you can add your content for tab-content -->
                                 <template slot="tab-pane-1">
                                     <div class="md-layout">
                                         <div class="md-layout-item md-size-100 ml-auto">
                                             <login-card header-color="green">
                                                 <h2 slot="title" class="card-title">Peter-Pet</h2>
-                                                <p slot="description" class="description">Or Be Classical</p>
+                                                <md-field class="md-form-group" slot="inputs">
+                                                    <div class="container">
+                                                        <div class="md-layout">
+                                                    <div class="md-layout-item md-size-66 md-xsmall-size-100 ">
+                                                            <form method="post" action="upload" enctype="multipart/form-data">
+                                                            <h3 class="info-title">사진등록</h3>
+                                                                <div>
+                                                                    file : <input type="file" name="file" accept="image/*">
+                                                                </div>
+                                                                <input type="submit">
+                                                                </form>
+                                                        </div>
+                                                    </div>         
+                                                    </div>
+                                                </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <md-icon>face</md-icon>
                                                     <label>이름</label>
                                                     <md-input v-model="firstname"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>email</md-icon>
+                                                    <md-icon>pets</md-icon>
                                                     <label>견종</label>
                                                     <md-input v-model="email" type="email"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>lock_outline</md-icon>
-                                                    <label>성별</label>
-                                                    <md-input v-model="password"></md-input>
+                                                    <md-icon>wc</md-icon>
+                                                    <label for="label-a">성별</label><br><br>
+                                                        <ul class="clearfix">
+                                                        <li>남자아이<md-icon>male</md-icon></li>
+                                                    <input type="checkbox" name="chkAll" id="chk" class="chkAll">
+                                                        </ul>
+                                                    <br>
+                                                        <ul class="clearfix">
+                                                        <li>여자아이<md-icon>female</md-icon></li>
+                                                    <input type="checkbox" name="chkAll" id="chk" class="chkAll">
+                                                        </ul>
+                                                   
+                                                    <!-- <div id='example-3'>
+                                                    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+                                                    <label for="jack">남자아이<md-icon>male</md-icon></label><br>
+                                                    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+                                                    <label for="john">여자아이<md-icon>female</md-icon></label><br>
+                                                    </div> -->
+                                                    <!-- 
+                                                    <input type="radio" id="one" value="One" v-model="picked">
+                                                    <label for="one"><md-icon>male</md-icon></label>
+                                                    <br>
+                                                    <input type="radio" id="two" value="Two" v-model="picked">
+                                                    <label for="two"><md-icon>female</md-icon></label>
+                                                    <br> -->
+                                                <md-input v-model="password"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>lock_outline</md-icon>
+                                                    <md-icon>event_available</md-icon>
                                                     <label>생년월일</label>
+                                                    <template>
+                                                    <v-md-date-range-picker></v-md-date-range-picker>
+                                                    </template>
                                                     <md-input v-model="password"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>lock_outline</md-icon>
+                                                    <md-icon>event_available</md-icon>
                                                     <label>입양일</label>
                                                     <md-input v-model="password"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>lock_outline</md-icon>
+                                                    <md-icon>task_alt</md-icon>
                                                     <label>중성화 여부</label>
+                                                   <select v-model="selected">
+                                             <option disabled value="">Please select one</option>
+                                                 <option>중성화 O</option>
+                                                 <option>중성화 X</option>
+                                                    </select>
                                                     <md-input v-model="password"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>face</md-icon>
+                                                    <md-icon>saved_search</md-icon>
                                                     <label>모색</label>
+                                                    <select v-model="selected">
+                                             <option disabled value="">Please select one</option>
+                                                 <option>검정색</option>
+                                                 <option>혼합색</option>
+                                                 <option>검정&은색</option>
+                                                 <option>금색</option>
+                                                 <option>갈색</option>
+                                                 <option>STEEL BLUE&TAN</option>
+                                                 <option>BLUE&GOLD</option>
+                                                 <option>갈검색</option>
+                                                 <option>은색</option>
+                                                 <option>검정&금색</option>
+                                                 <option>은색&갈색</option>
+                                                 <option>기타</option>
+                                                    </select>
                                                     <md-input v-model="password"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>lock_outline</md-icon>
-                                                    <label>특이사항</label>
+                                                    <md-icon>sticky_note_2</md-icon>
+                                                                                                       
+                                                    <p style="white-space: pre-line">{{ message }}</p><br>
+                                                    <br>
+                                                    <textarea v-model="message" placeholder="반려견의 특이사항을 입력해주세요"></textarea>
                                                     <md-input v-model="password"></md-input>
                                                 </md-field>
+                                                <label>접종내역</label>
+                                                 
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>lock_outline</md-icon>
-                                                    <label>접종내역</label>
+                                                    <md-icon>medical_services</md-icon>
+                                                    <label for="name">접종내역</label> <input type="number" id="name"> <br><br><br><br><br>
+                                                    
+                                                <div>
+                                                 <md-checkbox v-model="array" value="1">종합백신(홍역/간염/장염/기관지염/신장염) </md-checkbox>
+                                                 <md-checkbox v-model="array" value="2">코로나 장염 백신</md-checkbox>
+                                                 <md-checkbox v-model="boolean">켄넬코프 백신</md-checkbox>
+                                                 <md-checkbox v-model="string" value="my-checkbox">광견병 백신</md-checkbox>
+                                                 <md-checkbox v-model="boolean">구충제</md-checkbox>
+                                                 <md-checkbox v-model="boolean">심장사상충 예방</md-checkbox>
+                                                 <md-checkbox v-model="boolean">종합구충</md-checkbox>
+                                                </div>
                                                     <md-input v-model="password"></md-input>
                                                 </md-field>
-                                                <md-button slot="footer" class="md-simple md-success md-lg">
-                                                    Get Started
+                                                <md-button slot="footer" class="md-success md-lg">
+                                                    등록완료
                                                 </md-button>
                                             </login-card>
+                                            <div id='example-3'>
+                                            <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+                                            <label for="jack">Jack</label><br>
+                                            <input type="checkbox" id="john" value="John" v-model="checkedNames">
+                                            <label for="john">John</label><br>
+                                            <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+                                            <label for="mike">Mike</label><br>
+                                            <br>
+                                            </div>
                                         </div>
                                     </div>
                                 </template>
@@ -89,24 +173,127 @@
                                         <div class="md-layout-item md-size-100 ml-auto">
                                             <login-card header-color="orange">
                                                 <h2 slot="title" class="card-title">Wenddy</h2>
-                                                <p slot="description" class="description">Or Be Classical</p>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>favorite</md-icon>
-                                                    <label>First Name...</label>
-                                                    <md-input v-model="firstname"></md-input>
+                                                    <md-icon>person_outline</md-icon>
+                                                    <label>이름</label>
+                                                    <md-input v-model="name"></md-input>
+                                                </md-field>
+                                                 <md-field class="md-form-group" slot="inputs">
+                                                    <md-icon>whatsapp</md-icon>
+                                                    <label>연락처</label>
+                                                    <form name="form-name" action="" method="post">
+                                                        <input type='tel' name='phone1' />-
+                                                        <input type='tel' name='phone2' />-
+                                                        <input type='tel' name='phone3' />
+                                                    </form>                                                
+                                                    <md-input v-model="phonenumber" type="email"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <md-icon>email</md-icon>
-                                                    <label>Email...</label>
+                                                    <label>Email</label>
                                                     <md-input v-model="email" type="email"></md-input>
+                                                </md-field>
+                                                <md-field class="md-form-group" slot="inputs">
+                                                    <md-icon>home</md-icon>
+                                                    <label>주소</label>
+                                                    <title>주소 입력 샘플</title>
+                                                    <body>
+                                                        <form name="form" id="form" method="post">
+                                               <table >
+                                               <colgroup>
+                                                <col style="width:20%"><col>
+                                                   </colgroup>
+                                                      <tbody>
+                                                        <tr>
+                                                           <th>우편번호</th>
+                                                       <td>
+                                                           <input type="hidden" id="confmKey" name="confmKey" value=""  >
+                                                          <input type="text" id="zipNo" name="zipNo" readonly style="width:100px">
+                                                          <input type="button"  value="주소검색" onclick="goPopup();">
+                                                       </td>
+                                                        </tr>
+                                                     <tr>
+                                                       <th>도로명주소</th>
+                                                   <td><input type="text" id="roadAddrPart1" style="width:85%"></td>
+                                                    </tr>
+                                                    <tr>
+                                                           <th>상세주소</th>
+                                                       <td>
+                                                          <input type="text" id="addrDetail" style="width:40%" value="">
+                                                          <input type="text" id="roadAddrPart2"  style="width:40%" value="">
+                                                       </td>
+                                                    </tr>
+                                                 </tbody>
+                                              </table>
+                                             </form>
+                                                    </body>
+                                                    <md-input v-model="phonenumber" type="email"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <md-icon>lock_outline</md-icon>
                                                     <label>Password...</label>
                                                     <md-input v-model="password"></md-input>
                                                 </md-field>
-                                                <md-button slot="footer" class="md-simple md-success md-lg">
-                                                    Get Started
+                                                <md-field class="md-form-group" slot="inputs">
+                                                <form action="" id="joinForm">
+                                                <ul class="join_box">
+                                                    <li class="checkBox check01">
+                                                        <ul class="clearfix">
+                                                        <li>이용약관, 개인정보 수집 및 이용,
+                                                            위치정보 이용약관(선택), 프로모션 안내
+                                                            메일 수신(선택)에 모두 동의합니다.</li>
+                                                            <li class="checkAllBtn">
+                                                    <input type="checkbox" name="chkAll" id="chk" class="chkAll">
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="checkBox check02">
+                                                         <ul class="clearfix">
+                                                             <li>이용약관 동의(필수)</li>
+                                                                <li class="checkBtn">
+                                                                 <input type="checkbox" name="chk"> 
+                                                             </li>
+                                                        </ul>
+                                                         <textarea name="" id="">여러분을 환영합니다.
+                                                        피터펫 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 피터펫 서비스의 이용과 관련하여 피터펫 서비스를 제공하는 피터펫 주식회사(이하 ‘피터펫’)와 이를 이용하는 피터펫 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 피터펫 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
+                                                        </textarea>
+                                                    </li>
+                                                    <li class="checkBox check03">
+                                                        <ul class="clearfix">
+                                                             <li>개인정보 수집 및 이용에 대한 안내(필수)</li>
+                                                                  <li class="checkBtn">
+                                                                    <input type="checkbox" name="chk">
+                                                            </li>
+                                                         </ul>
+                                                        <textarea name="" id="">여러분을 환영합니다.
+                                                        피터펫 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 피터펫 서비스의 이용과 관련하여 피터펫 서비스를 제공하는 피터펫 주식회사(이하 ‘피터펫’)와 이를 이용하는 피터펫 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 피터펫 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
+                                                        </textarea>
+                                                     </li>
+                                                     <li class="checkBox check03">
+                                                        <ul class="clearfix">
+                                                            <li>위치정보 이용약관 동의(선택)</li>
+                                                                <li class="checkBtn">
+                                                                    <input type="checkbox" name="chk">
+                                                                </li>
+                                                        </ul>
+                                                        <textarea name="" id="">여러분을 환영합니다.
+                                                        피터펫 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 피터펫 서비스의 이용과 관련하여 피터펫 서비스를 제공하는 피터펫 주식회사(이하 ‘피터펫’)와 이를 이용하는 피터펫 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 피터펫 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
+                                                        </textarea>
+                                                    </li>
+                                                     <li class="checkBox check04">
+                                                        <ul class="clearfix">
+                                                            <li>이벤트 등 프로모션 알림 메일 수신(선택</li>
+                                                                <li class="checkBtn">
+                                                                    <input type="checkbox" name="chk">
+                                                                </li>                                                            
+                                                        </ul>
+
+                                                      </li>
+                                                    </ul>
+                                                  </form>
+                                                </md-field>
+                                                <md-button slot="footer" class="md-success md-lg">
+                                                    동의
                                                 </md-button>
                                             </login-card>
                                         </div>
@@ -117,24 +304,47 @@
                                         <div class="md-layout-item md-size-100 ml-auto">
                                             <login-card header-color="red">
                                                 <h2 slot="title" class="card-title">Tinkerbell</h2>
-                                                <p slot="description" class="description">Or Be Classical</p>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>face</md-icon>
-                                                    <label>First Name...</label>
-                                                    <md-input v-model="firstname"></md-input>
+                                                    <div class="md-layout">
+                                                    <div class="md-layout-item md-medium-size-60 md-small-size-100">
+                                                    <div class="info">
+                                                    <img alt="brand" src="@/assets/img/Regist/necklace1.jpg">
+                                                    <h4 class="title text-center">외장칩 목걸이</h4>
+                                                    <p>
+                                                        Divide details about your product or agency work into parts.
+                                                        Write a few lines about each one. A paragraph describing a
+                                                        feature will be enough.
+                                                    </p>
+                                                    <input
+                                                    type="checkbox"
+                                                    v-model="toggle"
+                                                    true-value="yes"
+                                                    false-value="no"
+                                                    >
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="md-layout-item md-medium-size-60 md-small-size-100">
+                                                    <div class="info">
+                                                    <img alt="brand" src="@/assets/img/Regist/necklace2.jpg">
+                                                    <h4 class="title text-center">내장칩 목걸이</h4>
+                                                    <p>
+                                                        Divide details about your product or agency work into parts.
+                                                        Write a few lines about each one. A paragraph describing a
+                                                        feature will be enough.
+                                                    </p>
+                                                    <input
+                                                    type="checkbox"
+                                                    v-model="toggle"
+                                                    true-value="yes"
+                                                    false-value="no"
+                                                    >
+                                                    </div>
+                                                </div>
+                                                    </div>
                                                 </md-field>
-                                                <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>email</md-icon>
-                                                    <label>Email...</label>
-                                                    <md-input v-model="email" type="email"></md-input>
-                                                </md-field>
-                                                <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>lock_outline</md-icon>
-                                                    <label>Password...</label>
-                                                    <md-input v-model="password"></md-input>
-                                                </md-field>
-                                                <md-button slot="footer" class="md-simple md-success md-lg">
-                                                    Get Started
+                                                <md-button slot="footer" class="md-success md-lg">
+                                                   선택 완료
                                                 </md-button>
                                             </login-card>
                                         </div>
@@ -148,15 +358,39 @@
         </div>
     </template>
 
-    <script>
+
+     <script>
+        
         import {Tabs} from "@/components";
         import {LoginCard} from "@/components";
+        import Vue from 'vue';
+        import VMdDateRangePicker from "v-md-date-range-picker";
+        import checkbox from "@/assets/js/checkbox.js";
+
+        Vue.use(checkbox);
+        Vue.use(VMdDateRangePicker);
+
+        function setThumbnail(event){
+		var reader = new FileReader();
+		
+		reader.onload = function(event){
+			var img = document.createElement("img");
+			img.setAttribute("src", event.target.result);
+			img.setAttribute("class", "col-lg-6");
+			document.querySelector("div#image_container").appendChild(img);
+		};
+		
+		reader.readAsDataURL(event.target.files[0]);
+	}
+
         export default {
+
             components: {
                 Tabs,
-                LoginCard
+                LoginCard,
+                
             },
-            bodyClass: "profile-page",
+            bodyClass: "profile-page", 
             data() {
                 return {
                     tabPane1: [
@@ -201,11 +435,11 @@
             props: {
                 header: {
                     type: String,
-                    default: require("@/assets/img/Main/peterpet.jpg")
+                    default: require("@/assets/img/Main/registration-background.jpg")
                 },
                 img: {
                     type: String,
-                    default: require("@/assets/img/faces/christian.jpg")
+                    default: require("@/assets/img/faces/peter.jpg")
                 }
             },
             computed: {
@@ -216,7 +450,23 @@
         };
     </script>
 
+
+
     <style lang="scss" scoped="scoped">
+
+        .md-checkbox {
+            display: flex;
+        } 
+
+        table {
+            width: 100%;
+            table-layout: fixed;
+
+            th {
+                text-align: left;
+            }
+        }
+
         .section {
             padding: 0;
         }
@@ -235,4 +485,69 @@
                 }
             }
         }
+
+        .pop-address-search { background-color:#ECECEC; }
+        .pop-address-search .pop-address-search-inner .search-wrap { background-color:#DCF3F4; }
+        .pop-address-search .pop-address-search-inner .wrap input { background-color:#FFFFFF; }
+        .pop-address-search .pop-address-search-inner .wrap { background-color:#FFFFFF; }
+        .pop-address-search .pop-address-search-inner .result table.data-col tbody tr:nth-child(odd) td {background:#FFFFFF}
+        .pop-address-search .pop-address-search-inner .result table.data-col tbody tr:nth-child(even) td {background:#FFFFFF}
+
+        .joinForm {
+            width: 460px;margin: 0 auto;
+        }
+        .ul.join_box {
+            border: 1px solid #ddd;background-color: #fff;
+        }
+        .checkBox, .checkBox>ul{position:relative;}
+        .checkBox>ul>li{float: left;}
+        .checkBox>ul>li:first-child{
+            width:85%;
+            padding:15px;
+            top:50%;
+            right:30px;
+            margin-top: -12px;
+        }
+        .checkBox textarea{
+            width: 96%;
+            height:90px;
+            margin: 0 2%;
+            background-color: #f7f7f7;
+            color: #888;
+            border: none;
+        }
+        .footBtwrap{
+            margin-top:15px;
+        }
+        .footBtwrap>li>button{
+            display:block;
+            width: 50%;
+            height: 100%;
+            pfont-size: 20px;
+            text-align: center;
+            line-height: 60px;
+        }
+        .fpmgBt1{
+            background-color: #fff;
+            color: #fff
+        }
+        .fpgmBt2{
+            background-color: lightseagreen;
+            color: #fff
+        }
+        .container{
+            top: -80px;
+        }
+        input[id="chk"] {
+            position: relative;
+            margin-left: 20px;
+        }
+        textarea{
+            width:700px; 
+            height:150px; 
+            resize:none;/* 크기고정 */ 
+        /* resize: horizontal; // 가로크기만 조절가능 
+            resize: vertical;  세로크기만 조절가능  */
+        }
+
     </style>

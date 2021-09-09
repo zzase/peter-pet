@@ -4,9 +4,9 @@
 
   .md-input,
   .md-textarea{
-    height: 36px;
+    height: 40px;
     padding: 7px 0;
-    font-size: 14px !important;
+    font-size: 16px !important;
     -webkit-text-fill-color: $black-color !important;
     appearance: none;
   }
@@ -210,7 +210,7 @@
 }
 
 .md-field{
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   padding-top: 0;
   margin: 13px 0 0;
   min-height: auto;
@@ -218,6 +218,7 @@
   &.md-focused label,
   &.md-field.md-has-value label{
     top: -.8rem;
+
   }
 
   &.md-focused > .fa,
@@ -247,14 +248,14 @@
   }
 
   label{
-    top: 9px;
+    top: -1px;
   }
 
   &.md-form-group,
   &.md-datepicker{
     > .md-icon{
       margin: 6px 0;
-      color: inherit;
+      color: black;
 
       &:after{
         display: none;
