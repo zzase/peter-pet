@@ -89,6 +89,15 @@
 
 <script>
 import { LoginCard } from "@/components";
+import Caver from 'caver-js';
+
+const config = {
+  rpcURL : 'https://api.baobab.klaytn.net:8651'
+}
+
+const cav = new Caver(config.rpcURL);
+
+const peterPetDidContract = new cav.klay.Contract(DEPLOYED_ABI,DEPLOYED_ADDRESS);
 
 export default {
   components: {
