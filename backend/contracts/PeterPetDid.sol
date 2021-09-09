@@ -39,7 +39,9 @@ contract PeterPetDID is Ownable, StringFormat {
      * - did 만드는 함수, did = did:peterpet: (계정주소 + 펫 인덱스 + 난수)의 해시값 
      */
     function makeDid(uint _index) private view returns (string memory) {
-        return string(abi.encodePacked(didPre,toString(keccak256(abi.encodePacked(msg.sender,_index))))) ;
+        string memory didiHash = toString(keccak256(abi.encodePacked(msg.sender,_index))) ;
+        string memory didSub = subString(didiHash,bytes(didiHash).length-10,bytes(didiHash).length);
+        return string(abi.encodePacked(didPre,didSub));
     }
 
     /*
@@ -129,5 +131,9 @@ contract PeterPetDID is Ownable, StringFormat {
     function checkLength(uint _peterPetsLength, uint _didsLength) private pure returns (bool) {
         if(_peterPetsLength == _didsLength) return true;
         else return false;
+    }
+
+    function makeNonce () private pure returns (uint){
+
     }
 }
