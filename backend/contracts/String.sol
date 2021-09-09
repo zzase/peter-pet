@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.5.6;
 
-contract ToString {
+contract StringFormat {
      function toString(address account) public pure returns(string memory) {
         return toString(abi.encodePacked(account));
     }
@@ -25,5 +25,14 @@ contract ToString {
             str[3+i*2] = alphabet[uint(uint8(data[i] & 0x0f))];
         }
         return string(str);
+    }
+
+    function substring(string memory str, uint startIndex, uint endIndex) public pure returns (string memory) {
+        bytes memory strBytes = bytes(str);
+        bytes memory result = new bytes(endIndex-startIndex);
+        for(uint i = startIndex; i < endIndex; i++) {
+            result[i-startIndex] = strBytes[i];
+        }
+        return string(result);
     }
 }
