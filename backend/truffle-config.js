@@ -1,23 +1,32 @@
-
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
-const PrivateKeyConncector = require('connect-privkey-to-provider');
-const { urlencoded } = require('express');
-const NETWORK_ID = '1001'
-const GASLIMIT = '20000000'
+const HDWalletProvider = require("truffle-hdwallet-provider-klaytn");
+const NETWORK_ID = '1001' //Klaytn baobab testnet's network id
+const GASLIMIT = '8500000'
 const URL = 'https://api.baobab.klaytn.net:8651'
 const PRIVATE_KEY = '0x7c24ddc2232f99594d39d6124e34796847c78abfaf54af48bfeb3ab6ed2c8acc' //계정 비밀키
-module.exports = {
 
+module.exports = {
   networks: {
-   klaytn: {
-     provider: new PrivateKeyConncector(PRIVATE_KEY,URL),
-     network_id : NETWORK_ID,
-     gas: GASLIMIT,
-     gasPrice: null
-   }
+    development: {
+      host: "localhost",
+      port: 8545,
+      network_id: "*" // Match any network id
+    },
+    testnet: {
+      provider: () => new HDWalletProvider(PRIVATE_KEY, URL),
+      network_id: NETWORK_ID, 
+      gas: GASLIMIT,
+      gasPrice: null
+    },
+    mainnet: {
+      provider: () => new HDWalletProvider(PRIVATE_KEY, "https://your.cypress.en.url:8651"),
+      network_id: '8217', //Klaytn mainnet's network id
+      gas: '8500000',
+      gasPrice: null
+    }
   },
 
   // Set default mocha options here, use special reporters etc.

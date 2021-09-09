@@ -1,5 +1,5 @@
 const fs = require('fs');
-const PeterPetDid = artifacts.require("PeterPetDid");
+const PeterPetDid = artifacts.require("./PeterPetDid.sol");
 
 module.exports = function (deployer) {
   deployer.deploy(PeterPetDid)
