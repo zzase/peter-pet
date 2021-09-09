@@ -549,4 +549,5 @@
         /* resize: horizontal; // 가로크기만 조절가능 
             resize: vertical;  세로크기만 조절가능  */
         }
+
     </style>
