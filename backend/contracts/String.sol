@@ -2,19 +2,19 @@
 pragma solidity ^0.5.6;
 
 contract StringFormat {
-     function toString(address account) public pure returns(string memory) {
+     function toString(address account) internal pure returns(string memory) {
         return toString(abi.encodePacked(account));
     }
 
-    function toString(uint256 value) public pure returns(string memory) {
+    function toString(uint256 value) internal pure returns(string memory) {
         return toString(abi.encodePacked(value));
     }
 
-    function toString(bytes32 value) public pure returns(string memory) {
+    function toString(bytes32 value) internal pure returns(string memory) {
         return toString(abi.encodePacked(value));
     }
 
-    function toString(bytes memory data) public pure returns(string memory) {
+    function toString(bytes memory data) internal pure returns(string memory) {
         bytes memory alphabet = "0123456789abcdef";
 
         bytes memory str = new bytes(2 + data.length * 2);
@@ -27,7 +27,7 @@ contract StringFormat {
         return string(str);
     }
 
-    function substring(string memory str, uint startIndex, uint endIndex) public pure returns (string memory) {
+    function substring(string memory str, uint startIndex, uint endIndex) internal pure returns (string memory) {
         bytes memory strBytes = bytes(str);
         bytes memory result = new bytes(endIndex-startIndex);
         for(uint i = startIndex; i < endIndex; i++) {
