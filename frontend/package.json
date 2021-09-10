@@ -12,9 +12,11 @@
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run dev"
   },
   "dependencies": {
+    "@vue/composition-api": "^1.1.5",
     "caver-js": "^1.6.4",
     "core-js": "3.5.0",
     "nouislider": "14.1.0",
+    "v-md-date-range-picker": "^2.6.0",
     "v-tooltip": "2.0.2",
     "vue": "2.6.10",
     "vue-carousel": "0.18.0",
