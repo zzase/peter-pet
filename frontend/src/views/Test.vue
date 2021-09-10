@@ -106,7 +106,7 @@ export default {
   bodyClass: "login-page",
   data() {
     return {
-      firstname: null,
+      firstname: DEPLOYED_ADDRESS,
       email: null,
       password: null
     };

@@ -113,13 +113,52 @@
                   </div>
                 </a>
               </li>
+              <div>
+                  <b-button v-b-modal.modal-center id="login">login</b-button>
+
+                  <b-modal id="modal-center" centered title="Login with Key Store">
+                    <div class="form-group">
+                      <label for="keystore"> KeyStore </label>
+                      <input type="file" id="keystore" @change="handleImort()">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="input-password">
+                        비밀번호
+                      </label>
+                      <input type="password" class="form-control" id="input-password" @change="handlePassword()">
+                      <p class="help-block" id="message"></p>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                      <button type="button" class="btn btn-primary" id="submit" @click="handleLogin()">제출</button>
+                    </div>
+
+                  </b-modal>
+
+                  <button type="button"
+                          class="btn btn-info pull-right"
+                          id="logout"
+                          style="display: none;"
+                          @click="handleLogout()">로그아웃
+                  </button>
+                </div>
+              <li>
+              </li>
             </md-list>
           </div>
         </div>
       </div>
+      <div>      
+      </div>
     </div>
+
   </md-toolbar>
+
 </template>
+
+
 
 <script>
 let resizeTimeout;
