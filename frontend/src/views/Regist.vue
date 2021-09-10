@@ -58,44 +58,31 @@
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <md-icon>wc</md-icon>
-                                                    <label for="label-a">성별</label><br><br>
-                                                        <ul class="clearfix">
+                                                    <label for="label-a">성별</label>
+                                                      <div>
+                                                          <br>
+                                                        <md-radio v-model="radio" :value="false">남자아이<md-icon>male</md-icon></md-radio><br>
+                                                    <md-radio v-model="radio" value="my-radio">여자아이<md-icon>female</md-icon></md-radio>
+                                                    </div>
+                                                        <!-- <ul class="clearfix">
                                                         <li>남자아이<md-icon>male</md-icon></li>
                                                     <input type="checkbox" name="chkAll" id="chk" class="chkAll">
                                                         </ul>
-                                                    <br>
                                                         <ul class="clearfix">
                                                         <li>여자아이<md-icon>female</md-icon></li>
                                                     <input type="checkbox" name="chkAll" id="chk" class="chkAll">
-                                                        </ul>
-                                                   
-                                                    <!-- <div id='example-3'>
-                                                    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
-                                                    <label for="jack">남자아이<md-icon>male</md-icon></label><br>
-                                                    <input type="checkbox" id="john" value="John" v-model="checkedNames">
-                                                    <label for="john">여자아이<md-icon>female</md-icon></label><br>
-                                                    </div> -->
-                                                    <!-- 
-                                                    <input type="radio" id="one" value="One" v-model="picked">
-                                                    <label for="one"><md-icon>male</md-icon></label>
-                                                    <br>
-                                                    <input type="radio" id="two" value="Two" v-model="picked">
-                                                    <label for="two"><md-icon>female</md-icon></label>
-                                                    <br> -->
+                                                        </ul> -->
                                                 <md-input v-model="password"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>event_available</md-icon>
-                                                    <label>생년월일</label>
-                                                    <template>
-                                                    <v-md-date-range-picker></v-md-date-range-picker>
-                                                    </template>
-                                                    <md-input v-model="password"></md-input>
+                                                     <md-datepicker v-model="selectedLabeled">
+                                                        <label>생년월일을 입력해주세요</label>
+                                                        </md-datepicker>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>event_available</md-icon>
-                                                    <label>입양일</label>
-                                                    <md-input v-model="password"></md-input>
+                                                    <md-datepicker v-model="selectedLabeled">
+                                                        <label>입양날짜를 입력해주세요</label>
+                                                        </md-datepicker>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <md-icon>task_alt</md-icon>
@@ -129,11 +116,10 @@
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <md-icon>sticky_note_2</md-icon>
-                                                                                                       
-                                                    <p style="white-space: pre-line">{{ message }}</p><br>
-                                                    <br>
-                                                    <textarea v-model="message" placeholder="반려견의 특이사항을 입력해주세요"></textarea>
-                                                    <md-input v-model="password"></md-input>
+                                                   <md-field>
+                                                <label>반려견의 특이사항에 대해 알려주세요</label>
+                                                <md-textarea v-model="aboutme"></md-textarea>
+                                                </md-field>
                                                 </md-field>
                                                 <label>접종내역</label>
                                                  
@@ -393,6 +379,7 @@
             bodyClass: "profile-page", 
             data() {
                 return {
+                    radio: false,
                     tabPane1: [
                         {
                             image: require("@/assets/img/examples/studio-1.jpg")
