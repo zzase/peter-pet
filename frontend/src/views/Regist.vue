@@ -87,7 +87,6 @@
                                                         <li>여자아이<md-icon>female</md-icon></li>
                                                     <input type="checkbox" name="chkAll" id="chk" class="chkAll">
                                                         </ul> -->
-                                                <md-input v-model="password"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
                                                      <md-datepicker v-model="selectedLabeled">
@@ -105,7 +104,6 @@
                                                     <br>
                                                         <md-radio v-model="radio" :value="false">중성화 O</md-radio><br>
                                                     <md-radio v-model="radio" value="my-radio">중성화 X</md-radio>
-                                                    <md-input v-model="password"></md-input>
                                                     </div>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
@@ -161,15 +159,19 @@
                                                 </md-field>
                                                  <md-field class="md-form-group" slot="inputs">
                                                     <label><md-icon>whatsapp</md-icon>연락처</label>
+
+                                                    <input type="tel" name="tlno" id="tlno" title="전화번호를 입력하세요." placeholder="010*-0000*-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="13">
+
+<!-- 
                                                     <form name="form-name" action="" method="post">
                                                         <input type='tel' name='phone1' />-<input type='tel' name='phone2' />-<input type='tel' name='phone3' />
                                                     </form>                                                
-                                                    <md-input v-model="phonenumber" type="email"></md-input>
+                                                    <md-input v-model="phonenumber" type="email"></md-input> -->
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    
                                                     <label><md-icon>email</md-icon>Email</label>
-                                                    <md-input v-model="email" type="email"></md-input>
+                                                    <input type='email' name='userEmail' />
+                                                   
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <label><md-icon>home</md-icon>주소</label>
@@ -185,18 +187,18 @@
                                                            <th>우편번호</th>
                                                        <td>
                                                            <input type="hidden" id="confmKey" name="confmKey" value=""  >
-                                                          <input type="text" id="zipNo" name="zipNo" readonly style="width:100px">
-                                                          <input type="button"  value="주소검색" onclick="goPopup();">
+                                                          <input type="text" id="zipNo" name="zipNo" readonly style="width:100px" v-model="addressInfo.zonecode">
+                                                          <input type="button"  value="주소검색" @click="getPostalcode()">
                                                        </td>
                                                         </tr>
                                                      <tr>
                                                        <th>도로명주소</th>
-                                                   <td><input type="text" id="roadAddrPart1" style="width:85%"></td>
+                                                   <td><input type="text" id="roadAddrPart1" style="width:85%" v-model="addressInfo.roadAddress"></td>
                                                     </tr>
                                                     <tr>
                                                            <th>상세주소</th>
                                                        <td>
-                                                          <input type="text" id="addrDetail" style="width:40%" value="">
+                                                          <input type="text" id="addrDetail" style="width:40%" v-model="addressInfo.buildingName">
                                                           <input type="text" id="roadAddrPart2"  style="width:40%" value="">
                                                        </td>
                                                     </tr>
@@ -204,11 +206,13 @@
                                               </table>
                                              </form>
                                                     </body>
-                                                    <md-input v-model="phonenumber" type="email"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
+                                                    <div id="app">
+                                                    <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" @input="firstRRNCheck($event.data)" v-model="firstRRNView" class="tf_register" placeholder="주민번호 앞자리"> -
+                                                    <input type="text" pattern="[0-9]*" inputmode="numeric" maxlength="7" @input="secondRRNCheck($event.data)" v-model="secondRRNView" placeholder="OOOOOOO">
+                                                    </div>
                                                     <label><md-icon>lock_outline</md-icon>주민등록번호</label>
-                                                    <md-input v-model="password"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
                                                 <form action="" id="joinForm">
@@ -291,12 +295,10 @@
                                                         Write a few lines about each one. A paragraph describing a
                                                         feature will be enough.
                                                     </p>
-                                                     <div class="block">
-                                                <div class="title">Without <code>:true-value</code> / <code>:false-value</code></div>
-                                                <div class="input">
-                                                <md-checkbox v-model="withoutSetValue">{{withoutSetValue|jsonStringify}}</md-checkbox>
-                                                </div>
-                                            </div>
+                                                     
+
+
+                                                     
                                                     </div>
                                                 </div>
                                                 
@@ -309,12 +311,10 @@
                                                         Write a few lines about each one. A paragraph describing a
                                                         feature will be enough.
                                                     </p>
-                                                <div class="block">
-                                                <div class="title">Without <code>:true-value</code> / <code>:false-value</code></div>
-                                                <div class="input">
-                                                <md-checkbox v-model="withoutSetValue">{{withoutSetValue|jsonStringify}}</md-checkbox>
-                                                </div>
-                                            </div>
+                                               
+
+
+
                                                     </div>
                                                 </div>
                                                 <div>
@@ -351,7 +351,6 @@
         Vue.use(VMdDateRangePicker);
 
 
-
         function setThumbnail(event){
 		var reader = new FileReader();
 		
@@ -374,9 +373,17 @@
                 LoginCard,
                 
             },
+
+
             bodyClass: "profile-page", 
             data() {
                 return {
+                    firstRRN: [],
+                    firstRRNView: '',
+                    secondRRN: [],
+                    secondRRNView: '',
+
+
                     selectedColor: null,
                     colors: [
                     '혼합색',
@@ -449,7 +456,14 @@
                         }, {
                             image: require("@/assets/img/examples/studio-1.jpg")
                         }
-                    ]
+                    ],
+                    addressInfo :{
+                        postcode:"",
+                        buildingName:"",
+                        jibunAddress:"",
+                        roadAdress:"",
+                        zoneCode:""
+                    }
                 };
             },
             props: {
@@ -471,7 +485,69 @@
                 jsonStringify (val) {
                 return JSON.stringify(val)
                 }
-            }
+            },
+            methods :{
+                getPostalcode(){
+                    new window.daum.Postcode({
+                        oncomplete: (data) => {
+  
+                            console.log(data)
+                            this.addressInfo = data;
+
+                        }
+                    }).open()
+                },
+                firstRRNCheck(e) {
+                if (this.isNumber(e) && this.firstRRN.length < 6) {
+                    this.firstRRN.push(e)
+                } else if (e === null && this.firstRRN.length > 0) {
+                    this.firstRRN.pop()
+                }
+
+                this.firstRNNView = this.firstRRN.join('')
+                },
+                secondRRNCheck(e) {
+                if (this.isNumber(e) && this.secondRRN.length < 7) {
+                    this.secondRRN.push(e)
+                } else if (e === null && this.secondRRN.length > 0) {
+                    this.secondRRN.pop()
+                }
+
+                let convertStr = ''
+                if (this.secondRRN.length > 0) {
+                    convertStr = this.secondRRN[0] + String(this.secondRRN.join('')).replace(/./g, '•').substr(1)
+                }
+                this.secondRRNView = convertStr
+                },
+                isNumber(data) {
+                if (/^[0-9]$/g.test(data)) {
+                    return true;
+                } else {
+                    return false;
+                }
+                },
+                validateRRN() {
+                if (this.firstRRN.length < 6 && this.secondRRN.length < 7) return false
+
+                let N = 0
+                for (let i = 1; i < 7; i++) {
+                    N += this.firstRRN[i - 1] * (i + 1)
+                }
+
+                for (let j = 1; j < 7; j++) {
+                    if (j < 3) {
+                    N += this.secondRRN[j - 1] * (j + 7)
+                    } else {
+                    N += this.secondRRN[j - 1] * (j - 1)
+                    }
+                }
+
+                return ((11 - (N % 11)) % 10) === Number(this.secondRRN[6])
+                },
+                resultRRN() {
+                return this.firstRRN.join('') + '-' + this.secondRRN.join('')
+                }
+            },
 
         };
     </script>
@@ -586,6 +662,19 @@
         .title {
         font: 1.2em;
         }
+
+        .input { width: 70%; padding: 10px 20px; margin: 5px 0; box-sizing: 80px; border: solid 2px #c5c5c5; border-radius: 8px;  }
+
+        input[type="text"] {width: 70%; padding: 10px 20px; margin: 5px 0; box-sizing: 80px; border: solid 2px #c5c5c5; border-radius: 8px; }
+
+        input[type="tel"] { width: 70%; padding: 10px 20px; margin: 5px 0; box-sizing: 80px; border: solid 2px #c5c5c5; border-radius: 8px; }
+
+        input[type="button"] {margin-left:15px;border-radius: 8px; border: solid 2px #c5c5c5;}
+
+        input[type="submit"] {border-radius: 8px; border: solid 2px #c5c5c5;}
+
+        input[type="email"] {width: 70%; padding: 10px 20px; margin: 5px 0; box-sizing: 80px; border: solid 2px #c5c5c5; border-radius: 8px;}
+       
 
        
         .pop-address-search { background-image: url(http://www.0000.com/img/backImg.png);}
