@@ -37,9 +37,17 @@
                                                     <div class="md-layout-item md-size-66 md-xsmall-size-100 ">
                                                             <form method="post" action="upload" enctype="multipart/form-data">
                                                             <h3 class="info-title">사진등록</h3>
-                                                                <div>
-                                                                    file : <input type="file" name="file" accept="image/*">
-                                                                </div>
+                                                            <div>
+                                                            <!-- Styled -->
+                                                            <b-form-file
+                                                            v-model="file1"
+                                                            :state="Boolean(file1)"
+                                                            placeholder="Choose a file or drop it here..."
+                                                            drop-placeholder="Drop file here..."
+                                                            ></b-form-file>
+                                                            <div class="mt-3">Selected file: {{ file1 ? file1.name : '' }}</div>
+                                                            </div>
+                                                            <br><br>
                                                                 <input type="submit">
                                                                 </form>
                                                         </div>
@@ -47,18 +55,25 @@
                                                     </div>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>face</md-icon>
-                                                    <label>이름</label>
+                                                   
+                                                    <label> <md-icon>face</md-icon>이름</label>
                                                     <md-input v-model="firstname"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>pets</md-icon>
-                                                    <label>견종</label>
-                                                    <md-input v-model="email" type="email"></md-input>
+                                                    <label><md-icon>pets</md-icon>모색</label>
+                                                      <div>
+                                                        <md-autocomplete
+                                                        v-model="selectedEmployee"
+                                                        :md-options="employees"
+                                                        md-layout="box"
+                                                        md-dense>
+                                                        <label>--견종을 선택해주세요--</label>
+                                                        </md-autocomplete>
+                                                      </div>
+                                                      
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>wc</md-icon>
-                                                    <label for="label-a">성별</label>
+                                                    <label for="label-a"><md-icon>wc</md-icon>성별</label>
                                                       <div>
                                                           <br>
                                                         <md-radio v-model="radio" :value="false">남자아이<md-icon>male</md-icon></md-radio><br>
@@ -85,48 +100,38 @@
                                                         </md-datepicker>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>task_alt</md-icon>
-                                                    <label>중성화 여부</label>
-                                                   <select v-model="selected">
-                                             <option disabled value="">Please select one</option>
-                                                 <option>중성화 O</option>
-                                                 <option>중성화 X</option>
-                                                    </select>
+                                                    <label for="label-a"><md-icon>task_alt</md-icon>중성화 여부</label>
+                                                    <div>
+                                                    <br>
+                                                        <md-radio v-model="radio" :value="false">중성화 O</md-radio><br>
+                                                    <md-radio v-model="radio" value="my-radio">중성화 X</md-radio>
                                                     <md-input v-model="password"></md-input>
+                                                    </div>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>saved_search</md-icon>
-                                                    <label>모색</label>
-                                                    <select v-model="selected">
-                                             <option disabled value="">Please select one</option>
-                                                 <option>검정색</option>
-                                                 <option>혼합색</option>
-                                                 <option>검정&은색</option>
-                                                 <option>금색</option>
-                                                 <option>갈색</option>
-                                                 <option>STEEL BLUE&TAN</option>
-                                                 <option>BLUE&GOLD</option>
-                                                 <option>갈검색</option>
-                                                 <option>은색</option>
-                                                 <option>검정&금색</option>
-                                                 <option>은색&갈색</option>
-                                                 <option>기타</option>
-                                                    </select>
-                                                    <md-input v-model="password"></md-input>
+                                                    <label> <md-icon>saved_search</md-icon>모색</label>
+                                                    <div>
+                                                        <md-autocomplete
+                                                        v-model="selectedColor"
+                                                        :md-options="colors"
+                                                        md-layout="box"
+                                                        md-dense>
+                                                        <label>--모색을 선택해주세요--</label>
+                                                        </md-autocomplete>
+                                                      </div>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>sticky_note_2</md-icon>
+                                                    
                                                    <md-field>
-                                                <label>반려견의 특이사항에 대해 알려주세요</label>
+                                                <label>!--반려견의 특이사항에 대해 알려주세요--!</label>
                                                 <md-textarea v-model="aboutme"></md-textarea>
                                                 </md-field>
                                                 </md-field>
                                                 <label>접종내역</label>
-                                                 
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>medical_services</md-icon>
-                                                    <label for="name">접종내역</label> <input type="number" id="name"> <br><br><br><br><br>
                                                     
+                                                    <label for="name"><md-icon>medical_services</md-icon>접종내역</label> 
+                                                    <br><br>
                                                 <div>
                                                  <md-checkbox v-model="array" value="1">종합백신(홍역/간염/장염/기관지염/신장염) </md-checkbox>
                                                  <md-checkbox v-model="array" value="2">코로나 장염 백신</md-checkbox>
@@ -136,52 +141,38 @@
                                                  <md-checkbox v-model="boolean">심장사상충 예방</md-checkbox>
                                                  <md-checkbox v-model="boolean">종합구충</md-checkbox>
                                                 </div>
-                                                    <md-input v-model="password"></md-input>
                                                 </md-field>
-                                                <md-button slot="footer" class="md-success md-lg">
+                                                    <md-button slot="footer" class="md-success md-lg">
                                                     등록완료
                                                 </md-button>
                                             </login-card>
-                                            <div id='example-3'>
-                                            <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
-                                            <label for="jack">Jack</label><br>
-                                            <input type="checkbox" id="john" value="John" v-model="checkedNames">
-                                            <label for="john">John</label><br>
-                                            <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
-                                            <label for="mike">Mike</label><br>
-                                            <br>
-                                            </div>
                                         </div>
                                     </div>
                                 </template>
+
                                 <template slot="tab-pane-2">
                                     <div class="md-layout">
                                         <div class="md-layout-item md-size-100 ml-auto">
                                             <login-card header-color="orange">
                                                 <h2 slot="title" class="card-title">Wenddy</h2>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>person_outline</md-icon>
-                                                    <label>이름</label>
+                                                    <label><md-icon>person_outline</md-icon>이름</label>
                                                     <md-input v-model="name"></md-input>
                                                 </md-field>
                                                  <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>whatsapp</md-icon>
-                                                    <label>연락처</label>
+                                                    <label><md-icon>whatsapp</md-icon>연락처</label>
                                                     <form name="form-name" action="" method="post">
-                                                        <input type='tel' name='phone1' />-
-                                                        <input type='tel' name='phone2' />-
-                                                        <input type='tel' name='phone3' />
+                                                        <input type='tel' name='phone1' />-<input type='tel' name='phone2' />-<input type='tel' name='phone3' />
                                                     </form>                                                
                                                     <md-input v-model="phonenumber" type="email"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>email</md-icon>
-                                                    <label>Email</label>
+                                                    
+                                                    <label><md-icon>email</md-icon>Email</label>
                                                     <md-input v-model="email" type="email"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>home</md-icon>
-                                                    <label>주소</label>
+                                                    <label><md-icon>home</md-icon>주소</label>
                                                     <title>주소 입력 샘플</title>
                                                     <body>
                                                         <form name="form" id="form" method="post">
@@ -216,8 +207,7 @@
                                                     <md-input v-model="phonenumber" type="email"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <md-icon>lock_outline</md-icon>
-                                                    <label>Password...</label>
+                                                    <label><md-icon>lock_outline</md-icon>주민등록번호</label>
                                                     <md-input v-model="password"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
@@ -268,7 +258,7 @@
                                                     </li>
                                                      <li class="checkBox check04">
                                                         <ul class="clearfix">
-                                                            <li>이벤트 등 프로모션 알림 메일 수신(선택</li>
+                                                            <li>이벤트 등 프로모션 알림 메일 수신(선택)</li>
                                                                 <li class="checkBtn">
                                                                     <input type="checkbox" name="chk">
                                                                 </li>                                                            
@@ -301,12 +291,12 @@
                                                         Write a few lines about each one. A paragraph describing a
                                                         feature will be enough.
                                                     </p>
-                                                    <input
-                                                    type="checkbox"
-                                                    v-model="toggle"
-                                                    true-value="yes"
-                                                    false-value="no"
-                                                    >
+                                                     <div class="block">
+                                                <div class="title">Without <code>:true-value</code> / <code>:false-value</code></div>
+                                                <div class="input">
+                                                <md-checkbox v-model="withoutSetValue">{{withoutSetValue|jsonStringify}}</md-checkbox>
+                                                </div>
+                                            </div>
                                                     </div>
                                                 </div>
                                                 
@@ -319,16 +309,20 @@
                                                         Write a few lines about each one. A paragraph describing a
                                                         feature will be enough.
                                                     </p>
-                                                    <input
-                                                    type="checkbox"
-                                                    v-model="toggle"
-                                                    true-value="yes"
-                                                    false-value="no"
-                                                    >
+                                                <div class="block">
+                                                <div class="title">Without <code>:true-value</code> / <code>:false-value</code></div>
+                                                <div class="input">
+                                                <md-checkbox v-model="withoutSetValue">{{withoutSetValue|jsonStringify}}</md-checkbox>
+                                                </div>
+                                            </div>
                                                     </div>
                                                 </div>
+                                                <div>
+                                                    </div>
+
                                                     </div>
                                                 </md-field>
+                                                
                                                 <md-button slot="footer" class="md-success md-lg">
                                                    선택 완료
                                                 </md-button>
@@ -356,6 +350,8 @@
         Vue.use(checkbox);
         Vue.use(VMdDateRangePicker);
 
+
+
         function setThumbnail(event){
 		var reader = new FileReader();
 		
@@ -370,6 +366,8 @@
 	}
 
         export default {
+            name: 'TrueFalseValue',
+            name: 'AutocompleteBox',
 
             components: {
                 Tabs,
@@ -379,6 +377,41 @@
             bodyClass: "profile-page", 
             data() {
                 return {
+                    selectedColor: null,
+                    colors: [
+                    '혼합색',
+                    '검정&은색',
+                    '금색',
+                    '갈색',
+                    'STEEL BLUE&TAN',
+                    'BLUE&GOLD',
+                    '갈검색',
+                    '은색',
+                    '검정&금색',
+                    '기타'
+                    ],
+
+                    selectedEmployee: null,
+                    employees: [
+                    '포메라니안',
+                    '말티즈',
+                    '요크셔테리어',
+                    '시츄',
+                    '골든리트리버',
+                    '비숑',
+                    '푸들',
+                    '닥스훈트',
+                    '보더콜리',
+                    '진돗개',
+                    '불독'],
+
+                    withoutSetValue: null,
+                    withSetValue: null,
+                    native: null,
+
+                    array: [],
+                    file1: null,
+                    file2: null,
                     radio: false,
                     tabPane1: [
                         {
@@ -433,7 +466,13 @@
                 headerStyle() {
                     return {backgroundImage: `url(${this.header})`};
                 }
+            },
+            filters: {
+                jsonStringify (val) {
+                return JSON.stringify(val)
+                }
             }
+
         };
     </script>
 
@@ -536,5 +575,34 @@
         /* resize: horizontal; // 가로크기만 조절가능 
             resize: vertical;  세로크기만 조절가능  */
         }
+        .block:not(:first-child) {
+        margin-top: 32px;
+        }
+        .search {
+        margin-left: 30px;
+        max-width: 500px;
+        }
+
+        .title {
+        font: 1.2em;
+        }
+
+       
+        .pop-address-search { background-image: url(http://www.0000.com/img/backImg.png);}
+
+        .pop-address-search .pop-address-search-inner .logo { background: url(http://www.0000.com/img/logo.png) no-repeat; background-position:center; }
+
+
+        .pop-address-search { background-color:#ECECEC; }
+
+        .pop-address-search .pop-address-search-inner .search-wrap { background-color:#DCF3F4; }
+
+        .pop-address-search .pop-address-search-inner .wrap input { background-color:#FFFFFF; }
+
+        .pop-address-search .pop-address-search-inner .wrap { background-color:#FFFFFF; }
+
+        .pop-address-search .pop-address-search-inner .result table.data-col tbody tr:nth-child(odd) td {background:#FFFFFF}
+
+        .pop-address-search .pop-address-search-inner .result table.data-col tbody tr:nth-child(even) td {background:#FFFFFF}
 
     </style>
