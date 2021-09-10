@@ -116,25 +116,23 @@
               <div>
                   <b-button v-b-modal.modal-center id="login">login</b-button>
 
-                  <b-modal id="modal-center" centered title="Login with Key Store">
+                  <b-modal hide-footer id="modal-center"  centered title="Login with Key Store">
+                    
                     <div class="form-group">
-                      <label for="keystore"> KeyStore </label>
-                      <input type="file" id="keystore" @change="handleImort()">
+                      <label for="keystore"> KeyStore </label> <br>
+                      <input type="file" id="keystore" v-on:change="handleImport">
                     </div>
 
                     <div class="form-group">
-                      <label for="input-password">
-                        비밀번호
-                      </label>
+                      <label for="input-password"> 비밀번호 </label>
                       <input type="password" class="form-control" id="input-password" @change="handlePassword()">
-                      <p class="help-block" id="message"></p>
+                      <p class="help-block" id="message" ref="message"></p>
                     </div>
 
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
                       <button type="button" class="btn btn-primary" id="submit" @click="handleLogin()">제출</button>
                     </div>
-
                   </b-modal>
 
                   <button type="button"
@@ -143,6 +141,7 @@
                           style="display: none;"
                           @click="handleLogout()">로그아웃
                   </button>
+
                 </div>
               <li>
               </li>
@@ -175,6 +174,13 @@ function resizeThrottler(actualResizeHandler) {
 }
 
 import MobileMenu from "@/layout/MobileMenu";
+const Key = {
+  auth : {
+    accessType: 'keystore',
+    keystore: '',
+    password: ''
+  },
+}
 export default {
   components: {
     MobileMenu,
@@ -213,6 +219,37 @@ export default {
     },
   },
   methods: {
+    handleImport : async function()  {
+      const fileReader = new FileReader();
+      fileReader.readAsText(event.target.files[0]); //선택한 파일 읽기
+      fileReader.onload = (event) => {
+        try{
+          if(!this.checkValidKeystore(event.target.result)){
+            this.$refs.message.textContent='유효하지 않은 keystore 파일입니다.'
+            return;
+          }
+          Key.auth.keystore = event.target.result;
+          this.$refs.message.textContent='keystore 통과. 비밀번호를 입력하세요'
+           document.querySelector('#input-password').focus();
+        }catch (event) {
+         this.$refs.message.textContent='유효하지 않은 keystore 파일입니다.'
+         return;
+        }
+      }
+
+    },
+
+    handlePassword : async (event) => {
+      Key.auth.password = event.target.value;
+    },
+
+    checkValidKeystore(keystore) {
+      const parsedKeystore = JSON.parse(keystore);
+      const isValidKeystore = parsedKeystore.version && parsedKeystore.id && parsedKeystore.address && parsedKeystore.keyring;
+
+      return isValidKeystore;
+    },
+
     bodyClick() {
       let bodyClick = document.getElementById("bodyClick");
 
