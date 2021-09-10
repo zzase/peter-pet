@@ -295,10 +295,11 @@
                                                         Write a few lines about each one. A paragraph describing a
                                                         feature will be enough.
                                                     </p>
-                                                     
+                                                    <div>#selectbutton
+                                                      <b-button :pressed="true" variant="success">외장칩 목걸이</b-button>
+                                                    </div>
 
 
-                                                     
                                                     </div>
                                                 </div>
                                                 
@@ -311,7 +312,9 @@
                                                         Write a few lines about each one. A paragraph describing a
                                                         feature will be enough.
                                                     </p>
-                                               
+                                                    <div>#selectbutton
+                                                    <b-button :pressed="true" variant="success">내장칩 목걸이</b-button>
+                                                    </div>
 
 
 
@@ -663,35 +666,20 @@
         font: 1.2em;
         }
 
-        .input { width: 70%; padding: 10px 20px; margin: 5px 0; box-sizing: 80px; border: solid 2px #c5c5c5; border-radius: 8px;  }
+        .input { width: 70%; padding: 10px 20px; margin: 5px 0; box-sizing: 80px; border: solid 2px #cccccc; border-radius: 8px;  }
 
-        input[type="text"] {width: 70%; padding: 10px 20px; margin: 5px 0; box-sizing: 80px; border: solid 2px #c5c5c5; border-radius: 8px; }
+        input[type="text"] {width: 70%; padding: 10px 20px; margin: 5px 0; box-sizing: 80px; border: solid 2px #cccccc; border-radius: 8px; }
 
-        input[type="tel"] { width: 70%; padding: 10px 20px; margin: 5px 0; box-sizing: 80px; border: solid 2px #c5c5c5; border-radius: 8px; }
+        input[type="tel"] { width: 70%; padding: 10px 20px; margin: 5px 0; box-sizing: 80px; border: solid 2px #cccccc; border-radius: 8px; }
 
-        input[type="button"] {margin-left:15px;border-radius: 8px; border: solid 2px #c5c5c5;}
+        input[type="button"] {margin-left:15px;border-radius: 8px; border: solid 2px #cccccc;}
 
-        input[type="submit"] {border-radius: 8px; border: solid 2px #c5c5c5;}
+        input[type="submit"] {border-radius: 8px; border: solid 2px #cccccc;}
 
-        input[type="email"] {width: 70%; padding: 10px 20px; margin: 5px 0; box-sizing: 80px; border: solid 2px #c5c5c5; border-radius: 8px;}
+        input[type="email"] {width: 70%; padding: 10px 20px; margin: 5px 0; box-sizing: 80px; border: solid 2px #cccccc; border-radius: 8px;}
+
+        div#selectbutton {
+            text-align: center;
+        }
        
-
-       
-        .pop-address-search { background-image: url(http://www.0000.com/img/backImg.png);}
-
-        .pop-address-search .pop-address-search-inner .logo { background: url(http://www.0000.com/img/logo.png) no-repeat; background-position:center; }
-
-
-        .pop-address-search { background-color:#ECECEC; }
-
-        .pop-address-search .pop-address-search-inner .search-wrap { background-color:#DCF3F4; }
-
-        .pop-address-search .pop-address-search-inner .wrap input { background-color:#FFFFFF; }
-
-        .pop-address-search .pop-address-search-inner .wrap { background-color:#FFFFFF; }
-
-        .pop-address-search .pop-address-search-inner .result table.data-col tbody tr:nth-child(odd) td {background:#FFFFFF}
-
-        .pop-address-search .pop-address-search-inner .result table.data-col tbody tr:nth-child(even) td {background:#FFFFFF}
-
     </style>
