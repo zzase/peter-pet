@@ -6,6 +6,7 @@ import "./String.sol";
 
 contract PeterPetDID is Ownable, StringFormat {
     struct PeterPet {
+        string imgHash; // img IPFS 값
         string name; // 이름
         string breedOfDog; // 견종
         string gender; //성별
@@ -48,18 +49,18 @@ contract PeterPetDID is Ownable, StringFormat {
      * addPet() 
      * - 입력받은 반려견 정보를 peterPets 배열에 push 
      */
-    function addPet(string memory _name, uint _birth, string memory _breedOfDog, string memory _gender, uint _adoptionDate, 
+    function addPet(string memory _imgHash, string memory _name, uint _birth, string memory _breedOfDog, string memory _gender, uint _adoptionDate, 
     bool _isNeutering, string memory _furColor, string memory _vaccinationHistory, string memory _notes) private {
-        peterPets.push(PeterPet(_name,_breedOfDog, _gender,_birth, _adoptionDate, _isNeutering, _furColor, _vaccinationHistory, _notes));
+        peterPets.push(PeterPet(_imgHash, _name,_breedOfDog, _gender,_birth, _adoptionDate, _isNeutering, _furColor, _vaccinationHistory, _notes));
     }
 
     /*
      * addDid() 
      * - addPet()과 makeDid()를 호출하여 반려견 정보를 담은 did를 만들고 did와 반려견정보를 매핑
      */
-    function addDid(string memory _name, uint _birth, string memory _breedOfDog, string memory _gender, uint _adoptionDate, 
+    function addDid(string memory _imgHash, string memory _name, uint _birth, string memory _breedOfDog, string memory _gender, uint _adoptionDate, 
     bool _isNeutering, string memory _furColor, string memory _vaccinationHistory, string memory _notes) public onlyOwner {
-        addPet(_name, _birth, _breedOfDog, _gender, _adoptionDate, _isNeutering, _furColor, _vaccinationHistory, _notes);
+        addPet(_imgHash, _name, _birth, _breedOfDog, _gender, _adoptionDate, _isNeutering, _furColor, _vaccinationHistory, _notes);
         index = peterPets.length - 1;
         dids.push(Did(makeDid(index)));
         if(checkLength(peterPets.length,dids.length)){
@@ -71,8 +72,9 @@ contract PeterPetDID is Ownable, StringFormat {
      * updateDid() 
      * - did를 통해 기존 반려견 정보 수정  
      */
-    function updateDid(string memory _did, string memory _name, uint _birth, string memory _breedOfDog, string memory _gender, uint _adoptionDate, 
+    function updateDid(string memory _imgHash, string memory _did, string memory _name, uint _birth, string memory _breedOfDog, string memory _gender, uint _adoptionDate, 
     bool _isNeutering, string memory _furColor, string memory _vaccinationHistory, string memory _notes ) public {
+        didToPetMapper[_did].imgHash = _imgHash;
         didToPetMapper[_did].name = _name;
         didToPetMapper[_did].birth = _birth;
         didToPetMapper[_did].breedOfDog = _breedOfDog;
@@ -88,6 +90,11 @@ contract PeterPetDID is Ownable, StringFormat {
      * getPetInfoByDid() 
      * - pet 정보를 did를 통해 가져옴 
      */
+
+     function getPetImgByDid(string memory _did) public view returns(string memory _imgHash) {
+        _imgHash = didToPetMapper[_did].imgHash; 
+     }
+
      function getPetNameByDid(string memory _did) public view returns(string memory _name) {
         _name = didToPetMapper[_did].name; 
      }
