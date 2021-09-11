@@ -30,6 +30,7 @@ contract PeterPetDID is Ownable, StringFormat {
 
     mapping(string => PeterPet) didToPetMapper;
     mapping(address => PeterPet[]) addressToPetMapper;
+    mapping(string => address) wenddyFinder;
 
     constructor() public {
         addressToPetMapper[msg.sender] = peterPets;
@@ -65,6 +66,7 @@ contract PeterPetDID is Ownable, StringFormat {
         dids.push(Did(makeDid(index)));
         if(checkLength(peterPets.length,dids.length)){
             didToPetMapper[dids[index].did] = peterPets[index];
+            wenddyFinder[dids[index].did] = msg.sender;
         }
     } 
 
@@ -72,8 +74,9 @@ contract PeterPetDID is Ownable, StringFormat {
      * updateDid() 
      * - did를 통해 기존 반려견 정보 수정  
      */
-    function updateDid(string memory _imgHash, string memory _did, string memory _name, uint _birth, string memory _breedOfDog, string memory _gender, uint _adoptionDate, 
+    function updateDid( string memory _did,string memory _imgHash, string memory _name, uint _birth, string memory _breedOfDog, string memory _gender, uint _adoptionDate, 
     bool _isNeutering, string memory _furColor, string memory _vaccinationHistory, string memory _notes ) public {
+        require(msg.sender == wenddyFinder[_did]);
         didToPetMapper[_did].imgHash = _imgHash;
         didToPetMapper[_did].name = _name;
         didToPetMapper[_did].birth = _birth;
