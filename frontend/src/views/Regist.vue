@@ -36,17 +36,9 @@
                                                         <div class="md-layout">
                                                     <div class="md-layout-item md-size-66 md-xsmall-size-100 ">
                                                             <form method="post" action="upload" enctype="multipart/form-data">
-                                                            <h3 class="info-title">사진등록</h3>
-                                                            <div>
-                                                            <!-- Styled -->
-                                                            <b-form-file
-                                                            v-model="file1"
-                                                            :state="Boolean(file1)"
-                                                            placeholder="Choose a file or drop it here..."
-                                                            drop-placeholder="Drop file here..."
-                                                            ></b-form-file>
-                                                            <div class="mt-3">Selected file: {{ file1 ? file1.name : '' }}</div>
-                                                            </div>
+                                                            <h6 class="info-title">반려견의 사진을 등록해주세요</h6>
+                                                            <br><br>
+                                                            <ImagePreview></ImagePreview>
                                                             <br><br>
                                                                 <input type="submit">
                                                                 </form>
@@ -349,23 +341,14 @@
         import Vue from 'vue';
         import VMdDateRangePicker from "v-md-date-range-picker";
         import checkbox from "@/assets/js/checkbox.js";
+        import ImagePreview from './components/ImagePreview.vue';
+        
 
         Vue.use(checkbox);
         Vue.use(VMdDateRangePicker);
 
 
-        function setThumbnail(event){
-		var reader = new FileReader();
-		
-		reader.onload = function(event){
-			var img = document.createElement("img");
-			img.setAttribute("src", event.target.result);
-			img.setAttribute("class", "col-lg-6");
-			document.querySelector("div#image_container").appendChild(img);
-		};
-		
-		reader.readAsDataURL(event.target.files[0]);
-	}
+        
 
         export default {
             name: 'TrueFalseValue',
@@ -374,7 +357,7 @@
             components: {
                 Tabs,
                 LoginCard,
-                
+                ImagePreview,
             },
 
 
@@ -500,6 +483,24 @@
                         }
                     }).open()
                 },
+
+              setThumbnail: async function (event){
+                  console.log(event);
+                const reader = new FileReader();
+		
+		        reader.onload = (event) =>{
+			        var img = document.createElement("img");
+                    console.log(img + ","+event);
+			        img.setAttribute("src", event.target.result);
+			        img.setAttribute("class", "col-lg-6");
+			        document.querySelector("div#image_container").appendChild(img);
+		    };
+		
+		    reader.readAsDataURL(event.target.files[0]);
+		},
+
+
+
                 firstRRNCheck(e) {
                 if (this.isNumber(e) && this.firstRRN.length < 6) {
                     this.firstRRN.push(e)
