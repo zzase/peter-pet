@@ -90,7 +90,6 @@
 <script>
 import { LoginCard } from "@/components";
 
-
 export default {
   components: {
     LoginCard
