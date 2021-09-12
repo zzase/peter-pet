@@ -45,6 +45,115 @@
 				"type": "uint256"
 			}
 		],
+		"name": "peterPets",
+		"outputs": [
+			{
+				"name": "imgHash",
+				"type": "string"
+			},
+			{
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"name": "breedOfDog",
+				"type": "string"
+			},
+			{
+				"name": "gender",
+				"type": "string"
+			},
+			{
+				"name": "birth",
+				"type": "uint256"
+			},
+			{
+				"name": "adoptionDate",
+				"type": "uint256"
+			},
+			{
+				"name": "isNeutering",
+				"type": "bool"
+			},
+			{
+				"name": "furColor",
+				"type": "string"
+			},
+			{
+				"name": "vaccinationHistory",
+				"type": "string"
+			},
+			{
+				"name": "notes",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_did",
+				"type": "string"
+			},
+			{
+				"name": "_imgHash",
+				"type": "string"
+			},
+			{
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"name": "_birth",
+				"type": "uint256"
+			},
+			{
+				"name": "_breedOfDog",
+				"type": "string"
+			},
+			{
+				"name": "_gender",
+				"type": "string"
+			},
+			{
+				"name": "_adoptionDate",
+				"type": "uint256"
+			},
+			{
+				"name": "_isNeutering",
+				"type": "bool"
+			},
+			{
+				"name": "_furColor",
+				"type": "string"
+			},
+			{
+				"name": "_vaccinationHistory",
+				"type": "string"
+			},
+			{
+				"name": "_notes",
+				"type": "string"
+			}
+		],
+		"name": "updateDid",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
 		"name": "dids",
 		"outputs": [
 			{
@@ -133,8 +242,31 @@
 		"type": "function"
 	},
 	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_did",
+				"type": "string"
+			}
+		],
+		"name": "getPetNameByDid",
+		"outputs": [
+			{
+				"name": "_name",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"constant": false,
 		"inputs": [
+			{
+				"name": "_imgHash",
+				"type": "string"
+			},
 			{
 				"name": "_name",
 				"type": "string"
@@ -182,19 +314,27 @@
 		"constant": true,
 		"inputs": [
 			{
-				"name": "_did",
+				"name": "str",
 				"type": "string"
+			},
+			{
+				"name": "startIndex",
+				"type": "uint256"
+			},
+			{
+				"name": "endIndex",
+				"type": "uint256"
 			}
 		],
-		"name": "getPetNameByDid",
+		"name": "subString",
 		"outputs": [
 			{
-				"name": "_name",
+				"name": "",
 				"type": "string"
 			}
 		],
 		"payable": false,
-		"stateMutability": "view",
+		"stateMutability": "pure",
 		"type": "function"
 	},
 	{
@@ -231,53 +371,22 @@
 		"type": "function"
 	},
 	{
-		"constant": false,
+		"constant": true,
 		"inputs": [
 			{
 				"name": "_did",
 				"type": "string"
-			},
+			}
+		],
+		"name": "getPetImgByDid",
+		"outputs": [
 			{
-				"name": "_name",
-				"type": "string"
-			},
-			{
-				"name": "_birth",
-				"type": "uint256"
-			},
-			{
-				"name": "_breedOfDog",
-				"type": "string"
-			},
-			{
-				"name": "_gender",
-				"type": "string"
-			},
-			{
-				"name": "_adoptionDate",
-				"type": "uint256"
-			},
-			{
-				"name": "_isNeutering",
-				"type": "bool"
-			},
-			{
-				"name": "_furColor",
-				"type": "string"
-			},
-			{
-				"name": "_vaccinationHistory",
-				"type": "string"
-			},
-			{
-				"name": "_notes",
+				"name": "_imgHash",
 				"type": "string"
 			}
 		],
-		"name": "updateDid",
-		"outputs": [],
 		"payable": false,
-		"stateMutability": "nonpayable",
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{

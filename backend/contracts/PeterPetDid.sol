@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.5.6;
+pragma experimental ABIEncoderV2;
 
 import "./Ownable.sol";
 import "./String.sol";
@@ -22,7 +23,7 @@ contract PeterPetDID is Ownable, StringFormat {
         string did; // did 번호
     }
 
-    PeterPet[] peterPets;
+    PeterPet[] public peterPets;
     Did[] public dids;
 
     uint index;
