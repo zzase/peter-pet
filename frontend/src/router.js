@@ -27,7 +27,7 @@ export default new Router({
     },
 
     {
-      path: "/",
+      path: "/pet",
       name: "result",
       components: { default: result, header: MainNavbar, footer: MainFooter },
       props: {
