@@ -10,6 +10,14 @@ var petRouter = require('./routes/pet');
 
 var app = express();
 
+var expressVue = require("express-vue");
+const vueOptions = {
+        VUE_DEV: true,
+    rootPath: path.join(__dirname, '/views')
+};
+const expressVueMiddleware = expressVue.init(vueOptions);
+app.use(expressVueMiddleware);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

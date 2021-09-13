@@ -15,8 +15,8 @@ contract PeterPetDID is Ownable, StringFormat {
         uint adoptionDate; // 입양일
         bool isNeutering; // 중성화 여부
         string furColor; //모색
-        string vaccinationHistory; //특이사항
-        string notes; //접종내역
+        string vaccinationHistory; //접종내역
+        string notes; //특이사항
     }
 
     struct Did {
