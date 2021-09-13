@@ -11,12 +11,9 @@ router.get('/', function(req, res, next) {
 router.post('/post',function(req,res,next){
   try{
     console.log("호출됨");
-  var peterpet =req.body.peterpet;
-  console.log("post data : " + peterpet.name);
-  //this.$route.push({name:'/pet',params:{peterpet:peterpet}});
-  //this.$router.push('/pet',{peterpet:peterpet});
-  //res.redirect('/#/pet');
-  //res.renderVue('../../frontend/src/views/result.vue',peterpet);
+    var peterpet =req.body.peterpet;
+    qconsole.log("post data : " + peterpet.name);
+
   }catch(err){
     console.log(err)
   }
