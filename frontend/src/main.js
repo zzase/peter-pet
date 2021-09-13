@@ -19,6 +19,7 @@ import VueComp from '@vue/composition-api';
 import MaterialKit from "./plugins/material-kit";
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import axios from 'axios'
+import { store } from './store';
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -49,5 +50,6 @@ Vue.mixin({
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount("#app");

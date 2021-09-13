@@ -128,7 +128,7 @@ export default {
 
     submit : async function() {
       this.validCheck();
-      this.$http.post('/api/pet/post',{peterpet: this.peterpet})
+      this.$http.post('/api/pet/post',{peterpet: this.peterpet},{"Content-Type":"application-json"})
       .then((res) => {
         console.log(res.data);
         //this.$router.push('/pet',{peterpet: this.peterpet});
