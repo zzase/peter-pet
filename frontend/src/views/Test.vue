@@ -127,18 +127,18 @@ export default {
     },
 
     submit : async function() {
+      const peterpet = this.peterpet;
       this.validCheck();
-      this.$http.post('/api/pet/post',{peterpet: this.peterpet},{"Content-Type":"application-json"})
+      this.$http.post('/api/pet',{peterpet},{"Content-Type":"application-json"})
       .then((res) => {
         console.log(res.data);
+        this.$store.commit("setPeterpet",res.data.peterpet);
+        this.$router.push({name : "result"});
         //this.$router.push('/pet',{peterpet: this.peterpet});
       })
       .catch((err)=>{
         console.error(err);
-      })
-      .finally(()=>{
-        
-      })
+      });
     }
   },
 

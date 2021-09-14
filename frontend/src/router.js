@@ -27,7 +27,7 @@ export default new Router({
     },
 
     {
-      path: "/",
+      path: "/result",
       name: "result",
       components: { default: result, header: MainNavbar, footer: MainFooter },
       props: {
