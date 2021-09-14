@@ -1,3 +1,5 @@
+import {byteCode, contract} from '../kas/deploy.js'
+
 var express = require('express');
 var router = express.Router();
 
@@ -12,11 +14,10 @@ router.get('/', function(req, res, next) {
 router.post('/',function(req,res,next){
   try{
     console.log("호출됨");
-    var peterpet =req.body.peterpet;
-    console.log("post data : " + peterpet.name);
+    const deployed = await contract.deploy({ data: byteCode }).send({ from: '0x3414834c8811a4041dC9644899c15A637290A3A6', gas: 10000000 });
+    console.log('deployed ca : ' + deployed.options.address );
 
-    res.redirect('/#/result')
-
+    res.redirect('/#/result');
   }catch(err){
     console.log(err)
   }
