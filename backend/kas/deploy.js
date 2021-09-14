@@ -459,5 +459,5 @@ const byteCode = '0x608060405234801561001057600080fd5b5061051f806100206000396000
 
 const contract = new caver.contract(abi);
 
-//export {byteCode, contract};
-module.export = {byteCode,contract};
+export {byteCode, contract};
+//module.export = {byteCode,contract};
