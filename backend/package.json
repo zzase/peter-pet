@@ -26,7 +26,9 @@
     "@babel/node": "^7.10.4",
     "@babel/preset-env": "^7.10.4"
   },
-  "babel" : {
-    "presets" : ["@babel/env"]
+  "babel": {
+    "presets": [
+      "@babel/env"
+    ]
   }
 }

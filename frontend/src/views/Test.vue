@@ -42,7 +42,7 @@
               <md-field class="md-form-group" slot="inputs">
                 <md-icon>email</md-icon>
                 <label>생년월일</label>
-                <md-input v-model="peterpet.birth" type="email"></md-input>
+                <md-input v-model="peterpet.birth"></md-input>
               </md-field>
               <md-field class="md-form-group" slot="inputs">
                 <md-icon>lock_outline</md-icon>

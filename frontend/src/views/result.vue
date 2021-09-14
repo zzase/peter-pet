@@ -1,8 +1,8 @@
 <template>
     <div v-if="peterpet">
-        <p>{{peterpet.name}}</p>
-        <p>{{peterpet.gender}}</p>
-        <p>{{peterpet.birth}}</p>
+        <p>{{peterpet}}</p>
+        <!-- <p>{{peterpet.gender}}</p>
+        <p>{{peterpet.birth}}</p> -->
     </div>
     <div v-else>
         <h1>result</h1>
@@ -10,24 +10,24 @@
 </template>
 
 <script>
-// export default {
-//     created() {
-//         this.$http.get('/api/pet')
-//         .then((res) => {
-//             const peterpet = res.data.peterpet;
-//             console.log(res.data);
-//             if(peterpet) {
-//                 this.$store.commit("setPeterpet",peterpet);
-//             }else {
-//                 this.$router.push({name:"test"});
-//             }
-//         })
-//         .catch((err)=> {
-//             console.error(err);
-//         });
-//     },
-//     computed : {
-//         peterpet() {return this.$store.getters.peterpet;}
-//     }
-// }
+export default {
+    created() {
+        this.$http.get('/api/pet')
+        .then((res) => {
+            const peterpet = res.data.peterpet;
+            console.log(res.data);
+            if(peterpet) {
+                this.$store.commit("setPeterpet",peterpet);
+            }else {
+                this.$router.push({name:"test"});
+            }
+        })
+        .catch((err)=> {
+            console.error(err);
+        });
+    },
+    computed : {
+        peterpet() {return this.$store.getters.peterpet;}
+    }
+}
 </script>
