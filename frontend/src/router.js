@@ -8,7 +8,9 @@ import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 import Regist from "./views/Regist.vue"
 import Main from "./views/Main.vue"
-
+import Neverland from "./views/Neverland.vue";
+import RegisterComplete from "./views/RegisterComplete.vue"
+import MyPage from "./views/MyPage.vue"
 
 Vue.use(Router);
 
@@ -28,6 +30,33 @@ export default new Router({
       path: "/regist",
       name: "regist",
       components: { default: Regist, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/complete",
+      name: "complete",
+      components: { default: RegisterComplete, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/neverland",
+      name: "neverland",
+      components: { default: Neverland, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/mypage",
+      name: "mypage",
+      components: { default: MyPage, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }

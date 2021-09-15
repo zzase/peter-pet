@@ -49,5 +49,8 @@ export default {
     margin: 0 auto 30px;
     background-size: cover;
     background-position: center center;
+    background-image: url("/assets/img/Regist/picture.jpg");
+    background-color:rgb(223, 223, 223);
+    margin-left: -25px;
 }
 </style>
