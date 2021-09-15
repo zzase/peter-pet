@@ -120,7 +120,7 @@
                 "name": "msg",
                 "nodeType": "Identifier",
                 "overloadedDeclarations": [],
-                "referencedDeclaration": 760,
+                "referencedDeclaration": 816,
                 "src": "117:3:0",
                 "typeDescriptions": {
                   "typeIdentifier": "t_magic_message",
@@ -198,7 +198,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 760,
+                            "referencedDeclaration": 816,
                             "src": "220:3:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -274,10 +274,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        763,
-                        764
+                        819,
+                        820
                       ],
-                      "referencedDeclaration": 764,
+                      "referencedDeclaration": 820,
                       "src": "204:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -538,7 +538,7 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 760,
+                      "referencedDeclaration": 816,
                       "type": "msg",
                       "value": "msg"
                     },
@@ -632,10 +632,10 @@
                                 }
                               ],
                               "overloadedDeclarations": [
-                                763,
-                                764
+                                819,
+                                820
                               ],
-                              "referencedDeclaration": 764,
+                              "referencedDeclaration": 820,
                               "type": "function (bool,string memory) pure",
                               "value": "require"
                             },
@@ -676,7 +676,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 760,
+                                      "referencedDeclaration": 816,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -908,9 +908,16 @@
     "name": "solc",
     "version": "0.5.6+commit.b259423e.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "1631344718165": {
+      "events": {},
+      "links": {},
+      "address": "0x215cB9E6Bb477Ba55C03EeE2D394D3bC300Fe967",
+      "transactionHash": "0x7a5b122c2e7ceca75a4bf9702162a2f697c7c84fd39714f966883d03a4e537b6"
+    }
+  },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-09-09T06:25:52.600Z",
+  "updatedAt": "2021-09-11T07:58:48.313Z",
   "devdoc": {
     "methods": {}
   },
