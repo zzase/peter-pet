@@ -1,34 +1,38 @@
-import Caver from 'caver-js-ext-kas/node_modules/caver-js';
 import {abi,byteCode, caver, contract} from '../kas/deploy.js'
 
 var express = require('express');
 var router = express.Router();
 
-const deployedCa = '0x2aA55a1fA8f14a332E120210B16f8cCe2B5f9559';
-const didContract = new caver.contract(abi,deployedCa);
+//const deployedCa = '0x1edcca9e753ea5e548551cbab78fb71ab79274bd';
+const didContract = new caver.contract(abi,'0x9ad09b3578badfca5c965d4524e554534f5569ea');
 //const pets = require('../test/pet.json');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  //const peterPetName = await didContract.methods.getPetNameByDid(didContract.methods.dids(1))
-  return res.json({peterpet:"test get method"});
+router.get('/', async function(req, res, next) {
+  const did = await didContract.methods.getDid(2).call();
+  const peterPetName = await didContract.methods.getPetNameByDid(`${did}`).call();
+  console.log(`name:${peterPetName}`);
+  console.log(`did=${did}`);
+  return res.json({pname:peterPetName});
 });
 
 router.post('/',async function(req,res,next){
   try{
     console.log("post api 호출됨");
+    console.log(didContract);
     const peterpet = req.body.peterpet;
-    // const deployed = await contract.deploy({ data: byteCode }).send({ from: '0x3414834c8811a4041dC9644899c15A637290A3A6', gas: 10000000 });
+    //const deployed = await contract.deploy({ data: byteCode }).send({ from: '0x3414834c8811a4041dC9644899c15A637290A3A6', gas: 10000000 });
      
-    //console.log(`Deployed contract address: ${deployedCa}`);
+    //console.log(`Deployed contract address: ${deployed.options.address}`);
     
     const result = await didContract.methods.addDid(peterpet.imgHash, peterpet.name, peterpet.birth, peterpet.breedOfDog, peterpet.gender, peterpet.adoptionDate,
-      peterpet.isNeutering, peterpet.furColor, peterpet.vaccinationHistory, peterpet.notes).send({ from: '0x3414834c8811a4041dC9644899c15A637290A3A6', gas: 5000000 });
+      peterpet.isNeutering, peterpet.furColor, peterpet.vaccinationHistory, peterpet.notes).send({ from: '0x68F3A83feBF05F8f3DEE4E9317275083d7FA0BfD', gas: 5000000 });
+    
+    console.log('----------------------------------------------------');
     console.log(result);
-      if(didContract.methods.dids){
-        console.log(`made did = ${didContract.methods.dids}`);
-        console.log(`${didContract.methods.dids(0)}`);
-    }
+    if(didContract.methods.dids){
+        console.log(`${didContract.methods.getDid(0)}`);
+      }
     res.redirect('/#/result');
   }catch(err){
     console.log(err)

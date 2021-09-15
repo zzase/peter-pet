@@ -14,7 +14,7 @@ export default {
     created() {
         this.$http.get('/api/pet')
         .then((res) => {
-            const peterpet = res.data.peterpet;
+            const peterpet = res.data.pname;
             console.log(res.data);
             if(peterpet) {
                 this.$store.commit("setPeterpet",peterpet);
