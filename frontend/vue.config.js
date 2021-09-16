@@ -5,6 +5,9 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   devServer: {
+    overlay: false
+  },
+  devServer: {
     proxy: {
       '/api' :{
         target: 'http//localhost:3000/api',
@@ -31,5 +34,5 @@ module.exports = {
         sourceMap: process.env.NODE_ENV !== "production" ? true : false
       }
     }
-  }
+  },
 };

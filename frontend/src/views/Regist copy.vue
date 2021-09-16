@@ -18,8 +18,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <tabs 
-                                ref = "child"
+                            <tabs
                                 :tab-name="['Peter-Pet', 'Wenddy', 'Tinkerbell']"
                                 :tab-icon="['pets', 'people', 'reddit']"
                                 plain="plain"
@@ -27,120 +26,7 @@
                                 color-button="success">
    
                                 <!-- here you can add your content for tab-content -->
-                                
-                                <template slot="tab-pane-1">
-                                    <div class="md-layout">
-                                        <div class="md-layout-item md-size-100 ml-auto">
-                                            <login-card header-color="green">
-                                                <h2 slot="title" class="card-title">Peter-Pet</h2>
-                                                <md-field class="md-form-group" slot="inputs">
-                                                    <div class="container">
-                                                        <div class="md-layout">
-                                                    <div class="md-layout-item md-size-66 md-xsmall-size-100 ">
-                                                            <form method="post" action="upload" enctype="multipart/form-data">
-                                                            <h6 class="info-title">반려견의 사진을 등록해주세요</h6>
-                                                            <ImagePreview></ImagePreview>
-                                                            
-                                                            <br><br>
-                                                                <input type="submit">
-                                                                </form>
-                                                        </div>
-                                                    </div>         
-                                                    </div>
-                                                </md-field>
-                                                <md-field class="md-form-group" slot="inputs">
-                                                   
-                                                    <label> <md-icon>face</md-icon>이름</label>
-                                                    <md-input v-model="firstname"></md-input>
-                                                </md-field>
-                                                <md-field class="md-form-group" slot="inputs">
-                                                    <label><md-icon>pets</md-icon>모색</label>
-                                                      <div>
-                                                        <md-autocomplete
-                                                        v-model="selectedEmployee"
-                                                        :md-options="employees"
-                                                        md-layout="box"
-                                                        md-dense>
-                                                        <label>--견종을 선택해주세요--</label>
-                                                        </md-autocomplete>
-                                                      </div>
-                                                      
-                                                </md-field>
-                                                <md-field class="md-form-group" slot="inputs">
-                                                    <label for="label-a"><md-icon>wc</md-icon>성별</label>
-                                                      <div>
-                                                          <br>
-                                                        <md-radio v-model="radio" :value="false">남자아이<md-icon>male</md-icon></md-radio><br>
-                                                    <md-radio v-model="radio" value="my-radio">여자아이<md-icon>female</md-icon></md-radio>
-                                                    </div>
-
-                                                </md-field>
-                                                <md-field class="md-form-group" slot="inputs">
-                                                     <md-datepicker v-model="selectedLabeled">
-                                                        <label>생년월일을 입력해주세요</label>
-                                                        </md-datepicker>
-                                                </md-field>
-                                                <md-field class="md-form-group" slot="inputs">
-                                                    <md-datepicker v-model="selectedLabeled">
-                                                        <label>입양날짜를 입력해주세요</label>
-                                                        </md-datepicker>
-                                                </md-field>
-                                                <md-field class="md-form-group" slot="inputs">
-                                                    <label for="label-a"><md-icon>task_alt</md-icon>중성화 여부</label>
-                                                    <div>
-                                                    <br>
-                                                        <md-radio v-model="radio" :value="false">중성화 O</md-radio><br>
-                                                    <md-radio v-model="radio" value="my-radio">중성화 X</md-radio>
-                                                    </div>
-                                                </md-field>
-                                                <md-field class="md-form-group" slot="inputs">
-                                                    <label> <md-icon>saved_search</md-icon>모색</label>
-                                                    <div>
-                                                        <md-autocomplete
-                                                        v-model="selectedColor"
-                                                        :md-options="colors"
-                                                        md-layout="box"
-                                                        md-dense>
-                                                        <label>--모색을 선택해주세요--</label>
-                                                        </md-autocomplete>
-                                                      </div>
-                                                </md-field>
-                                                <md-field class="md-form-group" slot="inputs">
-                                                    
-                                                   <md-field>
-                                                <label>!--반려견의 특이사항에 대해 알려주세요--!</label>
-                                                <md-textarea v-model="aboutme"></md-textarea>
-                                                </md-field>
-                                                </md-field>
-                                                <label>접종내역</label>
-                                                <md-field class="md-form-group" slot="inputs">
-                                                    
-                                                    <label for="name"><md-icon>medical_services</md-icon>접종내역</label> 
-                                                    <br><br>
-                                                <div>
-                                                 <md-checkbox v-model="array" value="1">종합백신(홍역/간염/장염/기관지염/신장염) </md-checkbox>
-                                                 <md-checkbox v-model="array" value="2">코로나 장염 백신</md-checkbox>
-                                                 <md-checkbox v-model="boolean">켄넬코프 백신</md-checkbox>
-                                                 <md-checkbox v-model="string" value="my-checkbox">광견병 백신</md-checkbox>
-                                                 <md-checkbox v-model="boolean">구충제</md-checkbox>
-                                                 <md-checkbox v-model="boolean">심장사상충 예방</md-checkbox>
-                                                 <md-checkbox v-model="boolean">종합구충</md-checkbox>
-                                                </div>
-                                                </md-field>
-                                                
-                                                <md-button id="tab-content" slot="footer" class="md-success md-lg"
-                                                @click="switchPanel1(tab-name)"
-                                                >Next</md-button>
-                                                
-                                          
-                                                        
-                                                    <!-- <md-button slot="footer" class="md-success md-lg" v-onclick="Wenddy"> -->
-                                                    <!-- Next
-                                                </md-button> -->
-                                            </login-card>
-                                        </div>
-                                    </div>
-                                </template>
+                                <PeterpetForm></PeterpetForm>
 
                                 <template slot="tab-pane-2">
                                     <div class="md-layout">
@@ -156,6 +42,11 @@
 
                                                     <input type="tel" name="tlno" id="tlno" title="전화번호를 입력하세요." placeholder="010*-0000*-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="13">
 
+<!-- 
+                                                    <form name="form-name" action="" method="post">
+                                                        <input type='tel' name='phone1' />-<input type='tel' name='phone2' />-<input type='tel' name='phone3' />
+                                                    </form>                                                
+                                                    <md-input v-model="phonenumber" type="email"></md-input> -->
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <label><md-icon>email</md-icon>Email</label>
@@ -261,10 +152,9 @@
                                                     </ul>
                                                   </form>
                                                 </md-field>
-                                                <md-button id="tab-content" slot="footer" class="md-success md-lg"
-                                                @click="switchPanel2(tab-name)"
-                                                >동의</md-button>
-                                               
+                                                <md-button slot="footer" class="md-success md-lg">
+                                                    동의
+                                                </md-button>
                                             </login-card>
                                         </div>
                                     </div>
@@ -279,25 +169,34 @@
                                                     <div class="md-layout-item md-medium-size-60 md-small-size-100">
                                                     <div class="info">
                                                     <img alt="brand" src="@/assets/img/Regist/necklace1.jpg">
-                                                    <div>
-                                                      <b-button id="tooltip-button-1" style="margin: 0 auto; display: block;" :pressed="true" variant="success">외장칩 목걸이</b-button>
+                                                    <h4 class="title text-center">외장칩 목걸이</h4>
+                                                    <p>
+                                                        Divide details about your product or agency work into parts.
+                                                        Write a few lines about each one. A paragraph describing a
+                                                        feature will be enough.
+                                                    </p>
+                                                    <div>#selectbutton
+                                                      <b-button :pressed="true" variant="success">외장칩 목걸이</b-button>
                                                     </div>
 
-                                                    <b-tooltip :show.sync="show" target="tooltip-button-1" placement="top">
-                                                    선택되었습니다!
-                                                    </b-tooltip>
+
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="md-layout-item md-medium-size-60 md-small-size-100">
                                                     <div class="info">
                                                     <img alt="brand" src="@/assets/img/Regist/necklace2.jpg">
-                                                    <div>
-                                                        <b-button id="tooltip-button-1" style="margin: 0 auto; display: block;" :pressed="true" variant="success">내장칩 목걸이</b-button>
+                                                    <h4 class="title text-center">내장칩 목걸이</h4>
+                                                    <p>
+                                                        Divide details about your product or agency work into parts.
+                                                        Write a few lines about each one. A paragraph describing a
+                                                        feature will be enough.
+                                                    </p>
+                                                    <div>#selectbutton
+                                                    <b-button :pressed="true" variant="success">내장칩 목걸이</b-button>
                                                     </div>
-                                                     <b-tooltip :show.sync="show" target="tooltip-button-1" placement="top">
-                                                    선택되었습니다!
-                                                    </b-tooltip>
+
+
 
                                                     </div>
                                                 </div>
@@ -307,8 +206,7 @@
                                                     </div>
                                                 </md-field>
                                                 
-                                                <md-button slot="footer" class="md-success md-lg"
-                                                @click='newPage()'>
+                                                <md-button slot="footer" class="md-success md-lg">
                                                    선택 완료
                                                 </md-button>
                                             </login-card>
@@ -332,12 +230,14 @@
         import VMdDateRangePicker from "v-md-date-range-picker";
         import checkbox from "@/assets/js/checkbox.js";
         import ImagePreview from './components/ImagePreview.vue';
-      
+        import PeterpetForm from './components/register/PeterpetForm.vue';
         
 
         Vue.use(checkbox);
         Vue.use(VMdDateRangePicker);
 
+
+        
 
         export default {
             name: 'TrueFalseValue',
@@ -348,19 +248,17 @@
                 LoginCard,
                 ImagePreview,
             },
-            
 
 
             bodyClass: "profile-page", 
             data() {
                 return {
-                    activePanel: this.tabName,
-
                     firstRRN: [],
                     firstRRNView: '',
                     secondRRN: [],
                     secondRRNView: '',
-    
+
+
                     selectedColor: null,
                     colors: [
                     '혼합색',
@@ -443,7 +341,6 @@
                     }
                 };
             },
-          
             props: {
                 header: {
                     type: String,
@@ -465,16 +362,6 @@
                 }
             },
             methods :{
-                newPage: function() {
-                    window.location.href = 
-                    'https://localhost:8080/#/complete'
-                },
-                switchPanel1: function() {
-                    this.$refs.child.switchPanel("Wenddy");
-                },
-                switchPanel2: function() {
-                    this.$refs.child.switchPanel("Tinkerbell");
-                },               
                 getPostalcode(){
                     new window.daum.Postcode({
                         oncomplete: (data) => {
@@ -683,9 +570,6 @@
 
         div#selectbutton {
             text-align: center;
-        }
-        .b-button {
-            padding-left: 30px;
         }
        
     </style>
