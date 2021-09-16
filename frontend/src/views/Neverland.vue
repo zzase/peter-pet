@@ -9,11 +9,11 @@
         <div class="box">
        <img alt="brand" src="@/assets/img/Neverland/NeverlandBackground.jpg">
         
-        <div class="link"><img onclick="javascript:location.href='http://localhost:8080/#/regist';" src="@/assets/img/Neverland/glasses.png" 
+        <div class="link"><img onclick="javascript:location.href='#/regist';" src="@/assets/img/Neverland/glasses.png" 
         style="cursor:pointer;"/></div></div>
-         <div class="link2"><img onclick="javascript:location.href='http://localhost:8080/#/regist';" src="@/assets/img/Neverland/glasses.png" 
+         <div class="link2"><img onclick="javascript:location.href='#/regist';" src="@/assets/img/Neverland/glasses.png" 
         style="cursor:pointer;"/></div>
-         <div class="link3"><img onclick="javascript:location.href='http://localhost:8080/#/regist';" src="@/assets/img/Neverland/glasses.png" 
+         <div class="link3"><img onclick="javascript:location.href='#/regist';" src="@/assets/img/Neverland/glasses.png" 
         style="cursor:pointer;"/></div>
 
        <div id="testImg">
@@ -112,9 +112,9 @@ a {
 }
 .link {
   position:absolute;
-  top: 700px;
-  bottom: 50px;
-  left: 120px;
+  top: 650px;
+  bottom: 70px;
+  left: 170px;
 }
 .link2 {
   position:absolute;
