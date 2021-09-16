@@ -159,7 +159,7 @@
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <label><md-icon>email</md-icon>Email</label>
-                                                    <input type='email' name='userEmail' />
+                                                    <input type="email" name='userEmail' />
                                                    
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">

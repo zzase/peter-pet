@@ -29,7 +29,70 @@
       <div class ="my-box">
       </div>
           <div class="md-layout">
-            
+            //nav toolbar
+            <div class="md-toolbar md-dark md-theme-default md-elevation-4">
+              <div class="md-toolbar-row"><div class="md-toolbar-section-start">
+                <h3 class="md-title">Navbar with notification</h3>
+                </div>
+                <div class="md-toolbar-section-end">
+                  <button type="button" class="md-button md-just-icon md-simple md-white md-toolbar-toggle md-theme-default">
+                    <div class="md-ripple">
+                      <div class="md-button-content">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </div>
+                         </div>
+                         </button>
+                         <div class="md-collapse">
+                           <ul class="md-list md-theme-default">
+                             <li href="javascript:void(0)" class="md-list-item">
+                               <a mdripple="true" href="javascript:void(0)" class="md-list-item-link md-list-item-container md-button-clean">
+                                 <div class="md-list-item-content md-ripple"><p>Discover</p> 
+                                 </div>
+                                 </a>
+                                 </li>
+                                 <li href="javascript:void(0)" class="md-list-item">
+                                   <a mdripple="true" href="javascript:void(0)" class="md-list-item-link md-list-item-container md-button-clean">
+                                     <div class="md-list-item-content md-ripple">
+                                       <p>Whishlist</p>
+                                        </div>
+                                        </a>
+                                        </li>
+                                        <li class="md-list-item"><a href="javascript:void(0)" class="md-list-item-router md-list-item-container md-button-clean">
+                                          <div class="md-list-item-content">
+                                            <button type="button" class="md-button md-rose md-just-icon md-round md-theme-default">
+                                              <div class="md-ripple">
+                                                <div class="md-button-content">
+                                                  <i class="md-icon md-icon-font md-theme-default">email</i>
+                                                  </div>
+                                                   </div>
+                                                   </button>
+                                                   </div>
+                                                   </a>
+                                                   </li>
+                                                   <li class="md-list-item">
+                                                     <a href="javascript:void(0)" class="md-list-item-router md-list-item-container md-button-clean dropdown">
+                                                       <div class="md-list-item-content"
+                                                       ><div class="profile-photo dropdown">
+                                                         <div data-toggle="dropdown" class="profile-photo-small">
+                                                           <img src="/img/avatar.cc93a967.jpg" alt="Circle Image">
+                                                           </div>
+                                                           <ul class="dropdown-menu dropdown-menu-right">
+                                                             <li class="dropdown-header">Dropdown header</li>
+                                                             <li><a href="#pablo" class="dropdown-item">Me</a></li>
+                                                             <li><a href="#pablo" class="dropdown-item">Settings and other stuff</a></li>
+                                                             <li><a href="#pablo" class="dropdown-item">Sign Out</a></li>
+                                                           </ul>
+                                                        </div>
+                                                      </div>
+                                                     </a>
+                                                   </li>
+                                                  </ul>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
           <b-navbar id="menu" toggleable type="light" variant="light">
           <b-navbar-brand href="#">My Page</b-navbar-brand>
 
