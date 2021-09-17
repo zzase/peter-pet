@@ -4,17 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-import {connection} from './mysql/connector';
-
-connection.connect(function (err){
-  if(err) {
-    console.error('mysql connection error');
-    console.error(err);
-    throw err;
-  }
-  else console.log("success mysql connect");
-});
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var peterpetRouter = require('./routes/pet');
