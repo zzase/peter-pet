@@ -11,7 +11,7 @@ import Main from "./views/Main.vue"
 import Neverland from "./views/Neverland.vue";
 import RegisterComplete from "./views/RegisterComplete.vue"
 import MyPage from "./views/MyPage.vue"
-import Card from "./views/Card.vue"
+
 
 Vue.use(Router);
 
@@ -58,15 +58,6 @@ export default new Router({
       path: "/mypage",
       name: "mypage",
       components: { default: MyPage, header: MainNavbar, footer: MainFooter },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
-      }
-    },
-    {
-      path: "/card",
-      name: "card",
-      components: { default: Card, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
