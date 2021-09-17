@@ -2,10 +2,8 @@
   <div class="wrapper">
      <parallax class="section page-header" :style="headerStyle">
      </parallax>
-     
        <div class="main main-raised">
-      <div class="section">
-         
+           <div class="section">
               <div class="contents">
                 <div class="mypage">
                   <img src="@/assets/img/MyPage/mypage.jpg">
@@ -16,15 +14,13 @@
                   <div class="text">
                   <h4>My Account</h4>
                   </div>
-                  <div class="my-box10">
+                  <div class="account">
                   </div>
                   <br><br><br><br><br><br>
                   <div class="registercard">
                     <Card></Card>
                   </div>
-                  
-
-      </div>
+        </div>
       </div>
     </div>
   </div>
@@ -36,7 +32,7 @@ import Card from './components/Card.vue'
 
 
 export default {
-  bodyClass: "landing-page",
+  bodyClass: "login-page",
   props: {
 
   },
@@ -48,9 +44,7 @@ export default {
 
   data() {
     return {
-      name: null,
-      email: null,
-      message: null
+     
     };
   },
   computed: {
@@ -64,7 +58,7 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
+<style >
 .md-card-actions.text-center {
   display: flex;
   justify-content: center !important;
@@ -95,7 +89,7 @@ export default {
   margin-top: 50px;
   left: -5%;
 }
-.my-box10 {
+.account {
   position: relative;
   width: 1120px;
   height: 200px;

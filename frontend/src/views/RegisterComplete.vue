@@ -64,9 +64,7 @@ export default {
   bodyClass: "login-page",
   data() {
     return {
-      firstname: null,
-      email: null,
-      password: null
+      
     };
   },
   props: {
