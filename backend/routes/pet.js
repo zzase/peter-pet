@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 
 //const deployedCa = '0x1edcca9e753ea5e548551cbab78fb71ab79274bd';
-const didContract = new caver.contract(abi,'0x9ad09b3578badfca5c965d4524e554534f5569ea');
+const didContract = new caver.contract(abi,'0x20dc921Eccf3F344D33713B00f128718f4f6431a');
 //const pets = require('../test/pet.json');
 
 /* GET home page. */
@@ -19,21 +19,22 @@ router.get('/', async function(req, res, next) {
 router.post('/',async function(req,res,next){
   try{
     console.log("post api 호출됨");
-    console.log(didContract);
+    //console.log(didContract);
     const peterpet = req.body.peterpet;
+    console.log(peterpet);
     //const deployed = await contract.deploy({ data: byteCode }).send({ from: '0x3414834c8811a4041dC9644899c15A637290A3A6', gas: 10000000 });
      
     //console.log(`Deployed contract address: ${deployed.options.address}`);
     
-    const result = await didContract.methods.addDid(peterpet.imgHash, peterpet.name, peterpet.birth, peterpet.breedOfDog, peterpet.gender, peterpet.adoptionDate,
+    const result = await didContract.methods.addDid("peterpet.imgHash", peterpet.name, peterpet.birth, peterpet.breedOfDog, peterpet.gender, peterpet.adoptionDate,
       peterpet.isNeutering, peterpet.furColor, peterpet.vaccinationHistory, peterpet.notes).send({ from: '0x68F3A83feBF05F8f3DEE4E9317275083d7FA0BfD', gas: 5000000 });
     
     console.log('----------------------------------------------------');
     console.log(result);
     if(didContract.methods.dids){
-        console.log(`${didContract.methods.getDid(0)}`);
+        console.log(`${didContract.methods.getDid(0).call()}`);
       }
-    res.redirect('/#/result');
+    //res.redirect('/#/result');
   }catch(err){
     console.log(err)
   }
