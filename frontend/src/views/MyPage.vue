@@ -5,7 +5,7 @@
        <div class="main main-raised">
            <div class="section">
               <div class="contents">
-                <div class="mypage">
+                <div class="my-page">
                   <img src="@/assets/img/MyPage/mypage.jpg">
                 </div>
                   <div class="Side">
@@ -70,7 +70,7 @@ export default {
 .md-has-textarea + .md-layout {
   margin-top: 15px;
 }
-.mypage {
+.my-page {
   position: relative;
   width: 90%;
   height: 20%;
