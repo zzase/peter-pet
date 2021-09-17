@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-import {connection} from './mysql';
+import {connection} from './mysql/connector';
 
 connection.connect(function (err){
   if(err) {

@@ -8,4 +8,13 @@ const connection = mysql.createConnection({
   database: 'peterpet'
 });
 
+connection.connect(function (err){
+  if(err) {
+    console.error('mysql connection error');
+    console.error(err);
+    throw err;
+  }
+  else console.log("success mysql connect");
+});
+
 export {connection}
