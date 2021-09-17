@@ -1,46 +1,42 @@
 <template>
-  <div class="wrapper">
-   <div class="main main-raised">
-      <div class="section">
-      <md-field class="md-form-group" slot="inputs">
         <div class="contents">
-          <div class="card">
-          <img id ="card" src="@/assets/img/Regist/card.png">
-          </div>
-            <div class="name">
-              <p> name {{ name }} </p>
-            </div>
-            <div class="number">
-              <p> number {{ registerNumber }} </p>
-            </div>
-             <div class="imghash">
-              <p> imghash {{ imgHash }} </p>
-            </div>
-            <div class="birth">
-              <p> birth {{ birth }} </p>
-            </div>
-            <div class="gender">
-              <p> gender {{ gender }} </p>
-            </div>
-            <div class="breedOfDog">
-              <p> breedOfDog {{ breedOfDog }} </p>
-            </div>
-            <div class="furColor">
-              <p> furColor {{ furColor }} </p>
-            </div>
-            <div class="adoptionDate">
-              <p> adoptionDate {{ adoptionDate }} </p>
-            </div>
-             <div class="isNeutering">
-              <p> isNeutering {{ isNeutering }} </p>
-            </div>
-            <div class="vaccinationHistory">
-              <p> vaccinationHistory {{ vaccinationHistory }} </p>
-            </div>
-            <div class="notes">
-              <p> notes {{ notes }} </p>
-            </div>
-         </div>
+              <div class="card">
+              <img id ="card" src="@/assets/img/Regist/card.png">
+              </div>
+                <div class="name">
+                  <p> name {{ name }} </p>
+                </div>
+                <div class="number">
+                  <p> number {{ registerNumber }} </p>
+                </div>
+                <div class="imghash">
+                  <p> imghash {{ imgHash }} </p>
+                </div>
+                <div class="birth">
+                  <p> birth {{ birth }} </p>
+                </div>
+                <div class="gender">
+                  <p> gender {{ gender }} </p>
+                </div>
+                <div class="breedOfDog">
+                  <p> breedOfDog {{ breedOfDog }} </p>
+                </div>
+                <div class="furColor">
+                  <p> furColor {{ furColor }} </p>
+                </div>
+                <div class="adoptionDate">
+                  <p> adoptionDate {{ adoptionDate }} </p>
+                </div>
+                <div class="isNeutering">
+                  <p> isNeutering {{ isNeutering }} </p>
+                </div>
+                <div class="vaccinationHistory">
+                  <p> vaccinationHistory {{ vaccinationHistory }} </p>
+                </div>
+                <div class="notes">
+                  <p> notes {{ notes }} </p>
+                </div>
+        </div>
               
           <!-- <div class ="card_contents">
             <input type="text" v-model="peterpet.name">
@@ -54,10 +50,7 @@
             <input type="text" v-model="peterpet.vaccinationHistory">
             <input type="text" v-model="peterpet.notes">
           </div> -->
-      </md-field>
-       </div>
-   </div>
-</div>
+
 </template>
 
 
@@ -65,15 +58,7 @@
 
 
 export default {
-  components: {
-   
-  },
-  bodyClass: "login-page",
-  data() {
-    return {
-      
-    };
-  },
+ 
   
   computed: {
     headerStyle() {

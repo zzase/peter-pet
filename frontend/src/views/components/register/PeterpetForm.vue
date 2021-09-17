@@ -42,7 +42,7 @@
                                                     <md-input v-model="firstname"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <label><md-icon>pets</md-icon>모색</label>
+                                                    <label><md-icon>pets</md-icon>견종</label>
                                                       <div>
                                                         <md-autocomplete
                                                         v-model="selectedEmployee"

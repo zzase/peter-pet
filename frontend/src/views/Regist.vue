@@ -27,7 +27,6 @@
                                 color-button="success">
    
                                 <!-- here you can add your content for tab-content -->
-                                
                                 <template slot="tab-pane-1">
                                     <div class="md-layout">
                                         <div class="md-layout-item md-size-100 ml-auto">
@@ -40,10 +39,9 @@
                                                             <form method="post" action="upload" enctype="multipart/form-data">
                                                             <h6 class="info-title">반려견의 사진을 등록해주세요</h6>
                                                             <ImagePreview></ImagePreview>
-                                                            
                                                             <br><br>
-                                                                <input type="submit">
-                                                                </form>
+                                                            <input type="submit">
+                                                            </form>
                                                         </div>
                                                     </div>         
                                                     </div>
@@ -54,7 +52,7 @@
                                                     <md-input v-model="firstname"></md-input>
                                                 </md-field>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    <label><md-icon>pets</md-icon>모색</label>
+                                                    <label><md-icon>pets</md-icon>견종</label>
                                                       <div>
                                                         <md-autocomplete
                                                         v-model="selectedEmployee"
@@ -127,22 +125,16 @@
                                                  <md-checkbox v-model="boolean">종합구충</md-checkbox>
                                                 </div>
                                                 </md-field>
-                                                
                                                 <md-button id="tab-content" slot="footer" class="md-success md-lg"
                                                 @click="switchPanel1(tab-name)"
                                                 >Next</md-button>
-                                                
-                                          
-                                                        
-                                                    <!-- <md-button slot="footer" class="md-success md-lg" v-onclick="Wenddy"> -->
-                                                    <!-- Next
-                                                </md-button> -->
                                             </login-card>
                                         </div>
                                     </div>
                                 </template>
 
                                 <template slot="tab-pane-2">
+                                    <div id="tab-pane2">
                                     <div class="md-layout">
                                         <div class="md-layout-item md-size-100 ml-auto">
                                             <login-card header-color="orange">
@@ -261,15 +253,17 @@
                                                     </ul>
                                                   </form>
                                                 </md-field>
-                                                <md-button id="tab-content" slot="footer" class="md-success md-lg"
+                                                <md-button id="tab-content2" slot="footer" class="md-success md-lg"
                                                 @click="switchPanel2(tab-name)"
                                                 >동의</md-button>
-                                               
                                             </login-card>
                                         </div>
                                     </div>
+                                    </div>
                                 </template>
+
                                 <template slot="tab-pane-3">
+                                    <div id="tab-pane3">
                                     <div class="md-layout">
                                         <div class="md-layout-item md-size-100 ml-auto">
                                             <login-card header-color="red">
@@ -298,15 +292,10 @@
                                                      <b-tooltip :show.sync="show" target="tooltip-button-1" placement="top">
                                                     선택되었습니다!
                                                     </b-tooltip>
-
                                                     </div>
                                                 </div>
-                                                <div>
-                                                    </div>
-
-                                                    </div>
+                                                </div>
                                                 </md-field>
-                                                
                                                 <md-button slot="footer" class="md-success md-lg"
                                                 @click='newPage()'>
                                                    선택 완료
@@ -314,7 +303,8 @@
                                             </login-card>
                                         </div>
                                     </div>
-                                </template>
+                                </div>
+                            </template>
                             </tabs>
                         </div>
                     </div>
@@ -332,11 +322,24 @@
         import VMdDateRangePicker from "v-md-date-range-picker";
         import checkbox from "@/assets/js/checkbox.js";
         import ImagePreview from './components/ImagePreview.vue';
-      
         
 
         Vue.use(checkbox);
         Vue.use(VMdDateRangePicker);
+
+        $(document).ready(function(){
+            $('#tab-content').click(function(){
+                var offset = $('#tab-pane2').offset();
+            $('html').animate({scrollTop : offset.top}, 400);
+             });
+         });
+
+        $(document).ready(function(){
+            $('#tab-content2').click(function(){
+                var offset = $('#tab-pane3').offset();
+            $('html').animate({scrollTop : offset.top}, 400);
+            });
+        });
 
 
         export default {
@@ -349,8 +352,6 @@
                 ImagePreview,
             },
             
-
-
             bodyClass: "profile-page", 
             data() {
                 return {
@@ -443,7 +444,8 @@
                     }
                 };
             },
-          
+ 
+
             props: {
                 header: {
                     type: String,
@@ -467,7 +469,7 @@
             methods :{
                 newPage: function() {
                     window.location.href = 
-                    'https://localhost:8080/#/complete'
+                    '/#/complete'
                 },
                 switchPanel1: function() {
                     this.$refs.child.switchPanel("Wenddy");

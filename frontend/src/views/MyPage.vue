@@ -2,24 +2,28 @@
   <div class="wrapper">
      <parallax class="section page-header" :style="headerStyle">
      </parallax>
-      <div class="container">
-        <div class="md-layout">
-          <div
-            class="md-layout-item md-size-50 md-small-size-70 md-xsmall-size-100"
-          >
-          </div>
-        </div>
-      </div>
-    
-    <div class="main main-raised">
+     
+       <div class="main main-raised">
       <div class="section">
-        <div class="contents">
-          <div class="mypage">
-            <img src="@/assets/img/MyPage/mypage.jpg">
-          </div>
-          <div class="Side">
-           <Side></Side>
-          </div>
+         
+              <div class="contents">
+                <div class="mypage">
+                  <img src="@/assets/img/MyPage/mypage.jpg">
+                </div>
+                  <div class="Side">
+                  <Side></Side>
+                  </div>
+                  <div class="text">
+                  <h4>My Account</h4>
+                  </div>
+                  <div class="my-box10">
+                  </div>
+                  <br><br><br><br><br><br>
+                  <div class="registercard">
+                    <Card></Card>
+                  </div>
+                  
+
       </div>
       </div>
     </div>
@@ -28,6 +32,8 @@
 
 <script>
 import Side from './components/Side.vue';
+import Card from './components/Card.vue'
+
 
 export default {
   bodyClass: "landing-page",
@@ -35,7 +41,9 @@ export default {
 
   },
   components: {
-    Side
+    Side,
+    Card
+  
   },
 
   data() {
@@ -55,6 +63,7 @@ export default {
 };
 </script>
 
+
 <style lang="scss" scoped>
 .md-card-actions.text-center {
   display: flex;
@@ -67,32 +76,42 @@ export default {
 .md-has-textarea + .md-layout {
   margin-top: 15px;
 }
-.my-box {
-  position: relative;
-  width: 50%;
-  height: 30%;
-  top: 30%;
-  left: 30%;
-  background-color: rgba(58, 86, 207, 0.815);
-}
 .mypage {
   position: relative;
   width: 90%;
   height: 20%;
-  left: 5%;
-}
-.account {
-  position: relative;
-  width: 60%;
-  height: 30%;
-  background-color: blanchedalmond;
+  left: -25%;
   top: 30%;
-  left: 30%;
+}
+.board {
+  position: absolute;
 }
 .Side {
-  position: relative;
-  left: -37.8%;
+  position: absolute;
+  left: -25%;
 }
+.text {
+  position: relative;
+  margin-top: 50px;
+  left: -5%;
+}
+.my-box10 {
+  position: relative;
+  width: 1120px;
+  height: 200px;
+  left: -5%;
+  border: 2px solid rgba(223, 223, 223, 0.849);
+  border-radius: 2em;
+}
+.registercard{
+  position: relative;
+  top: 10%;
+  width: 40%;
+  height:40%;
+  left: -6%;
+  
+}
+
 
 
 </style>

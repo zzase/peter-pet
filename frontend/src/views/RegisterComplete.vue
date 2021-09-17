@@ -99,10 +99,10 @@ export default {
 }
 .link {
   z-index: 2;
-  position: absolute;
-  width: 180px;
-  height: 180px;
-  top: 49%;
+  position: relative;
+  width: 60%;
+  height: 60%;
+  top: 45%;
   margin: auto;
   left: 28.5%;
 }
@@ -135,12 +135,12 @@ export default {
 }
 .hat {
   z-index: 3;
-  left: 22%;
-  top: 44%;
+  left: 23.5%;
+  top: 44.5%;
   z-index: 1;
   position: absolute;
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
   margin: auto;
 }
 .my-box2 {
@@ -157,7 +157,7 @@ export default {
   position: absolute;
   display: inline-block;
   width: 15%;
-  height: 18%;
+  height: 19%;
   border-radius: 3em;
   top: 44%;
   left: 26%;
@@ -181,7 +181,7 @@ export default {
   width: 50%;
   height: 0.3%;
   left: 25%;
-  top: 63%;
+  top: 64%;
   background-color: rgba(243, 243, 243, 0.788);
 }
 .my-box5 {
