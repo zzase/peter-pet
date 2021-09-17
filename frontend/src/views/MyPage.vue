@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
-    
+     <parallax class="section page-header" :style="headerStyle">
+     </parallax>
       <div class="container">
         <div class="md-layout">
           <div
@@ -12,65 +13,31 @@
     
     <div class="main main-raised">
       <div class="section">
-      <div class ="my-box">
-      </div>
-          <div class="md-layout">
-          
-           
-          <b-navbar id="menu" toggleable type="light" variant="light">
-          <b-navbar-brand href="#">My Page</b-navbar-brand>
-
-          <b-navbar-toggle target="navbar-toggle-collapse">
-            <template #default="{ expanded }">
-              <b-icon v-if="expanded" icon="chevron-bar-up"></b-icon>
-              <b-icon v-else icon="chevron-bar-down"></b-icon>
-            </template>
-          </b-navbar-toggle>
-
-          <b-collapse id="navbar-toggle-collapse" is-nav>
-            <b-navbar-nav class="ml-auto">
-              <br><br><br>
-              <b-nav-item href="#">나의 동물등록증</b-nav-item>
-              <br>
-              <b-nav-item href="#">Neverland  </b-nav-item>
-              <br>
-              <b-nav-item href="#">MY NFT</b-nav-item>
-              <br><br><br><br>
-              <br><br><br><br>
-            </b-navbar-nav>
-          </b-collapse>
-        </b-navbar>
-        <div class="my-box1">
-        </div>
-
+        <div class="contents">
+          <div class="mypage">
+            <img src="@/assets/img/MyPage/mypage.jpg">
           </div>
-        
+          <div class="Side">
+           <Side></Side>
+          </div>
+      </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Side from './components/Side.vue';
+
 export default {
   bodyClass: "landing-page",
   props: {
-    header: {
-      type: String,
-      default: require("@/assets/img/bg7.jpg")
-    },
-    teamImg1: {
-      type: String,
-      default: require("@/assets/img/faces/avatar.jpg")
-    },
-    teamImg2: {
-      type: String,
-      default: require("@/assets/img/faces/christian.jpg")
-    },
-    teamImg3: {
-      type: String,
-      default: require("@/assets/img/faces/kendall.jpg")
-    }
+
   },
+  components: {
+    Side
+  },
+
   data() {
     return {
       name: null,
@@ -100,24 +67,32 @@ export default {
 .md-has-textarea + .md-layout {
   margin-top: 15px;
 }
-.ex1 {
-  background-color: rgb(146, 93, 23);
-  border-radius:30px;
-  width: 500px;
-  height: 50px;
-}
 .my-box {
   position: relative;
-  display: inline-block;
-  margin-left: 90px;
-  width: 1600px;
-  height: 100px;
-  padding: 20px;
-  background-color: rgba(42, 45, 59, 0.815);
-  max-width: 100%;
+  width: 50%;
+  height: 30%;
+  top: 30%;
+  left: 30%;
+  background-color: rgba(58, 86, 207, 0.815);
 }
-.my-box1 {
+.mypage {
   position: relative;
+  width: 90%;
+  height: 20%;
+  left: 5%;
 }
+.account {
+  position: relative;
+  width: 60%;
+  height: 30%;
+  background-color: blanchedalmond;
+  top: 30%;
+  left: 30%;
+}
+.Side {
+  position: relative;
+  left: -37.8%;
+}
+
 
 </style>

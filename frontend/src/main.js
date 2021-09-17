@@ -18,6 +18,8 @@ import router from "./router";
 import VueComp from '@vue/composition-api';
 import MaterialKit from "./plugins/material-kit";
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import vuetify from '@/plugins/vuetify' // path to vuetify export
+
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -45,6 +47,7 @@ Vue.mixin({
 });
 
 new Vue({
+  vuetify,
   router,
   render: h => h(App)
 }).$mount("#app");

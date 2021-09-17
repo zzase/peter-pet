@@ -10,7 +10,7 @@
                <div class="md-layout">
                   <div class="content">
                      <!-- <h4>두남이의 Peter-Pet 등록이 완료되었습니다!</h4> -->
-                        <img id="check" alt="brand" src="@/assets/img/Regist/complete.jpg">
+                        <img id="check" alt="brand" src="@/assets/img/Regist/complete.png">
                  </div>
                    <div class="hat">
                     <img :src="img1" alt="brand"/>
@@ -100,11 +100,11 @@ export default {
 .link {
   z-index: 2;
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   top: 49%;
   margin: auto;
-  left: 28%;
+  left: 28.5%;
 }
 .md-layout-item {
   position:relative;
@@ -114,10 +114,10 @@ export default {
   position: absolute;
   display: inline-block;
   width: 93%;
-  height: 3%;
+  height: 10%;
   left: 3.5%;
   padding-right: 50px;
-  background-color:rgba(247, 247, 247, 0.911);
+  background-color:rgba(240, 240, 240, 0.753);
   margin: auto;
 }
 
