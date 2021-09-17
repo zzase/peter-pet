@@ -543,7 +543,7 @@
                                                                                                                                 this.validCheck();
                                                                                                                                 this
                                                                                                                                     .$http
-                                                                                                                                    .post('/api/pet', {
+                                                                                                                                    .post('/api/pet/regist', {
                                                                                                                                         peterpet
                                                                                                                                     }, {"Content-Type": "application-json"})
                                                                                                                                     .then((res) => {

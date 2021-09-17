@@ -16,7 +16,7 @@ router.get('/', async function(req, res, next) {
   return res.json({pname:peterPetName});
 });
 
-router.post('/',async function(req,res,next){
+router.post('/regist',async function(req,res,next){
   try{
     console.log("post api 호출됨");
     //console.log(didContract);
