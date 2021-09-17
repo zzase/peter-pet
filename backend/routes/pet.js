@@ -1,4 +1,4 @@
-import {abi,byteCode, caver, contract} from '../kas/deploy.js'
+import {abi,byteCode, caver, contract} from '../kas/kascon.js'
 
 var express = require('express');
 var router = express.Router();
