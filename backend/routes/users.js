@@ -15,7 +15,7 @@ router.post('/login',async function(req,res,next) {
     'id' : req.body.user.id,
     'password' : req.body.user.password
   };
-  connection.query(`SELECT u_id, password FROM user WHERE u_id=${user.id}`,function(err,row){
+  connection.query(`SELECT u_id, password FROM user WHERE u_id=${user.id}`,async function(err,row){
     if(row[0] == undefined) { // 매칭되는 아이디가 없을 경우
       //1.kas 계정 생성
       const account = await wallet.createAccount();
