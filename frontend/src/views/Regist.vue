@@ -528,7 +528,7 @@
                                                                                                                         },
                                                                                                                         methods: {
                                                                                                                             newPage: function () {
-                                                                                                                                window.location.href = 'https://localhost:8080/#/complete'
+                                                                                                                                window.location.href = '#/complete'
                                                                                                                             },
                                                                                                                             validCheck: function () {
                                                                                                                                 console.log(this.peterpet.name);
