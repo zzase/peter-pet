@@ -11,12 +11,15 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login',async function(req,res,next) {
+  console.log('login api 호출');
   const user = {
     'id' : req.body.user.id,
     'password' : req.body.user.password
   };
-  connection.query(`SELECT u_id, password FROM user WHERE u_id=${user.id}`,async function(err,row){
-    if(row[0] == undefined) { // 매칭되는 아이디가 없을 경우
+  console.log(user);
+  connection.query(`SELECT u_id, password FROM user WHERE u_id="${user.id}"`,async function(err,rows){
+    console.log(rows);
+    if(rows[0] === undefined) { // 매칭되는 아이디가 없을 경우
       //1.kas 계정 생성
       const account = await wallet.createAccount();
       console.log(account);
@@ -28,23 +31,26 @@ router.post('/login',async function(req,res,next) {
         'address': account.address,
         'publicKey': account.publicKey,
       }
+      
+      console.log(newUser);
 
       const salt = bcrypt.genSaltSync();
       const encryptedPassword = bcrypt.hashSync(newUser.password,salt);
 
-      connection.query(`INSERT INTO user VALUES(${newUser.id}, ${encryptedPassword}, ${newUser.address}, ${newUser.publicKey})`,newUser,function(err,row2){
+      connection.query(`INSERT INTO user(u_id,password,address,publickey) VALUES("${newUser.id}", "${encryptedPassword}", "${newUser.address}", "${newUser.publicKey}")`,newUser,function(err,rows2){
         if(err) throw err;
       });
       //3.생성된 user 정보로 로그인
     }
 
-    if(row[0] !== undefined && row[0] === user.id) { //매칭되는 아이디가 있을 경우
-      bcrypt.compare(user.password, row[0].password, function (err,res2) {
+    if(rows[0] !== undefined && rows[0].u_id === user.id) { //매칭되는 아이디가 있을 경우
+      bcrypt.compare(user.password, rows.password, function (err,res2) {
+        console.log("login success");
         if(res2){ //로그인 성공
-
+          console.log("login success");
         }
         else { //비밀번호가 틀림
-
+          console.log("비밀번호 틀림");
         }
       })
     }

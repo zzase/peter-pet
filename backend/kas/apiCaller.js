@@ -7,7 +7,7 @@ class ApiCaller {
 
     async call(options){
         options.url = this.endpoint + options.url;
-        options.json = ture;
+        options.json = true;
 
         if(!options.headers) options.headers = {};
 
