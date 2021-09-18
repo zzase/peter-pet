@@ -11,7 +11,7 @@ import Main from "./views/Main.vue"
 import Neverland from "./views/Neverland.vue";
 import RegisterComplete from "./views/RegisterComplete.vue"
 import MyPage from "./views/MyPage.vue"
-
+import MyPageVuetify from "./views/MyPageVuetify.vue"
 
 Vue.use(Router);
 
@@ -49,6 +49,15 @@ export default new Router({
       path: "/neverland",
       name: "neverland",
       components: { default: Neverland, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/mypage1",
+      name: "mypage1",
+      components: { default: MyPageVuetify, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }

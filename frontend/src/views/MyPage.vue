@@ -1,4 +1,5 @@
 <template>
+  <v-app id="inspire">
   <div class="wrapper">
      <parallax class="section page-header" :style="headerStyle">
      </parallax>
@@ -24,6 +25,7 @@
       </div>
     </div>
   </div>
+  </v-app>
 </template>
 
 <script>
@@ -83,7 +85,7 @@ export default {
 .Side {
   position: absolute;
   left: -25%;
-}
+}x
 .text {
   position: relative;
   margin-top: 50px;
