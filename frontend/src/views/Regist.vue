@@ -36,6 +36,8 @@
                                                     <div class="container">
                                                         <div class="md-layout">
                                                     <div class="md-layout-item md-size-66 md-xsmall-size-100 ">
+
+                                                            <!-- image upload  -->
                                                             <form method="post" action="upload" enctype="multipart/form-data">
                                                             <h6 class="info-title">반려견의 사진을 등록해주세요</h6>
                                                             <ImagePreview></ImagePreview>
@@ -46,11 +48,12 @@
                                                     </div>         
                                                     </div>
                                                 </md-field>
+                                                <!-- pet name  -->
                                                 <md-field class="md-form-group" slot="inputs">
-                                                   
                                                     <label> <md-icon>face</md-icon>이름</label>
                                                     <md-input v-model="firstname"></md-input>
                                                 </md-field>
+                                                <!-- breed of pet -->
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <label><md-icon>pets</md-icon>견종</label>
                                                       <div>
@@ -62,8 +65,8 @@
                                                         <label>--견종을 선택해주세요--</label>
                                                         </md-autocomplete>
                                                       </div>
-                                                      
                                                 </md-field>
+                                                <!-- gender of pet -->
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <label for="label-a"><md-icon>wc</md-icon>성별</label>
                                                       <div>
@@ -71,18 +74,20 @@
                                                         <md-radio v-model="radio" :value="false">남자아이<md-icon>male</md-icon></md-radio><br>
                                                     <md-radio v-model="radio" value="my-radio">여자아이<md-icon>female</md-icon></md-radio>
                                                     </div>
-
                                                 </md-field>
+                                                <!-- birth -->
                                                 <md-field class="md-form-group" slot="inputs">
                                                      <md-datepicker v-model="selectedLabeled">
                                                         <label>생년월일을 입력해주세요</label>
                                                         </md-datepicker>
                                                 </md-field>
+                                                <!-- adoption -->
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <md-datepicker v-model="selectedLabeled">
                                                         <label>입양날짜를 입력해주세요</label>
                                                         </md-datepicker>
                                                 </md-field>
+                                                <!-- neuturing -->
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <label for="label-a"><md-icon>task_alt</md-icon>중성화 여부</label>
                                                     <div>
@@ -91,6 +96,7 @@
                                                     <md-radio v-model="radio" value="my-radio">중성화 X</md-radio>
                                                     </div>
                                                 </md-field>
+                                                <!-- fur color -->
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <label> <md-icon>saved_search</md-icon>모색</label>
                                                     <div>
@@ -103,16 +109,16 @@
                                                         </md-autocomplete>
                                                       </div>
                                                 </md-field>
+                                                <!-- notes -->
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    
                                                    <md-field>
                                                 <label>!--반려견의 특이사항에 대해 알려주세요--!</label>
                                                 <md-textarea v-model="aboutme"></md-textarea>
                                                 </md-field>
                                                 </md-field>
+                                                <!-- vaccination history -->
                                                 <label>접종내역</label>
                                                 <md-field class="md-form-group" slot="inputs">
-                                                    
                                                     <label for="name"><md-icon>medical_services</md-icon>접종내역</label> 
                                                     <br><br>
                                                 <div>
@@ -152,8 +158,8 @@
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <label><md-icon>email</md-icon>Email</label>
                                                     <input type="email" name='userEmail' />
-                                                   
                                                 </md-field>
+                                                <!-- address -->
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <label><md-icon>home</md-icon>주소</label>
                                                     <title>주소 입력 샘플</title>
@@ -195,6 +201,7 @@
                                                     </div>
                                                     <label><md-icon>lock_outline</md-icon>주민등록번호</label>
                                                 </md-field>
+                                                <!-- agreement -->
                                                 <md-field class="md-form-group" slot="inputs">
                                                 <form action="" id="joinForm">
                                                 <ul class="join_box">
@@ -248,7 +255,6 @@
                                                                     <input type="checkbox" name="chk">
                                                                 </li>                                                            
                                                         </ul>
-
                                                       </li>
                                                     </ul>
                                                   </form>
@@ -268,6 +274,7 @@
                                         <div class="md-layout-item md-size-100 ml-auto">
                                             <login-card header-color="red">
                                                 <h2 slot="title" class="card-title">Tinkerbell</h2>
+                                                <!-- choose necklace -->
                                                 <md-field class="md-form-group" slot="inputs">
                                                     <div class="md-layout">
                                                     <div class="md-layout-item md-medium-size-60 md-small-size-100">
@@ -276,13 +283,11 @@
                                                     <div>
                                                       <b-button id="tooltip-button-1" style="margin: 0 auto; display: block;" :pressed="true" variant="success">외장칩 목걸이</b-button>
                                                     </div>
-
                                                     <b-tooltip :show.sync="show" target="tooltip-button-1" placement="top">
                                                     선택되었습니다!
                                                     </b-tooltip>
                                                     </div>
                                                 </div>
-                                                
                                                 <div class="md-layout-item md-medium-size-60 md-small-size-100">
                                                     <div class="info">
                                                     <img alt="brand" src="@/assets/img/Regist/necklace2.jpg">
@@ -296,6 +301,7 @@
                                                 </div>
                                                 </div>
                                                 </md-field>
+                                                <!-- move to complete page -->
                                                 <md-button slot="footer" class="md-success md-lg"
                                                 @click='newPage()'>
                                                    선택 완료

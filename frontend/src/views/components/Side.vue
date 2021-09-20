@@ -1,10 +1,7 @@
 <template>
 <v-app id="inspire">
-  <v-card
-    height="600"
-    width="256"
-    class="mx-auto"
-  >
+  <div class='Side'>
+
     <v-navigation-drawer permanent>
       <v-list-item>
         <v-list-item-content>
@@ -25,10 +22,11 @@
       >
         <v-list-item
           v-for="item in items"
-          :key="item.title"
-          :to="{ path: '/page1' }"
+          :key="item.index"
+          :to="{ path: item.url }"
           link1
         >
+      
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -38,15 +36,24 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
-       <v-col>
-            <v-sheet min-height="70vh" rounded="lg">
-              <v-fade-transition mode="out-in">
-                <router-view></router-view>
-              </v-fade-transition>
-            </v-sheet>
-          </v-col>
+      
     </v-navigation-drawer>
-  </v-card>
+      </div>
+    <div class="v-card">
+        <v-card
+          height="600"
+          width="1320"
+          class="mx-auto"
+        >
+          <v-col>
+                  <v-sheet min-height="70vh" rounded="lg">
+                    <v-fade-transition mode="out-in">
+                      <router-view></router-view>
+                    </v-fade-transition>
+                  </v-sheet>
+                </v-col>
+        </v-card>
+    </div>
 </v-app>
 </template>
 
@@ -54,13 +61,26 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Page1 from "./Page1";
+import Page2 from "./Page2";
+import Page3 from "./Page3";
 
 Vue.use(VueRouter);
+
 const routes = [
   {
     path: "/page1",
     name: "Page 1",
     component: Page1,
+  },
+  {
+    path: "/page2",
+    name: "Page 2",
+    component: Page2,
+  },
+  {
+    path: "/page3",
+    name: "Page 3",
+    component: Page3,
   },
   
 ];
@@ -69,13 +89,16 @@ const routes = [
 let router = new VueRouter({
   routes
   });
+
   export default {
+    router,
+    components: {},
     data () {
       return {
         items: [
-          { title: 'My 동물등록증', icon: 'mdi-view-dashboard', index: 1 },
-          { title: 'My 실종게시글 관리', icon: 'mdi-image', index: 2 },
-          { title: 'My NFT', icon: 'mdi-help-box', index:3 },
+          { title: 'My 동물등록증', icon: 'mdi-view-dashboard', url: '/page1' },
+          { title: 'My 실종게시글 관리', icon: 'mdi-image', url: '/page2' },
+          { title: 'My NFT', icon: 'mdi-help-box', url: '/page3' },
         ],
         right: null,
       }
@@ -83,3 +106,13 @@ let router = new VueRouter({
   }
 </script>
 
+<style>
+.Side {
+  position: absolute;
+  left: -25%;
+}
+.v-card {
+  position: relative;
+  left: -11.1%;
+}
+</style>

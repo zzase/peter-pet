@@ -9,18 +9,18 @@
                 <div class="my-page">
                   <img src="@/assets/img/MyPage/mypage.jpg">
                 </div>
-                  <div class="Side">
+                  <div>
                   <Side></Side>
                   </div>
-                  <div class="text">
+                  <!-- <div class="text">
                   <h4>My Account</h4>
                   </div>
                   <div class="account">
                   </div>
-                  <br><br><br><br><br><br>
-                  <div class="registercard">
+                  <br><br><br><br><br><br> -->
+                  <!-- <div class="registercard">
                     <Card></Card>
-                  </div>
+                  </div> -->
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
 
 <script>
 import Side from './components/Side.vue';
-import Card from './components/Card.vue'
+import Card from './components/Card.vue';
 
 
 export default {
@@ -40,7 +40,7 @@ export default {
   },
   components: {
     Side,
-    Card
+    // Card
   
   },
 
@@ -82,10 +82,7 @@ export default {
 .board {
   position: absolute;
 }
-.Side {
-  position: absolute;
-  left: -25%;
-}x
+
 .text {
   position: relative;
   margin-top: 50px;

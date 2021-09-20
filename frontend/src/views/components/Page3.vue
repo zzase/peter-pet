@@ -1,6 +1,6 @@
 <template>
     <v-app id="page3">
-        this is My first Page Component
+        this is 3
     </v-app>
 </template>
 
