@@ -114,34 +114,42 @@
                 </a>
               </li>
               <div>
-                  <b-button v-b-modal.modal-center id="login" ref="login">login</b-button>
+                <div v-if="this.$store.state.isLogin">
+                  <b-button v-b-modal.modal-center :id="login" :ref="login">MyPage</b-button>
+                </div>
 
-                  <b-modal hide-footer id="modal-center" ref="loginModal"  centered title="Login with Key Store">
-                    
-                    <div class="form-group">
-                      <label for="keystore"> KeyStore </label> <br>
-                      <input type="file" id="keystore" v-on:change="handleImport">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="input-password"> 비밀번호 </label>
-                      <input type="password" class="form-control" id="input-password" v-on:change="handlePassword">
-                      <p class="help-block" id="message" ref="message"></p>
-                    </div>
-
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="loginModal">닫기</button>
-                      <button type="button" class="btn btn-primary" id="submit" v-on:click="handleLogin">제출</button>
-                    </div>
+                <div v-else>
+                  <b-button v-b-modal.modal-center :id="login" :ref="login">login</b-button>
+                </div>
+                  
+                  <b-modal hide-footer id="modal-center" ref="loginModal"  centered title="">
+                    <form @submit.prevent="login">
+                    <login-card header-color="green">
+                      <br>
+                      
+                        <h3 slot="title" class="card-title">Login</h3>
+                      
+             
+              <p slot="description" class="description">아이디 입력시 아이디가 없으면 자동 회원가입이 돼요!</p>
+              <md-field class="md-form-group" slot="inputs">
+                <md-icon>face</md-icon>
+                <label>ID</label>
+                <md-input v-model="user.id"></md-input>
+              </md-field>
+              <md-field class="md-form-group" slot="inputs">
+                <md-icon>lock_outline</md-icon>
+                <label>Password</label>
+                <md-input type="password" v-model="user.password"></md-input>
+              </md-field>
+              <md-button slot="footer" class="md-simple md-success md-lg" @click="$bvModal.hide('modal-center')">
+                닫기
+              </md-button>
+              <md-button type="submit" slot="footer" class="md-simple md-success md-lg">
+                로그인
+              </md-button>
+            </login-card>
+            </form>
                   </b-modal>
-
-                  <button type="button"
-                          class="btn btn-info pull-right"
-                          id="logout"
-                          ref="logout"
-                          style="display: none;"
-                          @click="handleLogout()">로그아웃
-                  </button>
                 </div>
                 <div class="text-center" id="address" ref="address"></div>
               <li>
@@ -176,15 +184,8 @@ function resizeThrottler(actualResizeHandler) {
 
 import MobileMenu from "@/layout/MobileMenu";
 
-import Caver from 'caver-js';
+import { LoginCard } from "@/components";
 
-const config = {
-  rpcURL : 'https://api.baobab.klaytn.net:8651'
-}
-
-const cav = new Caver(config.rpcURL);
-
-const peterPetDidContract = new cav.klay.Contract(DEPLOYED_ABI,DEPLOYED_ADDRESS);
 
 const Key = {
   auth : {
@@ -195,7 +196,7 @@ const Key = {
 }
 export default {
   components: {
-    MobileMenu,
+    MobileMenu,LoginCard
   },
   props: {
     type: {
@@ -222,6 +223,10 @@ export default {
     return {
       extraNavClasses: "",
       toggledClass: false,
+      user : {
+        'id' : null,
+        'password' : null
+      }
     };
   },
   computed: {
@@ -231,71 +236,27 @@ export default {
     },
   },
   methods: {
-    handleImport : async function(event)  {
-      const fileReader = new FileReader();
-      fileReader.readAsText(event.target.files[0]); //선택한 파일 읽기
-      fileReader.onload = (event) => {
-        try{
-          if(!this.checkValidKeystore(event.target.result)){
-            this.$refs.message.textContent='유효하지 않은 keystore 파일입니다.'
-            return;
-          }
-          Key.auth.keystore = event.target.result;
-          this.$refs.message.textContent='keystore 통과. 비밀번호를 입력하세요'
-           document.querySelector('#input-password').focus();
-        }catch (event) {
-         this.$refs.message.textContent='유효하지 않은 keystore 파일입니다.'
-         return;
+    login : function() {
+      this.$http.post('/api/user/login',{user : this.user},{"Content-Type":"application-json"})
+      .then((res)=>{
+        console.log('res.data : ' + res.data);
+        if(res.data.loginCheck){
+          this.$store.commit('loginSuccess')
+          this.$store.commit("setUser",res.data.user);
+          this.$router.push({name :"main"}).catch(()=>{});
+
+          alert("login 성공");
+          this.$bvModal.hide('modal-center')
         }
-      }
-
-    },
-
-    handlePassword : async function(event)  {
-      Key.auth.password = event.target.value;
-      console.log(Key.auth.password);
-      //console.log("account : " + cav.klay.accounts);
-    },
-
-    handleLogin : async function()  {
-      if(Key.auth.accessType === 'keystore'){
-        console.log(Key.auth.accessType);
-        try{
-          //keystore 파일과 비밀번호를 통해  private key를 가져옴
-          const privateKey = cav.klay.accounts.decrypt(Key.auth.keystore, Key.auth.password).privateKey;
-          console.log(privateKey);
-          this.integrateWallet(privateKey);
-        }catch (e) {
-          this.$refs.message.textContent='비밀번호가 일치하지 않습니다';
+        else {
+          this.$store.commit('loginError');
+          alert('비밀번호가 틀렸습니다!');
         }
-      }
+      })
+      .catch((err)=>{
+        console.error(err);
+      })
     },
-
-    checkValidKeystore(keystore) {
-      const parsedKeystore = JSON.parse(keystore);
-      const isValidKeystore = parsedKeystore.version && parsedKeystore.id && parsedKeystore.address && parsedKeystore.keyring;
-
-      return isValidKeystore;
-    },
-
-    integrateWallet: function(privateKey){
-      console.log("integrateWallet 호출됨");
-      const walletInstance = cav.klay.accounts.privateKeyToAccount(privateKey);
-      
-      cav.klay.accounts.wallet.add(walletInstance);
-      console.log(JSON.stringify(walletInstance));
-      sessionStorage.setItem('walletInstance',JSON.stringify(walletInstance));
-      this.changeUI(walletInstance);
-    },
-
-    changeUI : async function(walletInstance)  {
-      console.log(this.$refs.logout.show);
-      this.$refs.loginModal.show=false;
-      this.$refs.login.show=false;
-      this.$refs.logout.show=true;
-      this.$refs.address.append('<br>' + '<p>' +walletInstance.address+'</p>');
-    },
-
     bodyClick() {
       let bodyClick = document.getElementById("bodyClick");
 
