@@ -125,7 +125,7 @@ export default {
   bottom: 44%;
   width: 25%;
   height: 13%;
-  border: 2px solid rgba(240, 240, 240, 0.877);
+  border: 2px solid rgba(240, 240, 240, 0.801);
   left: 28%;
   border-radius: 2em;
   
@@ -138,7 +138,7 @@ export default {
   height: 13%;
   left: 0%;
   bottom: 44%;
-  border:2px solid rgba(240, 240, 240, 0.877);
+  border:2px solid rgba(240, 240, 240, 0.801);
   border-radius: 2em;
   
   
@@ -148,7 +148,7 @@ export default {
   display: inline-block;
   width: 55%;
   height: 0.5%;
-  background-color: rgba(240, 240, 240, 0.377);
+  background-color: rgba(240, 240, 240, 0.74);
   left: -1%;
   bottom: 60%;
 }
@@ -164,7 +164,7 @@ export default {
   display: inline-block;
   width: 55%;
   height: 20%;
-  background-color: rgba(240, 240, 240, 0.377);
+  background-color: rgba(240, 240, 240, 0.74);
   bottom: 18%;
   left: -1%;
 }
