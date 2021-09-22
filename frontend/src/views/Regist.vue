@@ -541,13 +541,15 @@
                                                                                                                                 
                                                                                                                                 const peterpet = this.peterpet;
                                                                                                                                 const address = this.$store.state.user.address;
+                                                                                                                                const id = this.$store.state.user.id;
                                                                                                                                 console.log('Regist.vue - address : ' + this.$store.state.user.address);
                                                                                                                                 this.validCheck();
                                                                                                                                 this
                                                                                                                                     .$http
                                                                                                                                     .post('/api/pet/regist', {
                                                                                                                                        peterpet : peterpet,
-                                                                                                                                       address : address
+                                                                                                                                       address : address,
+                                                                                                                                       id : id
                                                                                                                                     }, {"Content-Type": "application-json"})
                                                                                                                                     .then((res) => {
                                                                                                                                         console.log(res.data);
