@@ -540,20 +540,21 @@
                                                                                                                             addDid: async function () {
                                                                                                                                 
                                                                                                                                 const peterpet = this.peterpet;
+                                                                                                                                const address = this.$store.state.user.address;
+                                                                                                                                console.log('Regist.vue - address : ' + this.$store.state.user.address);
                                                                                                                                 this.validCheck();
                                                                                                                                 this
                                                                                                                                     .$http
                                                                                                                                     .post('/api/pet/regist', {
-                                                                                                                                        peterpet
+                                                                                                                                       peterpet : peterpet,
+                                                                                                                                       address : address
                                                                                                                                     }, {"Content-Type": "application-json"})
                                                                                                                                     .then((res) => {
                                                                                                                                         console.log(res.data);
                                                                                                                                         this
                                                                                                                                             .$store
                                                                                                                                             .commit("setPeterpet", res.data.peterpet);
-                                                                                                                                        this
-                                                                                                                                            .$router
-                                                                                                                                            .push({name: "result"});
+                                                                                                                                        //this.$rout.push({name: "result"});
                                                                                                                                         //this.$router.push('/pet',{peterpet: this.peterpet});
                                                                                                                                     })
                                                                                                                                     .catch((err) => {

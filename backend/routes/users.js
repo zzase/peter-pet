@@ -43,7 +43,7 @@ router.post('/login',async function(req,res,next) {
       });
 
       console.log('회원가입 성공');
-      res.send({user : newUser});
+      res.send({user : newUser, loginCheck:true});
       //3.생성된 user 정보로 로그인
     }
 

@@ -116,6 +116,8 @@
               <div>
                 <div v-if="this.$store.state.isLogin">
                   <b-button v-b-modal.modal-center :id="login" :ref="login">MyPage</b-button>
+                  <h3>{{this.$store.state.user.id}}</h3>
+                  <h3>{{this.$store.state.user.address}}</h3>
                 </div>
 
                 <div v-else>
@@ -241,7 +243,7 @@ export default {
       .then((res)=>{
         console.log('res.data : ' + res.data);
         if(res.data.loginCheck){
-          this.$store.commit('loginSuccess')
+          this.$store.commit("loginSuccess")
           this.$store.commit("setUser",res.data.user);
           this.$router.push({name :"main"}).catch(()=>{});
 
