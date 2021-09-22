@@ -1,16 +1,6 @@
 <template>
-  <div class="wrapper">
-     <parallax class="section page-header" :style="headerStyle">
-     </parallax>
-       <div class="main main-raised">
-           <div class="section">
-              <div class="contents">
-                <div class="my-page">
-                  <img src="@/assets/img/MyPage/mypage.jpg">
-                </div>
-                  <div>
-                  <Side></Side>
-                  <div class="welcome">
+<div class="account-content">
+    <div class="welcome">
                   <h4>00님<br><br>환영합니다</h4>
                   </div>
                     <div class="my-account">
@@ -30,72 +20,15 @@
                           <h6>나의 잔액</h6>
                         </div>
                         <div class="accountNumber">
-                        <p style="color: darkgray"> accountNumber {{ accountNumber }} </p>
+                        <p style="color: rgb(23, 127, 117)"> accountNumber {{ accountNumber }} </p>
                       </div>
                       <div class="myKlay">
-                        <p style="color: darkgray"> myKlay {{ myKlay }} </p>
+                        <p style="color: rgb(23, 127, 117)"> myKlay {{ myKlay }} </p>
                       </div>
-                       
-                  </div>
-                  <!-- <div class="text">
-                  <h4>My Account</h4>
-                  </div>
-                  <div class="account">
-                  </div>
-                  <br><br><br><br><br><br> -->
-                  <!-- <div class="registercard">
-                    <Card></Card>
-                  </div> -->
         </div>
-      </div>
-    </div>
-  </div>
 </template>
 
-<script>
-import Side from './components/Side.vue';
-import Card from './components/Card.vue';
-
-
-export default {
-  bodyClass: "login-page",
-  props: {
-
-  },
-  components: {
-    Side,
-    // Card
-  
-  },
-
-  data() {
-    return {
-     
-    };
-  },
-  computed: {
-    headerStyle() {
-      return {
-        backgroundImage: `url(${this.header})`
-      };
-    }
-  }
-};
-</script>
-
-
-<style >
-.md-card-actions.text-center {
-  display: flex;
-  justify-content: center !important;
-}
-.contact-form {
-  margin-top: 30px;
-}
-
-.md-has-textarea + .md-layout {
-  margin-top: 15px;
-}
+<style>  
 .my-page {
   position: relative;
   width: 90%;
@@ -106,11 +39,11 @@ export default {
 .board {
   position: absolute;
 }
-
 .text {
-  position: relative;
-  margin-top: 50px;
-  left: -5%;
+  position: absolute;
+  display: inline-block;
+  top: 10%;;
+  left: 15%;
 }
 .registercard{
   position: relative;
@@ -123,10 +56,10 @@ export default {
   display: inline-block;
   position: absolute;
   bottom: 44%;
-  width: 25%;
-  height: 13%;
+  width: 29%;
+  height: 15%;
   border: 2px solid rgba(240, 240, 240, 0.801);
-  left: 28%;
+  left: 50%;
   border-radius: 2em;
   
 }
@@ -134,9 +67,9 @@ export default {
   z-index: 1;
   position:absolute;
   display: inline-block;
-  width: 25%;
-  height: 13%;
-  left: 0%;
+  width: 29%;
+  height: 15%;
+  left: 20%;
   bottom: 44%;
   border:2px solid rgba(240, 240, 240, 0.801);
   border-radius: 2em;
@@ -146,53 +79,53 @@ export default {
 .line {
   position: absolute;
   display: inline-block;
-  width: 55%;
+  width: 60%;
   height: 0.5%;
   background-color: rgba(240, 240, 240, 0.74);
-  left: -1%;
-  bottom: 60%;
+  left: 20%;
+  bottom: 70%;
 }
 
 .welcome {
   position: absolute;
   display: inline-block;
-  bottom: 63%;
-  left: 0.2%;
+  bottom: 73%;
+  left: 20%;
 }
 .sample {
   position:absolute;
   display: inline-block;
-  width: 55%;
+  width: 60%;
   height: 20%;
   background-color: rgba(240, 240, 240, 0.74);
   bottom: 18%;
-  left: -1%;
+  left: 20%;
 }
 .account-number {
   position: absolute;
   display: inline-block;
   bottom: 52%;
-  left: 2%;
+  left: 22%;
 }
 .klay {
   position: absolute;
   display: inline-block;
   bottom: 52%;
-  left: 30%;
+  left: 52%;
 }
 p {
-  font-size: 20px;
+  font-size: 17px;
 }
 .accountNumber {
   position: absolute;
   display: inline-block;
-  bottom: 46%;
-  left: 2%;
+  bottom: 45%;
+  left: 22%;
 }
 .myKlay {
   position: absolute;
   display: inline-block;
-  bottom: 46%;
-  left: 30%;
+  bottom: 45%;
+  left: 52%;
 }
 </style>

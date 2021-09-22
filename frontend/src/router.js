@@ -13,6 +13,8 @@ import RegisterComplete from "./views/RegisterComplete.vue"
 import MyPage from "./views/MyPage.vue"
 import MyPageVuetify from "./views/MyPageVuetify.vue"
 
+
+
 Vue.use(Router);
 
 export default new Router({

@@ -60,6 +60,7 @@
 <script>
 import Vue from "vue";
 import VueRouter from "vue-router";
+import MyAccount from "./MyAccount.vue";
 import Page1 from "./Page1";
 import Page2 from "./Page2";
 import Page3 from "./Page3";
@@ -67,6 +68,11 @@ import Page3 from "./Page3";
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: "/mypage",
+    name: "mypage",
+    component: MyAccount,
+  },
   {
     path: "/page1",
     name: "Page 1",
