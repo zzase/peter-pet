@@ -1,10 +1,11 @@
-import {abi,byteCode, caver, contract} from '../kas/kascon.js'
+import {abi,byteCode, caver, contract} from '../kas/kascon.js';
+import {connection} from '../mysql/connector';
 
 var express = require('express');
 var router = express.Router();
 
-//const deployedCa = '0x1edcca9e753ea5e548551cbab78fb71ab79274bd';
-const didContract = new caver.contract(abi,'0x20dc921Eccf3F344D33713B00f128718f4f6431a');
+const deployedCa = '0x1aE5814180778e51644273ba2881aaa77Aa62093';
+const didContract = new caver.contract(abi,deployedCa);
 //const pets = require('../test/pet.json');
 
 /* GET home page. */
@@ -33,10 +34,7 @@ router.post('/regist',async function(req,res,next){
     
     console.log('----------------------------------------------------');
     console.log(result);
-    if(didContract.methods.dids){
-        console.log(`${didContract.methods.getDid(0).call()}`);
-      }
-    //res.redirect('/#/result');
+
   }catch(err){
     console.log(err)
   }

@@ -171,6 +171,25 @@ const abi = [
 		"constant": true,
 		"inputs": [
 			{
+				"name": "_wenddy",
+				"type": "address"
+			}
+		],
+		"name": "getCountDidByWenddy",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
 				"name": "_index",
 				"type": "uint256"
 			}
@@ -186,6 +205,60 @@ const abi = [
 				],
 				"name": "",
 				"type": "tuple"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_wenddy",
+				"type": "address"
+			},
+			{
+				"name": "_index",
+				"type": "uint256"
+			}
+		],
+		"name": "getDidByWenddy",
+		"outputs": [
+			{
+				"components": [
+					{
+						"name": "did",
+						"type": "string"
+					}
+				],
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_wenddy",
+				"type": "address"
+			}
+		],
+		"name": "getDidsByWenddy",
+		"outputs": [
+			{
+				"components": [
+					{
+						"name": "did",
+						"type": "string"
+					}
+				],
+				"name": "",
+				"type": "tuple[]"
 			}
 		],
 		"payable": false,
