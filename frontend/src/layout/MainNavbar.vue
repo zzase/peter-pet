@@ -115,9 +115,13 @@
               </li>
               <div>
                 <div v-if="this.$store.state.isLogin">
-                  <b-button v-b-modal.modal-center :id="login" :ref="login">MyPage</b-button>
-                  <h3>{{this.$store.state.user.id}}</h3>
-                  <h3>{{this.$store.state.user.address}}</h3>
+                  <a class="navbar-brand" href="#/myPage">
+                    <span>
+                      <p>My Page</p>
+                    </span>
+                  </a>
+                  <h5>{{this.$store.state.user.id}}</h5>
+                  <h5>{{this.$store.state.user.address}}</h5>
                 </div>
 
                 <div v-else>
