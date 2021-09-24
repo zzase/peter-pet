@@ -2,7 +2,7 @@
 <div class="wrapper">
       <parallax class="section page-header" :style="headerStyle">
           <div class="container">
-        <div style="color:darkgreen;">
+        <div font-family="serif" style="color:darkgreen;">
           <div
             class="md-layout-item md-size-50 md-small-size-70 md-xsmall-size-100"
           >
