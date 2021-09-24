@@ -11,8 +11,8 @@ contract PeterPetDID is Ownable, StringFormat {
         string name; // 이름
         string breedOfDog; // 견종
         string gender; //성별
-        uint birth; //생년월일
-        uint adoptionDate; // 입양일
+        string birth; //생년월일
+        string adoptionDate; // 입양일    
         bool isNeutering; // 중성화 여부
         string furColor; //모색
         string vaccinationHistory; //접종내역
@@ -30,11 +30,11 @@ contract PeterPetDID is Ownable, StringFormat {
     string didPre = "did:peterpet:";
 
     mapping(string => PeterPet) didToPetMapper;
-    mapping(address => PeterPet[]) addressToPetMapper;
+    mapping(address => Did[]) addressToDidMapper;
     mapping(string => address) wenddyFinder;
 
     constructor() public {
-        addressToPetMapper[msg.sender] = peterPets;
+        //addressToPetMapper[msg.sender] = peterPets;
     }
 
     /*
@@ -51,7 +51,7 @@ contract PeterPetDID is Ownable, StringFormat {
      * addPet() 
      * - 입력받은 반려견 정보를 peterPets 배열에 push 
      */
-    function _addPet(string memory _imgHash, string memory _name, uint _birth, string memory _breedOfDog, string memory _gender, uint _adoptionDate, 
+    function _addPet(string memory _imgHash, string memory _name, string memory _birth, string memory _breedOfDog, string memory _gender, string memory _adoptionDate, 
     bool _isNeutering, string memory _furColor, string memory _vaccinationHistory, string memory _notes) private {
         peterPets.push(PeterPet(_imgHash, _name,_breedOfDog, _gender,_birth, _adoptionDate, _isNeutering, _furColor, _vaccinationHistory, _notes));
     }
@@ -60,22 +60,23 @@ contract PeterPetDID is Ownable, StringFormat {
      * addDid() 
      * - addPet()과 makeDid()를 호출하여 반려견 정보를 담은 did를 만들고 did와 반려견정보를 매핑
      */
-    function addDid(string memory _imgHash, string memory _name, uint _birth, string memory _breedOfDog, string memory _gender, uint _adoptionDate, 
-    bool _isNeutering, string memory _furColor, string memory _vaccinationHistory, string memory _notes) public onlyOwner {
+    function addDid(string memory _imgHash, string memory _name, string memory _birth, string memory _breedOfDog, string memory _gender, string memory _adoptionDate, 
+    bool _isNeutering, string memory _furColor, string memory _vaccinationHistory, string memory _notes) public {
         _addPet(_imgHash, _name, _birth, _breedOfDog, _gender, _adoptionDate, _isNeutering, _furColor, _vaccinationHistory, _notes);
         index = peterPets.length - 1;
         dids.push(Did(_makeDid(index)));
+        addressToDidMapper[msg.sender].push(dids[index]);
         if(_checkLength(peterPets.length,dids.length)){
             didToPetMapper[dids[index].did] = peterPets[index];
             wenddyFinder[dids[index].did] = msg.sender;
         }
-    } 
+    }
 
     /*
      * updateDid() 
      * - did를 통해 기존 반려견 정보 수정  
      */
-    function updateDid( string memory _did,string memory _imgHash, string memory _name, uint _birth, string memory _breedOfDog, string memory _gender, uint _adoptionDate, 
+    function updateDid( string memory _did,string memory _imgHash, string memory _name, string memory _birth, string memory _breedOfDog, string memory _gender, string memory _adoptionDate, 
     bool _isNeutering, string memory _furColor, string memory _vaccinationHistory, string memory _notes ) public {
         require(msg.sender == wenddyFinder[_did]);
         didToPetMapper[_did].imgHash = _imgHash;
@@ -97,6 +98,18 @@ contract PeterPetDID is Ownable, StringFormat {
     function getWenddyByDid(string memory _did) public view returns (address) {
         return wenddyFinder[_did];
     }
+    
+    function getDidsByWenddy(address _wenddy) public view returns (Did[] memory){
+        return addressToDidMapper[_wenddy];
+    }
+    
+    function getCountDidByWenddy(address _wenddy) public view returns (uint) {
+        return addressToDidMapper[_wenddy].length;
+    }
+    
+    function getDidByWenddy(address _wenddy, uint _index) public view returns (Did memory){
+        return addressToDidMapper[_wenddy][_index];
+    }
 
     /*
      * getPetInfoByDid() 
@@ -110,7 +123,7 @@ contract PeterPetDID is Ownable, StringFormat {
         _name = didToPetMapper[_did].name; 
      }
 
-     function getPetBirthByDid(string memory _did) public view returns(uint _birth) {
+     function getPetBirthByDid(string memory _did) public view returns(string memory _birth) {
         _birth = didToPetMapper[_did].birth; 
      }
 
@@ -122,7 +135,7 @@ contract PeterPetDID is Ownable, StringFormat {
         _gender = didToPetMapper[_did].gender; 
      }
 
-     function getPetAdoptionDateByDid(string memory _did) public view returns(uint _adoptionDate) {
+     function getPetAdoptionDateByDid(string memory _did) public view returns(string memory _adoptionDate) {
         _adoptionDate = didToPetMapper[_did].adoptionDate; 
      }
 
@@ -150,5 +163,4 @@ contract PeterPetDID is Ownable, StringFormat {
         if(_peterPetsLength == _didsLength) return true;
         else return false;
     }
-
 }
