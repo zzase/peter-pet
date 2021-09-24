@@ -3,6 +3,8 @@ var router = express.Router();
 const wallet = require('../kas/wallet');
 const bcrypt = require('bcryptjs');
 
+import Caver from 'caver-js-ext-kas/node_modules/caver-js';
+import { caver } from '../kas/kascon';
 import {connection} from '../mysql/connector';
 
 /* GET users listing. */
@@ -25,6 +27,8 @@ router.post('/login',async function(req,res,next) {
       const account = await wallet.createAccount();
       console.log(account);
 
+      const masterAccount = '0x3414834c8811a4041dC9644899c15A637290A3A6';
+
       //2.입력한 id,password, kas address, public key 로 새 user 생성
       const newUser = {
         'id': user.id,
@@ -32,6 +36,10 @@ router.post('/login',async function(req,res,next) {
         'address': account.address,
         'publicKey': account.publicKey,
       }
+
+      const memo = `"${newUser.id}" 웬디님 신규 회원가입 기념 0.05 KLAY 충전`
+
+      const remitTx = await wallet.remitPaidByKas(masterAccount, "0.05" ,newUser.address , memo);
       
       console.log(newUser);
 
@@ -43,7 +51,7 @@ router.post('/login',async function(req,res,next) {
       });
 
       console.log('회원가입 성공');
-      res.send({user : newUser, loginCheck:true});
+      res.send({user : newUser, loginCheck:true, remitTx:remitTx});
       //3.생성된 user 정보로 로그인
     }
 
