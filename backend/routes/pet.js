@@ -34,7 +34,7 @@ router.post('/regist',async function(req,res,next){
     // const result = await didContract.methods.addDid(peterpet.imgHash, peterpet.name, peterpet.birth, peterpet.breedOfDog, peterpet.gender, peterpet.adoptionDate,
     //   peterpet.isNeutering, peterpet.furColor, peterpet.vaccinationHistory, peterpet.notes).send({ from: address, gas: 5000000 });
 
-    const addDidData = await didContract.methods.addDid(peterpet.imgHash, peterpet.name, peterpet.birth, peterpet.breedOfDog, peterpet.gender, peterpet.adoptionDate,
+    const addDidData = await didContract.methods.addDid("peterpet.imgHash", peterpet.name, peterpet.birth, peterpet.breedOfDog, peterpet.gender, peterpet.adoptionDate,
     peterpet.isNeutering, peterpet.furColor, peterpet.vaccinationHistory, peterpet.notes).encodeABI();
 
     console.log("addDidData : " + addDidData);
@@ -56,7 +56,7 @@ router.post('/regist',async function(req,res,next){
 
       res.send({user : {id : id, address : address}, did : lastDid , txHash:txHash});
 
-    },1200);
+    },1500);
 
   }catch(err){
     console.log(err)
