@@ -102,9 +102,9 @@ let router = new VueRouter({
     data () {
       return {
         items: [
-          { title: 'My 동물등록증', icon: 'mdi-view-dashboard', url: 'mypage/page1' },
-          { title: 'My 실종게시글 관리', icon: 'mdi-image', url: 'mypage/page2' },
-          { title: 'My NFT', icon: 'mdi-help-box', url: 'mypage/page3' },
+          { title: 'My 동물등록증', icon: 'mdi-view-dashboard', url: '/mypage/page1' },
+          { title: 'My 실종게시글 관리', icon: 'mdi-image', url: '/mypage/page2' },
+          { title: 'My NFT', icon: 'mdi-help-box', url: '/mypage/page3' },
         ],
         right: null,
       }

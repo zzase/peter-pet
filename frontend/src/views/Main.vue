@@ -167,6 +167,7 @@
 </script>
 
 <style lang="scss" scoped="scoped">
+@media (max-width:400px){
     .md-card-actions.text-center {
         display: flex;
         justify-content: center !important;
@@ -178,4 +179,5 @@
     .md-has-textarea + .md-layout {
         margin-top: 15px;
     }
+}
 </style>
