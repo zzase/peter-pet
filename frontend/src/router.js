@@ -6,12 +6,16 @@ import Login from "./views/Login.vue";
 import Profile from "./views/Profile.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
-import Regist from "./views/Regist.vue"
-import Main from "./views/Main.vue"
+import Regist from "./views/Regist.vue";
+import Main from "./views/Main.vue";
+
 import Neverland from "./views/Neverland.vue";
 import RegisterComplete from "./views/RegisterComplete.vue"
 import MyPage from "./views/MyPage.vue"
 import MyPageVuetify from "./views/MyPageVuetify.vue"
+
+import Test from "./views/Test.vue";
+import result from "./views/result.vue";
 
 Vue.use(Router);
 
@@ -21,6 +25,26 @@ export default new Router({
       path: "/",
       name: "main",
       components: { default: Main, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+
+    {
+      path: "/result",
+      name: "result",
+      components: { default: result, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+
+    {
+      path: "/test",
+      name: "test",
+      components: { default: Test, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
