@@ -74,17 +74,17 @@ const routes = [
     component: MyAccount,
   },
   {
-    path: "/page1",
+    path: "/mypage/page1",
     name: "Page 1",
     component: Page1,
   },
   {
-    path: "/page2",
+    path: "/mypage//page2",
     name: "Page 2",
     component: Page2,
   },
   {
-    path: "/page3",
+    path: "/mypage/page3",
     name: "Page 3",
     component: Page3,
   },
@@ -102,9 +102,9 @@ let router = new VueRouter({
     data () {
       return {
         items: [
-          { title: 'My 동물등록증', icon: 'mdi-view-dashboard', url: '/page1' },
-          { title: 'My 실종게시글 관리', icon: 'mdi-image', url: '/page2' },
-          { title: 'My NFT', icon: 'mdi-help-box', url: '/page3' },
+          { title: 'My 동물등록증', icon: 'mdi-view-dashboard', url: 'mypage/page1' },
+          { title: 'My 실종게시글 관리', icon: 'mdi-image', url: 'mypage/page2' },
+          { title: 'My NFT', icon: 'mdi-help-box', url: 'mypage/page3' },
         ],
         right: null,
       }

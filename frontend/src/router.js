@@ -79,15 +79,6 @@ export default new Router({
       }
     },
     {
-      path: "/mypage1",
-      name: "mypage1",
-      components: { default: MyPageVuetify, header: MainNavbar, footer: MainFooter },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
-      }
-    },
-    {
       path: "/mypage",
       name: "mypage",
       components: { default: MyPage, header: MainNavbar, footer: MainFooter },

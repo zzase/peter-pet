@@ -92,6 +92,8 @@ export default {
 </script>
 
 <style lang="css">
+
+
 .white {
   z-index: 4;
 }
