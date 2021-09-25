@@ -53,6 +53,7 @@ export default {
 
 
 <style >
+@media (max-width:400px){
 .md-card-actions.text-center {
   display: flex;
   justify-content: center !important;
@@ -71,5 +72,6 @@ export default {
   width: 100%;
   height: 100%;
   left: -35%;
+}
 }
 </style>
