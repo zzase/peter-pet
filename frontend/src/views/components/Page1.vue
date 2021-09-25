@@ -1,63 +1,78 @@
 <template>
         <div class="contents">
+          <div class="register-card">
+            <div
+            class="md-layout-item md-size-100 mx-auto"
+          >
+            <login-card header-color="green">
+              <h2 slot="title" class="card-title">My Peter-Pet Card</h2>
+            </login-card>
+            </div>
+          </div>
               <div class="card">
               <img id ="card" src="@/assets/img/Regist/card.png">
               </div>
                 <div class="name">
-                  <p> name {{ name }} </p>
+                  <p> name {{ peterpet.name }} </p>
                 </div>
                 <div class="number">
-                  <p> number {{ registerNumber }} </p>
+                  <p> number {{ peterpet.registerNumber }} </p>
                 </div>
                 <div class="imghash">
-                  <p> imghash {{ imgHash }} </p>
+                  <p> imghash {{ peterpet.imgHash }} </p>
                 </div>
                 <div class="birth">
-                  <p> birth {{ birth }} </p>
+                  <p> birth {{ peterpet.birth }} </p>
                 </div>
                 <div class="gender">
-                  <p> gender {{ gender }} </p>
+                  <p> gender {{ peterpet.gender }} </p>
                 </div>
                 <div class="breedOfDog">
-                  <p> breedOfDog {{ breedOfDog }} </p>
+                  <p> breedOfDog {{ peterpet.breedOfDog }} </p>
                 </div>
                 <div class="furColor">
-                  <p> furColor {{ furColor }} </p>
+                  <p> furColor {{ peterpet.furColor }} </p>
                 </div>
                 <div class="adoptionDate">
-                  <p> adoptionDate {{ adoptionDate }} </p>
+                  <p> adoptionDate {{ peterpet.adoptionDate }} </p>
                 </div>
                 <div class="isNeutering">
-                  <p> isNeutering {{ isNeutering }} </p>
+                  <p> isNeutering {{ peterpet.isNeutering }} </p>
                 </div>
                 <div class="vaccinationHistory">
-                  <p> vaccinationHistory {{ vaccinationHistory }} </p>
+                  <p> vaccinationHistory {{ peterpet.vaccinationHistory }} </p>
                 </div>
                 <div class="notes">
-                  <p> notes {{ notes }} </p>
+                  <p> notes {{ peterpet.notes }} </p>
                 </div>
         </div>
-              
-          <!-- <div class ="card_contents">
-            <input type="text" v-model="peterpet.name">
-            <input type="text" v-model="peterpet.imgHash">
-            <input type="text" v-model="peterpet.breedOfDog">
-            <input type="text" v-model="peterpet.gender">
-            <input type="text" v-model="peterpet.birth">
-            <input type="text" v-model="peterpet.adoptionDate">
-            <input type="text" v-model="peterpet.isNeutering">
-            <input type="text" v-model="peterpet.furColor">
-            <input type="text" v-model="peterpet.vaccinationHistory">
-            <input type="text" v-model="peterpet.notes">
-          </div> -->
-
 </template>
 
 <script>
+import { LoginCard } from "@/components";
 
 
 export default {
- 
+  data (){
+    return {
+      peterpet: {
+         name: null,
+         imgHash: "hash",
+         breedOfDog: null,
+         gender: null,
+         birth: null,
+         adoptionDate: null,
+         isNeutering: null,
+         furColor: null,
+         vaccinationHistory: null,
+         notes: null
+      },
+    }
+
+  },
+  components: {
+    LoginCard
+  },
   
   computed: {
     headerStyle() {
@@ -159,11 +174,18 @@ p {
 }
 .card {
   position: absolute;
-  margin-top: 12%;
+  margin-top: 14%;
   width: 50%;
   height: 50%;
   left: -5%;
   border: 2px solid rgb(214, 214, 214);
+  box-shadow: 5px 5px 5px rgba(175, 175, 175, 0.671);
+}
+.register-card {
+  position: absolute;
+  left: -11%;
+  width: 70%;
+  margin-top: -10%;
 }
 
 </style>

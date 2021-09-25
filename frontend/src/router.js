@@ -12,8 +12,6 @@ import Neverland from "./views/Neverland.vue";
 import RegisterComplete from "./views/RegisterComplete.vue"
 import MyPage from "./views/MyPage.vue"
 import MyPageVuetify from "./views/MyPageVuetify.vue"
-import BoardCreateForm from "./views/Board/BoardCreateForm.vue"
-import BoardListPage from "./views/Board/BoardListPage.vue"
 
 Vue.use(Router);
 
@@ -51,24 +49,6 @@ export default new Router({
       path: "/neverland",
       name: "neverland",
       components: { default: Neverland, header: MainNavbar, footer: MainFooter },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
-      }
-    },
-    {
-      path: "/board/list",
-      name: "board",
-      components: { default: BoardListPage, header: MainNavbar, footer: MainFooter },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
-      }
-    },
-    {
-      path: "/board/create",
-      name: "board",
-      components: { default: BoardCreateForm, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
