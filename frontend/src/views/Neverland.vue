@@ -1,19 +1,19 @@
 <template>
   <div class="wrapper">
    <parallax class="section page-header" :style="headerStyle">
-            <h1 class="title">With your Peter-Pet in  'Neverland'</h1>
+            
    </parallax>
     <div class="main main-raised">
          
       <div class="section">
         <div class="box">
        <img alt="brand" src="@/assets/img/Neverland/NeverlandBackground.jpg">
-        
-        <div class="link"><img onclick="javascript:location.href='#/regist';" src="@/assets/img/Neverland/glasses.png" 
-        style="cursor:pointer;"/></div></div>
-         <div class="link2"><img onclick="javascript:location.href='#/regist';" src="@/assets/img/Neverland/glasses.png" 
+        </div>
+        <div class="link"><img onclick="javascript:location.href='#/regist';" src="@/assets/img/Neverland/menu1.png" 
         style="cursor:pointer;"/></div>
-         <div class="link3"><img onclick="javascript:location.href='#/regist';" src="@/assets/img/Neverland/glasses.png" 
+         <div class="link2"><img onclick="javascript:location.href='#/regist';" src="@/assets/img/Neverland/menu2.png" 
+        style="cursor:pointer;"/></div>
+         <div class="link3"><img onclick="javascript:location.href='#/regist';" src="@/assets/img/Neverland/menu3.png" 
         style="cursor:pointer;"/></div>
 
        <div id="testImg">
@@ -92,6 +92,13 @@ export default {
   top: 170px;
   left: 35px
 }
+.box {
+  position:relative;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+}
 a {
   display: none;
   height: 100%;
@@ -112,21 +119,25 @@ a {
 }
 .link {
   position:absolute;
-  top: 650px;
-  bottom: 70px;
-  left: 170px;
+  width:65%;
+  height:65%;
+  top: 90%;
+  bottom: 20%;
+  left: 180px;
 }
 .link2 {
   position:absolute;
-  top: 740px;
+  width: 90%;
+  height: 90%;
+  top: 630px;
   bottom: 100px;
   left: 750px;
 }
 .link3 {
   position:absolute;
-  top: 700px;
-  bottom: 100px;
-  right: 150px;
+  top: 610px;
+  bottom: 130px;
+  right: 160px;
 }
 
 

@@ -20,6 +20,7 @@ import MaterialKit from "./plugins/material-kit";
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import axios from 'axios'
 import { store } from './store';
+import vuetify from '@/plugins/vuetify' // path to vuetify export
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -49,6 +50,7 @@ Vue.mixin({
 });
 
 new Vue({
+  vuetify,
   router,
   store,
   render: h => h(App)

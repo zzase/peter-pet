@@ -4,6 +4,11 @@ const fs = require('fs')
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
+  transpileDependencies: [
+    'vuetify',
+  ],
+  runtimeCompiler: true,
+  
   devServer: {
     overlay: false
   },

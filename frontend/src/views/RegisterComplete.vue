@@ -9,8 +9,8 @@
             </div>
                <div class="md-layout">
                   <div class="content">
-                     <h4>두남이의 Peter-Pet 등록이 완료되었습니다!</h4>
-                        <img id="check" alt="brand" src="@/assets/img/Regist/check.png">
+                     <!-- <h4>두남이의 Peter-Pet 등록이 완료되었습니다!</h4> -->
+                        <img id="check" alt="brand" src="@/assets/img/Regist/complete.png">
                  </div>
                    <div class="hat">
                     <img :src="img1" alt="brand"/>
@@ -31,11 +31,22 @@
                        </div>
                       <div class="my-box5">
                     </div>
-                 <md-button
-                  href="#/mypage"
-                  class="md-success md-lg"
-                  >
-                  <b>마이 페이지</b></md-button >
+                      <div class="mypage">
+                        <md-button
+                          id="mypage"
+                          href="#/mypage"
+                          class="md-success"
+                          >
+                          <b>마이 페이지</b></md-button >
+                          </div>
+                      <div class="mainpage">
+                        <md-button
+                          id="mainpage"
+                          href="#/"
+                          class="md-default"
+                          >
+                          <b>메인 페이지</b></md-button >
+                          </div>
             </div>
        </div>
    </div>
@@ -53,9 +64,7 @@ export default {
   bodyClass: "login-page",
   data() {
     return {
-      firstname: null,
-      email: null,
-      password: null
+      
     };
   },
   props: {
@@ -88,12 +97,12 @@ export default {
 }
 .link {
   z-index: 2;
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  top: 31.5%;
+  position: relative;
+  width: 60%;
+  height: 60%;
+  top: 45%;
   margin: auto;
-  left: 44.5%;
+  left: 28.5%;
 }
 .md-layout-item {
   position:relative;
@@ -103,10 +112,10 @@ export default {
   position: absolute;
   display: inline-block;
   width: 93%;
-  height: 3%;
+  height: 10%;
   left: 3.5%;
   padding-right: 50px;
-  background-color:rgba(247, 247, 247, 0.911);
+  background-color:rgba(240, 240, 240, 0.753);
   margin: auto;
 }
 
@@ -114,7 +123,7 @@ export default {
   font-family: Georgia, 'Times New Roman', Times, serif;
   position: absolute;
   display: inline-block;
-  left: 37.5%;
+  left: 33%;
   top: 15%;
   margin: auto;
 }
@@ -124,36 +133,33 @@ export default {
 }
 .hat {
   z-index: 3;
-  left: 39%;
-  top: 27%;
+  left: 23.5%;
+  top: 44.5%;
   z-index: 1;
   position: absolute;
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
   margin: auto;
 }
 .my-box2 {
   position: absolute;
   display: inline-block;
-  left: 30%;
-  top: 25%;
-  width: 40%;
-  height: 33%;
-  
-  background-color: rgb(236, 235, 175);
-  border-radius: 3em;
-  box-shadow: 5px 5px 5px 5px rgba(228, 227, 227, 0.603);
+  left: 43%;
+  top: 53%;
+  width: 30%;
+  height: 0.3%;
+  background-color: rgba(243, 243, 243, 0.788);
   margin: auto;
 }
 .my-box3 {
   position: absolute;
   display: inline-block;
-  width: 27%;
-  height: 18%;
+  width: 15%;
+  height: 19%;
   border-radius: 3em;
-  top: 37%;
-  left: 36.5%;
-  background-color: rgb(207, 190, 92);
+  top: 44%;
+  left: 26%;
+  border: 2px solid rgba(214, 214, 214, 0.616);
   margin: auto;
 }
 .con {
@@ -171,20 +177,33 @@ export default {
   position:absolute;
   display: inline-block;
   width: 50%;
-  height: 20%;
+  height: 0.3%;
   left: 25%;
-  top: 65%;
+  top: 64%;
   background-color: rgba(243, 243, 243, 0.788);
 }
 .my-box5 {
   position:absolute;
   display: inline-block;
   width: 50%;
-  height: 0.5%;
+  height: 0.2%;
   left: 25%;
-  top: 62%;
-  background-color: rgba(243, 243, 243, 0.788);
+  top: 43%;
+  background-color: rgba(167, 164, 164, 0.788);
 }
+.mypage {
+  position: absolute;
+  display: inline-block;
+  top: 65%;
+  left: 52%;
+}
+.mainpage {
+  position: absolute;
+  display: inline-block;
+  top: 65%;
+  left: 43%;
+}
+
 
 
 

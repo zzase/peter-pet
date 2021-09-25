@@ -1,94 +1,44 @@
 <template>
   <div class="wrapper">
-    <parallax class="section page-header header-filter" :style="headerStyle">
-      <div class="container">
-        <div class="md-layout">
-          <div
-            class="md-layout-item md-size-50 md-small-size-70 md-xsmall-size-100"
-          >
-            <h1 class="title">Your Story Starts With Us.</h1>
-            <h4>
-              Every landing page needs a small description after the big bold
-              title, that's why we added this text here. Add here all the
-              information that can make you or your product create the first
-              impression.
-            </h4>
-            <br />
-            <md-button
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-              class="md-success md-lg"
-              target="_blank"
-              ><i class="fas fa-play"></i> Watch video</md-button
-            >
-          </div>
-        </div>
+     <parallax class="section page-header" :style="headerStyle">
+     </parallax>
+       <div class="main main-raised">
+           <div class="section">
+              <div class="contents">
+                <div class="my-page">
+                  <img src="@/assets/img/MyPage/mypage.jpg">
+                </div>
+                  <div class="side-menu">
+                  <Side></Side>
+                  </div>
+                  <div class="account-contents">
+                  <MyAccount></MyAccount>
+                 </div>
+              </div>
+           </div>
       </div>
-    </parallax>
-    <div class="main main-raised">
-      <div class="section">
-      <div class ="my-box">
-      </div>
-          <div class="md-layout">
-            
-          <b-navbar id="menu" toggleable type="light" variant="light">
-          <b-navbar-brand href="#">My Page</b-navbar-brand>
-
-          <b-navbar-toggle target="navbar-toggle-collapse">
-            <template #default="{ expanded }">
-              <b-icon v-if="expanded" icon="chevron-bar-up"></b-icon>
-              <b-icon v-else icon="chevron-bar-down"></b-icon>
-            </template>
-          </b-navbar-toggle>
-
-          <b-collapse id="navbar-toggle-collapse" is-nav>
-            <b-navbar-nav class="ml-auto">
-              <br><br><br>
-              <b-nav-item href="#">나의 동물등록증</b-nav-item>
-              <br>
-              <b-nav-item href="#">Neverland  </b-nav-item>
-              <br>
-              <b-nav-item href="#">MY NFT</b-nav-item>
-              <br><br><br><br>
-              <br><br><br><br>
-            </b-navbar-nav>
-          </b-collapse>
-        </b-navbar>
-        <div class="my-box1">
-        </div>
-
-          </div>
-        
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
+import Side from './components/Side.vue';
+import Card from './components/Card.vue';
+
+
 export default {
-  bodyClass: "landing-page",
+  bodyClass: "login-page",
   props: {
-    header: {
-      type: String,
-      default: require("@/assets/img/bg7.jpg")
-    },
-    teamImg1: {
-      type: String,
-      default: require("@/assets/img/faces/avatar.jpg")
-    },
-    teamImg2: {
-      type: String,
-      default: require("@/assets/img/faces/christian.jpg")
-    },
-    teamImg3: {
-      type: String,
-      default: require("@/assets/img/faces/kendall.jpg")
-    }
+
   },
+  components: {
+    Side,
+    // Card
+  
+  },
+
   data() {
     return {
-      name: null,
-      email: null,
-      message: null
+     
     };
   },
   computed: {
@@ -101,7 +51,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+
+<style >
 .md-card-actions.text-center {
   display: flex;
   justify-content: center !important;
@@ -113,24 +64,12 @@ export default {
 .md-has-textarea + .md-layout {
   margin-top: 15px;
 }
-.ex1 {
-  background-color: rgb(146, 93, 23);
-  border-radius:30px;
-  width: 500px;
-  height: 50px;
-}
-.my-box {
-  position: relative;
-  display: inline-block;
-  margin-left: 90px;
-  width: 1600px;
-  height: 100px;
-  padding: 20px;
-  background-color: rgba(42, 45, 59, 0.815);
-  max-width: 100%;
-}
-.my-box1 {
-  position: relative;
-}
 
+.account-contents {
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  left: -35%;
+}
 </style>

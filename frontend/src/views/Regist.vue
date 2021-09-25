@@ -27,7 +27,6 @@
                                 color-button="success">
 
                                 <!-- here you can add your content for tab-content -->
-
                                 <template slot="tab-pane-1">
                                     <div class="md-layout">
                                         <div class="md-layout-item md-size-100 ml-auto">
@@ -797,7 +796,8 @@
                                                                                                                         resize: none;
                                                                                                                         /* 크기고정 */
                                                                                                                         /* resize: horizontal; // 가로크기만 조절가능 
-            resize: vertical;  세로크기만 조절가능  */
+
+                                                                                                                         resize: vertical;  세로크기만 조절가능  */
                                                                                                                     }
                                                                                                                     .block:not(:first-child) {
                                                                                                                         margin-top: 32px;
