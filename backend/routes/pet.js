@@ -48,6 +48,7 @@ router.post('/regist',async function(req,res,next){
     setTimeout(async ()=> {
       const count = await didContract.methods.getCountDidByWenddy(address).call();
       const lastIndex = count - 1;
+      if(lastIndex < 0) lastIndex = 0;
       const lastDid = await didContract.methods.getDidByWenddy(address,lastIndex).call();
       console.log('lastDid : ' + lastDid);
       connection.query(`INSERT INTO did(did,t_id,u_id) VALUES("${lastDid}", 0, "${id}")`,function(err,rows2){
@@ -56,11 +57,12 @@ router.post('/regist',async function(req,res,next){
 
       res.send({user : {id : id, address : address}, did : lastDid , txHash:txHash});
 
-    },1500);
+    },2000);
 
   }catch(err){
     console.log(err)
   }
+  
 })
 
 module.exports = router;
