@@ -113,13 +113,66 @@
                   </div>
                 </a>
               </li>
+              <div>
+                <div v-if="this.$store.state.isLogin">
+                  <a class="navbar-brand" href="#/myPage">
+                    <span>
+                      <p>My Page</p>
+                    </span>
+                  </a>
+                  <h5>{{this.$store.state.user.id}}</h5>
+                  <h5>{{this.$store.state.user.address}}</h5>
+                </div>
+
+                <div v-else>
+                  <b-button v-b-modal.modal-center :id="login" :ref="login">login</b-button>
+                </div>
+                  
+                  <b-modal hide-footer id="modal-center" ref="loginModal"  centered title="">
+                    <form @submit.prevent="login">
+                    <login-card header-color="green">
+                      <br>
+                      
+                        <h3 slot="title" class="card-title">Login</h3>
+                      
+             
+              <p slot="description" class="description">아이디 입력시 아이디가 없으면 자동 회원가입이 돼요!</p>
+              <md-field class="md-form-group" slot="inputs">
+                <md-icon>face</md-icon>
+                <label>ID</label>
+                <md-input v-model="user.id"></md-input>
+              </md-field>
+              <md-field class="md-form-group" slot="inputs">
+                <md-icon>lock_outline</md-icon>
+                <label>Password</label>
+                <md-input type="password" v-model="user.password"></md-input>
+              </md-field>
+              <md-button slot="footer" class="md-simple md-success md-lg" @click="$bvModal.hide('modal-center')">
+                닫기
+              </md-button>
+              <md-button type="submit" slot="footer" class="md-simple md-success md-lg">
+                로그인
+              </md-button>
+            </login-card>
+            </form>
+                  </b-modal>
+                </div>
+                <div class="text-center" id="address" ref="address"></div>
+              <li>
+              </li>
             </md-list>
           </div>
         </div>
       </div>
+      <div>      
+      </div>
     </div>
+
   </md-toolbar>
+
 </template>
+
+
 
 <script>
 let resizeTimeout;
@@ -136,9 +189,20 @@ function resizeThrottler(actualResizeHandler) {
 }
 
 import MobileMenu from "@/layout/MobileMenu";
+
+import { LoginCard } from "@/components";
+
+
+const Key = {
+  auth : {
+    accessType: 'keystore',
+    keystore: '',
+    password: ''
+  },
+}
 export default {
   components: {
-    MobileMenu,
+    MobileMenu,LoginCard
   },
   props: {
     type: {
@@ -165,6 +229,10 @@ export default {
     return {
       extraNavClasses: "",
       toggledClass: false,
+      user : {
+        'id' : null,
+        'password' : null
+      }
     };
   },
   computed: {
@@ -174,6 +242,27 @@ export default {
     },
   },
   methods: {
+    login : function() {
+      this.$http.post('/api/user/login',{user : this.user},{"Content-Type":"application-json"})
+      .then((res)=>{
+        console.log('res.data : ' + res.data);
+        if(res.data.loginCheck){
+          this.$store.commit("loginSuccess")
+          this.$store.commit("setUser",res.data.user);
+          this.$router.push({name :"main"}).catch(()=>{});
+
+          alert("login 성공");
+          this.$bvModal.hide('modal-center')
+        }
+        else {
+          this.$store.commit('loginError');
+          alert('비밀번호가 틀렸습니다!');
+        }
+      })
+      .catch((err)=>{
+        console.error(err);
+      })
+    },
     bodyClick() {
       let bodyClick = document.getElementById("bodyClick");
 
