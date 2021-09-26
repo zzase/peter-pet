@@ -3,8 +3,7 @@ var router = express.Router();
 const wallet = require('../kas/wallet');
 const bcrypt = require('bcryptjs');
 
-import Caver from 'caver-js-ext-kas/node_modules/caver-js';
-import { caver } from '../kas/kascon';
+
 import {connection} from '../mysql/connector';
 
 /* GET users listing. */
