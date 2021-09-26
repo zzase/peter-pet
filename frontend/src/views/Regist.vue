@@ -158,17 +158,17 @@
                                                                     <template slot="tab-pane-2">
                                                                         <div class="md-layout">
                                                                             <div class="md-layout-item md-size-100 ml-auto">
+                                                                              <form @submit.prevent="registGov">
                                                                                 <login-card header-color="orange">
                                                                                     <h2 slot="title" class="card-title">Wenddy</h2>
                                                                                     <md-field class="md-form-group" slot="inputs">
                                                                                         <label>
                                                                                             <md-icon>person_outline</md-icon>이름</label>
-                                                                                        <md-input v-model="name"></md-input>
+                                                                                        <md-input v-model="wenddy.name"></md-input>
                                                                                     </md-field>
                                                                                     <md-field class="md-form-group" slot="inputs">
                                                                                         <label>
                                                                                             <md-icon>whatsapp</md-icon>연락처</label>
-
                                                                                         <input
                                                                                             type="tel"
                                                                                             name="tlno"
@@ -176,11 +176,12 @@
                                                                                             title="전화번호를 입력하세요."
                                                                                             placeholder="010*-0000*-0000"
                                                                                             pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}"
-                                                                                            maxlength="13"></md-field>
+                                                                                            maxlength="13"
+                                                                                            v-model="wenddy.phone"></md-field>
                                                                                         <md-field class="md-form-group" slot="inputs">
                                                                                             <label>
                                                                                                 <md-icon>email</md-icon>Email</label>
-                                                                                            <input type='email' name='userEmail'/>
+                                                                                            <input type='email' v-model="wenddy.email" name='userEmail'/>
 
                                                                                         </md-field>
                                                                                         <md-field class="md-form-group" slot="inputs">
@@ -224,7 +225,7 @@
                                                                                                                                                 id="addrDetail"
                                                                                                                                                 style="width:40%"
                                                                                                                                                 v-model="addressInfo.buildingName">
-                                                                                                                                                <input type="text" id="roadAddrPart2" style="width:40%" value=""></td>
+                                                                                                                                                <input type="text" id="roadAddrPart2" style="width:40%" v-model="addressInfo.detailAddress"></td>
                                                                                                                                             </tr>
                                                                                                                                         </tbody>
                                                                                                                                     </table>
@@ -312,9 +313,10 @@
                                                                                                                                                         id="tab-content"
                                                                                                                                                         slot="footer"
                                                                                                                                                         class="md-success md-lg"
-                                                                                                                                                        @click="switchPanel2(tab-name)">동의</md-button>
+                                                                                                                                                        type="submit">동의</md-button>
 
                                                                                                                                                 </login-card>
+                                                                                                                                              </form>
                                                                                                                                             </div>
                                                                                                                                         </div>
                                                                                                                                     </template>
@@ -415,6 +417,14 @@
                                                                                                                                     vaccinationHistory: null,
                                                                                                                                     notes: null
                                                                                                                                 },
+                                                                                                                                wenddy : {
+                                                                                                                                    name: "",
+                                                                                                                                    phone: "",
+                                                                                                                                    email: "",
+                                                                                                                                    homeAddress: "",
+                                                                                                                                    jumin: "",
+                                                                                                                                    id : ""
+                                                                                                                                },
                                                                                                                                 activePanel: this.tabName,
 
                                                                                                                                 firstRRN: [],
@@ -499,8 +509,9 @@
                                                                                                                                     postcode: "",
                                                                                                                                     buildingName: "",
                                                                                                                                     jibunAddress: "",
-                                                                                                                                    roadAdress: "",
-                                                                                                                                    zoneCode: ""
+                                                                                                                                    roadAddress: "",
+                                                                                                                                    zoneCode: "",
+                                                                                                                                    detailAddress: ""
                                                                                                                                 }
                                                                                                                             };
                                                                                                                         },
@@ -563,6 +574,31 @@
                                                                                                                                     });
                                                                                                                                     
                                                                                                                                 this.switchPanel1();
+                                                                                                                            },
+                                                                                                                            registGov : function () {
+                                                                                                                                console.log("regist gov api call");
+                                                                                                                                const wenddy = this.wenddy;
+                                                                                                                                wenddy.id = this.$store.state.user.id;
+                                                                                                                                wenddy.homeAddress = this.addressInfo.roadAddress +" " + this.addressInfo.buildingName+" " + this.addressInfo.detailAddress;
+                                                                                                                                wenddy.jumin = this.resultRRN()
+
+                                                                                                                                this
+                                                                                                                                    .$http
+                                                                                                                                    .post('/api/user/regist', {
+                                                                                                                                       wenddy : wenddy
+                                                                                                                                    }, {"Content-Type": "application-json"})
+                                                                                                                                    .then((res) => {
+                                                                                                                                        console.log(res.data);
+                                                                                                                                        if(res.data.checkReg){
+                                                                                                                                            this.switchPanel2();
+                                                                                                                                        }
+                                                                                                                                        else {
+                                                                                                                                            alert("정부 등록에 실패하였습니다. 입력 정보를 다시 확인해주세요")
+                                                                                                                                        }
+                                                                                                                                    })
+                                                                                                                                    .catch((err) => {
+                                                                                                                                        console.error(err);
+                                                                                                                                    });
                                                                                                                             },
                                                                                                                             switchPanel1: function () {
                                                                                                                                 this
