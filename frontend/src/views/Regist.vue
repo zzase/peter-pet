@@ -323,6 +323,7 @@
                                                                                                                                     <template slot="tab-pane-3">
                                                                                                                                         <div class="md-layout">
                                                                                                                                             <div class="md-layout-item md-size-100 ml-auto">
+                                                                                                                                                <form @submit.prevent="selectTinkerbell">
                                                                                                                                                 <login-card header-color="red">
                                                                                                                                                     <h2 slot="title" class="card-title">Tinkerbell</h2>
                                                                                                                                                     <md-field class="md-form-group" slot="inputs">
@@ -335,7 +336,9 @@
                                                                                                                                                                                 id="tooltip-button-1"
                                                                                                                                                                                 style="margin: 0 auto; display: block;"
                                                                                                                                                                                 :pressed="true"
-                                                                                                                                                                                variant="success">외장칩 목걸이</b-button>
+                                                                                                                                                                                variant="success"
+                                                                                                                                                                                v-model="tinkerbellType"
+                                                                                                                                                                                @click="selectTinkerbellType(1)">외장칩 목걸이</b-button>
                                                                                                                                                                         </div>
 
                                                                                                                                                                         <b-tooltip :show.sync="show" target="tooltip-button-1" placement="top">
@@ -352,7 +355,9 @@
                                                                                                                                                                                     id="tooltip-button-1"
                                                                                                                                                                                     style="margin: 0 auto; display: block;"
                                                                                                                                                                                     :pressed="true"
-                                                                                                                                                                                    variant="success">내장칩 목걸이</b-button>
+                                                                                                                                                                                    variant="success"
+                                                                                                                                                                                    v-model="tinkerbellType"
+                                                                                                                                                                                    @click="selectTinkerbellType(2)">내장칩 목걸이</b-button>
                                                                                                                                                                             </div>
                                                                                                                                                                             <b-tooltip :show.sync="show" target="tooltip-button-1" placement="top">
                                                                                                                                                                                 선택되었습니다!
@@ -365,10 +370,11 @@
                                                                                                                                                                 </div>
                                                                                                                                                             </md-field>
 
-                                                                                                                                                            <md-button slot="footer" class="md-success md-lg" @click='newPage()'>
+                                                                                                                                                            <md-button slot="footer" class="md-success md-lg" type="submit">
                                                                                                                                                                 선택 완료
                                                                                                                                                             </md-button>
                                                                                                                                                         </login-card>
+                                                                                                                                                        </form>
                                                                                                                                                     </div>
                                                                                                                                                 </div>
                                                                                                                                             </template>
@@ -425,6 +431,7 @@
                                                                                                                                     jumin: "",
                                                                                                                                     id : ""
                                                                                                                                 },
+                                                                                                                                tinkerbellType : null,
                                                                                                                                 activePanel: this.tabName,
 
                                                                                                                                 firstRRN: [],
@@ -573,7 +580,7 @@
                                                                                                                                         console.error(err);
                                                                                                                                     });
                                                                                                                                     
-                                                                                                                                this.switchPanel1();
+                                                                                                                                this.switchPanel("Wenddy");
                                                                                                                             },
                                                                                                                             registGov : function () {
                                                                                                                                 console.log("regist gov api call");
@@ -590,7 +597,7 @@
                                                                                                                                     .then((res) => {
                                                                                                                                         console.log(res.data);
                                                                                                                                         if(res.data.checkReg){
-                                                                                                                                            this.switchPanel2();
+                                                                                                                                            this.switchPanel("Tinkerbell");
                                                                                                                                         }
                                                                                                                                         else {
                                                                                                                                             alert("정부 등록에 실패하였습니다. 입력 정보를 다시 확인해주세요")
@@ -600,17 +607,47 @@
                                                                                                                                         console.error(err);
                                                                                                                                     });
                                                                                                                             },
-                                                                                                                            switchPanel1: function () {
-                                                                                                                                this
-                                                                                                                                    .$refs
-                                                                                                                                    .child
-                                                                                                                                    .switchPanel("Wenddy");
+                                                                                                                            selectTinkerbellType (type) {
+                                                                                                                                this.tinkerbellType = type;
+                                                                                                                                console.log(this.tinkerbellType);
                                                                                                                             },
-                                                                                                                            switchPanel2: function () {
+                                                                                                                            
+                                                                                                                            selectTinkerbell : function () {
+                                                                                                                                const tinkerbellType = this.tinkerbellType;
+                                                                                                                                const address = this.$store.state.user.address;;
+
+                                                                                                                                console.log(tinkerbellType);
+
+                                                                                                                                if(tinkerbellType === null){
+                                                                                                                                    alert("칩을 선택해주세요!");
+                                                                                                                                }
+                                                                                                                                else {
+                                                                                                                                    this
+                                                                                                                                    .$http
+                                                                                                                                    .post('/api/pet/tinkerbell', {
+                                                                                                                                       tinkerbellType : tinkerbellType,
+                                                                                                                                       address : address
+                                                                                                                                    }, {"Content-Type": "application-json"})
+                                                                                                                                    .then((res) => {
+                                                                                                                                        console.log(res.data);
+                                                                                                                                        if(res.data.checkUpdate){
+                                                                                                                                            this.$router.push({name :"complete"}).catch(()=>{});
+                                                                                                                                        }
+                                                                                                                                        else {
+                                                                                                                                            alert("입력하신 정보가 잘못되었습니다.")
+                                                                                                                                        }
+                                                                                                                                    })
+                                                                                                                                    .catch((err) => {
+                                                                                                                                        console.error(err);
+                                                                                                                                    });
+                                                                                                                                }                                                                                                                                
+                                                                                                                            },
+                                                                                                                            
+                                                                                                                            switchPanel: function (name) {
                                                                                                                                 this
                                                                                                                                     .$refs
                                                                                                                                     .child
-                                                                                                                                    .switchPanel("Tinkerbell");
+                                                                                                                                    .switchPanel(name);
                                                                                                                             },
                                                                                                                             getPostalcode() {
                                                                                                                                 new window

@@ -63,4 +63,46 @@ router.post('/regist',async function(req,res,next){
   
 })
 
+router.post('/tinkerbell',async function(req,res,next) {
+  console.log('팅커벨 선택 api 호출');
+  const tinkerbellType = req.body.tinkerbellType;
+  const address = req.body.address;
+  
+  const count = await contract.methods.getCountDidByWenddy(address).call();
+  const lastIndex = count - 1;
+  if(lastIndex < 0) lastIndex = 0;
+  const lastDid = await contract.methods.getDidByWenddy(address,lastIndex).call();
+  console.log('lastDid : ' + lastDid);
+
+  connection.query(`SELECT did FROM did WHERE did="${lastDid}"`,async function(err,rows){
+    let checkUpdate = false;
+    let msg = '';
+    if(rows[0] === undefined) {
+      res.send({did : lastDid, checkUpdate : checkUpdate, msg : '존재하지 않는 DID'});  
+    }
+
+    else {
+      connection.query(`update did set t_id = ${tinkerbellType} where did = "${lastDid}"`,function(err,rows){
+        if(err) {
+          console.error(err);
+          checkUpdate = false;
+          msg = 'db 오류발생'
+        }
+        else {
+          checkUpdate = true;
+          if(tinkerbellType === 1){
+            msg = '입력하신 주소로 외장칩이 발송되었습니다';
+          }
+
+          else {
+            msg = '가까운 동물병원으로 가셔서 발급된 QR코드나 DID를 알려주세요!'
+          }
+        } 
+        res.send({did : lastDid, checkUpdate:checkUpdate, tinkerbellType : tinkerbellType, msg : msg});
+      });
+    
+    }
+  })
+})
+
 module.exports = router;
