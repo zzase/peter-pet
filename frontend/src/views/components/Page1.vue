@@ -177,7 +177,7 @@ p {
   margin-top: 14%;
   width: 50%;
   height: 50%;
-  left: -5%;
+  left: -5.5%;
   border: 2px solid rgb(214, 214, 214);
   box-shadow: 5px 5px 5px rgba(175, 175, 175, 0.671);
 }
