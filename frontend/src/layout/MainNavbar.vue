@@ -324,7 +324,7 @@ export default {
 .md-toolbar-section-start {
   position: absolute;
   margin-left: -15%;
-  margin-top: 2%;
+  margin-top: 0.5%;
 }
 .navbar {
   position: absolute;

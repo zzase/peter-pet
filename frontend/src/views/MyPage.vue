@@ -73,5 +73,6 @@ export default {
   height: 100%;
   left: -35%;
 }
+
 }
 </style>

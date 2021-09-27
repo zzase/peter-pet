@@ -25,6 +25,22 @@
                       <div class="myKlay">
                         <p style="color: rgb(23, 127, 117)"> myKlay {{ myKlay }} </p>
                       </div>
+              <div class="btn1">        
+              <md-button
+                          id="login"
+                          href="#/mypage"
+                          class="md-info"
+                          >
+                          <b>마이 페이지</b></md-button >
+               </div>
+               <div class="btn2">
+                <md-button
+                          id="mainpage"
+                          href="#/"
+                          class="default"
+                          >
+                          <b>메인 페이지</b></md-button >
+               </div>
         </div>
 </template>
 
@@ -127,5 +143,17 @@ p {
   display: inline-block;
   bottom: 45%;
   left: 52%;
+}
+.btn1 {
+  position: absolute;
+  display: inline-block;
+  left: 40%;
+  top: 85%;
+}
+.btn2 {
+  position: absolute;
+  display: inline-block;
+  left: 50%;
+  top: 85%;
 }
 </style>

@@ -1,12 +1,31 @@
 <template>
-    <v-app id="page2">
-        this is Page 2
-    </v-app>
+<v-app id="page2">
+    this is page 2
+</v-app>
 </template>
 
 <script>
 export default {
-    name: 'Page2',
-    data: () => ({}),
-}
+  data (){
+    return {
+     
+    }
+
+  },
+  components: {
+  
+  },
+  
+  computed: {
+    headerStyle() {
+      return {
+        backgroundImage: `url(${this.header})`
+      };
+    }
+  }
+};
 </script>
+
+<style>
+
+</style>
