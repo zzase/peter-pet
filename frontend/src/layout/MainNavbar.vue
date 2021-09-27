@@ -6,6 +6,7 @@
     :class="extraNavClasses"
     :color-on-scroll="colorOnScroll"
   >
+  
     <div class="md-toolbar-row md-collapse-lateral">
       <div class="md-toolbar-section-start">
         <!-- <h3 class="md-title">Vue Material Kit</h3> -->
@@ -16,6 +17,7 @@
           </span>
         </a>
       </div>
+<div class="navbar">
       <div class="md-toolbar-section-end">
         <md-button
           class="md-just-icon md-simple md-toolbar-toggle"
@@ -41,7 +43,7 @@
                   <div class="md-list-item-content"></div>
                 </a>
               </li>
-
+            
               <md-list-item a href="#" target="_blank" v-if="showDownload">
                 <p>About</p>
                 <md-tooltip md-direction="bottom">Peter Pet ?</md-tooltip>
@@ -125,7 +127,7 @@
                 </div>
 
                 <div v-else>
-                  <b-button v-b-modal.modal-center :id="login" :ref="login">login</b-button>
+                  <b-button pill variant="outline-primary " v-b-modal.modal-center :id="login" :ref="login">login</b-button>
                 </div>
                   
                   <b-modal hide-footer id="modal-center" ref="loginModal"  centered title="">
@@ -167,6 +169,7 @@
       <div>      
       </div>
     </div>
+  </div>
 
   </md-toolbar>
 
@@ -316,3 +319,15 @@ export default {
   },
 };
 </script>
+
+<style>
+.md-toolbar-section-start {
+  position: absolute;
+  margin-left: -15%;
+  margin-top: 2%;
+}
+.navbar {
+  position: absolute;
+  margin-left: 70%;
+}
+</style>
