@@ -84,12 +84,16 @@ router.post('/regist',async function(req,res,next){
     setTimeout(async ()=> {
       const lastDid = await contract.methods.getLastDidByWenddy(address).call();
       console.log('lastDid : ' + lastDid);
-      connection.query(`INSERT INTO did(did,t_id,u_id) VALUES("${lastDid}", 0, "${id}")`,function(err,rows2){
+
+      let date = new Date();
+      let today = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
+      connection.query(`INSERT INTO did(did,t_id,u_id,url,issueDate) VALUES("${lastDid}", 0, "${id}","http://localhost:3000/#/pet/own/${lastDid}","${today}")`,function(err,rows2){
         if(err){
-          res.status(404).send(err);
+          res.status(404).send({err:err , checkReg : false});
         }
         else {
-          res.status(200).send({user : {id : id, address : address}, did : lastDid , txHash:txHash});
+          
+          res.status(200).send({user : {id : id, address : address}, did : lastDid , txHash:txHash, checkReg:true});
         }
       });
 
@@ -117,7 +121,7 @@ router.post('/tinkerbell',async function(req,res,next) {
     }
 
     else {
-      connection.query(`update did set t_id = ${tinkerbellType} where did = "${lastDid}"`,function(err,rows){
+      connection.query(`update did set t_id = ${tinkerbellType} where did = "${lastDid}"`,async function(err,rows){
         if(err) {
           console.error(err);
           checkUpdate = false;
@@ -126,6 +130,10 @@ router.post('/tinkerbell',async function(req,res,next) {
         }
         else {
           checkUpdate = true;
+          const name = await contract.methods.getPetNameByDid(`${lastDid}`).call();
+          //const name = '두남이';
+          console.log(name);
+
           if(tinkerbellType === 1){
             msg = '입력하신 주소로 외장칩이 발송되었습니다';
           }
@@ -133,7 +141,7 @@ router.post('/tinkerbell',async function(req,res,next) {
           else {
             msg = '가까운 동물병원으로 가셔서 발급된 QR코드나 DID를 알려주세요!'
           }
-          res.status(200).send({did : lastDid, checkUpdate:checkUpdate, tinkerbellType : tinkerbellType, msg : msg});
+          res.status(200).send({peterpet : {name : name, did : lastDid, url : `"http://localhost:3000/#/pet/own/${lastDid}"`}, checkUpdate:checkUpdate, tinkerbellType : tinkerbellType, msg : msg});
         } 
       });
     

@@ -570,17 +570,16 @@
                                                                                                                                     }, {"Content-Type": "application-json"})
                                                                                                                                     .then((res) => {
                                                                                                                                         console.log(res.data);
-                                                                                                                                        this
-                                                                                                                                            .$store
-                                                                                                                                            .commit("setPeterpet", res.data.peterpet);
-                                                                                                                                        //this.$rout.push({name: "result"});
-                                                                                                                                        //this.$router.push('/pet',{peterpet: this.peterpet});
+                                                                                                                                        if(res.data.checkReg){
+                                                                                                                                            this.switchPanel("Wenddy");
+                                                                                                                                        }
+                                                                                                                                        else {
+                                                                                                                                            alert("DID 등록에 실패하였습니다");
+                                                                                                                                        }
                                                                                                                                     })
                                                                                                                                     .catch((err) => {
                                                                                                                                         console.error(err);
                                                                                                                                     });
-                                                                                                                                    
-                                                                                                                                this.switchPanel("Wenddy");
                                                                                                                             },
                                                                                                                             registGov : function () {
                                                                                                                                 console.log("regist gov api call");
@@ -631,7 +630,7 @@
                                                                                                                                     .then((res) => {
                                                                                                                                         console.log(res.data);
                                                                                                                                         if(res.data.checkUpdate){
-                                                                                                                                            this.$router.push({name :"complete"}).catch(()=>{});
+                                                                                                                                            this.$router.push({name :"complete", query : {peterpet : res.data.peterpet, msg:res.data.msg}}).catch(()=>{});
                                                                                                                                         }
                                                                                                                                         else {
                                                                                                                                             alert("입력하신 정보가 잘못되었습니다.")
