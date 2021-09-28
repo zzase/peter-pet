@@ -9,12 +9,21 @@ var router = express.Router();
 //const pets = require('../test/pet.json');
 
 /* GET home page. */
-router.get('/', async function(req, res, next) {
-  const did = await contract.methods.getDid(2).call();
-  const peterPetName = await contract.methods.getPetNameByDid(`${did}`).call();
-  console.log(`name:${peterPetName}`);
-  console.log(`did=${did}`);
-  return res.json({pname:peterPetName});
+
+router.get('/get/all', async function(req, res, next) {
+  console.log('get all dids api call');
+  const address = req.query.address;
+  if(address === undefined) res.status(404).send('address 정보가 올바르지 않습니다');
+  else {
+    const dids = await contract.methods.getDidsByWenddy(address).call();
+
+    if(dids === undefined){
+      res.status(404).send(`${address}로 등록된 did가 없습니다`);
+    }
+    else {
+      res.status(200).send({address : address, dids: dids});
+    }
+  }
 });
 
 router.post('/regist',async function(req,res,next){
