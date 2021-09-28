@@ -92,7 +92,6 @@ router.post('/regist',async function(req,res,next){
           res.status(404).send({err:err , checkReg : false});
         }
         else {
-          
           res.status(200).send({user : {id : id, address : address}, did : lastDid , txHash:txHash, checkReg:true});
         }
       });
@@ -143,8 +142,33 @@ router.post('/tinkerbell',async function(req,res,next) {
           }
           res.status(200).send({peterpet : {name : name, did : lastDid, url : `"http://localhost:3000/#/pet/own/${lastDid}"`}, checkUpdate:checkUpdate, tinkerbellType : tinkerbellType, msg : msg});
         } 
-      });
-    
+      }); 
+    }
+  })
+})
+
+
+router.post('/report/missing',async function(req,res,next) {
+  console.log('실종신고 api 호출');
+  const did = req.body.did;
+  const address = req.body.address;
+
+  connection.query(`SELECT did FROM did WHERE did="${did}"`,async function(err,rows){
+    let checkUpdate = false;
+    let msg = '';
+    if(rows[0] === undefined) {
+      msg = '존재하지 않는 DID'
+      res.status(404).send({did : did, checkUpdate : checkUpdate, msg : msg});  
+    }
+    else {
+      checkUpdate = true;
+      msg = `${did} 실종신고 완료`
+      try{
+        const result = await contract.methods.updateMissingStatus(did,true).send({ from: address, gas: 5000000 });
+        res.status(200).send({did : did , result:result, checkUpdate:checkUpdate, msg:msg})
+      }catch(error){
+        res.status(400).send("잔액부족");
+      }
     }
   })
 })
