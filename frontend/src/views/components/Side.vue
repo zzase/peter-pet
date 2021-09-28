@@ -79,7 +79,7 @@ const routes = [
     component: Page1,
   },
   {
-    path: "/mypage//page2",
+    path: "/mypage/page2",
     name: "Page 2",
     component: Page2,
   },
@@ -121,4 +121,10 @@ let router = new VueRouter({
   position: relative;
   left: -11.1%;
 }
+.v-application-wrap {
+    min-height: 50%;;
+    max-width: 50%;
+    position: relative;
+}
+
 </style>

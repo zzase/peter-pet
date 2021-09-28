@@ -45,6 +45,10 @@
                 <div class="notes">
                   <p> notes {{ peterpet.notes }} </p>
                 </div>
+
+                <div class="agreement1">
+      <b-button @click="modal = true">실종신고>></b-button>
+      </div>
         </div>
 </template>
 
@@ -186,6 +190,11 @@ p {
   left: -11%;
   width: 70%;
   margin-top: -10%;
+}
+.agreement1 {
+  position: absolute;
+  bottom: -15%;
+  left: 17%;
 }
 
 </style>

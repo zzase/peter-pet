@@ -127,7 +127,7 @@
                 </div>
 
                 <div v-else>
-                  <b-button pill variant="outline-primary " v-b-modal.modal-center :id="login" :ref="login">login</b-button>
+                  <b-button pill variant="outline-primary" v-b-modal.modal-center :id="login" :ref="login">login</b-button>
                 </div>
                   
                   <b-modal hide-footer id="modal-center" ref="loginModal"  centered title="">
