@@ -2,11 +2,11 @@
 <v-app id="page2">
    <div class="report-box">
    </div>
-   <div class="report-method">
-   <img src="@/assets/img/Board/report.png">
-   </div>
+   
    <div class="report-box2">
    </div>
+   <div class="report-method">
+   <img id="method" src="@/assets/img/Board/report.png"></div>
    <div class="questionmark">
    <img id="question" src="@/assets/img/Board/questionmark.png"></div>
       <div class="report-text1">
@@ -47,10 +47,18 @@
         </div>
         <p>위의 정보는 실종된 반려견을 발견한 목격자가 보호자님께<br>
         제보하기 위한 용도로만 제공됩니다.</p><br>
+</div>
+        <div class="report-close">
+        <b-button @click="modal = false">닫기</b-button>
+        </div>
+        <div class="report-agree">
+          <b-button v-b-modal.modal-1>동의</b-button>
+          <b-modal id="modal-1" title="Peter-Pet 실종신고">
+            <p class="my-4">실종신고가 완료되었습니다!</p>
+          </b-modal>
+        </div>
 
-        <md-button @click="modal = false">동의</md-button>
-
-      </div>
+      
  </div>
 
 </v-app>
@@ -102,8 +110,9 @@ div {
 .report-box {
   position:relative;
   width: 70%;
-  height: 60%;
+  height: 65%;
   background-color: darkslategrey;
+  border-radius: 10px;
   top: 25%;
   left: 15%;
 }
@@ -112,6 +121,7 @@ div {
   width: 60%;
   height: 75%;
   background-color: white;
+  border-radius: 10px;
   border: 1px solid darkslategray;
   top: 5%;
   left: 20%;
@@ -131,22 +141,24 @@ div {
   color: rgb(33, 46, 46);
 }
 .black-bg {
+  z-index: 2;
   left: 43%;
   width: 30%;
-  height: 72%;
+  height: 76%;
   top: 10%;
   background: rgba(161, 161, 161, 0.37);
   border-radius: 8px;
-  position: fixed; padding: 20px;
+  position: fixed; padding: 10px;
   margin:auto;
 }
 .white-bg {
+  z-index: 1;
   text-align: center;
   width: 100%; background: white;
   height: 100%;
   border: 1px solid rgba(85, 85, 85, 0.432);
   border-radius: 8px;
-  padding: 20px;
+  padding: 10px;
   margin:auto;
 }
 .close {
@@ -154,8 +166,7 @@ div {
   
 }
 .agreement {
-    z-index: 2;
-     position:absolute;
+    position:absolute;
     display: inline-block;
     top: 70%;
     left: 46%;
@@ -202,11 +213,20 @@ div {
   top: 1%;
 }
 .report-method {
-  z-index: 1;
   position: absolute;
   width: 28%;
   height: 28%;
   left: 36%;
   top: 18%;
+}
+.report-agree {
+  position: absolute;
+  left: 40%;
+  bottom: 8%;
+}
+.report-close {
+  position: absolute;
+  left: 53%;
+  bottom: 8%;
 }
 </style>
