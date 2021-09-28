@@ -10,7 +10,7 @@ var router = express.Router();
 
 /* GET home page. */
 
-router.get('/get/all', async function(req, res, next) {
+router.get('/get/all/dids', async function(req, res, next) {
   console.log('get all dids api call');
   const address = req.query.address;
   if(address === undefined) res.status(404).send('address 정보가 올바르지 않습니다');
@@ -22,6 +22,35 @@ router.get('/get/all', async function(req, res, next) {
     }
     else {
       res.status(200).send({address : address, dids: dids});
+    }
+  }
+});
+
+router.get('/get/all/petInfos', async function(req, res, next) {
+  console.log('get all pet Info api call');
+  const did = req.query.did;
+  if(did === undefined) res.status(404).send('did 정보가 올바르지 않습니다');
+  else {
+    const peterpet = await contract.methods.getAllInfoByDid(did).call();
+
+    if(peterpet === undefined){
+      res.status(404).send(`${did}로 등록된 peterpet정보를 찾을수 없습니다.`);
+    }
+    else {
+      res.status(200).send({did : did, 
+        peterpet: {
+          imgHash : peterpet.imgHash,
+          name : peterpet.name,
+          birth : peterpet.birth,
+          breedOfDog : peterpet.breedOfDog,
+          adoptionDate : peterpet.adoptionDate,
+          isNeutering : peterpet.isNeutering,
+          furColor : peterpet.furColor,
+          vaccinationHistory : peterpet.vaccinationHistory,
+          notes : peterpet.notes,
+          missing : peterpet.misiing
+      }
+    });
     }
   }
 });
@@ -53,16 +82,16 @@ router.post('/regist',async function(req,res,next){
     console.log('----------------------------------------------------');
 
     setTimeout(async ()=> {
-      const count = await contract.methods.getCountDidByWenddy(address).call();
-      const lastIndex = count - 1;
-      if(lastIndex < 0) lastIndex = 0;
-      const lastDid = await contract.methods.getDidByWenddy(address,lastIndex).call();
+      const lastDid = await contract.methods.getLastDidByWenddy(address).call();
       console.log('lastDid : ' + lastDid);
       connection.query(`INSERT INTO did(did,t_id,u_id) VALUES("${lastDid}", 0, "${id}")`,function(err,rows2){
-        if(err) throw err;
+        if(err){
+          res.status(404).send(err);
+        }
+        else {
+          res.status(200).send({user : {id : id, address : address}, did : lastDid , txHash:txHash});
+        }
       });
-
-      res.send({user : {id : id, address : address}, did : lastDid , txHash:txHash});
 
     },2000);
 
@@ -76,11 +105,8 @@ router.post('/tinkerbell',async function(req,res,next) {
   console.log('팅커벨 선택 api 호출');
   const tinkerbellType = req.body.tinkerbellType;
   const address = req.body.address;
+  const lastDid = await contract.methods.getLastDidByWenddy(address).call();
   
-  const count = await contract.methods.getCountDidByWenddy(address).call();
-  const lastIndex = count - 1;
-  if(lastIndex < 0) lastIndex = 0;
-  const lastDid = await contract.methods.getDidByWenddy(address,lastIndex).call();
   console.log('lastDid : ' + lastDid);
 
   connection.query(`SELECT did FROM did WHERE did="${lastDid}"`,async function(err,rows){
@@ -96,6 +122,7 @@ router.post('/tinkerbell',async function(req,res,next) {
           console.error(err);
           checkUpdate = false;
           msg = 'db 오류발생'
+          res.status(404).send({msg:msg , error:err});
         }
         else {
           checkUpdate = true;
@@ -106,8 +133,8 @@ router.post('/tinkerbell',async function(req,res,next) {
           else {
             msg = '가까운 동물병원으로 가셔서 발급된 QR코드나 DID를 알려주세요!'
           }
+          res.status(200).send({did : lastDid, checkUpdate:checkUpdate, tinkerbellType : tinkerbellType, msg : msg});
         } 
-        res.send({did : lastDid, checkUpdate:checkUpdate, tinkerbellType : tinkerbellType, msg : msg});
       });
     
     }
