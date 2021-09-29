@@ -50,14 +50,17 @@
                 </div>
              </div>
           </div>
-
+              <!-- Open DID-card -->
               <div class="card-on">
-              <img src="@/assets/img/Board/my-card1.png" @click="toggleOnOff" style="cursor:pointer;"></div>
-                <div class="agree">
-             <img src="@/assets/img/Board/my-card2.png" @click="modal = true" style="cursor:pointer;"> </div>
+            <img src="@/assets/img/Board/my-card1.png" @click="toggleOnOff" style="cursor:pointer;"></div>
+              <!-- missing report button -->
+              <div class="agree">
+             <img onclick="javascript:location.href='#/mypage';" src="@/assets/img/Board/my-card2.png"  style="cursor:pointer;"> </div>
+              <!-- go to my page -->
               <div class="go-to-mypage">
-             <img onclick="javascript:location.href='#/mypage';" src="@/assets/img/Board/my-card3.png" 
+             <img onclick="javascript:location.href='#/mypage/page2';" src="@/assets/img/Board/my-card3.png" 
               style="cursor:pointer;"/></div>
+
         </div>
 </template>
 
@@ -223,5 +226,9 @@ p {
   position: absolute;
   margin-top: 10.5%;
   left: 0.5%;
+}
+.app1 {
+  position: absolute;
+  top: 10%;
 }
 </style>

@@ -86,10 +86,10 @@ export default {
 .my-account {
   display: inline-block;
   position: absolute;
-  bottom: 44%;
+  bottom: 55%;
   width: 29%;
-  height: 15%;
-  border: 2px solid rgba(240, 240, 240, 0.801);
+  height: 13%;
+  border: 2px solid rgba(228, 226, 226, 0.801);
   left: 50%;
   border-radius: 2em;
   
@@ -99,10 +99,10 @@ export default {
   position:absolute;
   display: inline-block;
   width: 29%;
-  height: 15%;
+  height: 13%;
   left: 20%;
-  bottom: 44%;
-  border:2px solid rgba(240, 240, 240, 0.801);
+  bottom: 55%;
+  border:2px solid rgba(228, 226, 226, 0.801);
   border-radius: 2em;
   
   
@@ -127,22 +127,22 @@ export default {
   position:absolute;
   display: inline-block;
   width: 60%;
-  height: 15%;
+  height: 10%;
   background-color: rgba(240, 240, 240, 0.74);
-  bottom: 22%;
+  bottom: 40%;
   left: 20%;
 }
 .account-number {
   position: absolute;
   display: inline-block;
-  bottom: 52%;
-  left: 22%;
+  bottom: 62%;
+  left: 32.5%;
 }
 .klay {
   position: absolute;
   display: inline-block;
-  bottom: 52%;
-  left: 52%;
+  bottom: 62%;
+  left: 62%;
 }
 p {
   font-size: 17px;
@@ -150,25 +150,25 @@ p {
 .accountNumber {
   position: absolute;
   display: inline-block;
-  bottom: 45%;
-  left: 22%;
+  bottom: 57%;
+  left: 30.5%;
 }
 .myKlay {
   position: absolute;
   display: inline-block;
-  bottom: 45%;
-  left: 52%;
+  bottom: 57%;
+  left: 62%;
 }
 .btn1 {
   position: absolute;
   display: inline-block;
   left: 40%;
-  top: 85%;
+  top: 65%;
 }
 .btn2 {
   position: absolute;
   display: inline-block;
   left: 50%;
-  top: 85%;
+  top: 65%;
 }
 </style>
