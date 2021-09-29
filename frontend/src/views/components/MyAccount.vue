@@ -39,7 +39,7 @@
    methods: {
      getBalance: function(address) {
        var vm = this;
-       this.$http.get(`/api/user/get/balance/${address}`,{
+       this.$http.get(`http://localhost:3000/api/user/get/balance/${address}`,{
        })
        .then((res) => {
          console.log(res.data);

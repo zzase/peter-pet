@@ -341,9 +341,7 @@
                                                                                                                                                                                 @click="selectTinkerbellType(1)">외장칩 목걸이</b-button>
                                                                                                                                                                         </div>
 
-                                                                                                                                                                        <b-tooltip :show.sync="show" target="tooltip-button-1" placement="top">
-                                                                                                                                                                            선택되었습니다!
-                                                                                                                                                                        </b-tooltip>
+                                                                                                                                                                        
                                                                                                                                                                     </div>
                                                                                                                                                                 </div>
 
@@ -359,9 +357,7 @@
                                                                                                                                                                                     v-model="tinkerbellType"
                                                                                                                                                                                     @click="selectTinkerbellType(2)">내장칩 목걸이</b-button>
                                                                                                                                                                             </div>
-                                                                                                                                                                            <b-tooltip :show.sync="show" target="tooltip-button-1" placement="top">
-                                                                                                                                                                                선택되었습니다!
-                                                                                                                                                                            </b-tooltip>
+                                                                                                                                                                           
 
                                                                                                                                                                         </div>
                                                                                                                                                                     </div>
@@ -563,7 +559,7 @@
                                                                                                                                 this.validCheck();
                                                                                                                                 this
                                                                                                                                     .$http
-                                                                                                                                    .post('/api/pet/regist', {
+                                                                                                                                    .post('http://localhost:3000/api/pet/regist', {
                                                                                                                                        peterpet : peterpet,
                                                                                                                                        address : address,
                                                                                                                                        id : id
@@ -590,7 +586,7 @@
 
                                                                                                                                 this
                                                                                                                                     .$http
-                                                                                                                                    .post('/api/user/regist', {
+                                                                                                                                    .post('http://localhost:3000/api/user/regist', {
                                                                                                                                        wenddy : wenddy
                                                                                                                                     }, {"Content-Type": "application-json"})
                                                                                                                                     .then((res) => {
@@ -623,7 +619,7 @@
                                                                                                                                 else {
                                                                                                                                     this
                                                                                                                                     .$http
-                                                                                                                                    .post('/api/pet/tinkerbell', {
+                                                                                                                                    .post('http://localhost:3000/api/pet/tinkerbell', {
                                                                                                                                        tinkerbellType : tinkerbellType,
                                                                                                                                        address : address
                                                                                                                                     }, {"Content-Type": "application-json"})
