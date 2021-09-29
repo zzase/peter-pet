@@ -2,13 +2,17 @@ var express = require('express');
 var router = express.Router();
 const wallet = require('../kas/wallet');
 const bcrypt = require('bcryptjs');
+const node = require('../kas/node')
 
 
 import {connection} from '../mysql/connector';
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/get/balance',async function(req, res, next) {
+  const address = req.body.address;
+  const balance = await node.getBalance(address);
+
+  res.json({balance:balance});
 });
 
 router.post('/regist',async function(req,res,next) {
