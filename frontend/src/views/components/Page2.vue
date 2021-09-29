@@ -31,23 +31,27 @@
         <p>제공되는 개인정보 항목<br><br></p>
         <div class="report-line1">
         </div>
-       <li>이용약관 동의[필수]</li>
+
+        <li>이용약관 동의[필수]</li>
         <div class="checkBtn1">
-        <input type="checkbox" name="chk"></div>
+        <input type="checkbox" name="checkBox"></div>
        <li>보호자 이름[필수]</li>
         <div class="checkBtn2">
-        <input type="checkbox" name="chk"></div>
+        <input type="checkbox" name="checkBox"></div>
         <li>보호자 연락처[필수]</li>
         <div class="checkBtn3">
-        <input type="checkbox" name="chk"></div>
+        <input type="checkbox" name="checkBox"></div>
          <li>보호자 주소[선택]</li>
         <div class="checkBtn4">
-        <input type="checkbox" name="chk"></div>
-        <div class="report-line2">
+        <input type="checkbox" name="checkBox"></div>
+
+
+        <div class="report-line2"><br>
+           
         </div>
         <p>위의 정보는 실종된 반려견을 발견한 목격자가 보호자님께<br>
         제보하기 위한 용도로만 제공됩니다.</p><br>
-</div>
+      </div>
         <div class="report-close">
         <b-button @click="modal = false">닫기</b-button>
         </div>
@@ -69,7 +73,8 @@
 export default {
   data (){
     return {
-     modal : false,
+    
+    modal : false,
     counter: 0,
     }
   },
@@ -77,7 +82,6 @@ export default {
     
   
   },
-
       methods: {
       toast(toaster, append = false) {
         this.counter++
@@ -87,9 +91,17 @@ export default {
           solid: true,
           appendToast: append
         })
-      }
-    },
+      },
 
+      selectAll: function() {
+          const checkboxes
+                = document.getElementsByName('infoAgree');
+
+          checkboxes.forEach((checkbox) => {
+            checkbox.checked = selectAll.checked;
+          })
+      },
+  
   computed: {
     headerStyle() {
       return {
@@ -97,6 +109,7 @@ export default {
       };
     }
   }
+}
 };
 </script>
 
@@ -144,7 +157,7 @@ div {
   z-index: 2;
   left: 43%;
   width: 30%;
-  height: 76%;
+  height: 78%;
   top: 10%;
   background: rgba(161, 161, 161, 0.37);
   border-radius: 8px;
@@ -200,7 +213,7 @@ div {
 }
 .report-line2 {
   position: relative;
-  top: 13%;
+  top: 12%;
   background-color: rgba(167, 167, 167, 0.452);
   width: 100%;
   height: 0.2%;
@@ -221,12 +234,12 @@ div {
 }
 .report-agree {
   position: absolute;
-  left: 40%;
+  left: 39%;
   bottom: 8%;
 }
 .report-close {
   position: absolute;
-  left: 53%;
+  left: 52%;
   bottom: 8%;
 }
 </style>

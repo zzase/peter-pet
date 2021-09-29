@@ -41,7 +41,7 @@
       </div>
     <div class="v-card">
         <v-card
-          height="600"
+          height="1200"
           width="1320"
           class="mx-auto"
         >
@@ -103,7 +103,7 @@ let router = new VueRouter({
       return {
         items: [
           { title: 'My 동물등록증', icon: 'mdi-view-dashboard', url: '/mypage/page1' },
-          { title: 'My 실종게시글 관리', icon: 'mdi-image', url: '/mypage/page2' },
+          { title: 'My 실종신고', icon: 'mdi-image', url: '/mypage/page2' },
           { title: 'My NFT', icon: 'mdi-help-box', url: '/mypage/page3' },
         ],
         right: null,

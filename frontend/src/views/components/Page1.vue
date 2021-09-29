@@ -9,6 +9,9 @@
             </login-card>
             </div>
           </div>
+          
+          <div id="app1">
+            <div v-if="isStatusOn">
               <div class="card">
               <img id ="card" src="@/assets/img/Regist/card.png">
               </div>
@@ -45,10 +48,16 @@
                 <div class="notes">
                   <p> notes {{ peterpet.notes }} </p>
                 </div>
+             </div>
+          </div>
 
-                <div class="agreement1">
-      <b-button @click="modal = true">실종신고>></b-button>
-      </div>
+              <div class="card-on">
+              <img src="@/assets/img/Board/my-card1.png" @click="toggleOnOff" style="cursor:pointer;"></div>
+                <div class="agree">
+             <img src="@/assets/img/Board/my-card2.png" @click="modal = true" style="cursor:pointer;"> </div>
+              <div class="go-to-mypage">
+             <img onclick="javascript:location.href='#/mypage';" src="@/assets/img/Board/my-card3.png" 
+              style="cursor:pointer;"/></div>
         </div>
 </template>
 
@@ -59,6 +68,8 @@ import { LoginCard } from "@/components";
 export default {
   data (){
     return {
+      isStatusOn: false,
+
       peterpet: {
          name: null,
          imgHash: "hash",
@@ -70,9 +81,13 @@ export default {
          furColor: null,
          vaccinationHistory: null,
          notes: null
-      },
+      }
     }
-
+  },
+  methods: {
+    toggleOnOff: function(){
+      this.isStatusOn = !this.isStatusOn;
+    }
   },
   components: {
     LoginCard
@@ -103,6 +118,7 @@ export default {
 }
 .md-layout-item {
   position:relative;
+  top: 10%;
   width: 100%;
 }
 .my-box0 {
@@ -189,12 +205,23 @@ p {
   position: absolute;
   left: -11%;
   width: 70%;
-  margin-top: -10%;
+  margin-top: 3%;
 }
-.agreement1 {
+.agree {
   position: absolute;
-  bottom: -15%;
-  left: 17%;
+  margin-top: 17%;
+  
 }
-
+.card-on{
+  z-index: 1;
+  width: 40%;
+  height: 40%;
+  position: absolute;
+  margin-top: 3%;
+}
+.go-to-mypage {
+  position: absolute;
+  margin-top: 10.5%;
+  left: 0.5%;
+}
 </style>

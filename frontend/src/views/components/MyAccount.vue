@@ -20,10 +20,10 @@
                           <h6>나의 잔액</h6>
                         </div>
                         <div class="accountNumber">
-                        <p style="color: rgb(23, 127, 117)"> accountNumber {{ accountNumber }} </p>
+                        <p style="color: rgb(23, 127, 117)"> accountNumber {{ wenddy.accountNumber }} </p>
                       </div>
                       <div class="myKlay">
-                        <p style="color: rgb(23, 127, 117)"> myKlay {{ myKlay }} </p>
+                        <p style="color: rgb(23, 127, 117)"> myBalance {{ wenddy.klayBalance }} </p>
                       </div>
               <div class="btn1">        
               <md-button
@@ -43,6 +43,21 @@
                </div>
         </div>
 </template>
+
+<script>
+export default {
+  data (){
+    return {
+      wenddy: {
+         accountNumber: null,
+         klayBalance: null,
+      },
+    }
+  }
+};
+
+  
+</script>
 
 <style>  
 .my-page {
@@ -112,9 +127,9 @@
   position:absolute;
   display: inline-block;
   width: 60%;
-  height: 20%;
+  height: 15%;
   background-color: rgba(240, 240, 240, 0.74);
-  bottom: 18%;
+  bottom: 22%;
   left: 20%;
 }
 .account-number {
