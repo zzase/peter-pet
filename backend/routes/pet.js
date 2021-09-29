@@ -37,20 +37,33 @@ router.get('/get/all/petInfos', async function(req, res, next) {
       res.status(404).send(`${did}로 등록된 peterpet정보를 찾을수 없습니다.`);
     }
     else {
-      res.status(200).send({did : did, 
-        peterpet: {
-          imgHash : peterpet.imgHash,
-          name : peterpet.name,
-          birth : peterpet.birth,
-          breedOfDog : peterpet.breedOfDog,
-          adoptionDate : peterpet.adoptionDate,
-          isNeutering : peterpet.isNeutering,
-          furColor : peterpet.furColor,
-          vaccinationHistory : peterpet.vaccinationHistory,
-          notes : peterpet.notes,
-          missing : peterpet.misiing
-      }
-    });
+      connection.query(`SELECT issueDate FROM did WHERE did="${did}"`,async function(err,rows){
+        if(err){
+          res.status(404).send(`${did}로 등록된 peterpet정보를 찾을수 없습니다.`);
+        }
+        else {
+          const issueDate = new Date(rows[0].issueDate);
+          res.status(200).send({did : did, 
+            peterpet: {
+              imgHash : peterpet.imgHash,
+              name : peterpet.name,
+              birth : peterpet.birth,
+              breedOfDog : peterpet.breedOfDog,
+              adoptionDate : peterpet.adoptionDate,
+              isNeutering : peterpet.isNeutering,
+              furColor : peterpet.furColor,
+              vaccinationHistory : peterpet.vaccinationHistory,
+              notes : peterpet.notes,
+              missing : peterpet.misiing,
+              issueDate : {
+                year : issueDate.getFullYear(),
+                month : issueDate.getMonth() +1,
+                date : issueDate.getDate()
+              }
+          }
+        });
+        }
+      })
     }
   }
 });
