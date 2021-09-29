@@ -1,7 +1,7 @@
 <template>
 <div class="account-content">
     <div class="welcome">
-                  <h4>00님<br><br>환영합니다</h4>
+                  <h4>{{name}}웬디님<br><br>환영합니다</h4>
                   </div>
                     <div class="my-account">
                     </div>
@@ -20,13 +20,40 @@
                           <h6>나의 잔액</h6>
                         </div>
                         <div class="accountNumber">
-                        <p style="color: rgb(23, 127, 117)"> accountNumber {{ accountNumber }} </p>
+                        <p style="color: rgb(23, 127, 117)" > {{ address }} </p>
                       </div>
                       <div class="myKlay">
-                        <p style="color: rgb(23, 127, 117)"> myKlay {{ myKlay }} </p>
+                        <p style="color: rgb(23, 127, 117)" > {{ balance }} klay</p>
                       </div>
         </div>
 </template>
+<script>
+ export default {
+   date(){
+     return {
+       name : null,
+       address : null,
+       balance : null,
+     }
+   },
+   methods: {
+     getBalance: function(address) {
+       var vm = this;
+       this.$http.get(`/api/user/get/balance/${address}`,{
+       })
+       .then((res) => {
+         console.log(res.data);
+         vm.balance = res.data.balance;
+       })
+     }
+   },
+   created() {
+     this.name = this.$store.state.user.id;
+     this.address = this.$store.state.user.address;
+     this.getBalance(this.$store.state.user.address);
+   },
+ }
+</script>
 
 <style>  
 .my-page {

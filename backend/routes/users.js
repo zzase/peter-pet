@@ -8,11 +8,14 @@ const node = require('../kas/node')
 import {connection} from '../mysql/connector';
 
 /* GET users listing. */
-router.get('/get/balance',async function(req, res, next) {
-  const address = req.body.address;
-  const balance = await node.getBalance(address);
-
-  res.json({balance:balance});
+router.get('/get/balance/:address',async function(req, res, next) {
+  const address = req.params.address;
+  try{
+    const balance = await node.getBalance(address);
+    res.json({balance:balance});
+  }catch{
+    res.status(404).send('올바르지 않은 주소');
+  }
 });
 
 router.post('/regist',async function(req,res,next) {
