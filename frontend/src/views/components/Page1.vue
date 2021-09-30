@@ -303,7 +303,7 @@ p {
   position: absolute;
   width: 76%;
   height: 100%;
-  background-color: rgba(143, 155, 173, 0.397);
+  background-color: rgba(143, 162, 173, 0.397);
   top: 14%;
 }
 .bar {
