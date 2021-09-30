@@ -3,32 +3,27 @@
           <div class="page-head">
           <h2><b>MY 동물등록증</b></h2></div>
 <div class="carousel">    
-<!-- <carousel :autoplay="true" :nav="false" :dots="false" class="marginTop50">
-  <ul id="carousel-1">
-  <li v-for="DID in DIDs" v-bind:key="DID">
-    {{ DID.id }}
-  </li>
-  </ul>
-
-</carousel> -->
-
-<!-- DID Card Slide -->
 <carousel :autoplay="true" :nav="false" :dots="false" class="marginTop50">
- <b-card 
-        v-for="DID in accordionDIDs" :key="DID.accld"
-        title= "name"
-        header-tag="header" 
-        footer-tag="footer"
-        @click="modal = true">
-      <template #header> {{ DID.name }}
+  <div  v-for="dids in formattedDids" :key="dids.accld"> 
+    <b-card @click="clickCard(did.did)"  
+            header-tag="header" 
+            footer-tag="footer"
+            v-for="did in dids" :key="did.accld"
+            style="max-width: 18rem;">
+      <template #header> {{ did.did }}
       </template>
       <br>
-      <b-card-text>동물등록증을 보려면 클릭하세요!</b-card-text>
-      <b-button href="#" variant="default" onclick="javascript:location.href='#/mypage/page2';">실종 신고</b-button>
+      <b-card-body>
+        <b-card-title>{{did.name}}</b-card-title>
+        <b-card-text>동물등록증을 보려면 클릭하세요!</b-card-text>
+      <b-button href="#" variant="default" @click="missingReport(`${did.did}`)">실종 신고</b-button>
+      </b-card-body>
       <template #footer>
         <em>Peter-Pet</em>
       </template>
     </b-card>
+  </div>
+    
 </carousel> 
 
 <div class="page1-line">
@@ -36,7 +31,6 @@
 <div class="page1-line2">
 </div>
 </div>         
-
         <!-- pop-up DID CARD -->
        <div class="black-bg" v-if="modal == true">
            <div class="white-bg">
@@ -46,39 +40,38 @@
               <img id ="card" src="@/assets/img/Regist/card.png" @click="modal = false" style="cursor:pointer;"> 
               </div>
                 <div class="name">
-                  <p> name {{ peterpet.name }} </p>
+                  <p> {{ peterpet.name }} </p>
                 </div>
                 <div class="number">
-                  <p> number {{ peterpet.registerNumber }} </p>
+                  <p> {{ peterpet.registerNumber }} </p>
                 </div>
                 <div class="imghash">
-                  <p> imghash {{ peterpet.imgHash }} </p>
+                  <p> {{ peterpet.imgHash }} </p>
                 </div>
                 <div class="birth">
-                  <p> birth {{ peterpet.birth }} </p>
+                  <p> {{ peterpet.birth }} </p>
                 </div>
                 <div class="gender">
-                  <p> gender {{ peterpet.gender }} </p>
+                  <p> {{ peterpet.gender }} </p>
                 </div>
                 <div class="breedOfDog">
-                  <p> breedOfDog {{ peterpet.breedOfDog }} </p>
+                  <p> {{ peterpet.breedOfDog }} </p>
                 </div>
                 <div class="furColor">
-                  <p> furColor {{ peterpet.furColor }} </p>
+                  <p>{{ peterpet.furColor }} </p>
                 </div>
                 <div class="adoptionDate">
-                  <p> adoptionDate {{ peterpet.adoptionDate }} </p>
+                  <p> {{ peterpet.adoptionDate }} </p>
                 </div>
                 <div class="isNeutering">
-                  <p> isNeutering {{ peterpet.isNeutering }} </p>
+                  <p> {{ peterpet.isNeutering }} </p>
                 </div>
                 <div class="vaccinationHistory">
-                  <p> vaccinationHistory {{ peterpet.vaccinationHistory }} </p>
+                  <p> {{ peterpet.vaccinationHistory }} </p>
                 </div>
                 <div class="notes">
-                  <p> notes {{ peterpet.notes }} </p>
+                  <p> {{ peterpet.notes }} </p>
                 </div>
-             
              </div>
            </div>
        </div>
@@ -93,28 +86,12 @@ export default {
 
   data (){
     return {
-      accordionDIDs: [
-        {id:1, name:'did1'},
-        {id:2, name:'did2'},
-        {id:3, name:'did3'},
-        {id:4, name:'did4'}
-      ],
+      accordionDIDs: [],
 
       modal : false,
       counter: 0,
 
-      peterpet: {
-         name: null,
-         imgHash: "hash",
-         breedOfDog: null,
-         gender: null,
-         birth: null,
-         adoptionDate: null,
-         isNeutering: null,
-         furColor: null,
-         vaccinationHistory: null,
-         notes: null
-      }
+      peterpet: { }
     }
   },
   methods: {
@@ -126,7 +103,35 @@ export default {
           solid: true,
           appendToast: append
         })
-      }
+      },
+      getDids: function(address) {
+       this.$http.get(`http://localhost:3000/api/pet/get/all/dids/${address}`,{
+       })
+       .then((res) => {
+         console.log(res.data);
+         for(var i=0; i<res.data.length; i++){
+           this.accordionDIDs.push({id:i+1, did:`${res.data.dids[i]}` ,name:res.data.names[i]});
+         }
+       })
+     },
+     getInfo: function(did) {
+       this.$http.get(`http://localhost:3000/api/pet/get/all/petInfos/${did}`,{
+       })
+       .then((res) => {
+         console.log(res.data);
+         this.peterpet = res.data.peterpet;
+       })
+     },
+     clickCard : function(did) {
+       this.modal = true;
+       this.getInfo(did);
+     },
+     missingReport : function(did) {
+       this.$router.push({name :"Page 2", query : {did:did}}).catch(()=>{});
+     }
+  },
+  created() {
+    this.getDids(this.$store.state.user.address);
   },
   components: {
     carousel 
@@ -137,12 +142,23 @@ export default {
       return {
         backgroundImage: `url(${this.header})`
       };
-    }
+    },
+    formattedDids (){
+          return this.accordionDIDs.reduce((c, n, i) => {
+              if (i % 2 === 0) c.push([]);
+              c[c.length - 1].push(n);
+              return c;
+          }, []);
+      }
   }
 };
 </script>
 
 <style lang="css">
+
+#dids {
+  margin-left: 0px;
+}
 
 .white {
   z-index: 4;

@@ -10,29 +10,33 @@ var router = express.Router();
 
 /* GET home page. */
 
-router.get('/get/all/dids', async function(req, res, next) {
+router.get('/get/all/dids/:address', async function(req, res, next) {
   console.log('get all dids api call');
-  const address = req.query.address;
+  const address = req.params.address;
   if(address === undefined) res.status(404).send('address 정보가 올바르지 않습니다');
   else {
     const dids = await contract.methods.getDidsByWenddy(address).call();
-
+    const length = await contract.methods.getCountDidByWenddy(address).call();
+    const names = [];
+    for(var i =0; i<length; i++){
+      names.push(await contract.methods.getPetNameByDid(`${dids[i]}`).call());
+    }
     if(dids === undefined){
       res.status(404).send(`${address}로 등록된 did가 없습니다`);
     }
     else {
-      res.status(200).send({address : address, dids: dids});
+      res.status(200).send({address : address, dids: dids, names:names, length:length});
     }
   }
 });
 
-router.get('/get/all/petInfos', async function(req, res, next) {
+router.get('/get/all/petInfos/:did', async function(req, res, next) {
   console.log('get all pet Info api call');
-  const did = req.query.did;
+  const did = req.params.did;
   if(did === undefined) res.status(404).send('did 정보가 올바르지 않습니다');
   else {
     const peterpet = await contract.methods.getAllInfoByDid(did).call();
-
+    
     if(peterpet === undefined){
       res.status(404).send(`${did}로 등록된 peterpet정보를 찾을수 없습니다.`);
     }
@@ -55,6 +59,7 @@ router.get('/get/all/petInfos', async function(req, res, next) {
               vaccinationHistory : peterpet.vaccinationHistory,
               notes : peterpet.notes,
               missing : peterpet.misiing,
+              gender : peterpet.gender,
               issueDate : {
                 year : issueDate.getFullYear(),
                 month : issueDate.getMonth() +1,
@@ -180,7 +185,7 @@ router.post('/report/missing',async function(req,res,next) {
         const result = await contract.methods.updateMissingStatus(did,true).send({ from: address, gas: 5000000 });
         res.status(200).send({did : did , result:result, checkUpdate:checkUpdate, msg:msg})
       }catch(error){
-        res.status(400).send("잔액부족");
+        res.status(400).send({msg:"잔액부족"});
       }
     }
   })

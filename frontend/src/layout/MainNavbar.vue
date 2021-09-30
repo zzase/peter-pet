@@ -117,13 +117,7 @@
               </li>
               <div>
                 <div v-if="this.$store.state.isLogin">
-                  <a class="navbar-brand" href="#/myPage">
-                    <span>
-                      <p>My Page</p>
-                    </span>
-                  </a>
-                  <h5>{{this.$store.state.user.id}}</h5>
-                  <h5>{{this.$store.state.user.address}}</h5>
+                  <b-button pill variant="outline-primary" @click="myPage()">MyPage</b-button>
                 </div>
 
                 <div v-else>
@@ -245,6 +239,9 @@ export default {
     },
   },
   methods: {
+    myPage: function () {
+      window.location.href = '#/myPage'
+    },
     login : function() {
       this.$http.post('http://localhost:3000/api/user/login',{user : this.user},{"Content-Type":"application-json"})
       .then((res)=>{

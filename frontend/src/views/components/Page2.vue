@@ -56,10 +56,10 @@
         <b-button @click="modal = false">닫기</b-button>
         </div>
         <div class="report-agree">
-          <b-button v-b-modal.modal-1>동의</b-button>
-          <b-modal id="modal-1" title="Peter-Pet 실종신고">
+          <b-button @click="missingReport()">동의</b-button>
+          <!-- <b-modal id="modal-1" title="Peter-Pet 실종신고">
             <p class="my-4">실종신고가 완료되었습니다!</p>
-          </b-modal>
+          </b-modal> -->
         </div>
 
       
@@ -91,6 +91,25 @@ export default {
           solid: true,
           appendToast: append
         })
+      },
+
+      missingReport: function() {
+        this.$http.post('http://localhost:3000/api/pet/report/missing',
+        {address : this.$store.state.user.address, did : this.$route.query.did },
+        {"Content-Type":"application-json"})
+      .then((res)=>{
+        console.log('res.data : ' + res.data);
+        if(res.data.checkUpdate){
+          alert(res.data.msg);
+          this.$router.push({name:'Page 1'});
+        }
+        else {
+          alert("실종신고 실패");
+        }
+      })
+      .catch((err)=>{
+        console.error(err);
+      })
       },
 
       selectAll: function() {

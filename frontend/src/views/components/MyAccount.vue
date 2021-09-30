@@ -17,16 +17,17 @@
                         <div class="account-number">
                           <h6>내 계좌</h6>
                         </div>
+                        <div>
+                          <p class="accountNumber"> {{ address }} </p>
+                        </div>
                         <div class="klay">
                           <h6>나의 잔액</h6>
                         </div>
-                        <div class="accountNumber">
-                        <p> {{ address }} </p>
-                      </div>
-                      <div class="myKlay">
-                        <p> {{ balance }} klay</p>
-                      </div>
-              <div class="btn1">        
+                        <div>
+                          <p class="myKlay"> {{ balance }} klay</p>
+                        </div>
+
+                        <div class="btn1">        
               <md-button
                           id="login"
                           href="#/mypage"
@@ -43,6 +44,7 @@
                           <b>메인 페이지</b></md-button >
                </div>
         </div>
+
 </template>
 <script>
  export default {
@@ -69,21 +71,6 @@
      this.getBalance(this.$store.state.user.address);
    }
  }
-</script>
-
-<script>
-export default {
-  data (){
-    return {
-      wenddy: {
-         accountNumber: null,
-         klayBalance: null,
-      },
-    }
-  }
-};
-
-  
 </script>
 
 <style>  
