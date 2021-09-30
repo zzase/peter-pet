@@ -1,7 +1,8 @@
 <template>
 <div class="account-content">
     <div class="welcome">
-                  <h4>{{name}}웬디님<br><br>환영합니다</h4>
+                  <h4 ><h1 class="wenddyName">{{name}}</h1> 웬디님</h4>
+                  <br><h4>환영합니다</h4>
                   </div>
                     <div class="my-account">
                     </div>
@@ -20,10 +21,10 @@
                           <h6>나의 잔액</h6>
                         </div>
                         <div class="accountNumber">
-                        <p style="color: rgb(23, 127, 117)" > {{ address }} </p>
+                        <p> {{ address }} </p>
                       </div>
                       <div class="myKlay">
-                        <p style="color: rgb(23, 127, 117)" > {{ balance }} klay</p>
+                        <p> {{ balance }} klay</p>
                       </div>
         </div>
 </template>
@@ -142,16 +143,25 @@
 p {
   font-size: 17px;
 }
+.wenddyName {
+  font-weight: bold;
+  color: blueviolet;
+  display: inline;
+}
 .accountNumber {
   position: absolute;
   display: inline-block;
   bottom: 45%;
   left: 22%;
+  color: rgb(23, 127, 117);
+  font-weight: bold;
 }
 .myKlay {
   position: absolute;
   display: inline-block;
   bottom: 45%;
   left: 52%;
+  color: rgb(23, 127, 117);
+  font-weight: bold;
 }
 </style>
