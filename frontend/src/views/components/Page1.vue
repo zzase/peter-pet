@@ -330,6 +330,7 @@ p {
   height: 50%;
 }
 .carousel {
+  text-align: center;
   z-index: 1;
   position: relative;
   margin-top: 4%;
@@ -343,9 +344,9 @@ p {
   top: 18%;
 }
 .bar {
-  margin-left: 15%;
+ margin-left: -60%;
   font-size: 20px;
   font-family: 'Righteous', cursive;
-  color:rgb(95, 92, 110)
+  color:rgb(125, 120, 150)
 }
 </style>
