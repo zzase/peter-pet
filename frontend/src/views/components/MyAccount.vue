@@ -29,7 +29,7 @@
 </template>
 <script>
  export default {
-   date(){
+   data(){
      return {
        name : null,
        address : null,
@@ -38,12 +38,11 @@
    },
    methods: {
      getBalance: function(address) {
-       var vm = this;
        this.$http.get(`http://localhost:3000/api/user/get/balance/${address}`,{
        })
        .then((res) => {
          console.log(res.data);
-         vm.balance = res.data.balance;
+         this.balance = res.data.balance
        })
      }
    },
@@ -51,7 +50,7 @@
      this.name = this.$store.state.user.id;
      this.address = this.$store.state.user.address;
      this.getBalance(this.$store.state.user.address);
-   },
+   }
  }
 </script>
 
