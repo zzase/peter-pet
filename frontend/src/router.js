@@ -99,10 +99,9 @@ export default new Router({
     {
       path: "/landing",
       name: "landing",
-      components: { default: Landing, header: MainNavbar, footer: MainFooter },
+      components: { default: Landing,  },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        
       }
     },
     {

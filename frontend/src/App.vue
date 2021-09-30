@@ -14,3 +14,9 @@
 
 </script>
 
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Righteous&display=swap');
+
+</style>
+

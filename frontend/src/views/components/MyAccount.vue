@@ -60,6 +60,9 @@ export default {
 </script>
 
 <style>  
+p {
+  color:rgb(88, 88, 88);
+}
 .my-page {
   position: relative;
   width: 90%;

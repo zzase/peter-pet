@@ -22,8 +22,8 @@
       <b-button @click="modal = true">실종신고>></b-button>
       </div>
 
- <div class="black-bg" v-if="modal == true">
-   <div class="white-bg">
+ <div class="black-bg1" v-if="modal == true">
+   <div class="white-bg1">
     
      <h4>개인정보 제3자 제공 동의</h4><br>
      <p>(주)피터펫은 회원님들의 개인정보를 안전하게 취급하는데 최선을 다합니다.<br><br></p>
@@ -114,6 +114,7 @@ export default {
 </script>
 
 <style>
+
 body{
   margin: 0
 }
@@ -153,7 +154,7 @@ div {
   text-align: center;
   color: rgb(33, 46, 46);
 }
-.black-bg {
+.black-bg1 {
   z-index: 2;
   left: 43%;
   width: 30%;
@@ -164,7 +165,7 @@ div {
   position: fixed; padding: 10px;
   margin:auto;
 }
-.white-bg {
+.white-bg1 {
   z-index: 1;
   text-align: center;
   width: 100%; background: white;
