@@ -32,6 +32,7 @@
     <div class="page-content2">
       <p>보호자 이름 : {{ wenddy.name }}</p>
       <p>보호자 연락처 : {{ wenddy.phoneNumber }}</p>
+      <p>피터펫 연락처 : 02-000-0000</p>
     </div>
   </div>
   
@@ -137,7 +138,7 @@ export default {
 .page-content2 {
   position: absolute;
   left: 13%;
-  bottom: -33%;
+  bottom: -35%;
 }
 .page-content3 {
   text-align: center;

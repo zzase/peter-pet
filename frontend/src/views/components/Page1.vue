@@ -1,87 +1,43 @@
 <template>
         <div class="contents">
+          <div class="page-head">
+          <h2><b>MY 동물등록증</b></h2></div>
 <div class="carousel">    
+<!-- <carousel :autoplay="true" :nav="false" :dots="false" class="marginTop50">
+  <ul id="carousel-1">
+  <li v-for="DID in DIDs" v-bind:key="DID">
+    {{ DID.id }}
+  </li>
+  </ul>
+
+</carousel> -->
+
+<!-- DID Card Slide -->
 <carousel :autoplay="true" :nav="false" :dots="false" class="marginTop50">
-  <div class="bar"> DID 1 </div>
-  <div class="bar"> DID 2 </div>
-  <div class="bar"> DID 3 </div>
-  <div class="bar"> DID 4 </div>
-  <div class="bar"> DID 1 </div>
-  <div class="bar"> DID 2 </div>
-  <div class="bar"> DID 3 </div>
-  <div class="bar"> DID 4 </div>
-</carousel>
-<carousel :autoplay="true" :nav="false" :dots="false" class="marginTop50">
- <b-card
-            title="DID 동물등록증"
-            img-src="https://picsum.photos/600/300/?image=25" 
-            img-alt="Image"
-            img-top
-            tag="article"
-            style="max-width: 20rem;"
-            class="mb-2"
-             @click="modal = true"
-          > 
-            <b-card-text>
-              name {{ peterpet.name }}
-            </b-card-text>
-            <b-button href="#" variant="default">실종신고</b-button>
-          </b-card>
-
-  <b-card
-            title="DID 동물등록증"
-            img-src="https://picsum.photos/600/300/?image=25"
-            img-alt="Image"
-            img-top
-            tag="article"
-            style="max-width: 20rem;"
-            class="mb-2"
-          >
-            <b-card-text>
-              name {{ peterpet.name }}
-            </b-card-text>
-
-            <b-button href="#" variant="default">실종신고</b-button>
-          </b-card>
-        
-  <b-card
-            title="DID 동물등록증"
-            img-src="https://picsum.photos/600/300/?image=25"
-            img-alt="Image"
-            img-top
-            tag="article"
-            style="max-width: 20rem;"
-            class="mb-2"
-          >
-            <b-card-text>
-              name {{ peterpet.name }}
-            </b-card-text>
-
-            <b-button href="#" variant="default">실종신고</b-button>
-          </b-card>
-
-<b-card
-            title="DID 동물등록증"
-            img-src="https://picsum.photos/600/300/?image=25"
-            img-alt="Image"
-            img-top
-            tag="article"
-            style="max-width: 20rem;"
-            class="mb-2"
-          >
-            <b-card-text>
-              name {{ peterpet.name }}
-            </b-card-text>
-
-            <b-button href="#" variant="default">실종신고</b-button>
-          </b-card>
+ <b-card 
+        v-for="DID in accordionDIDs" :key="DID.accld"
+        title= "name"
+        header-tag="header" 
+        footer-tag="footer"
+        @click="modal = true">
+      <template #header> {{ DID.name }}
+      </template>
+      <br>
+      <b-card-text>동물등록증을 보려면 클릭하세요!</b-card-text>
+      <b-button href="#" variant="default" onclick="javascript:location.href='#/mypage/page2';">실종 신고</b-button>
+      <template #footer>
+        <em>Peter-Pet</em>
+      </template>
+    </b-card>
 </carousel> 
 
 <div class="page1-line">
 </div>
+<div class="page1-line2">
+</div>
 </div>         
 
-<!-- pop-up DID -->
+        <!-- pop-up DID CARD -->
        <div class="black-bg" v-if="modal == true">
            <div class="white-bg">
 
@@ -133,9 +89,16 @@
 import carousel from 'vue-owl-carousel'
 
 export default {
+  name:"Accordion",
 
   data (){
     return {
+      accordionDIDs: [
+        {id:1, name:'did1'},
+        {id:2, name:'did2'},
+        {id:3, name:'did3'},
+        {id:4, name:'did4'}
+      ],
 
       modal : false,
       counter: 0,
@@ -339,14 +302,28 @@ p {
 .page1-line{
   position: absolute;
   width: 76%;
-  height: 90%;
-  background-color: rgba(230, 230, 230, 0.397);
-  top: 18%;
+  height: 100%;
+  background-color: rgba(143, 155, 173, 0.397);
+  top: 14%;
 }
 .bar {
  margin-left: -60%;
   font-size: 20px;
   font-family: 'Righteous', cursive;
   color:rgb(125, 120, 150)
+}
+.page1-line2 {
+  position: absolute;
+  width: 76%;
+  height: 1%;
+  background-color: rgba(147, 161, 170, 0.171);
+  margin-top: 5%;
+}
+.page-head {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color:rgba(75, 77, 85, 0.801);
+  position: absolute;
+  left: 10%;
+  top: -4%;
 }
 </style>
