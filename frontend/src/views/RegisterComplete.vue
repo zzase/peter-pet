@@ -15,7 +15,18 @@
                    <div class="hat">
                     <img :src="img1" alt="brand"/>
                   </div>
+                    
                     <div class ="my-box2">
+                      <label>이름 : </label>
+                      <label>{{$route.query.peterpet.name}}</label>
+                      <br>
+                      <label>DID : </label>
+                      <label>{{$route.query.peterpet.did}}</label>
+                      <br>
+                      <label>url : </label>
+                      <label>{{$route.query.peterpet.url}}</label>
+                      <br>
+                      <label>{{$route.query.msg}}</label>
                   </div>
                     <div class="link">
                       <img
@@ -26,7 +37,7 @@
                       />
                     </div>
                        <div class="my-box3">
-                        </div>
+                       </div>
                        <div class="my-box4">
                        </div>
                       <div class="my-box5">

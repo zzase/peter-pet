@@ -1,7 +1,8 @@
 <template>
 <div class="account-content">
     <div class="welcome">
-                  <h4>00님<br><br>환영합니다</h4>
+                  <h4 ><h1 class="wenddyName">{{name}}</h1> 웬디님</h4>
+                  <br><h4>환영합니다</h4>
                   </div>
                     <div class="my-account">
                     </div>
@@ -20,10 +21,10 @@
                           <h6>나의 잔액</h6>
                         </div>
                         <div class="accountNumber">
-                        <p style="color: rgb(23, 127, 117)"> accountNumber {{ wenddy.accountNumber }} </p>
+                        <p> {{ address }} </p>
                       </div>
                       <div class="myKlay">
-                        <p style="color: rgb(23, 127, 117)"> myBalance {{ wenddy.klayBalance }} </p>
+                        <p> {{ balance }} klay</p>
                       </div>
               <div class="btn1">        
               <md-button
@@ -43,6 +44,32 @@
                </div>
         </div>
 </template>
+<script>
+ export default {
+   data(){
+     return {
+       name : null,
+       address : null,
+       balance : null,
+     }
+   },
+   methods: {
+     getBalance: function(address) {
+       this.$http.get(`http://localhost:3000/api/user/get/balance/${address}`,{
+       })
+       .then((res) => {
+         console.log(res.data);
+         this.balance = res.data.balance
+       })
+     }
+   },
+   created() {
+     this.name = this.$store.state.user.id;
+     this.address = this.$store.state.user.address;
+     this.getBalance(this.$store.state.user.address);
+   }
+ }
+</script>
 
 <script>
 export default {
@@ -150,28 +177,25 @@ p {
 p {
   font-size: 17px;
 }
+.wenddyName {
+  font-weight: bold;
+  color: blueviolet;
+  display: inline;
+}
 .accountNumber {
   position: absolute;
   display: inline-block;
-  bottom: 57%;
-  left: 30.5%;
+  bottom: 45%;
+  left: 22%;
+  color: rgb(23, 127, 117);
+  font-weight: bold;
 }
 .myKlay {
   position: absolute;
   display: inline-block;
-  bottom: 57%;
-  left: 62%;
-}
-.btn1 {
-  position: absolute;
-  display: inline-block;
-  left: 40%;
-  top: 65%;
-}
-.btn2 {
-  position: absolute;
-  display: inline-block;
-  left: 50%;
-  top: 65%;
+  bottom: 45%;
+  left: 52%;
+  color: rgb(23, 127, 117);
+  font-weight: bold;
 }
 </style>

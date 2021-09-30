@@ -246,7 +246,7 @@ export default {
   },
   methods: {
     login : function() {
-      this.$http.post('/api/user/login',{user : this.user},{"Content-Type":"application-json"})
+      this.$http.post('http://localhost:3000/api/user/login',{user : this.user},{"Content-Type":"application-json"})
       .then((res)=>{
         console.log('res.data : ' + res.data);
         if(res.data.loginCheck){

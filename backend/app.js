@@ -8,7 +8,16 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var peterpetRouter = require('./routes/pet');
 
+const cfg = require('./cfg');
+
+if (!cfg) {
+  console.error('./cfg.js file not exists');
+  process.exit(1);
+}
+
 var app = express();
+
+if(cfg.web.cors) app.use(require('cors')());
 
 var expressVue = require("express-vue");
 const vueOptions = {

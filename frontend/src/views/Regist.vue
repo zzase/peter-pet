@@ -158,17 +158,17 @@
                                                                     <template slot="tab-pane-2">
                                                                         <div class="md-layout">
                                                                             <div class="md-layout-item md-size-100 ml-auto">
+                                                                              <form @submit.prevent="registGov">
                                                                                 <login-card header-color="orange">
                                                                                     <h2 slot="title" class="card-title">Wenddy</h2>
                                                                                     <md-field class="md-form-group" slot="inputs">
                                                                                         <label>
                                                                                             <md-icon>person_outline</md-icon>이름</label>
-                                                                                        <md-input v-model="name"></md-input>
+                                                                                        <md-input v-model="wenddy.name"></md-input>
                                                                                     </md-field>
                                                                                     <md-field class="md-form-group" slot="inputs">
                                                                                         <label>
                                                                                             <md-icon>whatsapp</md-icon>연락처</label>
-
                                                                                         <input
                                                                                             type="tel"
                                                                                             name="tlno"
@@ -176,11 +176,12 @@
                                                                                             title="전화번호를 입력하세요."
                                                                                             placeholder="010*-0000*-0000"
                                                                                             pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}"
-                                                                                            maxlength="13"></md-field>
+                                                                                            maxlength="13"
+                                                                                            v-model="wenddy.phone"></md-field>
                                                                                         <md-field class="md-form-group" slot="inputs">
                                                                                             <label>
                                                                                                 <md-icon>email</md-icon>Email</label>
-                                                                                            <input type='email' name='userEmail'/>
+                                                                                            <input type='email' v-model="wenddy.email" name='userEmail'/>
 
                                                                                         </md-field>
                                                                                         <md-field class="md-form-group" slot="inputs">
@@ -224,7 +225,7 @@
                                                                                                                                                 id="addrDetail"
                                                                                                                                                 style="width:40%"
                                                                                                                                                 v-model="addressInfo.buildingName">
-                                                                                                                                                <input type="text" id="roadAddrPart2" style="width:40%" value=""></td>
+                                                                                                                                                <input type="text" id="roadAddrPart2" style="width:40%" v-model="addressInfo.detailAddress"></td>
                                                                                                                                             </tr>
                                                                                                                                         </tbody>
                                                                                                                                     </table>
@@ -312,15 +313,17 @@
                                                                                                                                                         id="tab-content"
                                                                                                                                                         slot="footer"
                                                                                                                                                         class="md-success md-lg"
-                                                                                                                                                        @click="switchPanel2(tab-name)">동의</md-button>
+                                                                                                                                                        type="submit">동의</md-button>
 
                                                                                                                                                 </login-card>
+                                                                                                                                              </form>
                                                                                                                                             </div>
                                                                                                                                         </div>
                                                                                                                                     </template>
                                                                                                                                     <template slot="tab-pane-3">
                                                                                                                                         <div class="md-layout">
                                                                                                                                             <div class="md-layout-item md-size-100 ml-auto">
+                                                                                                                                                <form @submit.prevent="selectTinkerbell">
                                                                                                                                                 <login-card header-color="red">
                                                                                                                                                     <h2 slot="title" class="card-title">Tinkerbell</h2>
                                                                                                                                                     <md-field class="md-form-group" slot="inputs">
@@ -333,12 +336,12 @@
                                                                                                                                                                                 id="tooltip-button-1"
                                                                                                                                                                                 style="margin: 0 auto; display: block;"
                                                                                                                                                                                 :pressed="true"
-                                                                                                                                                                                variant="success">외장칩 목걸이</b-button>
+                                                                                                                                                                                variant="success"
+                                                                                                                                                                                v-model="tinkerbellType"
+                                                                                                                                                                                @click="selectTinkerbellType(1)">외장칩 목걸이</b-button>
                                                                                                                                                                         </div>
 
-                                                                                                                                                                        <b-tooltip :show.sync="show" target="tooltip-button-1" placement="top">
-                                                                                                                                                                            선택되었습니다!
-                                                                                                                                                                        </b-tooltip>
+                                                                                                                                                                        
                                                                                                                                                                     </div>
                                                                                                                                                                 </div>
 
@@ -350,11 +353,11 @@
                                                                                                                                                                                     id="tooltip-button-1"
                                                                                                                                                                                     style="margin: 0 auto; display: block;"
                                                                                                                                                                                     :pressed="true"
-                                                                                                                                                                                    variant="success">내장칩 목걸이</b-button>
+                                                                                                                                                                                    variant="success"
+                                                                                                                                                                                    v-model="tinkerbellType"
+                                                                                                                                                                                    @click="selectTinkerbellType(2)">내장칩 목걸이</b-button>
                                                                                                                                                                             </div>
-                                                                                                                                                                            <b-tooltip :show.sync="show" target="tooltip-button-1" placement="top">
-                                                                                                                                                                                선택되었습니다!
-                                                                                                                                                                            </b-tooltip>
+                                                                                                                                                                           
 
                                                                                                                                                                         </div>
                                                                                                                                                                     </div>
@@ -363,10 +366,11 @@
                                                                                                                                                                 </div>
                                                                                                                                                             </md-field>
 
-                                                                                                                                                            <md-button slot="footer" class="md-success md-lg" @click='newPage()'>
+                                                                                                                                                            <md-button slot="footer" class="md-success md-lg" type="submit">
                                                                                                                                                                 선택 완료
                                                                                                                                                             </md-button>
                                                                                                                                                         </login-card>
+                                                                                                                                                        </form>
                                                                                                                                                     </div>
                                                                                                                                                 </div>
                                                                                                                                             </template>
@@ -415,6 +419,15 @@
                                                                                                                                     vaccinationHistory: null,
                                                                                                                                     notes: null
                                                                                                                                 },
+                                                                                                                                wenddy : {
+                                                                                                                                    name: "",
+                                                                                                                                    phone: "",
+                                                                                                                                    email: "",
+                                                                                                                                    homeAddress: "",
+                                                                                                                                    jumin: "",
+                                                                                                                                    id : ""
+                                                                                                                                },
+                                                                                                                                tinkerbellType : null,
                                                                                                                                 activePanel: this.tabName,
 
                                                                                                                                 firstRRN: [],
@@ -499,8 +512,9 @@
                                                                                                                                     postcode: "",
                                                                                                                                     buildingName: "",
                                                                                                                                     jibunAddress: "",
-                                                                                                                                    roadAdress: "",
-                                                                                                                                    zoneCode: ""
+                                                                                                                                    roadAddress: "",
+                                                                                                                                    zoneCode: "",
+                                                                                                                                    detailAddress: ""
                                                                                                                                 }
                                                                                                                             };
                                                                                                                         },
@@ -545,36 +559,90 @@
                                                                                                                                 this.validCheck();
                                                                                                                                 this
                                                                                                                                     .$http
-                                                                                                                                    .post('/api/pet/regist', {
+                                                                                                                                    .post('http://localhost:3000/api/pet/regist', {
                                                                                                                                        peterpet : peterpet,
                                                                                                                                        address : address,
                                                                                                                                        id : id
                                                                                                                                     }, {"Content-Type": "application-json"})
                                                                                                                                     .then((res) => {
                                                                                                                                         console.log(res.data);
-                                                                                                                                        this
-                                                                                                                                            .$store
-                                                                                                                                            .commit("setPeterpet", res.data.peterpet);
-                                                                                                                                        //this.$rout.push({name: "result"});
-                                                                                                                                        //this.$router.push('/pet',{peterpet: this.peterpet});
+                                                                                                                                        if(res.data.checkReg){
+                                                                                                                                            this.switchPanel("Wenddy");
+                                                                                                                                        }
+                                                                                                                                        else {
+                                                                                                                                            alert("DID 등록에 실패하였습니다");
+                                                                                                                                        }
                                                                                                                                     })
                                                                                                                                     .catch((err) => {
                                                                                                                                         console.error(err);
                                                                                                                                     });
-                                                                                                                                    
-                                                                                                                                this.switchPanel1();
                                                                                                                             },
-                                                                                                                            switchPanel1: function () {
+                                                                                                                            registGov : function () {
+                                                                                                                                console.log("regist gov api call");
+                                                                                                                                const wenddy = this.wenddy;
+                                                                                                                                wenddy.id = this.$store.state.user.id;
+                                                                                                                                wenddy.homeAddress = this.addressInfo.roadAddress +" " + this.addressInfo.buildingName+" " + this.addressInfo.detailAddress;
+                                                                                                                                wenddy.jumin = this.resultRRN()
+
+                                                                                                                                this
+                                                                                                                                    .$http
+                                                                                                                                    .post('http://localhost:3000/api/user/regist', {
+                                                                                                                                       wenddy : wenddy
+                                                                                                                                    }, {"Content-Type": "application-json"})
+                                                                                                                                    .then((res) => {
+                                                                                                                                        console.log(res.data);
+                                                                                                                                        if(res.data.checkReg){
+                                                                                                                                            this.switchPanel("Tinkerbell");
+                                                                                                                                        }
+                                                                                                                                        else {
+                                                                                                                                            alert("정부 등록에 실패하였습니다. 입력 정보를 다시 확인해주세요")
+                                                                                                                                        }
+                                                                                                                                    })
+                                                                                                                                    .catch((err) => {
+                                                                                                                                        console.error(err);
+                                                                                                                                    });
+                                                                                                                            },
+                                                                                                                            selectTinkerbellType (type) {
+                                                                                                                                this.tinkerbellType = type;
+                                                                                                                                console.log(this.tinkerbellType);
+                                                                                                                            },
+                                                                                                                            
+                                                                                                                            selectTinkerbell : function () {
+                                                                                                                                const tinkerbellType = this.tinkerbellType;
+                                                                                                                                const address = this.$store.state.user.address;;
+
+                                                                                                                                console.log(tinkerbellType);
+
+                                                                                                                                if(tinkerbellType === null){
+                                                                                                                                    alert("칩을 선택해주세요!");
+                                                                                                                                }
+                                                                                                                                else {
+                                                                                                                                    this
+                                                                                                                                    .$http
+                                                                                                                                    .post('http://localhost:3000/api/pet/tinkerbell', {
+                                                                                                                                       tinkerbellType : tinkerbellType,
+                                                                                                                                       address : address
+                                                                                                                                    }, {"Content-Type": "application-json"})
+                                                                                                                                    .then((res) => {
+                                                                                                                                        console.log(res.data);
+                                                                                                                                        if(res.data.checkUpdate){
+                                                                                                                                            this.$router.push({name :"complete", query : {peterpet : res.data.peterpet, msg:res.data.msg}}).catch(()=>{});
+                                                                                                                                        }
+                                                                                                                                        else {
+                                                                                                                                            alert("입력하신 정보가 잘못되었습니다.")
+                                                                                                                                        }
+                                                                                                                                    })
+                                                                                                                                    .catch((err) => {
+                                                                                                                                        console.error(err);
+                                                                                                                                    });
+                                                                                                                                }                                                                                                                                
+                                                                                                                            },
+                                                                                                                            
+                                                                                                                            switchPanel: function (name) {
                                                                                                                                 this
                                                                                                                                     .$refs
                                                                                                                                     .child
-                                                                                                                                    .switchPanel("Wenddy");
-                                                                                                                            },
-                                                                                                                            switchPanel2: function () {
-                                                                                                                                this
-                                                                                                                                    .$refs
-                                                                                                                                    .child
-                                                                                                                                    .switchPanel("Tinkerbell");
+                                                                                                                                    .switchPanel(name);
                                                                                                                             },
                                                                                                                             getPostalcode() {
                                                                                                                                 new window

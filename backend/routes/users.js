@@ -2,15 +2,54 @@ var express = require('express');
 var router = express.Router();
 const wallet = require('../kas/wallet');
 const bcrypt = require('bcryptjs');
+const node = require('../kas/node')
 
-import Caver from 'caver-js-ext-kas/node_modules/caver-js';
-import { caver } from '../kas/kascon';
+
 import {connection} from '../mysql/connector';
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/get/balance/:address',async function(req, res, next) {
+  const address = req.params.address;
+  try{
+    const balance = await node.getBalance(address);
+    res.json({balance:balance});
+  }catch{
+    res.status(404).send('올바르지 않은 주소');
+  }
 });
+
+router.post('/regist',async function(req,res,next) {
+  console.log('등록 api 호출');
+  const wenddy = {
+    'name' : req.body.wenddy.name,
+    'phone' : req.body.wenddy.phone,
+    'email' : req.body.wenddy.email,
+    'homeAddress' : req.body.wenddy.homeAddress,
+    'jumin' : req.body.wenddy.jumin,
+    'id' : req.body.wenddy.id
+  };
+  connection.query(`SELECT u_id FROM user WHERE u_id="${wenddy.id}"`,async function(err,rows){
+    var checkReg = false;
+
+    if(rows[0] === undefined) {
+      res.send({wenddy : wenddy, checkReg : checkReg, msg : '존재하지 않는 아이디'});  
+    }
+    else {
+      connection.query(`insert into government(name,phone,email,home_address,jumin,u_id) values ('${wenddy.name}','${wenddy.phone}','${wenddy.email}','${wenddy.homeAddress}','${wenddy.jumin}', '${wenddy.id}');`,function(err,rows){
+       
+        if(err) {
+          console.error(err);
+          checkReg = false;
+        }
+        else {
+          checkReg = true;
+        } 
+        res.send({wenddy : wenddy, checkReg : checkReg, msg : '정부 등록 성공'});
+      });
+    
+    }
+  })
+})
 
 router.post('/login',async function(req,res,next) {
   console.log('login api 호출');
