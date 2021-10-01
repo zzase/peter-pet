@@ -181,7 +181,7 @@ export default {
 }
 .number {
   position: absolute;
-  top: 62.5%;
+  top: 61.5%;
   left: 4%;
 }
 .imghash{
@@ -202,31 +202,31 @@ export default {
 .breedOfDog {
   position: absolute;
   left: 25.2%;
-  top: 64.5%;
+  top: 63.8%;
 }
 .furColor {
   position: absolute;
   left: 25.2%;
-  top: 68%;
+  top: 67.7%;
 }
 .adoptionDate {
   position: absolute;
   left: 25.2%;
-  top: 71.7%;
+  top: 71.2%;
 }
 .isNeutering {
   position: absolute;
-  top: 76%;
+  top: 75.5%;
   left: 27.5%;
 }
 .vaccinationHistory {
   position: absolute;
-  top: 80.2%;
+  top: 79.5%;
   left: 26.5%;
 }
 .notes {
   position: absolute;
-  top: 86.5%;
+  top: 86.1%;
   left: 26.3%;
 }
 p {
