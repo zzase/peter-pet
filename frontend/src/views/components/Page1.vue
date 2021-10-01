@@ -23,9 +23,7 @@
       <template #header> {{ DID.name }}
       </template>
       <br>
-      <div class="card-back">
       <img src ="@/assets/img/Board/card-back.png">
-      <b-card-text>동물등록증을 보려면 클릭하세요!</b-card-text></div>
       <b-button href="#" variant="default" onclick="javascript:location.href='#/mypage/page2';">실종 신고</b-button>
       <template #footer>
         <em>Peter-Pet</em>
