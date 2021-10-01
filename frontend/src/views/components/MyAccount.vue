@@ -198,4 +198,16 @@ p {
   color: rgb(23, 127, 117);
   font-weight: bold;
 }
+.btn1 {
+  position: absolute;
+  display:inline-block;
+  top: 62%;
+  left: 39%;
+}
+.btn2 {
+  position: absolute;
+  display: inline-block;
+  top: 62%;
+  left: 49%;
+}
 </style>

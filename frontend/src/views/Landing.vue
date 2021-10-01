@@ -133,16 +133,19 @@ export default {
   left: 25%;
 }
 .Img-hash {
+  display: inline-block; 
   z-index: 1;
   position: absolute;
   top: 50%;
 }
 .page-content2 {
+  display: inline-block;
   position: absolute;
   left: 13%;
   bottom: -35%;
 }
 .page-content3 {
+  display: inline-block;
   text-align: center;
   position: absolute;
   left: 8%;
@@ -151,6 +154,7 @@ export default {
 
 }
 .page-logo {
+  display: inline-block;
   position: absolute;
   width:23%;
   height: 23%;
@@ -158,6 +162,7 @@ export default {
   left: 36%;
 }
 .page-content4 {
+  display: inline-block;
   color: rgb(0, 0, 0);
   z-index: 2;
   position: absolute;

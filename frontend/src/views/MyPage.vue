@@ -22,7 +22,6 @@
 
 <script>
 import Side from './components/Side.vue';
-import Card from './components/Card.vue';
 
 
 export default {
@@ -32,8 +31,6 @@ export default {
   },
   components: {
     Side,
-    // Card
-  
   },
 
   data() {

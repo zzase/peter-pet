@@ -1,7 +1,7 @@
 <template>
         <div class="contents">
           <div class="page-head">
-          <h3><b>MY 동물등록증</b></h3></div>
+          <h2 data-v-clf1971a class="title-text-center"><b>MY 동물등록증</b></h2></div>
 <div class="carousel">    
 <!-- <carousel :autoplay="true" :nav="false" :dots="false" class="marginTop50">
   <ul id="carousel-1">
@@ -175,59 +175,59 @@ export default {
   top:10%;
 }
 .name {
+  left: 3.3%;
   position:absolute;
-  margin-left: -13.5%;
-  margin-top: 19.8%;
+  top: 77%;
 }
 .number {
   position: absolute;
-  margin-left: -15%;
-  margin-top: 37%;
+  top: 57%;
+  left: 4%;
 }
 .imghash{
   position: absolute;
-  margin-left: -12.5%;
-  margin-top: 29%;
+  left: 2.5%;
+  top: 66.5%;
 }
 .birth {
   position: absolute;
-  margin-left: -15%;
-  margin-top: 15.7%;
+  left: 4.5%;
+  top: 81.7%;
 }
 .gender {
   position: absolute;
-  margin-left: -13.5%;
-  margin-top: 12.3%;
+  left: 3.5%;
+  top: 85.7%;
 }
 .breedOfDog {
   position: absolute;
-  margin-left: -36%;
-  margin-top: 35%;
+  left: 25.2%;
+  top: 59.3%;
 }
 .furColor {
   position: absolute;
-  margin-left: -36%;
-  margin-top: 31.5%;
+  left: 25.2%;
+  top: 63.5%;
 }
 .adoptionDate {
   position: absolute;
-  margin-left: -36%;
-  margin-top: 28.1%;
+  left: 25.2%;
+  top: 67.5%;
 }
 .isNeutering {
   position: absolute;
-  margin-left: -38%;
-  margin-top: 24%;
+  top: 72.2%;
+  left: 27.5%;
 }
 .vaccinationHistory {
   position: absolute;
-  margin-left: -37.5%;
-  margin-top: 19.8%;
+  top: 77.2%;
+  left: 26.5%;
 }
 .notes {
   position: absolute;
-  margin-left: -36.7%;
-  margin-top: 13.3%;
+  top: 84.2%;
+  left: 26.3%;
 }
 p {
   font-size: 20px;
