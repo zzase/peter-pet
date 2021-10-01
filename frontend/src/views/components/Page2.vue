@@ -69,7 +69,7 @@
               <md-button
                           id="login"
                           href="#/mypage"
-                          class="md-success"
+                          class="md-default"
                           >
                           <b>마이 페이지</b></md-button >
                </div>
