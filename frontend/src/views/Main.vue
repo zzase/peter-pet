@@ -11,7 +11,7 @@
                         <br/>
                         <br/><br/><br/><br/><br/><br/>
                         <md-button
-                            href="#/regist"
+                            @click="regBtn()"
                             class="md-success md-lg"
                             >
                            <b>반려견 등록하기</b></md-button >
@@ -157,6 +157,17 @@
         },
         data() {
             return {name: null, email: null, message: null};
+        },
+        methods : {
+            regBtn: function() {
+                if(this.$store.state.isLogin){
+                    window.location.href = '#/regist'
+                }
+
+                else {
+                    alert("상단 메뉴의 'login'버튼을 이용해 로그인을 먼저 진행해주세요!");
+                }
+            }
         },
         computed: {
             headerStyle() {

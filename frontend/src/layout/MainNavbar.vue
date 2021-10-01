@@ -44,13 +44,13 @@
                 </a>
               </li>
             
-              <md-list-item a href="#" target="_blank" v-if="showDownload">
+              <md-list-item a href="#/about" target="_blank" v-if="showDownload">
                 <p>About</p>
                 <md-tooltip md-direction="bottom">Peter Pet ?</md-tooltip>
               </md-list-item>
 
               <md-list-item
-                href="javascript:void(0)"
+                href="#/regist"
                 @click="scrollToElement()"
                 v-if="showDownload"
               >
@@ -68,7 +68,7 @@
               </md-list-item>
 
               <md-list-item
-                href="javascript:void(0)"
+                href="#/neverland"
                 @click="scrollToElement()"
                 v-if="showDownload"
               >

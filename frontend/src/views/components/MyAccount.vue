@@ -17,34 +17,16 @@
                         <div class="account-number">
                           <h6>내 계좌</h6>
                         </div>
-                        <div>
-                          <p class="accountNumber"> {{ address }} </p>
-                        </div>
                         <div class="klay">
                           <h6>나의 잔액</h6>
                         </div>
-                        <div>
-                          <p class="myKlay"> {{ balance }} klay</p>
-                        </div>
-
-                        <div class="btn1">        
-              <md-button
-                          id="login"
-                          href="#/mypage"
-                          class="md-info"
-                          >
-                          <b>마이 페이지</b></md-button >
-               </div>
-               <div class="btn2">
-                <md-button
-                          id="mainpage"
-                          href="#/"
-                          class="default"
-                          >
-                          <b>메인 페이지</b></md-button >
-               </div>
+                        <div class="accountNumber">
+                        <p> {{ address }} </p>
+                      </div>
+                      <div class="myKlay">
+                        <p> {{ balance }} klay</p>
+                      </div>
         </div>
-
 </template>
 <script>
  export default {
@@ -74,9 +56,6 @@
 </script>
 
 <style>  
-p {
-  color:rgb(88, 88, 88);
-}
 .my-page {
   position: relative;
   width: 90%;
@@ -103,10 +82,10 @@ p {
 .my-account {
   display: inline-block;
   position: absolute;
-  bottom: 55%;
+  bottom: 44%;
   width: 29%;
-  height: 13%;
-  border: 2px solid rgba(228, 226, 226, 0.801);
+  height: 15%;
+  border: 2px solid rgba(240, 240, 240, 0.801);
   left: 50%;
   border-radius: 2em;
   
@@ -116,10 +95,10 @@ p {
   position:absolute;
   display: inline-block;
   width: 29%;
-  height: 13%;
+  height: 15%;
   left: 20%;
-  bottom: 55%;
-  border:2px solid rgba(228, 226, 226, 0.801);
+  bottom: 44%;
+  border:2px solid rgba(240, 240, 240, 0.801);
   border-radius: 2em;
   
   
@@ -144,22 +123,22 @@ p {
   position:absolute;
   display: inline-block;
   width: 60%;
-  height: 10%;
+  height: 20%;
   background-color: rgba(240, 240, 240, 0.74);
-  bottom: 40%;
+  bottom: 18%;
   left: 20%;
 }
 .account-number {
   position: absolute;
   display: inline-block;
-  bottom: 62%;
-  left: 32.5%;
+  bottom: 52%;
+  left: 22%;
 }
 .klay {
   position: absolute;
   display: inline-block;
-  bottom: 62%;
-  left: 62%;
+  bottom: 52%;
+  left: 52%;
 }
 p {
   font-size: 17px;
