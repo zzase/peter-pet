@@ -179,56 +179,56 @@ export default {
 .name {
   left: 3.3%;
   position:absolute;
-  top: 77%;
+  top: 80%;
 }
 .number {
   position: absolute;
-  top: 57%;
+  top: 62.5%;
   left: 4%;
 }
 .imghash{
   position: absolute;
   left: 2.5%;
-  top: 66.5%;
+  top: 71%;
 }
 .birth {
   position: absolute;
   left: 4.5%;
-  top: 81.7%;
+  top: 84%;
 }
 .gender {
   position: absolute;
   left: 3.5%;
-  top: 85.7%;
+  top: 87.5%;
 }
 .breedOfDog {
   position: absolute;
   left: 25.2%;
-  top: 59.3%;
+  top: 64.5%;
 }
 .furColor {
   position: absolute;
   left: 25.2%;
-  top: 63.5%;
+  top: 68%;
 }
 .adoptionDate {
   position: absolute;
   left: 25.2%;
-  top: 67.5%;
+  top: 71.7%;
 }
 .isNeutering {
   position: absolute;
-  top: 72.2%;
+  top: 76%;
   left: 27.5%;
 }
 .vaccinationHistory {
   position: absolute;
-  top: 77.2%;
+  top: 80.2%;
   left: 26.5%;
 }
 .notes {
   position: absolute;
-  top: 84.2%;
+  top: 86.5%;
   left: 26.3%;
 }
 p {
