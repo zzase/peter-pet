@@ -119,7 +119,7 @@ export default {
   height: 150px;
   background-color: rgba(228, 228, 228, 0.589);
   border-radius: 3em;
-  margin-top: 10%;
+  margin-top: 7%;
   left: 3%;
 }
 .wenddy-info {
@@ -142,14 +142,14 @@ export default {
   display: inline-block;
   position: absolute;
   left: 13%;
-  bottom: -35%;
+  bottom: -34%;
 }
 .page-content3 {
   display: inline-block;
   text-align: center;
   position: absolute;
   left: 8%;
-  bottom: -6%;
+  bottom: -50%;
   color:rgb(170, 170, 170);
 
 }
