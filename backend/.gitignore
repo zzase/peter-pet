@@ -1,6 +1,7 @@
 .DS_Store
 node_modules/
 public/
+wallet/
 package-lock.json
 /dist
 /docs

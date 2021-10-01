@@ -100,7 +100,7 @@ router.post('/regist',async function(req,res,next){
 
       let date = new Date();
       let today = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
-      connection.query(`INSERT INTO did(did,t_id,u_id,url,issueDate) VALUES("${lastDid}", 0, "${id}","http://localhost:3000/#/pet/own/${lastDid}","${today}")`,function(err,rows2){
+      connection.query(`INSERT INTO did(did,t_id,u_id,url,issueDate) VALUES("${lastDid}", 0, "${id}","http://localhost:8080/#/pet/own/${lastDid}","${today}")`,function(err,rows2){
         if(err){
           res.status(404).send({err:err , checkReg : false});
         }
