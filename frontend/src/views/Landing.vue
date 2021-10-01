@@ -2,9 +2,11 @@
 <div class="wrapper">
   
 <div class="main main-raised">
+  
   <div class="wenddy-info">
   </div>
   <div class="DID-page1">
+    
   </div>
     <div class="DID-page2">
     </div>

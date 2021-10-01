@@ -1,7 +1,7 @@
 <template>
         <div class="contents">
           <div class="page-head">
-          <h2><b>MY 동물등록증</b></h2></div>
+          <h3><b>MY 동물등록증</b></h3></div>
 <div class="carousel">    
 <!-- <carousel :autoplay="true" :nav="false" :dots="false" class="marginTop50">
   <ul id="carousel-1">
@@ -177,57 +177,57 @@ export default {
 .name {
   position:absolute;
   margin-left: -13.5%;
-  margin-top: 22.4%;
+  margin-top: 19.8%;
 }
 .number {
   position: absolute;
   margin-left: -15%;
-  margin-top: 42.2%;
+  margin-top: 37%;
 }
 .imghash{
   position: absolute;
   margin-left: -12.5%;
-  margin-top: 33%;
+  margin-top: 29%;
 }
 .birth {
   position: absolute;
   margin-left: -15%;
-  margin-top: 17.8%;
+  margin-top: 15.7%;
 }
 .gender {
   position: absolute;
   margin-left: -13.5%;
-  margin-top: 13.8%;
+  margin-top: 12.3%;
 }
 .breedOfDog {
   position: absolute;
   margin-left: -36%;
-  margin-top: 40%;
+  margin-top: 35%;
 }
 .furColor {
   position: absolute;
   margin-left: -36%;
-  margin-top: 35.8%;
+  margin-top: 31.5%;
 }
 .adoptionDate {
   position: absolute;
   margin-left: -36%;
-  margin-top: 32%;
+  margin-top: 28.1%;
 }
 .isNeutering {
   position: absolute;
   margin-left: -38%;
-  margin-top: 27.2%;
+  margin-top: 24%;
 }
 .vaccinationHistory {
   position: absolute;
   margin-left: -37.5%;
-  margin-top: 22.5%;
+  margin-top: 19.8%;
 }
 .notes {
   position: absolute;
   margin-left: -36.7%;
-  margin-top: 15.2%;
+  margin-top: 13.3%;
 }
 p {
   font-size: 20px;
