@@ -6,7 +6,6 @@
     :class="extraNavClasses"
     :color-on-scroll="colorOnScroll"
   >
-  
     <div class="md-toolbar-row md-collapse-lateral">
       <div class="md-toolbar-section-start">
         <!-- <h3 class="md-title">Vue Material Kit</h3> -->
@@ -17,156 +16,195 @@
           </span>
         </a>
       </div>
-<div class="navbar">
-      <div class="md-toolbar-section-end">
-        <md-button
-          class="md-just-icon md-simple md-toolbar-toggle"
-          :class="{ toggled: toggledClass }"
-          @click="toggleNavbarMobile()"
-        >
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </md-button>
+      <div class="navbar">
+        <div class="md-toolbar-section-end">
+          <md-button
+            class="md-just-icon md-simple md-toolbar-toggle"
+            :class="{ toggled: toggledClass }"
+            @click="toggleNavbarMobile()"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </md-button>
 
-        <div class="md-collapse">
-          <div class="md-collapse-wrapper">
-            <mobile-menu nav-mobile-section-start="false">
-              <!-- Here you can add your items from the section-start of your toolbar -->
-            </mobile-menu>
-            <md-list>
-              <li class="md-list-item" v-if="!showDownload">
-                <a
-                  href="javascript:void(0)"
-                  class="md-list-item-router md-list-item-container md-button-clean dropdown"
+          <div class="md-collapse">
+            <div class="md-collapse-wrapper">
+              <mobile-menu nav-mobile-section-start="false">
+                <!-- Here you can add your items from the section-start of your toolbar -->
+              </mobile-menu>
+              <md-list>
+                <li class="md-list-item" v-if="!showDownload">
+                  <a
+                    href="javascript:void(0)"
+                    class="
+                      md-list-item-router md-list-item-container md-button-clean
+                      dropdown
+                    "
+                  >
+                    <div class="md-list-item-content"></div>
+                  </a>
+                </li>
+
+                <md-list-item
+                  a
+                  href="#/about"
+                  target="_blank"
+                  v-if="showDownload"
                 >
-                  <div class="md-list-item-content"></div>
-                </a>
-              </li>
-            
-              <md-list-item a href="#/about" target="_blank" v-if="showDownload">
-                <p>About</p>
-                <md-tooltip md-direction="bottom">Peter Pet ?</md-tooltip>
-              </md-list-item>
+                  <p>About</p>
+                  <md-tooltip md-direction="bottom">Peter Pet ?</md-tooltip>
+                </md-list-item>
 
-              <md-list-item
-                href="#/regist"
-                @click="scrollToElement()"
-                v-if="showDownload"
-              >
-                <p>Animal registration</p>
-                <md-tooltip md-direction="bottom">Animal registration</md-tooltip>
-              </md-list-item>
-
-              <md-list-item
-                href="javascript:void(0)"
-                @click="scrollToElement()"
-                v-if="showDownload"
-              >
-                <p>External Device/Recognition ID</p>
-                <md-tooltip md-direction="bottom">Tinkerbell</md-tooltip>
-              </md-list-item>
-
-              <md-list-item
-                href="#/neverland"
-                @click="scrollToElement()"
-                v-if="showDownload"
-              >
-                <p>NAVERLAND</p>
-                <md-tooltip md-direction="bottom">NAVERLAND</md-tooltip>
-              </md-list-item>
-
-              <li class="md-list-item" v-else>
-                <a
-                  href="javascript:void(0)"
-                  class="md-list-item-router md-list-item-container md-button-clean dropdown"
+                <md-list-item
+                  href="#/regist"
+                  @click="scrollToElement()"
+                  v-if="showDownload"
                 >
-                  <div class="md-list-item-content">
-                    <drop-down direction="down">
-                      <md-button
-                        slot="title"
-                        class="md-button md-button-link md-white md-simple dropdown-toggle"
-                        data-toggle="dropdown"
-                      >
-                        <i class="material-icons">view_carousel</i>
-                        <p>Examples</p>
-                      </md-button>
-                      <ul class="dropdown-menu dropdown-with-icons">
-                        <li>
-                          <a href="#/landing">
-                            <i class="material-icons">view_day</i>
-                            <p>Landing Page</p>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#/login">
-                            <i class="material-icons">fingerprint</i>
-                            <p>Login Page</p>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#/profile">
-                            <i class="material-icons">account_circle</i>
-                            <p>Profile Page</p>
-                          </a>
-                        </li>
-                      </ul>
-                    </drop-down>
+                  <p>Animal registration</p>
+                  <md-tooltip md-direction="bottom"
+                    >Animal registration</md-tooltip
+                  >
+                </md-list-item>
+
+                <md-list-item
+                  href="javascript:void(0)"
+                  @click="scrollToElement()"
+                  v-if="showDownload"
+                >
+                  <p>External Device/Recognition ID</p>
+                  <md-tooltip md-direction="bottom">Tinkerbell</md-tooltip>
+                </md-list-item>
+
+                <md-list-item
+                  href="#/neverland"
+                  @click="scrollToElement()"
+                  v-if="showDownload"
+                >
+                  <p>NAVERLAND</p>
+                  <md-tooltip md-direction="bottom">NAVERLAND</md-tooltip>
+                </md-list-item>
+
+                <li class="md-list-item" v-else>
+                  <a
+                    href="javascript:void(0)"
+                    class="
+                      md-list-item-router md-list-item-container md-button-clean
+                      dropdown
+                    "
+                  >
+                    <div class="md-list-item-content">
+                      <drop-down direction="down">
+                        <md-button
+                          slot="title"
+                          class="
+                            md-button md-button-link md-white md-simple
+                            dropdown-toggle
+                          "
+                          data-toggle="dropdown"
+                        >
+                          <i class="material-icons">view_carousel</i>
+                          <p>Examples</p>
+                        </md-button>
+                        <ul class="dropdown-menu dropdown-with-icons">
+                          <li>
+                            <a href="#/landing">
+                              <i class="material-icons">view_day</i>
+                              <p>Landing Page</p>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#/login">
+                              <i class="material-icons">fingerprint</i>
+                              <p>Login Page</p>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#/profile">
+                              <i class="material-icons">account_circle</i>
+                              <p>Profile Page</p>
+                            </a>
+                          </li>
+                        </ul>
+                      </drop-down>
+                    </div>
+                  </a>
+                </li>
+                <div>
+                  <div v-if="this.$store.state.isLogin">
+                    <b-button pill variant="outline-primary" @click="myPage()"
+                      >MyPage</b-button
+                    >
                   </div>
-                </a>
-              </li>
-              <div>
-                <div v-if="this.$store.state.isLogin">
-                  <b-button pill variant="outline-primary" @click="myPage()">MyPage</b-button>
-                </div>
 
-                <div v-else>
-                  <b-button pill variant="outline-primary" v-b-modal.modal-center :id="login" :ref="login">login</b-button>
-                </div>
-                  
-                  <b-modal hide-footer id="modal-center" ref="loginModal"  centered title="">
+                  <div v-else>
+                    <b-button
+                      pill
+                      variant="outline-primary"
+                      v-b-modal.modal-center
+                      :id="login"
+                      :ref="login"
+                      >login</b-button
+                    >
+                  </div>
+
+                  <b-modal
+                    hide-footer
+                    id="modal-center"
+                    ref="loginModal"
+                    centered
+                    title=""
+                  >
                     <form @submit.prevent="login">
-                    <login-card header-color="green">
-                      <br>
-                      
+                      <login-card header-color="green">
+                        <br />
+
                         <h3 slot="title" class="card-title">Login</h3>
-                      
-             
-              <p slot="description" class="description">아이디 입력시 아이디가 없으면 자동 회원가입이 돼요!</p>
-              <md-field class="md-form-group" slot="inputs">
-                <md-icon>face</md-icon>
-                <label>ID</label>
-                <md-input v-model="user.id"></md-input>
-              </md-field>
-              <md-field class="md-form-group" slot="inputs">
-                <md-icon>lock_outline</md-icon>
-                <label>Password</label>
-                <md-input type="password" v-model="user.password"></md-input>
-              </md-field>
-              <md-button slot="footer" class="md-simple md-success md-lg" @click="$bvModal.hide('modal-center')">
-                닫기
-              </md-button>
-              <md-button type="submit" slot="footer" class="md-simple md-success md-lg">
-                로그인
-              </md-button>
-            </login-card>
-            </form>
+
+                        <p slot="description" class="description">
+                          아이디 입력시 아이디가 없으면 자동 회원가입이 돼요!
+                        </p>
+                        <md-field class="md-form-group" slot="inputs">
+                          <md-icon>face</md-icon>
+                          <label>ID</label>
+                          <md-input v-model="user.id"></md-input>
+                        </md-field>
+                        <md-field class="md-form-group" slot="inputs">
+                          <md-icon>lock_outline</md-icon>
+                          <label>Password</label>
+                          <md-input
+                            type="password"
+                            v-model="user.password"
+                          ></md-input>
+                        </md-field>
+                        <md-button
+                          slot="footer"
+                          class="md-simple md-success md-lg"
+                          @click="$bvModal.hide('modal-center')"
+                        >
+                          닫기
+                        </md-button>
+                        <md-button
+                          type="submit"
+                          slot="footer"
+                          class="md-simple md-success md-lg"
+                        >
+                          로그인
+                        </md-button>
+                      </login-card>
+                    </form>
                   </b-modal>
                 </div>
                 <div class="text-center" id="address" ref="address"></div>
-              <li>
-              </li>
-            </md-list>
+                <li></li>
+              </md-list>
+            </div>
           </div>
         </div>
-      </div>
-      <div>      
+        <div></div>
       </div>
     </div>
-  </div>
-
   </md-toolbar>
-
 </template>
 
 
@@ -189,17 +227,17 @@ import MobileMenu from "@/layout/MobileMenu";
 
 import { LoginCard } from "@/components";
 
-
 const Key = {
-  auth : {
-    accessType: 'keystore',
-    keystore: '',
-    password: ''
+  auth: {
+    accessType: "keystore",
+    keystore: "",
+    password: "",
   },
-}
+};
 export default {
   components: {
-    MobileMenu,LoginCard
+    MobileMenu,
+    LoginCard,
   },
   props: {
     type: {
@@ -226,10 +264,10 @@ export default {
     return {
       extraNavClasses: "",
       toggledClass: false,
-      user : {
-        'id' : null,
-        'password' : null
-      }
+      user: {
+        id: null,
+        password: null,
+      },
     };
   },
   computed: {
@@ -240,28 +278,32 @@ export default {
   },
   methods: {
     myPage: function () {
-      window.location.href = '#/myPage'
+      window.location.href = "#/myPage";
     },
-    login : function() {
-      this.$http.post('http://localhost:3000/api/user/login',{user : this.user},{"Content-Type":"application-json"})
-      .then((res)=>{
-        console.log('res.data : ' + res.data);
-        if(res.data.loginCheck){
-          this.$store.commit("loginSuccess")
-          this.$store.commit("setUser",res.data.user);
-          this.$router.push({name :"main"}).catch(()=>{});
+    login: function () {
+      this.$http
+        .post(
+          "http://localhost:3000/api/user/login",
+          { user: this.user },
+          { "Content-Type": "application-json" }
+        )
+        .then((res) => {
+          console.log("res.data : " + res.data);
+          if (res.data.loginCheck) {
+            this.$store.commit("loginSuccess");
+            this.$store.commit("setUser", res.data.user);
+            this.$router.push({ name: "main" }).catch(() => {});
 
-          alert("login 성공");
-          this.$bvModal.hide('modal-center')
-        }
-        else {
-          this.$store.commit('loginError');
-          alert('비밀번호가 틀렸습니다!');
-        }
-      })
-      .catch((err)=>{
-        console.error(err);
-      })
+            alert("login 성공");
+            this.$bvModal.hide("modal-center");
+          } else {
+            this.$store.commit("loginError");
+            alert("비밀번호가 틀렸습니다!");
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     },
     bodyClick() {
       let bodyClick = document.getElementById("bodyClick");
@@ -318,15 +360,15 @@ export default {
 </script>
 
 <style>
-@media screen and (min-width: 900px) {
-.md-toolbar-section-start {
-  position: absolute;
-  margin-left: -15%;
-  margin-top: 0.5%;
-}
-.navbar {
-  position: absolute;
-  margin-left: 70%;
-}
+@media screen and (min-width: 1140) {
+  .md-toolbar-section-start {
+    position: absolute;
+    margin-left: -15%;
+    margin-top: 0.5%;
+  }
+  .navbar {
+    position: absolute;
+    margin-left: 70%;
+  }
 }
 </style>
