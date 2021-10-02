@@ -1,7 +1,7 @@
 <template>
         <div class="contents">
           <div class="page-head">
-          <h2><b>MY 동물등록증</b></h2></div>
+          <h2 data-v-clf1971a class="title-text-center"><b>MY 동물등록증</b></h2></div>
 <div class="carousel">    
 <carousel :autoplay="true" :nav="false" :dots="false" class="marginTop50">
   
@@ -16,7 +16,8 @@
       </template>
       <br>
       <b-card-body>
-        <b-card-title>{{did.name}}</b-card-title>
+        <b-card-title>{{did.name}}</b-card-title><br>
+        <img src="@/assets/img/Board/card-back.png">
         <b-card-text>동물등록증을 보려면 클릭하세요!</b-card-text>
       <b-button href="#" variant="default" @click="missingReport(`${did.did}`)">실종 신고</b-button>
       </b-card-body>
@@ -37,48 +38,7 @@
         <!-- pop-up DID CARD -->
        <div class="black-bg" v-if="modal == true">
            <div class="white-bg">
-
-          <div id="app1">
-              <div class="card">
-              <img id ="card" src="@/assets/img/Regist/card.png" @click="modal = false" style="cursor:pointer;"> 
-              </div>
-              <div>
-                <p>{{peterpet.did}}</p>
-              </div>
-                <div class="name">
-                  <p> {{ peterpet.name }} </p>
-                </div>
-                <div class="number">
-                  <p> {{ peterpet.registerNumber }} </p>
-                </div>
-                <div class="imghash">
-                  <p> {{ peterpet.imgHash }} </p>
-                </div>
-                <div class="birth">
-                  <p> {{ peterpet.birth }} </p>
-                </div>
-                <div class="gender">
-                  <p> {{ peterpet.gender }} </p>
-                </div>
-                <div class="breedOfDog">
-                  <p> {{ peterpet.breedOfDog }} </p>
-                </div>
-                <div class="furColor">
-                  <p>{{ peterpet.furColor }} </p>
-                </div>
-                <div class="adoptionDate">
-                  <p> {{ peterpet.adoptionDate }} </p>
-                </div>
-                <div class="isNeutering">
-                  <p> {{ peterpet.isNeutering }} </p>
-                </div>
-                <div class="vaccinationHistory">
-                  <p> {{ peterpet.vaccinationHistory }} </p>
-                </div>
-                <div class="notes">
-                  <p> {{ peterpet.notes }} </p>
-                </div>
-             </div>
+             <Card v-bind:peterpet="peterpet" />
            </div>
        </div>
    </div>
@@ -86,6 +46,7 @@
 
 <script>
 import carousel from 'vue-owl-carousel'
+import Card from './Card.vue'
 
 export default {
   name:"Accordion",
@@ -140,7 +101,8 @@ export default {
     this.getDids(this.$store.state.user.address);
   },
   components: {
-    carousel 
+    carousel,
+    Card
   },
   
   computed: {
@@ -161,7 +123,6 @@ export default {
 </script>
 
 <style lang="css">
-
 #dids {
   margin-left: 0px;
 }
@@ -197,59 +158,59 @@ export default {
   top:10%;
 }
 .name {
+  left: 3.3%;
   position:absolute;
-  margin-left: -13.5%;
-  margin-top: 22.4%;
+  top: 81%;
 }
 .number {
   position: absolute;
-  margin-left: -15%;
-  margin-top: 42.2%;
+  bottom: 32.5%;
+  left: 4%;
 }
 .imghash{
   position: absolute;
-  margin-left: -12.5%;
-  margin-top: 33%;
+  left: 2.5%;
+  top: 72.2%;
 }
 .birth {
   position: absolute;
-  margin-left: -15%;
-  margin-top: 17.8%;
+  left: 4.5%;
+  top: 84.7%;
 }
 .gender {
   position: absolute;
-  margin-left: -13.5%;
-  margin-top: 13.8%;
+  left: 3.5%;
+  top: 88.2%;
 }
 .breedOfDog {
   position: absolute;
-  margin-left: -36%;
-  margin-top: 40%;
+  left: 25.2%;
+  top: 66.2%;
 }
 .furColor {
   position: absolute;
-  margin-left: -36%;
-  margin-top: 35.8%;
+  left: 25.2%;
+  top: 69.8%;
 }
 .adoptionDate {
   position: absolute;
-  margin-left: -36%;
-  margin-top: 32%;
+  left: 25.2%;
+  top: 73%;
 }
 .isNeutering {
   position: absolute;
-  margin-left: -38%;
-  margin-top: 27.2%;
+  top: 77%;
+  left: 27.5%;
 }
 .vaccinationHistory {
   position: absolute;
-  margin-left: -37.5%;
-  margin-top: 22.5%;
+  top: 81.1%;
+  left: 26.5%;
 }
 .notes {
   position: absolute;
-  margin-left: -36.7%;
-  margin-top: 15.2%;
+  top: 87%;
+  left: 26.3%;
 }
 p {
   font-size: 20px;
@@ -326,7 +287,8 @@ p {
   width: 76%;
   height: 100%;
   background-color: rgba(143, 162, 173, 0.397);
-  top: 14%;
+  top: 9%;
+  border-radius: 1.5em;
 }
 .bar {
  margin-left: -60%;

@@ -65,6 +65,15 @@
       
  </div>
 
+ <div class="btn3">        
+              <md-button
+                          id="login"
+                          href="#/mypage"
+                          class="md-default"
+                          >
+                          <b>마이 페이지</b></md-button >
+               </div>
+
 </v-app>
 </template>
 
@@ -261,5 +270,10 @@ div {
   position: absolute;
   left: 52%;
   bottom: 8%;
+}
+.btn3 {
+  position: absolute;
+  left: 45%;
+  top: 95%;
 }
 </style>

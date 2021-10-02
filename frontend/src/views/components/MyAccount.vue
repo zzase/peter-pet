@@ -1,7 +1,7 @@
 <template>
 <div class="account-content">
     <div class="welcome">
-                  <h4 ><h1 class="wenddyName">{{name}}</h1> 웬디님</h4>
+                  <h4 ><h1 class="wenddyName">{{name}}</h1> 웬디님 ,</h4>
                   <br><h4>환영합니다</h4>
                   </div>
                     <div class="my-account">
@@ -16,14 +16,14 @@
                           <h5>내 반려견들 : </h5>
                           <br>
                           <div >
-                            <h3 style="display:inline" v-for="pet in pets" :key="pet">{{pet.name}}  </h3>
+                            <h5 style="display:inline" v-for="pet in pets" :key="pet">{{pet.name}}  </h5>
                           </div>
                         </div>
                         <div class="account-number">
-                          <h6>내 계좌</h6>
+                          <h5>내 계좌</h5>
                         </div>
                         <div class="klay">
-                          <h6>나의 잔액</h6>
+                          <h5>나의 잔액</h5>
                         </div>
                         <div class="accountNumber">
                         <p> {{ address }} </p>
@@ -102,12 +102,12 @@
 .my-account {
   display: inline-block;
   position: absolute;
-  bottom: 44%;
+  bottom: 50%;
   width: 29%;
   height: 15%;
-  border: 2px solid rgba(240, 240, 240, 0.801);
   left: 50%;
   border-radius: 2em;
+  border: 2px solid rgba(240, 240, 240, 0.801);
   
 }
 .accountbox1 {
@@ -117,11 +117,9 @@
   width: 29%;
   height: 15%;
   left: 20%;
-  bottom: 44%;
-  border:2px solid rgba(240, 240, 240, 0.801);
+  bottom: 50%;
   border-radius: 2em;
-  
-  
+  border: 2px solid rgba(240, 240, 240, 0.801);
 }
 .line {
   position: absolute;
@@ -145,43 +143,53 @@
   width: 60%;
   height: 15%;
   background-color: rgba(240, 240, 240, 0.74);
-  bottom: 18%;
+  bottom: 32%;
   left: 20%;
 }
 .account-number {
   position: absolute;
   display: inline-block;
-  bottom: 52%;
-  left: 22%;
+  bottom: 60%;
+  left: 33%;
 }
 .klay {
   position: absolute;
   display: inline-block;
-  bottom: 52%;
-  left: 52%;
+  bottom: 60%;
+  left: 61%;
 }
 p {
   font-size: 17px;
 }
 .wenddyName {
   font-weight: bold;
-  color: blueviolet;
+  color: rgb(117, 25, 126);
   display: inline;
 }
 .accountNumber {
   position: absolute;
   display: inline-block;
-  bottom: 45%;
+  bottom: 53%;
   left: 22%;
-  color: rgb(23, 127, 117);
   font-weight: bold;
 }
 .myKlay {
   position: absolute;
   display: inline-block;
-  bottom: 45%;
-  left: 52%;
-  color: rgb(23, 127, 117);
+  bottom: 53%;;
+  left: 60.5%;
   font-weight: bold;
+}
+.btn1 {
+  position: absolute;
+  display:inline-block;
+  top: 62%;
+  left: 39%;
+}
+.btn2 {
+  position: absolute;
+  display: inline-block;
+  top: 62%;
+  left: 49%;
 }
 </style>
