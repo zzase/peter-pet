@@ -1,45 +1,46 @@
 <template>
-<div class="wrapper">
-  
-<div class="main main-raised">
-  
-  <div class="wenddy-info">
-  </div>
-  <div class="DID-page1">
-    
-  </div>
-    <div class="DID-page2">
-    </div>
-    <div class="Img-hash">
-     <p> img {{ peterpet.imgHash }}</p>
-    </div>
-    <div class="page-logo">
-    <img src="@/assets/img/Main/logo.png"></div>
-  <div class="page-content1">
-    <p>이름 : {{ peterpet.name }}</p>
-    <p>견종 : {{ peterpet.breedOfDog }} </p>
-    <p>나이 : {{ peterpet.birth }} </p>
-    <p>상태 :  </p>
-  </div>
-  <div class="page-line1">
-  </div>
-  <div class="page-line2">
-  </div>
-  <div class="page-content4">
-    <h6># 실종</h6></div>
-<div class="page-content3">
-  <h6>보호자님이 애타게 기다리고 있습니다<br>
-아래의 번호로 연락주시면 감사하겠습니다</h6>
-</div>
-    <div class="page-content2">
-      <p>보호자 이름 : {{ wenddy.name }}</p>
-      <p>보호자 연락처 : {{ wenddy.phoneNumber }}</p>
-      <p>피터펫 연락처 : 02-000-0000</p>
-    </div>
-  </div>
-  
-
-  </div>
+<b-container>
+    <b-layout align-center row wrap>
+        <b-flex xs12>
+          <div class="wrapper">
+          <div class="main main-raised">
+            <div class="wenddy-info">
+            </div>
+            <div class="DID-page1">
+            </div>
+              <div class="DID-page2">
+              </div>
+              <div class="Img-hash">
+              <p> img {{ peterpet.imgHash }}</p>
+              </div>
+              <div class="page-logo">
+              <img src="@/assets/img/Main/logo.png"></div>
+            <div class="page-content1">
+              <p>이름 : {{ peterpet.name }}</p>
+              <p>견종 : {{ peterpet.breedOfDog }} </p>
+              <p>나이 : {{ peterpet.birth }} </p>
+              <p>상태 :  </p>
+            </div>
+            <div class="page-line1">
+            </div>
+            <div class="page-line2">
+            </div>
+            <div class="page-content4">
+              <h6># {{ peterpet.missing }}</h6></div>
+          <div class="page-content3">
+            <h6>보호자님이 애타게 기다리고 있습니다<br>
+          아래의 번호로 연락주시면 감사하겠습니다</h6>
+          </div>
+              <div class="page-content2">
+                <p>보호자 이름 : {{ wenddy.name }}</p>
+                <p>보호자 연락처 : {{ wenddy.phoneNumber }}</p>
+                <p>피터펫 연락처 : 02-000-0000</p>
+              </div>
+            </div>
+            </div>
+        </b-flex>
+    </b-layout>
+</b-container>
 </template>
 
 <script>
@@ -166,7 +167,7 @@ export default {
   color: rgb(0, 0, 0);
   z-index: 2;
   position: absolute;
-  margin-top: -22.5%;
+  margin-top: -18%;
   left: 30%;
 }
 .Img-hash {
@@ -174,6 +175,10 @@ export default {
   z-index: 1;
   left: 40%;
   top: 33%;
-
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

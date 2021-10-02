@@ -4,40 +4,51 @@
               <img id ="card" src="@/assets/img/Regist/card.png" @click="modal = false" style="cursor:pointer;"> 
               </div>
               <div class="number">
-                <p>{{peterpet.did}}</p>
+                <p>{{ this.peterpet.did }}</p>
               </div>
                 <div class="name">
-                  <p> {{ peterpet.name }} </p>
+                  <p> {{ this.peterpet.name }} </p>
                 </div>
                 <div class="number">
-                  <p> {{ peterpet.registerNumber }} </p>
+                  <p> {{ this.peterpet.registerNumber }} </p>
                 </div>
                 <div class="imghash">
-                  <p> {{ peterpet.imgHash }} </p>
+                  <p> {{ this.peterpet.imgHash }} </p>
                 </div>
                 <div class="birth">
-                  <p> {{ peterpet.birth }} </p>
+                  <p> {{ this.peterpet.birth }} </p>
                 </div>
                 <div class="gender">
-                  <p> {{ peterpet.gender }} </p>
+                  <p> {{ this.peterpet.gender }} </p>
                 </div>
                 <div class="breedOfDog">
-                  <p> {{ peterpet.breedOfDog }} </p>
+                  <p> {{ this.peterpet.breedOfDog }} </p>
                 </div>
                 <div class="furColor">
-                  <p>{{ peterpet.furColor }} </p>
+                  <p>{{ this.peterpet.furColor }} </p>
                 </div>
                 <div class="adoptionDate">
-                  <p> {{ peterpet.adoptionDate }} </p>
+                  <p> {{ this.peterpet.adoptionDate }} </p>
                 </div>
                 <div class="isNeutering">
-                  <p> {{ peterpet.isNeutering }} </p>
+                  <p> {{ this.peterpet.isNeutering }} </p>
                 </div>
                 <div class="vaccinationHistory">
-                  <p> {{ peterpet.vaccinationHistory }} </p>
+                  <p> {{ this.peterpet.vaccinationHistory }} </p>
                 </div>
                 <div class="notes">
-                  <p> {{ peterpet.notes }} </p>
+                  <p> {{ this.peterpet.notes }} </p>
                 </div>
              </div>
              </template>
+
+<script>
+export default {
+  name: "Card",
+  props: [
+  "peterpet"
+  ]
+}
+</script>
+
+             

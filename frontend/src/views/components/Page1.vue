@@ -38,8 +38,7 @@
         <!-- pop-up DID CARD -->
        <div class="black-bg" v-if="modal == true">
            <div class="white-bg">
-
-             <Card></Card>
+             <Card v-bind:peterpet="peterpet" />
            </div>
        </div>
    </div>
@@ -47,7 +46,7 @@
 
 <script>
 import carousel from 'vue-owl-carousel'
-import Card from './components/Card.vue'
+import Card from './Card.vue'
 
 export default {
   name:"Accordion",
@@ -124,6 +123,7 @@ export default {
 </script>
 
 <style lang="css">
+@media screen and (min-width: 572.59px) {
 
 #dids {
   margin-left: 0px;
@@ -162,56 +162,56 @@ export default {
 .name {
   left: 3.3%;
   position:absolute;
-  top: 78%;
+  top: 81%;
 }
 .number {
   position: absolute;
-  bottom: 37.5%;
+  bottom: 32.5%;
   left: 4%;
 }
 .imghash{
   position: absolute;
   left: 2.5%;
-  top: 68%;
+  top: 72.2%;
 }
 .birth {
   position: absolute;
   left: 4.5%;
-  top: 82.7%;
+  top: 84.7%;
 }
 .gender {
   position: absolute;
   left: 3.5%;
-  top: 86.5%;
+  top: 88.2%;
 }
 .breedOfDog {
   position: absolute;
   left: 25.2%;
-  top: 61%;
+  top: 66.2%;
 }
 .furColor {
   position: absolute;
   left: 25.2%;
-  top: 65%;
+  top: 69.8%;
 }
 .adoptionDate {
   position: absolute;
   left: 25.2%;
-  top: 69%;
+  top: 73%;
 }
 .isNeutering {
   position: absolute;
-  top: 73.5%;
+  top: 77%;
   left: 27.5%;
 }
 .vaccinationHistory {
   position: absolute;
-  top: 78.2%;
+  top: 81.1%;
   left: 26.5%;
 }
 .notes {
   position: absolute;
-  top: 85%;
+  top: 87%;
   left: 26.3%;
 }
 p {
@@ -311,5 +311,6 @@ p {
   position: absolute;
   left: 10%;
   top: -4%;
+}
 }
 </style>
