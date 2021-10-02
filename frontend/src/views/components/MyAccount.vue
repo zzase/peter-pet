@@ -13,6 +13,11 @@
                         <div class="accountbox2">
                         </div>
                         <div class="sample">
+                          <h5>내 반려견들 : </h5>
+                          <br>
+                          <div >
+                            <h3 style="display:inline" v-for="pet in pets" :key="pet">{{pet.name}}  </h3>
+                          </div>
                         </div>
                         <div class="account-number">
                           <h6>내 계좌</h6>
@@ -35,6 +40,7 @@
        name : null,
        address : null,
        balance : null,
+       pets : []
      }
    },
    methods: {
@@ -43,7 +49,20 @@
        })
        .then((res) => {
          console.log(res.data);
-         this.balance = res.data.balance
+         this.balance = res.data.balance;
+         for(var i=0; i<res.data.length; i++) {
+           this.pets.push({name : res.data.names[i]});
+         }
+       })
+     },
+     getDidInfo: function(address) {
+       this.$http.get(`http://localhost:3000/api/pet/get/all/dids/${address}`,{
+       })
+       .then((res) => {
+         console.log(res.data);
+         for(var i=0; i<res.data.length; i++) {
+           this.pets.push({name : res.data.names[i]});
+         }
        })
      }
    },
@@ -51,6 +70,7 @@
      this.name = this.$store.state.user.id;
      this.address = this.$store.state.user.address;
      this.getBalance(this.$store.state.user.address);
+     this.getDidInfo(this.$store.state.user.address);
    }
  }
 </script>
@@ -123,7 +143,7 @@
   position:absolute;
   display: inline-block;
   width: 60%;
-  height: 20%;
+  height: 15%;
   background-color: rgba(240, 240, 240, 0.74);
   bottom: 18%;
   left: 20%;
