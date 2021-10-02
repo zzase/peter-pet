@@ -10,7 +10,7 @@
   </div>
     <div class="DID-page2">
     </div>
-    <div clss="Img-hash">
+    <div class="Img-hash">
      <p> img {{ peterpet.imgHash }}</p>
     </div>
     <div class="page-logo">
@@ -168,6 +168,12 @@ export default {
   position: absolute;
   margin-top: -22.5%;
   left: 30%;
-  
+}
+.Img-hash {
+  display:inline-block;
+  z-index: 1;
+  left: 40%;
+  top: 33%;
+
 }
 </style>

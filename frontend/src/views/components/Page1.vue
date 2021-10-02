@@ -16,7 +16,8 @@
       </template>
       <br>
       <b-card-body>
-        <b-card-title>{{did.name}}</b-card-title>
+        <b-card-title>{{did.name}}</b-card-title><br>
+        <img src="@/assets/img/Board/card-back.png">
         <b-card-text>동물등록증을 보려면 클릭하세요!</b-card-text>
       <b-button href="#" variant="default" @click="missingReport(`${did.did}`)">실종 신고</b-button>
       </b-card-body>
@@ -38,47 +39,7 @@
        <div class="black-bg" v-if="modal == true">
            <div class="white-bg">
 
-          <div id="app1">
-              <div class="card">
-              <img id ="card" src="@/assets/img/Regist/card.png" @click="modal = false" style="cursor:pointer;"> 
-              </div>
-              <div>
-                <p>{{peterpet.did}}</p>
-              </div>
-                <div class="name">
-                  <p> {{ peterpet.name }} </p>
-                </div>
-                <div class="number">
-                  <p> {{ peterpet.registerNumber }} </p>
-                </div>
-                <div class="imghash">
-                  <p> {{ peterpet.imgHash }} </p>
-                </div>
-                <div class="birth">
-                  <p> {{ peterpet.birth }} </p>
-                </div>
-                <div class="gender">
-                  <p> {{ peterpet.gender }} </p>
-                </div>
-                <div class="breedOfDog">
-                  <p> {{ peterpet.breedOfDog }} </p>
-                </div>
-                <div class="furColor">
-                  <p>{{ peterpet.furColor }} </p>
-                </div>
-                <div class="adoptionDate">
-                  <p> {{ peterpet.adoptionDate }} </p>
-                </div>
-                <div class="isNeutering">
-                  <p> {{ peterpet.isNeutering }} </p>
-                </div>
-                <div class="vaccinationHistory">
-                  <p> {{ peterpet.vaccinationHistory }} </p>
-                </div>
-                <div class="notes">
-                  <p> {{ peterpet.notes }} </p>
-                </div>
-             </div>
+             <Card></Card>
            </div>
        </div>
    </div>
@@ -86,6 +47,7 @@
 
 <script>
 import carousel from 'vue-owl-carousel'
+import Card from './components/Card.vue'
 
 export default {
   name:"Accordion",
@@ -140,7 +102,8 @@ export default {
     this.getDids(this.$store.state.user.address);
   },
   components: {
-    carousel 
+    carousel,
+    Card
   },
   
   computed: {
@@ -199,56 +162,56 @@ export default {
 .name {
   left: 3.3%;
   position:absolute;
-  top: 80%;
+  top: 78%;
 }
 .number {
   position: absolute;
-  top: 61.5%;
+  bottom: 37.5%;
   left: 4%;
 }
 .imghash{
   position: absolute;
   left: 2.5%;
-  top: 71%;
+  top: 68%;
 }
 .birth {
   position: absolute;
   left: 4.5%;
-  top: 84%;
+  top: 82.7%;
 }
 .gender {
   position: absolute;
   left: 3.5%;
-  top: 87.5%;
+  top: 86.5%;
 }
 .breedOfDog {
   position: absolute;
   left: 25.2%;
-  top: 63.8%;
+  top: 61%;
 }
 .furColor {
   position: absolute;
   left: 25.2%;
-  top: 67.7%;
+  top: 65%;
 }
 .adoptionDate {
   position: absolute;
   left: 25.2%;
-  top: 71.2%;
+  top: 69%;
 }
 .isNeutering {
   position: absolute;
-  top: 75.5%;
+  top: 73.5%;
   left: 27.5%;
 }
 .vaccinationHistory {
   position: absolute;
-  top: 79.5%;
+  top: 78.2%;
   left: 26.5%;
 }
 .notes {
   position: absolute;
-  top: 86.1%;
+  top: 85%;
   left: 26.3%;
 }
 p {
@@ -349,5 +312,4 @@ p {
   left: 10%;
   top: -4%;
 }
-
 </style>
