@@ -45,8 +45,8 @@
           width="1320"
           class="mx-auto"
         >
-          <v-col>
-                  <v-sheet min-height="70vh" rounded="lg">
+          <v-col style="max-width:100%">
+                  <v-sheet min-height="70vh" width="1000" rounded="lg">
                     <v-fade-transition mode="out-in">
                       <router-view></router-view>
                     </v-fade-transition>

@@ -318,6 +318,7 @@ export default {
 </script>
 
 <style>
+@media screen and (min-width: 900px) {
 .md-toolbar-section-start {
   position: absolute;
   margin-left: -15%;
@@ -326,5 +327,6 @@ export default {
 .navbar {
   position: absolute;
   margin-left: 70%;
+}
 }
 </style>
