@@ -76,29 +76,11 @@
 </script>
 
 <style>  
-.my-page {
+@media (max-width:1100px){
+.account-content {
   position: relative;
-  width: 90%;
-  height: 20%;
-  left: -25%;
-  top: 30%;
 }
-.board {
-  position: absolute;
-}
-.text {
-  position: absolute;
-  display: inline-block;
-  top: 10%;;
-  left: 15%;
-}
-.registercard{
-  position: relative;
-  top: 10%;
-  width: 40%;
-  height:40%;
-  left: -6%;
-}
+
 .my-account {
   display: inline-block;
   position: absolute;
@@ -132,10 +114,9 @@
 }
 
 .welcome {
-  position: absolute;
-  display: inline-block;
   bottom: 73%;
-  left: 20%;
+  margin-left: 30%;
+  margin-top: 10%;
 }
 .sample {
   position:absolute;
@@ -191,5 +172,6 @@ p {
   display: inline-block;
   top: 62%;
   left: 49%;
+}
 }
 </style>

@@ -23,7 +23,6 @@
 <script>
 import Side from './components/Side.vue';
 
-
 export default {
   bodyClass: "login-page",
   props: {
@@ -51,6 +50,7 @@ export default {
 
 <style >
 @media (max-width:400px){
+
 .md-card-actions.text-center {
   display: flex;
   justify-content: center !important;
@@ -68,8 +68,19 @@ export default {
   display: inline-block;
   width: 100%;
   height: 100%;
-  left: -35%;
 }
-
+.side-menu {
+  position: relative;
+  display: inline-flex;
+  margin-top: 20%;
+  left: -20%;
+}
+.my-page {
+  position: absolute;
+  display: inline-flex;
+}
+.welcome {
+ margin-left: 20%;
+}
 }
 </style>

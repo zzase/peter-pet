@@ -1,13 +1,14 @@
 <template>
         <div class="contents">
+          <div class="v-application--wrap">
           <div class="page-head">
           <h2 data-v-clf1971a class="title-text-center"><b>MY 동물등록증</b></h2></div>
 <div class="carousel">    
 <carousel :autoplay="true" :nav="false" :dots="false" class="marginTop50">
   
-  <div class="container-fluid">
-    <div class="row flex-row flex-nowrap">
-      <div class="col-12" style="height:100%;" v-for="did in accordionDIDs" :key="did.accld">
+  <div class="container-fluidcontainer-fluid">
+     <div class="row flex-row flex-nowrap">
+      <div class="b-card2" v-for="did in accordionDIDs" :key="did.accld">
         <b-card @click="clickCard(did.did)"  
             header-tag="header" 
             footer-tag="footer"
@@ -26,7 +27,7 @@
       </template>
     </b-card>
       </div>
-    </div>
+      </div>
   </div>
 </carousel> 
 
@@ -42,6 +43,7 @@
            </div>
        </div>
    </div>
+        </div>
 </template>
 
 <script>
@@ -154,7 +156,6 @@ export default {
 }
 .contents {
   position: relative;
-  left: 30%;
   top:10%;
 }
 .name {
@@ -216,11 +217,12 @@ p {
   font-size: 20px;
 }
 .card {
-  position: absolute;
-  margin-top: 14%;
-  width: 50%;
-  height: 50%;
-  left: -5.5%;
+  z-index: 1;
+  position: relative;
+  width: 80%;
+  height: 100%;
+  left: 17%;
+  margin-top: -9%;
   border: 2px solid rgb(214, 214, 214);
   box-shadow: 5px 5px 5px rgba(175, 175, 175, 0.671);
 }
@@ -251,43 +253,26 @@ p {
   position: absolute;
   top: 10%;
 }
-.did-card1 {
-  width: 50%;
-  text-align: center;
-  position: absolute;
-  left: 7%;
-  top: 60%;
-}
-.did-card2 {
-  width: 50%;
-  text-align: center;
-  position: absolute;
-  top: 60%;
-  left: 33.5%;
-}
-.did-card3 {
-  width: 50%;
-  text-align: center;
-  position: absolute;
-  left: 60%;
-  top: 60%;
-}
+
 .Image {
   height: 50%;
 }
 .carousel {
   text-align: center;
   z-index: 1;
-  position: relative;
-  margin-top: 4%;
-  margin-left: -29%;
+  position: absolute;
+  margin-top: 10%;
+  margin-left: -3%;
+  width: 100%;
+
 }
 .page1-line{
   position: absolute;
-  width: 76%;
-  height: 100%;
+  width: 100%;
+  height: 110%;
   background-color: rgba(143, 162, 173, 0.397);
-  top: 9%;
+  margin-top: -34%;
+  left: 3%;
   border-radius: 1.5em;
 }
 .bar {
@@ -298,16 +283,24 @@ p {
 }
 .page1-line2 {
   position: absolute;
-  width: 76%;
+  width: 100%;
   height: 1%;
   background-color: rgba(147, 161, 170, 0.171);
   margin-top: 5%;
+  margin-left: 3%;
 }
 .page-head {
+  position:absolute;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color:rgba(75, 77, 85, 0.801);
   position: absolute;
-  left: 10%;
-  top: -4%;
+  left: 42%;
+}
+.b-card2 {
+  display: inline-flex;
+}
+  
+.container-fluid{
+  left: 30%;
 }
 </style>

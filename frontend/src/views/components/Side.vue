@@ -1,5 +1,4 @@
 <template>
-<v-app id="inspire">
   <div class='Side'>
 
     <v-navigation-drawer permanent>
@@ -38,23 +37,27 @@
       </v-list>
       
     </v-navigation-drawer>
-      </div>
-    <div class="v-card">
+<div class="b-card1">
+     <b-card>
+     <router-view></router-view>
+     </b-card>
+</div>
+    <!-- <div class="v-card">
         <v-card
-          height="1200"
-          width="1320"
+          height="100%"
+          width="100%"
           class="mx-auto"
         >
           <v-col style="max-width:100%">
-                  <v-sheet min-height="70vh" width="1000" rounded="lg">
+                  <v-sheet min-height="70vh" rounded="lg">
                     <v-fade-transition mode="out-in">
                       <router-view></router-view>
                     </v-fade-transition>
                   </v-sheet>
                 </v-col>
         </v-card>
-    </div>
-</v-app>
+    </div> -->
+</div>
 </template>
 
 <script>
@@ -113,18 +116,24 @@ let router = new VueRouter({
 </script>
 
 <style>
+@media (max-width:1251px){
+
 .Side {
-  position: absolute;
-  left: -25%;
-}
-.v-card {
   position: relative;
-  left: -11.1%;
-}
-.v-application-wrap {
-    min-height: 50%;;
-    max-width: 50%;
-    position: relative;
+  left: -20%;
 }
 
+.b-card1 {
+  position: absolute;
+  width: 10%;
+  top: -20%;
+}
+.card-body {
+  position: absolute;
+  top: -20%;
+}
+.welcome {
+  margin-left: 30%;
+}
+}
 </style>
