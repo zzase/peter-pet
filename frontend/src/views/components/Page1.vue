@@ -4,12 +4,14 @@
           <h2 data-v-clf1971a class="title-text-center"><b>MY 동물등록증</b></h2></div>
 <div class="carousel">    
 <carousel :autoplay="true" :nav="false" :dots="false" class="marginTop50">
-  <div  v-for="dids in formattedDids" :key="dids.accld"> 
-    <b-card @click="clickCard(did.did)"  
+  
+  <div class="container-fluid">
+    <div class="row flex-row flex-nowrap">
+      <div class="col-12" style="height:100%;" v-for="did in accordionDIDs" :key="did.accld">
+        <b-card @click="clickCard(did.did)"  
             header-tag="header" 
             footer-tag="footer"
-            v-for="did in dids" :key="did.accld"
-            style="max-width: 18rem;">
+            >
       <template #header> {{ did.did }}
       </template>
       <br>
@@ -22,8 +24,9 @@
         <em>Peter-Pet</em>
       </template>
     </b-card>
+      </div>
+    </div>
   </div>
-    
 </carousel> 
 
 <div class="page1-line">
@@ -38,6 +41,9 @@
           <div id="app1">
               <div class="card">
               <img id ="card" src="@/assets/img/Regist/card.png" @click="modal = false" style="cursor:pointer;"> 
+              </div>
+              <div>
+                <p>{{peterpet.did}}</p>
               </div>
                 <div class="name">
                   <p> {{ peterpet.name }} </p>

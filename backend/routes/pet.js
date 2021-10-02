@@ -47,8 +47,9 @@ router.get('/get/all/petInfos/:did', async function(req, res, next) {
         }
         else {
           const issueDate = new Date(rows[0].issueDate);
-          res.status(200).send({did : did, 
+          res.status(200).send({ 
             peterpet: {
+              did : did,
               imgHash : peterpet.imgHash,
               name : peterpet.name,
               birth : peterpet.birth,
