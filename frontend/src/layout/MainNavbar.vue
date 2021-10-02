@@ -6,6 +6,7 @@
     :class="extraNavClasses"
     :color-on-scroll="colorOnScroll"
   >
+  
     <div class="md-toolbar-row md-collapse-lateral">
       <div class="md-toolbar-section-start">
         <!-- <h3 class="md-title">Vue Material Kit</h3> -->
@@ -16,6 +17,7 @@
           </span>
         </a>
       </div>
+<div class="navbar">
       <div class="md-toolbar-section-end">
         <md-button
           class="md-just-icon md-simple md-toolbar-toggle"
@@ -41,14 +43,14 @@
                   <div class="md-list-item-content"></div>
                 </a>
               </li>
-
-              <md-list-item a href="#" target="_blank" v-if="showDownload">
+            
+              <md-list-item a href="#/about" target="_blank" v-if="showDownload">
                 <p>About</p>
                 <md-tooltip md-direction="bottom">Peter Pet ?</md-tooltip>
               </md-list-item>
 
               <md-list-item
-                href="javascript:void(0)"
+                href="#/regist"
                 @click="scrollToElement()"
                 v-if="showDownload"
               >
@@ -66,7 +68,7 @@
               </md-list-item>
 
               <md-list-item
-                href="javascript:void(0)"
+                href="#/neverland"
                 @click="scrollToElement()"
                 v-if="showDownload"
               >
@@ -113,13 +115,61 @@
                   </div>
                 </a>
               </li>
+              <div>
+                <div v-if="this.$store.state.isLogin">
+                  <b-button pill variant="outline-primary" @click="myPage()">MyPage</b-button>
+                </div>
+
+                <div v-else>
+                  <b-button pill variant="outline-primary" v-b-modal.modal-center :id="login" :ref="login">login</b-button>
+                </div>
+                  
+                  <b-modal hide-footer id="modal-center" ref="loginModal"  centered title="">
+                    <form @submit.prevent="login">
+                    <login-card header-color="green">
+                      <br>
+                      
+                        <h3 slot="title" class="card-title">Login</h3>
+                      
+             
+              <p slot="description" class="description">아이디 입력시 아이디가 없으면 자동 회원가입이 돼요!</p>
+              <md-field class="md-form-group" slot="inputs">
+                <md-icon>face</md-icon>
+                <label>ID</label>
+                <md-input v-model="user.id"></md-input>
+              </md-field>
+              <md-field class="md-form-group" slot="inputs">
+                <md-icon>lock_outline</md-icon>
+                <label>Password</label>
+                <md-input type="password" v-model="user.password"></md-input>
+              </md-field>
+              <md-button slot="footer" class="md-simple md-success md-lg" @click="$bvModal.hide('modal-center')">
+                닫기
+              </md-button>
+              <md-button type="submit" slot="footer" class="md-simple md-success md-lg">
+                로그인
+              </md-button>
+            </login-card>
+            </form>
+                  </b-modal>
+                </div>
+                <div class="text-center" id="address" ref="address"></div>
+              <li>
+              </li>
             </md-list>
           </div>
         </div>
       </div>
+      <div>      
+      </div>
     </div>
+  </div>
+
   </md-toolbar>
+
 </template>
+
+
 
 <script>
 let resizeTimeout;
@@ -136,9 +186,20 @@ function resizeThrottler(actualResizeHandler) {
 }
 
 import MobileMenu from "@/layout/MobileMenu";
+
+import { LoginCard } from "@/components";
+
+
+const Key = {
+  auth : {
+    accessType: 'keystore',
+    keystore: '',
+    password: ''
+  },
+}
 export default {
   components: {
-    MobileMenu,
+    MobileMenu,LoginCard
   },
   props: {
     type: {
@@ -165,6 +226,10 @@ export default {
     return {
       extraNavClasses: "",
       toggledClass: false,
+      user : {
+        'id' : null,
+        'password' : null
+      }
     };
   },
   computed: {
@@ -174,6 +239,30 @@ export default {
     },
   },
   methods: {
+    myPage: function () {
+      window.location.href = '#/myPage'
+    },
+    login : function() {
+      this.$http.post('http://localhost:3000/api/user/login',{user : this.user},{"Content-Type":"application-json"})
+      .then((res)=>{
+        console.log('res.data : ' + res.data);
+        if(res.data.loginCheck){
+          this.$store.commit("loginSuccess")
+          this.$store.commit("setUser",res.data.user);
+          this.$router.push({name :"main"}).catch(()=>{});
+
+          alert("login 성공");
+          this.$bvModal.hide('modal-center')
+        }
+        else {
+          this.$store.commit('loginError');
+          alert('비밀번호가 틀렸습니다!');
+        }
+      })
+      .catch((err)=>{
+        console.error(err);
+      })
+    },
     bodyClick() {
       let bodyClick = document.getElementById("bodyClick");
 
@@ -227,3 +316,15 @@ export default {
   },
 };
 </script>
+
+<style>
+.md-toolbar-section-start {
+  position: absolute;
+  margin-left: -15%;
+  margin-top: 0.5%;
+}
+.navbar {
+  position: absolute;
+  margin-left: 70%;
+}
+</style>

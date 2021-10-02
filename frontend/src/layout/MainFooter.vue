@@ -4,8 +4,7 @@
       <div class="col-md">
         <div class="ftco-footer-widget">
           <h2 class="ftco-heading-2">About</h2>
-
-          <span>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</span>
+          <span>(주) PeterPet은 국가동물등록 정식대행기관입니다.</span>
         </div>
       </div>
       <div class="col-md">
@@ -57,15 +56,17 @@
             <ul>
               <li>
                 <span class="icon fa fa-map-marker"></span>
-                <span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span>
+                <span class="main-text">주소: 서울 금천구 가산디지털1로 168</span><br>
+                <br>
               </li>
               <li>
                 <span class="icon fa fa-phone"></span>
-                <span class="text">+82 2123 1234</span>
+                <span class="main-text">+82 2123 1234</span><br>
+                <br>
               </li>
               <li>
                 <span class="icon fa fa-paper-plane"></span>
-                <span class="text">muse9312@naver.com</span>
+                <span class="main-text">Peterpet@gmail.com</span><br>
               </li>
             </ul>
           </div>
@@ -93,3 +94,14 @@ export default {
   name: "Footer",
 };
 </script>
+
+<style> 
+.main-text {
+  position: absolute;
+  left: 5%;
+}
+.ftco-footer-widget {
+  position: absolute;
+  display: inline-block;
+  left: 20%;
+}
