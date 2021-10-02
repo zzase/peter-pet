@@ -4,6 +4,7 @@
         <b-flex xs12>
           <div class="wrapper">
           <div class="main main-raised">
+   
             <div class="wenddy-info">
             </div>
             <div class="DID-page1">
@@ -79,7 +80,6 @@ export default {
 </script>
 
 <style>
-
 .DID-page1 {
   position: relative;
   margin-top: -3%;
@@ -167,7 +167,7 @@ export default {
   color: rgb(0, 0, 0);
   z-index: 2;
   position: absolute;
-  margin-top: -18%;
+  margin-top: -17.5%;
   left: 30%;
 }
 .Img-hash {
@@ -176,9 +176,5 @@ export default {
   left: 40%;
   top: 33%;
 }
-.wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 </style>

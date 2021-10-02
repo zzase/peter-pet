@@ -123,8 +123,6 @@ export default {
 </script>
 
 <style lang="css">
-@media screen and (min-width: 572.59px) {
-
 #dids {
   margin-left: 0px;
 }
@@ -311,6 +309,5 @@ p {
   position: absolute;
   left: 10%;
   top: -4%;
-}
 }
 </style>
