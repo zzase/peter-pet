@@ -17,7 +17,7 @@ const tunnelConfig = {
   port: 22,
   username: 'ubuntu',
   //password: 'hoon3827',
-  privateKey: fs.readFileSync('C:\\Users\\sehoo\\projects\\peter-pet\\backend\\wallet\\oracle_instance.ppk'),
+  privateKey: fs.readFileSync('/home/ether/Final-project/peter-pet/backend/wallet/oracle_instance.ppk'),
   passphrase: 'hoon3827'
 };
 
