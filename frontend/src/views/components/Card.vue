@@ -44,6 +44,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      modal: false
+    }
+  },
   name: "Card",
   props: [
   "peterpet"

@@ -116,7 +116,7 @@ let router = new VueRouter({
 </script>
 
 <style>
-@media (max-width:1251px){
+@media (max-width:1251px ){
 
 .Side {
   position: relative;
@@ -127,6 +127,7 @@ let router = new VueRouter({
   position: absolute;
   width: 10%;
   top: -20%;
+  height: 800px;
 }
 .card-body {
   position: absolute;

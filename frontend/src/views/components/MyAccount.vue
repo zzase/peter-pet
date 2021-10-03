@@ -1,36 +1,33 @@
 <template>
 <div class="account-content">
-    <div class="welcome">
-                  <h4 ><h1 class="wenddyName">{{name}}</h1> 웬디님 ,</h4>
-                  <br><h4>환영합니다</h4>
+    <div class="welcome" style= "margin-left: 8%; margin-top: 4%; color: white;">
+                  <h1><b>{{name}} 웬디님 ,</b></h1>
+                  <br><h3><b>환영합니다!</b></h3>
                   </div>
-                    <div class="my-account">
-                    </div>
-                      <div class="line">
+                      <div class="line" style="width: 100%; height: 200px; background-color:#C5DFC1;
+                                                margin-top: -13%;">
                       </div>
-                        <div class="accountbox1">
+                       
+                        <div class="account-number" style="margin-left: 6%; margin-top:5%; border: 1px solid rgba(214, 214, 214, 0.74); color: #585A59"
+                                                            border-radius: 2em; width: 43%; height: 110px; text-align:center;>
+                          <br><br><h5>내 계좌: {{ address }} </h5>
                         </div>
-                        <div class="accountbox2">
+                        <div class="myKlay" style="margin-left: 52%; margin-top:-8%; border: 1px solid rgba(214, 214, 214, 0.74);
+                                                    border-radius: 2em; width: 43%; height: 110px; text-align:center;  color: #585A59">
+                          <br><br><h5>나의 잔액: {{ balance }} klay</h5>
                         </div>
-                        <div class="sample">
-                          <h5>내 반려견들 : </h5>
+                        <div class="accountNumber">
+                        <p> </p>
+                      </div>
+                        <div class="sample" style= "margin-left: 10%; margin-top: 5%;">
+                          <h5>내 반려견 : </h5>
                           <br>
                           <div >
                             <h5 style="display:inline" v-for="pet in pets" :key="pet">{{pet.name}}  </h5>
                           </div>
                         </div>
-                        <div class="account-number">
-                          <h5>내 계좌</h5>
-                        </div>
-                        <div class="klay">
-                          <h5>나의 잔액</h5>
-                        </div>
-                        <div class="accountNumber">
-                        <p> {{ address }} </p>
-                      </div>
-                      <div class="myKlay">
-                        <p> {{ balance }} klay</p>
-                      </div>
+                        <br><br><br><br>
+                        
         </div>
 </template>
 <script>
@@ -108,15 +105,15 @@
   display: inline-block;
   width: 60%;
   height: 0.5%;
-  background-color: rgba(240, 240, 240, 0.74);
+  background-color: rgba(214, 214, 214, 0.74);
   left: 20%;
   bottom: 70%;
 }
 
 .welcome {
+  position: absolute;
   bottom: 73%;
-  margin-left: 30%;
-  margin-top: 10%;
+  margin-left: 20%;
 }
 .sample {
   position:absolute;

@@ -4,7 +4,6 @@
      </parallax>
        <div class="main main-raised">
            <div class="section">
-              <div class="contents">
                 <div class="my-page">
                   <img src="@/assets/img/MyPage/mypage.jpg">
                 </div>
@@ -14,7 +13,6 @@
                   <div class="account-contents">
                   <MyAccount></MyAccount>
                  </div>
-              </div>
            </div>
       </div>
   </div>
@@ -50,7 +48,7 @@ export default {
 
 <style >
 @media (max-width:400px){
-
+  
 .md-card-actions.text-center {
   display: flex;
   justify-content: center !important;
@@ -68,6 +66,7 @@ export default {
   display: inline-block;
   width: 100%;
   height: 100%;
+  left: 20%;
 }
 .side-menu {
   position: relative;
@@ -79,8 +78,6 @@ export default {
   position: absolute;
   display: inline-flex;
 }
-.welcome {
- margin-left: 20%;
-}
+
 }
 </style>

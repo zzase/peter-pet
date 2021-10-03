@@ -2,11 +2,10 @@
         <div class="contents">
           <div class="v-application--wrap">
           <div class="page-head">
-          <h2 data-v-clf1971a class="title-text-center"><b>MY 동물등록증</b></h2></div>
-<div class="carousel">    
-<carousel :autoplay="true" :nav="false" :dots="false" class="marginTop50">
+          <h2 data-v-clf1971a class="title-text-center">MY 동물등록증</h2></div>
+      <div class="carousel">    
+      <carousel :autoplay="true" :nav="true" :dots="true" class="container-fluidcontainer-fluid">
   
-  <div class="container-fluidcontainer-fluid">
      <div class="row flex-row flex-nowrap">
       <div class="b-card2" v-for="did in accordionDIDs" :key="did.accld">
         <b-card @click="clickCard(did.did)"  
@@ -28,22 +27,22 @@
     </b-card>
       </div>
       </div>
-  </div>
 </carousel> 
 
 <div class="page1-line">
 </div>
 <div class="page1-line2">
 </div>
-</div>         
+</div> 
+        </div>
+
         <!-- pop-up DID CARD -->
        <div class="black-bg" v-if="modal == true">
            <div class="white-bg">
-             <Card v-bind:peterpet="peterpet" />
+          <Card v-bind:peterpet="peterpet" />
            </div>
        </div>
    </div>
-        </div>
 </template>
 
 <script>
@@ -218,7 +217,7 @@ p {
 }
 .card {
   z-index: 1;
-  position: relative;
+  position: absolute;
   width: 80%;
   height: 100%;
   left: 17%;
@@ -295,6 +294,7 @@ p {
   color:rgba(75, 77, 85, 0.801);
   position: absolute;
   left: 42%;
+  font-family: 'Black Han Sans', sans-serif;
 }
 .b-card2 {
   display: inline-flex;
