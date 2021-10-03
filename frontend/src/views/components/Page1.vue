@@ -47,7 +47,7 @@
     <!-- pop-up DID CARD -->
     <div class="black-bg" v-if="modal == true">
       <div class="white-bg">
-        <Card v-bind:peterpet="peterpet" v-bind:imgLink="imgLink"/>
+        <Card v-bind:peterpet="peterpet"/>
       </div>
     </div>
   </div>
