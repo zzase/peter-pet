@@ -1,124 +1,140 @@
 <template>
-        <div class="contents">
-          <div class="page-head">
-          <h2 data-v-clf1971a class="title-text-center"><b>MY 동물등록증</b></h2></div>
-<div class="carousel">    
-<carousel :autoplay="true" :nav="false" :dots="false" class="marginTop50">
-  
-  <div class="container-fluid">
-    <div class="row flex-row flex-nowrap">
-      <div class="col-12" style="height:100%;" v-for="did in accordionDIDs" :key="did.accld">
-        <b-card @click="clickCard(did.did)"  
-            header-tag="header" 
-            footer-tag="footer"
+  <div class="contents">
+    <div class="page-head">
+      <h2 data-v-clf1971a class="title-text-center"><b>MY 동물등록증</b></h2>
+    </div>
+    <div class="carousel">
+      <carousel :autoplay="true" :nav="false" :dots="false" class="marginTop50">
+        <div class="container-fluid">
+          <div class="row flex-row flex-nowrap">
+            <div
+              class="col-12"
+              style="height: 100%"
+              v-for="did in accordionDIDs"
+              :key="did.accld"
             >
-      <template #header> {{ did.did }}
-      </template>
-      <br>
-      <b-card-body>
-        <b-card-title>{{did.name}}</b-card-title><br>
-        <img src="@/assets/img/Board/card-back.png">
-        <b-card-text>동물등록증을 보려면 클릭하세요!</b-card-text>
-      <b-button href="#" variant="default" @click="missingReport(`${did.did}`)">실종 신고</b-button>
-      </b-card-body>
-      <template #footer>
-        <em>Peter-Pet</em>
-      </template>
-    </b-card>
+              <b-card
+                @click="clickCard(did.did)"
+                header-tag="header"
+                footer-tag="footer"
+              >
+                <template #header> {{ did.did }} </template>
+                <br />
+                <b-card-body>
+                  <b-card-title>{{ did.name }}</b-card-title
+                  ><br />
+                  <img src="@/assets/img/Board/card-back.png" />
+                  <b-card-text>동물등록증을 보려면 클릭하세요!</b-card-text>
+                  <b-button
+                    href="#"
+                    variant="default"
+                    @click="missingReport(`${did.did}`)"
+                    >실종 신고</b-button
+                  >
+                </b-card-body>
+                <template #footer>
+                  <em>Peter-Pet</em>
+                </template>
+              </b-card>
+            </div>
+          </div>
+        </div>
+      </carousel>
+
+      <div class="page1-line"></div>
+      <div class="page1-line2"></div>
+    </div>
+    <!-- pop-up DID CARD -->
+    <div class="black-bg" v-if="modal == true">
+      <div class="white-bg">
+        <Card v-bind:peterpet="peterpet" />
       </div>
     </div>
   </div>
-</carousel> 
-
-<div class="page1-line">
-</div>
-<div class="page1-line2">
-</div>
-</div>         
-        <!-- pop-up DID CARD -->
-       <div class="black-bg" v-if="modal == true">
-           <div class="white-bg">
-             <Card v-bind:peterpet="peterpet" />
-           </div>
-       </div>
-   </div>
 </template>
 
 <script>
-import carousel from 'vue-owl-carousel'
-import Card from './Card.vue'
+import carousel from "vue-owl-carousel";
+import Card from "./Card.vue";
 
 export default {
-  name:"Accordion",
+  name: "Accordion",
 
-  data (){
+  data() {
     return {
       accordionDIDs: [],
 
-      modal : false,
+      modal: false,
       counter: 0,
 
-      peterpet: { }
-    }
+      peterpet: {},
+    };
   },
   methods: {
     toast(toaster, append = false) {
-        this.counter++
-        this.$bvToast.toast(`실종신고가 완료되었습니다.`, {
-          title: `Toaster ${toaster}`,
-          toaster: toaster,
-          solid: true,
-          appendToast: append
-        })
-      },
-      getDids: function(address) {
-       this.$http.get(`http://localhost:3000/api/pet/get/all/dids/${address}`,{
-       })
-       .then((res) => {
-         console.log(res.data);
-         for(var i=0; i<res.data.length; i++){
-           this.accordionDIDs.push({id:i+1, did:`${res.data.dids[i]}` ,name:res.data.names[i]});
-         }
-       })
-     },
-     getInfo: function(did) {
-       this.$http.get(`http://localhost:3000/api/pet/get/all/petInfos/${did}`,{
-       })
-       .then((res) => {
-         console.log(res.data);
-         this.peterpet = res.data.peterpet;
-       })
-     },
-     clickCard : function(did) {
-       this.modal = true;
-       this.getInfo(did);
-     },
-     missingReport : function(did) {
-       this.$router.push({name :"Page 2", query : {did:did}}).catch(()=>{});
-     }
+      this.counter++;
+      this.$bvToast.toast(`실종신고가 완료되었습니다.`, {
+        title: `Toaster ${toaster}`,
+        toaster: toaster,
+        solid: true,
+        appendToast: append,
+      });
+    },
+    getDids: function (address) {
+      this.$http
+        .get(`http://localhost:3000/api/pet/get/all/dids/${address}`, {})
+        .then((res) => {
+          console.log(res.data);
+          for (var i = 0; i < res.data.length; i++) {
+            this.accordionDIDs.push({
+              id: i + 1,
+              did: `${res.data.dids[i]}`,
+              name: res.data.names[i],
+            });
+          }
+        });
+    },
+    getInfo: function (did) {
+      this.$http
+        .get(`http://localhost:3000/api/pet/get/all/petInfos/${did}`, {})
+        .then((res) => {
+          console.log(res.data);
+          this.peterpet = res.data.peterpet;
+        });
+    },
+
+    clickCard: function (did) {
+      this.modal = true;
+      this.getInfo(did);
+    },
+    missingReport: function (did) {
+      this.$router
+        .push({ name: "Page 2", query: { did: did } })
+        .catch(() => {});
+    },
   },
   created() {
     this.getDids(this.$store.state.user.address);
   },
   components: {
     carousel,
-    Card
+    Card,
   },
-  
+
   computed: {
     headerStyle() {
       return {
-        backgroundImage: `url(${this.header})`
+        backgroundImage: `url(${this.header})`,
       };
     },
-    formattedDids (){
-          return this.accordionDIDs.reduce((c, n, i) => {
-              if (i % 2 === 0) c.push([]);
-              c[c.length - 1].push(n);
-              return c;
-          }, []);
-      }
-  }
+    formattedDids() {
+      return this.accordionDIDs.reduce((c, n, i) => {
+        if (i % 2 === 0) c.push([]);
+        c[c.length - 1].push(n);
+        return c;
+      }, []);
+    },
+  },
 };
 </script>
 
@@ -140,7 +156,7 @@ export default {
   left: 28%;
 }
 .md-layout-item {
-  position:relative;
+  position: relative;
   top: 10%;
   width: 100%;
 }
@@ -148,18 +164,18 @@ export default {
   position: absolute;
   width: 50%;
   height: 35%;
-  background-color:blanchedalmond;
+  background-color: blanchedalmond;
   top: 8%;
   left: 25%;
 }
 .contents {
   position: relative;
   left: 30%;
-  top:10%;
+  top: 10%;
 }
 .name {
   left: 3.3%;
-  position:absolute;
+  position: absolute;
   top: 81%;
 }
 .number {
@@ -167,7 +183,7 @@ export default {
   bottom: 32.5%;
   left: 4%;
 }
-.imghash{
+.imghash {
   position: absolute;
   left: 2.5%;
   top: 72.2%;
@@ -233,9 +249,8 @@ p {
 .agree {
   position: absolute;
   margin-top: 17%;
-  
 }
-.card-on{
+.card-on {
   z-index: 1;
   width: 40%;
   height: 40%;
@@ -282,7 +297,7 @@ p {
   margin-top: 4%;
   margin-left: -29%;
 }
-.page1-line{
+.page1-line {
   position: absolute;
   width: 76%;
   height: 100%;
@@ -291,10 +306,10 @@ p {
   border-radius: 1.5em;
 }
 .bar {
- margin-left: -60%;
+  margin-left: -60%;
   font-size: 20px;
-  font-family: 'Righteous', cursive;
-  color:rgb(125, 120, 150)
+  font-family: "Righteous", cursive;
+  color: rgb(125, 120, 150);
 }
 .page1-line2 {
   position: absolute;
@@ -304,8 +319,8 @@ p {
   margin-top: 5%;
 }
 .page-head {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  color:rgba(75, 77, 85, 0.801);
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: rgba(75, 77, 85, 0.801);
   position: absolute;
   left: 10%;
   top: -4%;
