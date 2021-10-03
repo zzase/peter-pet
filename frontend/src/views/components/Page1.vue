@@ -47,7 +47,7 @@
     <!-- pop-up DID CARD -->
     <div class="black-bg" v-if="modal == true">
       <div class="white-bg">
-        <Card v-bind:peterpet="peterpet" />
+        <Card v-bind:peterpet="peterpet" v-bind:imgLink="imgLink"/>
       </div>
     </div>
   </div>
@@ -68,6 +68,7 @@ export default {
       counter: 0,
 
       peterpet: {},
+      imgLink : null
     };
   },
   methods: {
@@ -106,6 +107,7 @@ export default {
     clickCard: function (did) {
       this.modal = true;
       this.getInfo(did);
+      console.log('imglink:'+this.imgLink)
     },
     missingReport: function (did) {
       this.$router

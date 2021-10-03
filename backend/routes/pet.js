@@ -65,7 +65,8 @@ router.get('/get/all/petInfos/:did', async function(req, res, next) {
                 year : issueDate.getFullYear(),
                 month : issueDate.getMonth() +1,
                 date : issueDate.getDate()
-              }
+              },
+              imgLink : `https://ipfs.io/ipfs/${peterpet.imgHash}`
           }
         });
         }
