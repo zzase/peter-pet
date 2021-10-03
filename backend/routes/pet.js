@@ -65,7 +65,8 @@ router.get('/get/all/petInfos/:did', async function(req, res, next) {
                 year : issueDate.getFullYear(),
                 month : issueDate.getMonth() +1,
                 date : issueDate.getDate()
-              }
+              },
+              imgLink : `https://ipfs.io/ipfs/${peterpet.imgHash}`
           }
         });
         }
@@ -89,7 +90,7 @@ router.post('/regist',async function(req,res,next){
     // const result = await contract.methods.addDid(peterpet.imgHash, peterpet.name, peterpet.birth, peterpet.breedOfDog, peterpet.gender, peterpet.adoptionDate,
     //   peterpet.isNeutering, peterpet.furColor, peterpet.vaccinationHistory, peterpet.notes).send({ from: address, gas: 5000000 });
 
-    const addDidData = await contract.methods.addDid("peterpet.imgHash", peterpet.name, peterpet.birth, peterpet.breedOfDog, peterpet.gender, peterpet.adoptionDate,
+    const addDidData = await contract.methods.addDid(peterpet.imgHash, peterpet.name, peterpet.birth, peterpet.breedOfDog, peterpet.gender, peterpet.adoptionDate,
     peterpet.isNeutering, peterpet.furColor, peterpet.vaccinationHistory, peterpet.notes).encodeABI();
 
     console.log("addDidData : " + addDidData);
@@ -149,6 +150,7 @@ router.post('/tinkerbell',async function(req,res,next) {
         else {
           checkUpdate = true;
           const name = await contract.methods.getPetNameByDid(`${lastDid}`).call();
+          const imgHash = await contract.methods.getPetImgByDid(`${lastDid}`).call();
           //const name = '두남이';
           console.log(name);
 
@@ -159,7 +161,7 @@ router.post('/tinkerbell',async function(req,res,next) {
           else {
             msg = '가까운 동물병원으로 가셔서 발급된 QR코드나 DID를 알려주세요!'
           }
-          res.status(200).send({peterpet : {name : name, did : lastDid, url : `"http://localhost:3000/#/pet/own/${lastDid}"`}, checkUpdate:checkUpdate, tinkerbellType : tinkerbellType, msg : msg});
+          res.status(200).send({peterpet : {name : name, did : lastDid, imgLink:`https://ipfs.io/ipfs/${imgHash}`, url : `"http://localhost:8080/#/pet/own/${lastDid}"`}, checkUpdate:checkUpdate, tinkerbellType : tinkerbellType, msg : msg});
         } 
       }); 
     }

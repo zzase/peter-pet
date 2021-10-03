@@ -1,7 +1,12 @@
        <template> 
           <div id="app1">
               <div class="dog-card">
-              <img id ="regist-card" src="@/assets/img/Regist/card.png" @click="modal = false" style="cursor:pointer;"> 
+              <img id ="regist-card"
+                   src="@/assets/img/Regist/card.png" 
+                   @click="modal = false" 
+                   style="cursor:pointer;
+                          margin-left: 17%;
+                          margin-bottom: 5%;"> 
               </div>
               <div class="number">
                 <p>{{ this.peterpet.did }}</p>
@@ -42,6 +47,7 @@
              </div>
              </template>
 
+
 <script>
 export default {
   data() {
@@ -52,18 +58,84 @@ export default {
   name: "Card",
   props: [
   "peterpet"
-  ]
-}
+  ],
+};
 </script>
 
 <style> 
-
+@media (max-width:470px) {
+.name {
+  left: 28%;
+  position:absolute;
+  top: 74%;
+}
+.number {
+  position: absolute;
+  bottom: 38.3%;
+  left: 29%;
+}
+.imghash{
+  position: absolute;
+  left: 27%;
+  top: 68%;
+}
+.birth {
+  position: absolute;
+  left: 29.5%;
+  top: 82.2%;
+}
+.gender {
+  position: absolute;
+  left: 28%;
+  top: 86.2%;
+}
+.breedOfDog {
+  position: absolute;
+  left: 56%;
+  top: 60.7%;
+}
+.furColor {
+  position: absolute;
+  left: 56%;
+  top: 64.9%;
+}
+.adoptionDate {
+  position: absolute;
+  left: 56%;
+  top: 68.7%;
+}
+.isNeutering {
+  position: absolute;
+  top: 73.3%;
+  left: 59%;
+}
+.vaccinationHistory {
+  position: absolute;
+  top: 78.1%;
+  left: 58%;
+}
+.notes {
+  position: absolute;
+  top: 85%;
+  left: 57.5%;
+}
+.card {
+  z-index: 1;
+  position: absolute;
+  width: 80%;
+  height: 100%;
+  left: 17%;
+  margin-top: -9%;
+  border: 2px solid rgb(214, 214, 214);
+  box-shadow: 5px 5px 5px rgba(175, 175, 175, 0.671);
+}
 .dog-card {
   margin-left: 17%;
   margin-bottom: 10%;
 }
 p {
   font-size: 20px;
+}
 }
 </style>
 

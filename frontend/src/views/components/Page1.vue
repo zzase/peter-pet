@@ -213,7 +213,7 @@ export default {
   left: 57.5%;
 }
 p {
-  font-size: 19px;
+  font-size: 20px;
 }
 .card {
   z-index: 1;
