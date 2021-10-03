@@ -6,35 +6,35 @@
       <div class="carousel">    
       <carousel :autoplay="true" :nav="true" :dots="true" class="container-fluidcontainer-fluid">
   
-     <div class="row flex-row flex-nowrap">
-      <div class="b-card2" v-for="did in accordionDIDs" :key="did.accld">
-        <b-card @click="clickCard(did.did)"  
-            header-tag="header" 
-            footer-tag="footer"
-            >
-      <template #header> {{ did.did }}
-      </template>
-      <br>
-      <b-card-body>
-        <b-card-title>{{did.name}}</b-card-title><br>
-        <img src="@/assets/img/Board/card-back.png">
-        <b-card-text>동물등록증을 보려면 클릭하세요!</b-card-text>
-      <b-button href="#" variant="default" @click="missingReport(`${did.did}`)">실종 신고</b-button>
-      </b-card-body>
-      <template #footer>
-        <em>Peter-Pet</em>
-      </template>
-    </b-card>
-      </div>
-      </div>
-</carousel> 
+      <div class="row flex-row flex-nowrap">
+        <div class="b-card2" v-for="did in accordionDIDs" :key="did.accld">
+          <b-card @click="clickCard(did.did)"  
+              header-tag="header" 
+              footer-tag="footer"
+              >
+              <template #header> {{ did.did }}
+              </template>
+              <br>
+              <b-card-body>
+                <b-card-title>{{did.name}}</b-card-title><br>
+                <img src="@/assets/img/Board/card-back.png">
+                <b-card-text>동물등록증을 보려면 클릭하세요!</b-card-text>
+              <b-button href="#" variant="default" @click="missingReport(`${did.did}`)">실종 신고</b-button>
+              </b-card-body>
+              <template #footer>
+                <em>Peter-Pet</em>
+              </template>
+            </b-card>
+              </div>
+              </div>  
+      </carousel> 
 
-<div class="page1-line">
-</div>
-<div class="page1-line2">
-</div>
-</div> 
-        </div>
+          <div class="page1-line">
+          </div>
+          <div class="page1-line2">
+          </div>
+        </div> 
+      </div>
 
         <!-- pop-up DID CARD -->
        <div class="black-bg" v-if="modal == true">
@@ -158,62 +158,62 @@ export default {
   top:10%;
 }
 .name {
-  left: 3.3%;
+  left: 28%;
   position:absolute;
-  top: 81%;
+  top: 78%;
 }
 .number {
   position: absolute;
-  bottom: 32.5%;
-  left: 4%;
+  bottom: 38.3%;
+  left: 29%;
 }
 .imghash{
   position: absolute;
-  left: 2.5%;
-  top: 72.2%;
+  left: 27%;
+  top: 68%;
 }
 .birth {
   position: absolute;
-  left: 4.5%;
-  top: 84.7%;
+  left: 29.5%;
+  top: 82.2%;
 }
 .gender {
   position: absolute;
-  left: 3.5%;
-  top: 88.2%;
+  left: 28%;
+  top: 86.2%;
 }
 .breedOfDog {
   position: absolute;
-  left: 25.2%;
-  top: 66.2%;
+  left: 56%;
+  top: 60.7%;
 }
 .furColor {
   position: absolute;
-  left: 25.2%;
-  top: 69.8%;
+  left: 56%;
+  top: 64.9%;
 }
 .adoptionDate {
   position: absolute;
-  left: 25.2%;
-  top: 73%;
+  left: 56%;
+  top: 68.7%;
 }
 .isNeutering {
   position: absolute;
-  top: 77%;
-  left: 27.5%;
+  top: 73.3%;
+  left: 59%;
 }
 .vaccinationHistory {
   position: absolute;
-  top: 81.1%;
-  left: 26.5%;
+  top: 78.1%;
+  left: 58%;
 }
 .notes {
   position: absolute;
-  top: 87%;
-  left: 26.3%;
+  top: 85%;
+  left: 57.5%;
 }
 p {
-  font-size: 20px;
+  font-size: 19px;
 }
 .card {
   z-index: 1;

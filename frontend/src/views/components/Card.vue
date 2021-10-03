@@ -1,7 +1,7 @@
        <template> 
           <div id="app1">
-              <div class="card">
-              <img id ="card" src="@/assets/img/Regist/card.png" @click="modal = false" style="cursor:pointer;"> 
+              <div class="dog-card">
+              <img id ="regist-card" src="@/assets/img/Regist/card.png" @click="modal = false" style="cursor:pointer;"> 
               </div>
               <div class="number">
                 <p>{{ this.peterpet.did }}</p>
@@ -58,6 +58,13 @@ export default {
 
 <style> 
 
+.dog-card {
+  margin-left: 17%;
+  margin-bottom: 10%;
+}
+p {
+  font-size: 20px;
+}
 </style>
 
              
