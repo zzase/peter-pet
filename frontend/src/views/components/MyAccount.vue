@@ -4,7 +4,7 @@
                   <h1><b>{{name}} 웬디님 ,</b></h1>
                   <br><h3><b>환영합니다!</b></h3>
                   </div>
-                      <div class="line" style="width: 100%; height: 200px; background-color:#C5DFC1;
+                      <div class="line" style="width: 100%; height: 200px; background-color: #C5DFC1;
                                                 margin-top: -13%;">
                       </div>
                        
