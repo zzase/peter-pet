@@ -132,9 +132,8 @@
                 </li>
                 <div>
                   <div v-if="this.$store.state.isLogin">
-                    <b-button pill variant="outline-primary" @click="myPage()"
-                      >MyPage</b-button
-                    >
+                    <b-button pill variant="outline-primary" @click="myPage()">MyPage</b-button>
+                    <b-button pill variant="outline-primary" @click="logout()">로그아웃</b-button>
                   </div>
 
                   <div v-else>
@@ -279,6 +278,10 @@ export default {
   methods: {
     myPage: function () {
       window.location.href = "#/myPage";
+    },
+    logout: function() {
+      this.$store.commit("logout");
+      this.$router.push({ name: "main" }).catch(() => {});
     },
     login: function () {
       this.$http
