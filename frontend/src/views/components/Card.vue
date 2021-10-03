@@ -14,7 +14,7 @@
     <div class="name">
       <p>{{ this.peterpet.name }}</p>
     </div>
-    <div class="imgHash">
+    <div class="imghash">
       <img  v-bind:src="this.peterpet.imgLink" width="100px" height="100px" alt="" />
     </div>
     <div class="birth">

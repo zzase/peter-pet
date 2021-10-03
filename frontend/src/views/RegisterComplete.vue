@@ -20,18 +20,18 @@
                       <label>이름 : </label>
                       <label>{{$route.query.peterpet.name}}</label>
                       <br>
-                      <label>DID : </label>
+                      <label>등록번호 : </label>
                       <label>{{$route.query.peterpet.did}}</label>
                       <br>
-                      <label>url : </label>
-                      <label>{{$route.query.peterpet.url}}</label>
+                      <label>전용페이지 : </label>
+                      <a>{{$route.query.peterpet.url}}</a>
                       <br>
                       <label>{{$route.query.msg}}</label>
                   </div>
                     <div class="link">
                       <img
                         id="dog"
-                        :src="img"
+                        :src="$route.query.peterpet.imgLink"
                         alt="Circle Image"
                         class="img-raised rounded-circle img-fluid"
                       />
