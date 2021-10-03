@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import createPersistedState from "vuex-persistedstate"
+import Cookies from 'js-cookie'
 
 Vue.use(Vuex);
 
@@ -33,6 +35,12 @@ export const store = new Vuex.Store({
             state.user.id = user.id;
             state.user.password = user.password;
             state.user.address = user.address;
+        },
+        logout(state,user) {
+            state.user.id = null;
+            state.user.password = null;
+            state.user.address = null;
+            state.isLogin = false;
         }
     },
 
@@ -41,5 +49,12 @@ export const store = new Vuex.Store({
         login({state,commit}, signInObj) {
             console.log(signInObj);
         }
-    }
+    },
+    plugins: [createPersistedState({
+        storage: {
+          getItem: key => Cookies.get(key),
+          setItem: (key, value) => Cookies.set(key, value, { expires: 3, secure: true }),
+          removeItem: key => Cookies.remove(key)
+        }
+      })]
 });
