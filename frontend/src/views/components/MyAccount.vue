@@ -16,9 +16,6 @@
                                                     border-radius: 2em; width: 43%; height: 110px; text-align:center;  color: #585A59">
                           <br><br><h5>나의 잔액: {{ balance }} klay</h5>
                         </div>
-                        <div class="accountNumber">
-                        <p> </p>
-                      </div>
                         <div class="sample" style= "margin-left: 10%; margin-top: 5%;">
                           <h5>내 반려견 : </h5>
                           <br>
