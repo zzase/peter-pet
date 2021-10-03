@@ -4,7 +4,6 @@
      </parallax>
        <div class="main main-raised">
            <div class="section">
-              <div class="contents">
                 <div class="my-page">
                   <img src="@/assets/img/MyPage/mypage.jpg">
                 </div>
@@ -14,7 +13,6 @@
                   <div class="account-contents">
                   <MyAccount></MyAccount>
                  </div>
-              </div>
            </div>
       </div>
   </div>
@@ -22,7 +20,6 @@
 
 <script>
 import Side from './components/Side.vue';
-
 
 export default {
   bodyClass: "login-page",
@@ -51,6 +48,7 @@ export default {
 
 <style >
 @media (max-width:400px){
+  
 .md-card-actions.text-center {
   display: flex;
   justify-content: center !important;
@@ -68,7 +66,17 @@ export default {
   display: inline-block;
   width: 100%;
   height: 100%;
-  left: -35%;
+  left: 20%;
+}
+.side-menu {
+  position: relative;
+  display: inline-flex;
+  margin-top: 20%;
+  left: -20%;
+}
+.my-page {
+  position: absolute;
+  display: inline-flex;
 }
 
 }
