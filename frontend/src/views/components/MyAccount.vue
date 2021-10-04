@@ -8,15 +8,15 @@
                                 margin-top: -13%;">
         </div>
                        
-        <div class="account-number" style="margin-left: 6%; margin-top:5%; border: 1px solid rgba(214, 214, 214, 0.74); color: #585A59;
+        <div class="account-number" style="margin-left: 6%; margin-top:5%; border: 2px solid rgba(214, 214, 214, 0.74); color: #585A59;
                                             border-radius: 2em; width: 43%; height: 110px; text-align:center;">
         <br><br><h5>내 계좌: {{ address }} </h5>
         </div>
-        <div class="myKlay" style="margin-left: 52%; margin-top:-8%; border: 1px solid rgba(214, 214, 214, 0.74);
+        <div class="myKlay" style="margin-left: 52%; margin-top:-8%; border: 2px solid rgba(214, 214, 214, 0.74);
                                   border-radius: 2em; width: 43%; height: 110px; text-align:center;  color: #585A59">
         <br><br><h5>나의 잔액: {{ balance }} klay</h5>
         </div>
-        <div class="sample" style= "margin-left: 6%; margin-top: 5%; border: 1px solid rgba(214, 214, 214, 0.74); color: #585A59;
+        <div class="sample" style= "margin-left: 6%; margin-top: 5%; border: 2px solid rgba(214, 214, 214, 0.74); color: #585A59;
                                     width: 89%; height: 130px; text-indent: 30px;">
             <br><h5>내 반려견 : </h5>
             <br>
