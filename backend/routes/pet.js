@@ -182,13 +182,15 @@ router.post('/report/missing',async function(req,res,next) {
       res.status(404).send({did : did, checkUpdate : checkUpdate, msg : msg});  
     }
     else {
-      checkUpdate = true;
+      
       msg = `${did} 실종신고 완료`
       try{
+        checkUpdate = true;
         const result = await contract.methods.updateMissingStatus(did,true).send({ from: address, gas: 5000000 });
         res.status(200).send({did : did , result:result, checkUpdate:checkUpdate, msg:msg})
       }catch(error){
-        res.status(400).send({msg:"잔액부족"});
+        checkUpdate = false;
+        res.status(400).send({ checkUpdate:checkUpdate,msg:"잔액부족"});
       }
     }
   })

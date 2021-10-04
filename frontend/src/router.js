@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Index from "./views/Index.vue";
-import Landing from "./views/Landing.vue";
+import PetOwn from "./views/PetOwnPage.vue";
 import Login from "./views/Login.vue";
 import Profile from "./views/Profile.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
@@ -97,9 +97,9 @@ export default new Router({
       }
     },
     {
-      path: "/landing",
-      name: "landing",
-      components: { default: Landing,  },
+      path: "/pet/own/:did",
+      name: "petOwn",
+      components: { default: PetOwn,  },
       props: {
         
       }

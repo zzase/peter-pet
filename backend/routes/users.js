@@ -18,6 +18,24 @@ router.get('/get/balance/:address',async function(req, res, next) {
   }
 });
 
+router.get('/wenddy/info/:did', async function(req,res,next){
+  const did = req.params.did;
+  connection.query(`select g.name as name, g.phone as phone from government g , user u , did d where d.u_id = u.u_id and g.u_id=u.u_id and d.did ='${did}';`
+  ,async function(err,rows){
+    if(rows[0] === undefined || err){
+      res.status(404).send({msg : "해당 did의 보호자 정보를 호출할 수 없습니다"});
+    }
+    else {
+      const wenddy = {
+        'name' : rows[0].name,
+        'phone' : rows[0].phone
+      }
+
+      res.status(200).send({wenddy : wenddy});
+    }
+  })
+})
+
 router.post('/regist',async function(req,res,next) {
   console.log('등록 api 호출');
   const wenddy = {
@@ -76,9 +94,9 @@ router.post('/login',async function(req,res,next) {
         'publicKey': account.publicKey,
       }
 
-      const memo = `"${newUser.id}" 웬디님 신규 회원가입 기념 0.05 KLAY 충전`
+      const memo = `"${newUser.id}" 웬디님 신규 회원가입 기념 1 KLAY 충전`
 
-      const remitTx = await wallet.remitPaidByKas(masterAccount, "0.05" ,newUser.address , memo);
+      const remitTx = await wallet.remitPaidByKas(masterAccount, "1" ,newUser.address , memo);
       
       console.log(newUser);
 

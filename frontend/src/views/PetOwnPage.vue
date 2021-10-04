@@ -26,6 +26,7 @@
             </div>
             <div class="page-line2">
             </div>
+            <div v-if="this.peterpet.missing">
             <div class="page-content4">
               <h6># {{ peterpet.missing }}</h6></div>
           <div class="page-content3">
@@ -35,7 +36,7 @@
               <div class="page-content2">
                 <p>보호자 이름 : {{ wenddy.name }}</p>
                 <p>보호자 연락처 : {{ wenddy.phoneNumber }}</p>
-                <p>피터펫 연락처 : 02-000-0000</p>
+              </div>
               </div>
             </div>
             </div>
@@ -50,23 +51,8 @@ export default {
  data (){
     return {
     
-      peterpet: {
-         name: null,
-         imgHash: "hash",
-         breedOfDog: null,
-         gender: null,
-         birth: null,
-         adoptionDate: null,
-         isNeutering: null,
-         furColor: null,
-         vaccinationHistory: null,
-         notes: null
-      },
-      wenddy: {
-        name: null,
-        phoneNumber: null,
-
-      },
+      peterpet: { },
+      wenddy: { },
       props: {
         img: {
         type: String,
@@ -74,6 +60,28 @@ export default {
     }
       }
     }
+  },
+  methods : {
+    getPetInfo: function(did) {
+       this.$http.get(`http://localhost:3000/api/pet/get/all/petInfos/${did}`,{
+       })
+       .then((res) => {
+         console.log(res.data);
+         this.peterpet = res.data.peterpet;
+       })
+     },
+    getWenddyInfo: function(did) {
+      this.$http.get(`http://localhost:3000/api/user/wenddy/info/${did}`,{
+      })
+      .then((res)=>{
+        console.log(res.data.wenddy);
+        this.wenddy = res.data.wenddy
+      })
+    }
+  },
+  created() {
+    this.getPetInfo(this.$route.params.did);
+    this.getWenddyInfo(this.$route.params.did);
   }
 };
 
