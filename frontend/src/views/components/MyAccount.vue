@@ -23,8 +23,8 @@
           </div>
           <br> {{ balance }} klay</h5>
         </div>
-        <div class="sample" style= "margin-left: 6%; margin-top: 5%; border: 2px solid rgba(214, 214, 214, 0.74); color: #585A59;
-                                    width: 89%; height: 130px; text-indent: 30px;">
+        <div class="sample" style= "margin-left: 6%; margin-top: 5%; background-color: rgba(226, 235, 240, 0.671); color: #585A59;
+                                    border-radius: 2em; width: 89%; height: 130px; text-indent: 30px;">
             <br><h5><md-icon>pets</md-icon>&nbsp;&nbsp;&nbsp;&nbsp;내 반려견 </h5>
             <br>
         <div >
@@ -91,7 +91,7 @@
   height: 15%;
   left: 50%;
   border-radius: 2em;
-  border: 2px solid rgba(240, 240, 240, 0.801);
+  border: 2px solid rgba(226, 235, 240, 0.671);
   
 }
 .accountbox1 {
@@ -103,7 +103,7 @@
   left: 20%;
   bottom: 50%;
   border-radius: 2em;
-  border: 2px solid rgba(240, 240, 240, 0.801);
+  border: 2px solid rgba(224, 245, 255, 0.705);
 }
 .line {
   position: absolute;
