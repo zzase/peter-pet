@@ -8,12 +8,13 @@
             <div class="wenddy-info">
             </div>
             <div class="DID-page1">
+              <div class="Img">
+                <img  v-bind:src="peterpet.imgLink" width="250px" height="250px" alt="" />
+              </div>
             </div>
               <div class="DID-page2">
               </div>
-              <div class="Img-hash">
-              <p> img {{ peterpet.imgHash }}</p>
-              </div>
+            
               <div class="page-logo">
               <img src="@/assets/img/Main/logo.png"></div>
             <div class="page-content1">
@@ -141,12 +142,6 @@ export default {
   top:87.5%;
   left: 25%;
 }
-.Img-hash {
-  display: inline-block; 
-  z-index: 1;
-  position: absolute;
-  top: 50%;
-}
 .page-content2 {
   display: inline-block;
   position: absolute;
@@ -178,7 +173,7 @@ export default {
   margin-top: -17.5%;
   left: 30%;
 }
-.Img-hash {
+.Img {
   display:inline-block;
   z-index: 1;
   left: 40%;
