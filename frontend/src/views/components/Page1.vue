@@ -34,7 +34,6 @@
           <div class="page1-line2">
           </div>
         </div> 
-      </div>
 
         <!-- pop-up DID CARD -->
        <div class="black-bg" v-if="modal == true">
@@ -43,6 +42,8 @@
            </div>
        </div>
    </div>
+      </div>
+
 </template>
 
 <script>
@@ -164,7 +165,7 @@ export default {
 }
 .number {
   position: absolute;
-  bottom: 38.3%;
+  bottom: 40.3%;
   left: 29%;
 }
 .imghash{

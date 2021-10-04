@@ -1,12 +1,12 @@
        <template> 
           <div id="app1">
-              <div class="dog-card">
+              <div class="dog-card" style="margin-top: 7%;">
               <img id ="regist-card"
                    src="@/assets/img/Regist/card.png" 
                    @click="modal = false" 
                    style="cursor:pointer;
                           margin-left: 17%;
-                          margin-bottom: 5%;"> 
+                          margin-bottom: -1%;"> 
               </div>
               <div class="number">
                 <p>{{ this.peterpet.did }}</p>
@@ -131,7 +131,7 @@ export default {
 }
 .dog-card {
   margin-left: 17%;
-  margin-bottom: 10%;
+  margin-bottom: 7%;
 }
 p {
   font-size: 20px;
