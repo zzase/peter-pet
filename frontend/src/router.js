@@ -97,8 +97,8 @@ export default new Router({
       }
     },
     {
-      path: "/landing",
-      name: "landing",
+      path: "/pet/own/:did",
+      name: "didpage",
       components: { default: Landing,  },
       props: {
         

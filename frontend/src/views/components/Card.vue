@@ -1,5 +1,5 @@
        <template> 
-          <div id="app1">
+          <div class= "a-card">
               <div class="dog-card" style="margin-top: 7%;">
               <img id ="regist-card"
                    src="@/assets/img/Regist/card.png" 
@@ -8,41 +8,41 @@
                           margin-left: 17%;
                           margin-bottom: -1%;"> 
               </div>
-              <div class="number">
-                <p>{{ this.peterpet.did }}</p>
+              <div class="number" >
+                <p style="font-size: 18px;">{{ this.peterpet.did }}</p>
               </div>
                 <div class="name">
-                  <p> {{ this.peterpet.name }} </p>
+                  <p style="font-size: 18px;"> {{ this.peterpet.name }} </p>
                 </div>
                 <div class="number">
-                  <p> {{ this.peterpet.registerNumber }} </p>
+                  <p style="font-size: 18px;"> {{ this.peterpet.registerNumber }} </p>
                 </div>
                 <div class="imghash">
-                  <p> {{ this.peterpet.imgHash }} </p>
+                  <p style="font-size: 18px;"> {{ this.peterpet.imgHash }} </p>
                 </div>
                 <div class="birth">
-                  <p> {{ this.peterpet.birth }} </p>
+                  <p style="font-size: 18px;"> {{ this.peterpet.birth }} </p>
                 </div>
                 <div class="gender">
-                  <p> {{ this.peterpet.gender }} </p>
+                  <p style="font-size: 18px;"> {{ this.peterpet.gender }} </p>
                 </div>
                 <div class="breedOfDog">
-                  <p> {{ this.peterpet.breedOfDog }} </p>
+                  <p style="font-size: 18px;"> {{ this.peterpet.breedOfDog }} </p>
                 </div>
                 <div class="furColor">
-                  <p>{{ this.peterpet.furColor }} </p>
+                  <p style="font-size: 18px;">{{ this.peterpet.furColor }} </p>
                 </div>
                 <div class="adoptionDate">
-                  <p> {{ this.peterpet.adoptionDate }} </p>
+                  <p style="font-size: 18px;"> {{ this.peterpet.adoptionDate }} </p>
                 </div>
                 <div class="isNeutering">
-                  <p> {{ this.peterpet.isNeutering }} </p>
+                  <p style="font-size: 18px;"> {{ this.peterpet.isNeutering }} </p>
                 </div>
                 <div class="vaccinationHistory">
-                  <p> {{ this.peterpet.vaccinationHistory }} </p>
+                  <p style="font-size: 18px;"> {{ this.peterpet.vaccinationHistory }} </p>
                 </div>
                 <div class="notes">
-                  <p> {{ this.peterpet.notes }} </p>
+                  <p style="font-size: 18px;"> {{ this.peterpet.notes }} </p>
                 </div>
              </div>
              </template>
@@ -64,10 +64,13 @@ export default {
 
 <style> 
 @media (max-width:470px) {
+.app1 {
+  position: relative;
+}
 .name {
   left: 28%;
   position:absolute;
-  top: 74%;
+  top: 1%;
 }
 .number {
   position: absolute;

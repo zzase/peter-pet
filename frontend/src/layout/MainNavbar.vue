@@ -132,7 +132,7 @@
                 </li>
                 <div>
                   <div v-if="this.$store.state.isLogin">
-                    <b-button pill variant="outline-primary" @click="myPage()">MyPage</b-button>
+                    <b-button pill variant="outline-primary" @click="myPage()">MyPage</b-button> &nbsp;
                     <b-button pill variant="outline-primary" @click="logout()">로그아웃</b-button>
                   </div>
 

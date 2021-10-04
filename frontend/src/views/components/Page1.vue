@@ -41,6 +41,7 @@
           <Card v-bind:peterpet="peterpet" />
            </div>
        </div>
+       <br><br>
    </div>
       </div>
 
@@ -124,36 +125,19 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style>
+.a-card {
+  position: relative;
+}
 #dids {
   margin-left: 0px;
-}
-
-.white {
-  z-index: 4;
-}
-.link {
-  z-index: 2;
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  top: 49%;
-  margin: auto;
-  left: 28%;
 }
 .md-layout-item {
   position:relative;
   top: 10%;
   width: 100%;
 }
-.my-box0 {
-  position: absolute;
-  width: 50%;
-  height: 35%;
-  background-color:blanchedalmond;
-  top: 8%;
-  left: 25%;
-}
+
 .contents {
   position: relative;
   top:10%;
@@ -161,56 +145,56 @@ export default {
 .name {
   left: 28%;
   position:absolute;
-  top: 78%;
+  top: 51%;
 }
 .number {
   position: absolute;
-  bottom: 40.3%;
+  top: 6%;
   left: 29%;
 }
 .imghash{
   position: absolute;
   left: 27%;
-  top: 68%;
+  top: 29%;
 }
 .birth {
   position: absolute;
   left: 29.5%;
-  top: 82.2%;
+  top: 61.5%;
 }
 .gender {
   position: absolute;
   left: 28%;
-  top: 86.2%;
+  top: 71%;
 }
 .breedOfDog {
   position: absolute;
   left: 56%;
-  top: 60.7%;
+  top: 11.5%;
 }
 .furColor {
   position: absolute;
   left: 56%;
-  top: 64.9%;
+  top: 21%;
 }
 .adoptionDate {
   position: absolute;
   left: 56%;
-  top: 68.7%;
+  top: 30%;
 }
 .isNeutering {
   position: absolute;
-  top: 73.3%;
+  top: 41%;
   left: 59%;
 }
 .vaccinationHistory {
   position: absolute;
-  top: 78.1%;
+  top: 51.7%;
   left: 58%;
 }
 .notes {
   position: absolute;
-  top: 85%;
+  top: 67.5%;
   left: 57.5%;
 }
 p {
