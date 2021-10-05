@@ -5,7 +5,7 @@
           <h2 data-v-clf1971a class="title-text-center">MY 동물등록증</h2></div>
       <div class="carousel"> 
            
-      <carousel v-if="loaded" :autoplay="true" :nav="false" :dots="false" class="container-fluidcontainer-fluid">
+      <carousel v-if="loaded" :autoplay="true" :nav="false" :dots="true" class="container-fluidcontainer-fluid">
       <div class="row flex-row flex-nowrap">
         <div class="b-card2" v-for="did in accordionDIDs" :key="did.accld">
           <b-card @click="clickCard(did.did)"  
@@ -313,4 +313,9 @@ p {
 .container-fluid{
   left: 30%;
 }
+.owl-theme .owl-dots .owl-dot.active span, 
+  .owl-theme .owl-dots .owl-dot:hover span {
+      background: #2caae1;
+  }
+
 </style>

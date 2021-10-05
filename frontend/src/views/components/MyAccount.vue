@@ -12,7 +12,7 @@
                                             border-radius: 2em; width: 43%; height: 140px; text-align:center;">
         <br><h5>
           <div class="icon icon-info">
-            <md-icon>assignment</md-icon>계좌
+            <md-icon>account_balance_wallet</md-icon>계좌
             </div>
             <br> {{ address }} </h5>
         </div>
