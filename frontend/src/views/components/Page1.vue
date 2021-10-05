@@ -155,11 +155,11 @@ export default {
   z-index: 1;
   left: 28%;
   position:absolute;
-  bottom: -18%;
+  bottom: -21%;
 }
 .number {
   position: absolute;
-  top: 12.5%;
+  top: 12.8%;
   left: 29%;
 }
 
@@ -185,56 +185,56 @@ export default {
 .birth {
   position: absolute;
   left: 29.5%;
-  bottom: -37.8%;
+  bottom: -41%;
 }
 .gender {
   position: absolute;
   left: 28%;
-  bottom: -56.5%;
+  bottom: -59.5%;
 }
 .breedOfDog {
   position: absolute;
-  left: 56.5%;
-  top: 23.3%;
+  left: 56%;
+  top: 24%;
 }
 .furColor {
   position: absolute;
-  left: 56.5%;
-  top: 42.5%;
+  left: 56%;
+  top: 43.5%;
 }
 .adoptionDate {
   position: absolute;
-  left: 56.5%;
-  top: 60.3%;
+  left: 56.2%;
+  top: 62%;
 }
 .isNeutering {
   position: absolute;
-  bottom: 3.5%;
+  bottom: 1.7%;
   left: 59.5%;
 }
 .vaccinationHistory {
   position: absolute;
-  bottom: -18%;
+  bottom: -21%;
   left: 58%;
 }
 .notes {
   position: absolute;
-  bottom: -50%;
-  left: 58%;
+  bottom: -53%;
+  left: 57.5%;
 }
 .issueyear {
   position: absolute;
-  bottom: -92%;
+  bottom: -95.7%;
   left: 39%;
 }
 .issuemonth {
   position: absolute;
-  bottom: -92%;
+  bottom: -95.7%;
   left: 46.5%;
 }
 .issuedate {
   position: absolute;
-  bottom: -92%;
+  bottom: -95.7%;
   left: 53%;
 }
 p {
