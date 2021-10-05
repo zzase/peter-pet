@@ -3,38 +3,37 @@
           <div class="v-application--wrap">
           <div class="page-head">
           <h2 data-v-clf1971a class="title-text-center">MY 동물등록증</h2></div>
-      <div class="carousel">    
-      <carousel :autoplay="true" :nav="true" :dots="true" class="container-fluidcontainer-fluid">
-  
-     <div class="row flex-row flex-nowrap">
-      <div class="b-card2" v-for="did in accordionDIDs" :key="did.accld">
-        <b-card @click="clickCard(did.did)"  
-            header-tag="header" 
-            footer-tag="footer"
-            >
-      <template #header> {{ did.did }}
-      </template>
-      <br>
-      <b-card-body>
-        <b-card-title>{{did.name}}</b-card-title><br>
-        <img src="@/assets/img/Board/card-back.png">
-        <b-card-text>동물등록증을 보려면 클릭하세요!</b-card-text>
-      <b-button href="#" variant="default" @click="missingReport(`${did.did}`)">실종 신고</b-button>
-      </b-card-body>
-      <template #footer>
-        <em>Peter-Pet</em>
-      </template>
-    </b-card>
-      </div>
-      </div>
-</carousel> 
+      <div class="carousel"> 
+           
+      <carousel v-if="loaded" :autoplay="true" :nav="false" :dots="false" class="container-fluidcontainer-fluid">
+      <div class="row flex-row flex-nowrap">
+        <div class="b-card2" v-for="did in accordionDIDs" :key="did.accld">
+          <b-card @click="clickCard(did.did)"  
+              header-tag="header" 
+              footer-tag="footer"
+              >
+              <template #header> {{ did.did }}
+              </template>
+              <br>
+              <b-card-body>
+                <b-card-title>{{did.name}}</b-card-title><br>
+                <img src="@/assets/img/Board/card-back.png">
+                <b-card-text>동물등록증을 보려면 클릭하세요!</b-card-text>
+              <b-button href="#" variant="default" @click="missingReport(`${did.did}`)">실종 신고</b-button>
+              </b-card-body>
+              <template #footer>
+                <em>Peter-Pet</em>
+              </template>
+            </b-card>
+              </div>
+              </div>  
+      </carousel> 
 
-<div class="page1-line">
-</div>
-<div class="page1-line2">
-</div>
-</div> 
-        </div>
+          <div class="page1-line">
+          </div>
+          <div class="page1-line2">
+          </div>
+        </div> 
 
         <!-- pop-up DID CARD -->
        <div class="black-bg" v-if="modal == true">
@@ -42,7 +41,10 @@
           <Card v-bind:peterpet="peterpet" />
            </div>
        </div>
+       <br><br>
    </div>
+      </div>
+
 </template>
 
 <script>
@@ -54,12 +56,19 @@ export default {
 
   data (){
     return {
+      loaded : false,
+      
       accordionDIDs: [],
 
       modal : false,
       counter: 0,
 
       peterpet: { }
+    }
+  },
+  mounted() {
+    if(this.getDids() !== null) {
+    this.loaded = true;
     }
   },
   methods: {
@@ -123,94 +132,77 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style>
+.a-card {
+  position: relative;
+}
 #dids {
   margin-left: 0px;
-}
-
-.white {
-  z-index: 4;
-}
-.link {
-  z-index: 2;
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  top: 49%;
-  margin: auto;
-  left: 28%;
 }
 .md-layout-item {
   position:relative;
   top: 10%;
   width: 100%;
 }
-.my-box0 {
-  position: absolute;
-  width: 50%;
-  height: 35%;
-  background-color:blanchedalmond;
-  top: 8%;
-  left: 25%;
-}
+
 .contents {
   position: relative;
   top:10%;
 }
 .name {
-  left: 3.3%;
+  left: 28%;
   position:absolute;
-  top: 81%;
+  top: 51%;
 }
 .number {
   position: absolute;
-  bottom: 32.5%;
-  left: 4%;
+  top: 6%;
+  left: 29%;
 }
 .imghash{
   position: absolute;
-  left: 2.5%;
-  top: 72.2%;
+  left: 27%;
+  top: 29%;
 }
 .birth {
   position: absolute;
-  left: 4.5%;
-  top: 84.7%;
+  left: 29.5%;
+  top: 61.5%;
 }
 .gender {
   position: absolute;
-  left: 3.5%;
-  top: 88.2%;
+  left: 28%;
+  top: 71%;
 }
 .breedOfDog {
   position: absolute;
-  left: 25.2%;
-  top: 66.2%;
+  left: 56%;
+  top: 11.5%;
 }
 .furColor {
   position: absolute;
-  left: 25.2%;
-  top: 69.8%;
+  left: 56%;
+  top: 21%;
 }
 .adoptionDate {
   position: absolute;
-  left: 25.2%;
-  top: 73%;
+  left: 56%;
+  top: 30%;
 }
 .isNeutering {
   position: absolute;
-  top: 77%;
-  left: 27.5%;
+  top: 41%;
+  left: 59%;
 }
 .vaccinationHistory {
   position: absolute;
-  top: 81.1%;
-  left: 26.5%;
+  top: 51.7%;
+  left: 58%;
 }
 .notes {
   position: absolute;
-  top: 87%;
-  left: 26.3%;
+  top: 67.5%;
+  left: 57.5%;
 }
 p {
   font-size: 20px;

@@ -1,32 +1,40 @@
 <template>
 <div class="account-content">
-    <div class="welcome" style= "margin-left: 8%; margin-top: 4%; color: white;">
-                  <h1><b>{{name}} 웬디님 ,</b></h1>
-                  <br><h3><b>환영합니다!</b></h3>
-                  </div>
-                      <div class="line" style="width: 100%; height: 200px; background-color: #C5DFC1;
-                                                margin-top: -13%;">
-                      </div>
-                       
-                        <div class="account-number" style="margin-left: 6%; margin-top:5%; border: 1px solid rgba(214, 214, 214, 0.74); color: #585A59;
-                                                            border-radius: 2em; width: 43%; height: 110px; text-align:center;">
-                          <br><br><h5>내 계좌: {{ address }} </h5>
-                        </div>
-                        <div class="myKlay" style="margin-left: 52%; margin-top:-8%; border: 1px solid rgba(214, 214, 214, 0.74);
-                                                    border-radius: 2em; width: 43%; height: 110px; text-align:center;  color: #585A59">
-                          <br><br><h5>나의 잔액: {{ balance }} klay</h5>
-                        </div>
-                        <div class="sample" style= "margin-left: 10%; margin-top: 5%;">
-                          <h5>내 반려견 : </h5>
-                          <br>
-                          <div >
-                            <h5 style="display:inline" v-for="pet in pets" :key="pet">{{pet.name}}  </h5>
-                          </div>
-                        </div>
-                        <br><br><br><br>
-                        
+      <div class="welcome" style= "margin-left: 8%; margin-top: 4%; color: white;">
+            <h1><b>{{name}} 웬디님 ,</b></h1>
+            <br><h3><b>환영합니다!</b></h3>
+      </div>  
+       <div class="line" style="width: 100%; height: 200px; background-color: #C5DFC1;
+                                margin-top: -13%;">
         </div>
+                       
+        <div class="account-number" style="margin-left: 6%; margin-top:5%; border: 2px solid rgba(214, 214, 214, 0.74); color: #585A59;
+                                            border-radius: 2em; width: 43%; height: 140px; text-align:center;">
+        <br><h5>
+          <div class="icon icon-info">
+            <md-icon>assignment</md-icon>계좌
+            </div>
+            <br> {{ address }} </h5>
+        </div>
+        <div class="myKlay" style="margin-left: 52%; margin-top:-10%; border: 2px solid rgba(214, 214, 214, 0.74);
+                                  border-radius: 2em; width: 43%; height: 140px; text-align:center;  color: #585A59">
+        <br><h5>
+          <div class="icon icon-info"><md-icon>paid</md-icon>잔액
+          </div>
+          <br> {{ balance }} klay</h5>
+        </div>
+        <div class="sample" style= "margin-left: 6%; margin-top: 5%; background-color: rgba(226, 235, 240, 0.671); color: #585A59;
+                                    border-radius: 2em; width: 89%; height: 130px; text-indent: 30px;">
+            <br><h5><md-icon>pets</md-icon>&nbsp;&nbsp;&nbsp;&nbsp;내 반려견 </h5>
+            <br>
+        <div >
+            <h5 style="display:inline" v-for="pet in pets" :key="pet">{{pet.name}}  </h5>
+        </div>
+      </div>
+        <br><br><br><br>
+    </div>
 </template>
+
 <script>
  export default {
    data(){
@@ -83,7 +91,7 @@
   height: 15%;
   left: 50%;
   border-radius: 2em;
-  border: 2px solid rgba(240, 240, 240, 0.801);
+  border: 2px solid rgba(226, 235, 240, 0.671);
   
 }
 .accountbox1 {
@@ -95,7 +103,7 @@
   left: 20%;
   bottom: 50%;
   border-radius: 2em;
-  border: 2px solid rgba(240, 240, 240, 0.801);
+  border: 2px solid rgba(224, 245, 255, 0.705);
 }
 .line {
   position: absolute;
@@ -109,7 +117,7 @@
 
 .welcome {
   position: absolute;
-  bottom: 73%;
+  bottom: 80%;
   margin-left: 20%;
 }
 .sample {

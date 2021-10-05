@@ -67,12 +67,12 @@
 
  <div class="btn3">        
               <md-button
-                          id="login"
-                          href="#/mypage"
-                          class="md-default"
-                          >
-                          <b>마이 페이지</b></md-button >
-               </div>
+                    id="login"
+                    href="#/mypage"
+                    class="md-default"
+              >
+              <b>마이 페이지</b></md-button >
+</div>
 
 </v-app>
 </template>
@@ -177,7 +177,7 @@ div {
 }
 .report-text2 {
   position:absolute;
-  top: 58%;
+  top: 61%;
   left: 31%;
   text-align: center;
   color: rgb(33, 46, 46);

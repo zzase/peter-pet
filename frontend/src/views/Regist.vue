@@ -7,7 +7,7 @@
           <div class="profile-tabs">
             <div class="md-layout">
               <div class="md-layout-item md-size-50 mx-auto">
-                <div class="profile">
+                <div class="profile"><br><br>
                   <div class="avatar">
                     <img
                       :src="img"
@@ -15,7 +15,7 @@
                       class="img-raised rounded-circle img-fluid"
                     />
                   </div>
-                  <div class="name">
+                  <div class="register-form">
                     <h1 class="title">Register Your <br />Peter-Pet</h1>
                   </div>
                 </div>
@@ -873,8 +873,10 @@ export default {
   },
 };
 </script>
-
-                                                                                                                <style lang="scss" scoped="scoped">
+<style lang="scss" scoped="scoped">
+.register-form {
+  margin-top: -20%;
+}
 .md-checkbox {
   display: flex;
 }
