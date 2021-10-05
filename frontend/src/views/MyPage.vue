@@ -20,6 +20,7 @@
 
 <script>
 import Side from './components/Side.vue';
+import MyAccount from './components/MyAccount.vue'
 
 export default {
   bodyClass: "login-page",

@@ -3,8 +3,37 @@
           <div class="v-application--wrap">
           <div class="page-head">
           <h2 data-v-clf1971a class="title-text-center">MY 동물등록증</h2></div>
-      <div class="carousel"> 
-           
+          <br><br>
+          <b-container>
+            <b-row>
+              <b-col cols="12">
+                <carousel :perPage="2">
+                  <slide v-for="did in accordionDIDs" :key="did.accld">
+                      <div class="b-card2">
+                        <b-card @click="clickCard(did.did)" header-tag="header" footer-tag="footer">
+                            <template #header>
+                                {{ did.did }}
+                            </template>
+                            <br>
+                                <b-card-body>
+                                    <b-card-title>{{did.name}}</b-card-title>
+                                    <br>
+                                        <img src="@/assets/img/Board/card-back.png">
+                                            <b-card-text>동물등록증을 보려면 클릭하세요!</b-card-text>
+                                            <b-button href="#" variant="default" @click="missingReport(`${did.did}`)">실종 신고</b-button>
+                                </b-card-body>
+                                    <template #footer>
+                                        <em>Peter-Pet</em>
+                                    </template>
+                                </b-card>
+                            </div>
+                        </slide>
+                    </carousel>
+                </b-col>
+            </b-row>
+            </b-container>
+
+      <!-- <div class="carousel"> 
       <carousel v-if="loaded" :autoplay="true" :nav="false" :dots="false" class="container-fluidcontainer-fluid">
       <div class="row flex-row flex-nowrap">
         <div class="b-card2" v-for="did in accordionDIDs" :key="did.accld">
@@ -33,7 +62,7 @@
           </div>
           <div class="page1-line2">
           </div>
-        </div> 
+        </div>  -->
 
         <!-- pop-up DID CARD -->
        <div class="black-bg" v-if="modal == true">
@@ -50,6 +79,7 @@
 <script>
 import carousel from 'vue-owl-carousel'
 import Card from './Card.vue'
+import VueCarousel from  'vue-carousel'
 
 export default {
   name:"Accordion",
@@ -63,7 +93,10 @@ export default {
       modal : false,
       counter: 0,
 
-      peterpet: { }
+      peterpet: { },
+
+      slide: 0,
+      sliding: null
     }
   },
   mounted() {
@@ -72,6 +105,12 @@ export default {
     }
   },
   methods: {
+    onSlideStart(slide) {
+            this.sliding = true
+        },
+        onSlideEnd(slide) {
+            this.sliding = false
+        },
     toast(toaster, append = false) {
         this.counter++
         this.$bvToast.toast(`실종신고가 완료되었습니다.`, {
@@ -109,10 +148,12 @@ export default {
   },
   created() {
     this.getDids(this.$store.state.user.address);
+    this.loaded = true;
   },
   components: {
-    carousel,
-    Card
+    Card,
+    'carousel': VueCarousel.Carousel,
+    'slide': VueCarousel.Slide
   },
   
   computed: {
@@ -133,6 +174,9 @@ export default {
 </script>
 
 <style>
+.row{
+  margin-top:100px;
+}
 .a-card {
   position: relative;
 }
