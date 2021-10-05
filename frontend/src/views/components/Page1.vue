@@ -163,6 +163,9 @@ export default {
   position: absolute;
   left: 27%;
   top: 29%;
+   width: 200px;
+  height: 200px;
+  margin-top: -10%;
 }
 .birth {
   position: absolute;
