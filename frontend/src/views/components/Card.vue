@@ -45,14 +45,14 @@
                 <div class="notes">
                   <p style="font-size: 18px;"> {{ this.peterpet.notes }} </p>
                 </div>
-                <div>
-                  <p style="font-size: 18px;"> {{ this.peterpet.issueDate.year }} </p>
+                <div class="issueyear">
+                  <p style="font-size: 20px;"> {{ this.peterpet.issueDate.year }} </p>
                 </div>
-                <div>
-                  <p style="font-size: 18px;"> {{ this.peterpet.issueDate.month }} </p>
+                <div class="issuemonth">
+                  <p style="font-size: 20px;"> {{ this.peterpet.issueDate.month }} </p>
                 </div>
-                <div>
-                  <p style="font-size: 18px;"> {{ this.peterpet.issueDate.date }} </p>
+                <div  class="issuedate">
+                  <p style="font-size: 20px;"> {{ this.peterpet.issueDate.date }} </p>
                 </div>
              </div>
              </template>
