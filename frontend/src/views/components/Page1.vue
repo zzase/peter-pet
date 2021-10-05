@@ -3,9 +3,9 @@
           <div class="v-application--wrap">
           <div class="page-head">
           <h2 data-v-clf1971a class="title-text-center">MY 동물등록증</h2></div>
-      <div class="carousel">    
-      <carousel :autoplay="true" :nav="true" :dots="true" class="container-fluidcontainer-fluid">
-  
+      <div class="carousel"> 
+           
+      <carousel v-if="loaded" :autoplay="true" :nav="false" :dots="false" class="container-fluidcontainer-fluid">
       <div class="row flex-row flex-nowrap">
         <div class="b-card2" v-for="did in accordionDIDs" :key="did.accld">
           <b-card @click="clickCard(did.did)"  
@@ -56,12 +56,19 @@ export default {
 
   data (){
     return {
+      loaded : false,
+      
       accordionDIDs: [],
 
       modal : false,
       counter: 0,
 
       peterpet: { }
+    }
+  },
+  mounted() {
+    if(this.getDids() !== null) {
+    this.loaded = true;
     }
   },
   methods: {
