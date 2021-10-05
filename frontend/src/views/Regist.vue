@@ -210,12 +210,37 @@
               </template>
 
               <template slot="tab-pane-2">
+                
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-100 ml-auto">
+                  <div class="md-layout-item md-size-100 ml-auto" v-if ="isReg">
                     <form @submit.prevent="registGov">
+                      
                       <login-card header-color="orange">
+                        
                         <h2 slot="title" class="card-title">Wenddy</h2>
                         <md-field class="md-form-group" slot="inputs">
+                          <h4>{{this.$store.state.user.id}}님의 동물등록 이력이 있어 아래 정보로 동물 등록을 진행합니다</h4>
+                        </md-field>
+                        <md-field class="md-form-group" slot="inputs">
+                          <label> <md-icon>person_outline</md-icon>이름</label>
+                          <md-input v-model="wenddy2.name"></md-input>
+                        </md-field>
+                        <md-field class="md-form-group" slot="inputs">
+                          <label><md-icon>lock_outline</md-icon>주민등록번호</label>
+                          <md-input v-model="wenddy2.jumin"></md-input>
+                        </md-field>
+                        <md-button id="tab-content" slot="footer" class="md-success md-lg" type="submit"> 동의 </md-button>
+                      </login-card>
+                    </form>
+                  </div>
+                  <div class="md-layout-item md-size-100 ml-auto" v-else>
+          
+                    <form @submit.prevent="registGov">
+                      
+                      <login-card header-color="orange">
+                        
+                        <h2 slot="title" class="card-title">Wenddy</h2>
+                            <md-field class="md-form-group" slot="inputs">
                           <label> <md-icon>person_outline</md-icon>이름</label>
                           <md-input v-model="wenddy.name"></md-input>
                         </md-field>
@@ -330,9 +355,7 @@
                               placeholder="OOOOOOO"
                             />
                           </div>
-                          <label>
-                            <md-icon>lock_outline</md-icon>주민등록번호</label
-                          >
+                          <label><md-icon>lock_outline</md-icon>주민등록번호</label>
                         </md-field>
                         <md-field class="md-form-group" slot="inputs">
                           <form action="" id="joinForm">
@@ -550,6 +573,11 @@ export default {
         jumin: "",
         id: "",
       },
+
+      wenddy2 : {},
+
+      isReg : false,
+
       tinkerbellType: null,
       activePanel: this.tabName,
 
@@ -686,6 +714,26 @@ export default {
       }
     },
 
+    checkIsReg : function(uid) {
+       this.$http
+        .get(`http://localhost:3000/api/user/wenddy/check/${uid}`)
+        .then((res) => {
+          if (res.data.isReg) {
+            console.log(res.data.wenddy);
+            this.isReg = true;
+            this.wenddy2 = res.data.wenddy;
+            console.log(this.isReg);
+          } else {
+            console.log(res.data);
+            this.isReg = false;
+            console.log(this.isReg);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    },
+
     addDid: async function () {
       const peterpet = this.peterpet;
       const address = this.$store.state.user.address;
@@ -715,16 +763,21 @@ export default {
         });
     },
     registGov: function () {
-      console.log("regist gov api call");
-      const wenddy = this.wenddy;
-      wenddy.id = this.$store.state.user.id;
-      wenddy.homeAddress =
-        this.addressInfo.roadAddress +
-        " " +
-        this.addressInfo.buildingName +
-        " " +
-        this.addressInfo.detailAddress;
-      wenddy.jumin = this.resultRRN();
+      if(this.isReg){
+        console.log("api 호출안하고 넘어가 버리기");
+        this.switchPanel("Tinkerbell");
+      }
+      else {
+        console.log("regist gov api call");
+        const wenddy = this.wenddy;
+        wenddy.id = this.$store.state.user.id;
+        wenddy.homeAddress =
+          this.addressInfo.roadAddress +
+          " " +
+          this.addressInfo.buildingName +
+          " " +
+          this.addressInfo.detailAddress;
+        wenddy.jumin = this.resultRRN();
 
       this.$http
         .post(
@@ -745,6 +798,7 @@ export default {
         .catch((err) => {
           console.error(err);
         });
+      }
     },
     selectTinkerbellType(type) {
       this.tinkerbellType = type;
@@ -871,6 +925,9 @@ export default {
       return this.firstRRN.join("") + "-" + this.secondRRN.join("");
     },
   },
+  created() {
+    this.checkIsReg(this.$store.state.user.id);
+  }
 };
 </script>
 <style lang="scss" scoped="scoped">

@@ -36,6 +36,33 @@ router.get('/wenddy/info/:did', async function(req,res,next){
   })
 })
 
+router.get('/wenddy/check/:uid', async function(req,res,nex){
+  const uid = req.params.uid;
+  connection.query(`select * from government g ,user u where g.u_id  = u.u_id and g.u_id = '${uid}';`,(err,rows)=>{
+    let isReg = false;
+
+    if(err){
+      console.log('check wenddy api error')
+      res.status(400).send({msg: '잘못된 정보 입력'});
+    }
+
+    if(rows[0] === undefined){
+      console.log(rows[0]);
+      isReg = false;
+      res.status(200).send({isReg : isReg});
+    }
+
+    else {
+      isReg = true;
+      const wenddy = {
+        name : rows[0].name,
+        jumin : rows[0].jumin
+      }
+      res.status(200).send({wenddy: wenddy, isReg : isReg});
+    }
+  })
+})
+
 router.post('/regist',async function(req,res,next) {
   console.log('등록 api 호출');
   const wenddy = {
