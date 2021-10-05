@@ -9,7 +9,7 @@
         </div>
                        
         <div class="account-number" style="margin-left: 6%; margin-top:5%; border: 2px solid rgba(214, 214, 214, 0.74); color: #585A59;
-                                            border-radius: 2em; width: 43%; height: 140px; text-align:center;">
+                                            border-radius: 2em; width: 43%; height: 140px; text-align:center; box-shadow: 3px 3px 3px 3px rgba(214, 214, 214, 0.4);">
         <br><h5>
           <div class="icon icon-info">
             <md-icon>account_balance_wallet</md-icon>계좌
@@ -17,7 +17,7 @@
             <br> {{ address }} </h5>
         </div>
         <div class="myKlay" style="margin-left: 52%; margin-top:-10%; border: 2px solid rgba(214, 214, 214, 0.74);
-                                  border-radius: 2em; width: 43%; height: 140px; text-align:center;  color: #585A59">
+                                  border-radius: 2em; width: 43%; height: 140px; text-align:center;  color: #585A59; box-shadow: 3px 3px 3px 3px rgba(214, 214, 214, 0.4)">
         <br><h5>
           <div class="icon icon-info"><md-icon>paid</md-icon>잔액
           </div>
@@ -134,6 +134,7 @@
   display: inline-block;
   bottom: 60%;
   left: 33%;
+  box-shadow: 5px 5px 5px 5px rgba(201, 199, 199, 0.514) ;
 }
 .klay {
   position: absolute;
