@@ -1,110 +1,99 @@
 <template>
   <div class="wrapper">
-      <parallax class="section page-header" :style="headerStyle">
-     </parallax>
-   <div class="main main-raised">
+    <parallax class="section page-header" :style="headerStyle"> </parallax>
+    <div class="main main-raised">
       <div class="section">
-         <img id ="white" src="@/assets/img/Regist/white.jpg">
-            <div class="my-box1">
-            </div>
-               <div class="md-layout">
-                  <div class="content">
-                     <!-- <h4>두남이의 Peter-Pet 등록이 완료되었습니다!</h4> -->
-                        <img id="check" alt="brand" src="@/assets/img/Regist/complete.png">
-                 </div>
-                   <div class="hat">
-                    <img :src="img1" alt="brand"/>
-                  </div>
-                    
-                    <div class ="my-box2">
-                      <label>이름 : </label>
-                      <label>{{$route.query.peterpet.name}}</label>
-                      <br>
-                      <label>등록번호 : </label>
-                      <label>{{$route.query.peterpet.did}}</label>
-                      <br>
-                      <label>전용페이지 : </label>
-                      <a>{{$route.query.peterpet.url}}</a>
-                      <br>
-                      <label>{{$route.query.msg}}</label>
-                  </div>
-                    <div class="link">
-                      <img
-                        id="dog"
-                        :src="$route.query.peterpet.imgLink"
-                        alt="Circle Image"
-                        class="img-raised rounded-circle img-fluid"
-                      />
-                    </div>
-                       <div class="my-box3">
-                       </div>
-                       <div class="my-box4">
-                       </div>
-                      <div class="my-box5">
-                    </div>
-                      <div class="mypage">
-                        <md-button
-                          id="mypage"
-                          href="#/mypage"
-                          class="md-success"
-                          >
-                          <b>마이 페이지</b></md-button >
-                          </div>
-                      <div class="mainpage">
-                        <md-button
-                          id="mainpage"
-                          href="#/"
-                          class="md-default"
-                          >
-                          <b>메인 페이지</b></md-button >
-                          </div>
-            </div>
-       </div>
-   </div>
-</div>
+        <img id="white" src="@/assets/img/Regist/white.jpg" />
+        <div class="my-box1"></div>
+        <div class="md-layout">
+          <div class="content">
+            <!-- <h4>두남이의 Peter-Pet 등록이 완료되었습니다!</h4> -->
+            <img
+              id="check"
+              alt="brand"
+              src="@/assets/img/Regist/complete.png"
+            />
+          </div>
+          <div class="hat">
+            <img :src="img1" alt="brand" />
+          </div>
+
+          <div class="my-box2">
+            <label>이름 : </label>
+            <label>{{ $route.query.peterpet.name }}</label>
+            <br />
+            <br />
+            <label>등록번호 : </label>
+            <label>{{ $route.query.peterpet.did }}</label>
+            <br />
+            <br />
+            <label>전용페이지 : </label>
+            <a>{{ $route.query.peterpet.url }}</a>
+            <br />
+            <br />
+            <label>{{ $route.query.msg }}</label>
+            <br />
+          </div>
+          <div class="link">
+            <img
+              id="dog"
+              :src="$route.query.peterpet.imgLink"
+              alt="Circle Image"
+              class="img-raised rounded-circle img-fluid"
+            />
+          </div>
+          <div class="my-box3"></div>
+          <div class="my-box4"></div>
+          <div class="my-box5"></div>
+          <div class="mypage">
+            <md-button id="mypage" href="#/mypage" class="md-success">
+              <b>마이 페이지</b></md-button
+            >
+          </div>
+          <div class="mainpage">
+            <md-button id="mainpage" href="#/" class="md-default">
+              <b>메인 페이지</b></md-button
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 
 <script>
-
-
 export default {
-  components: {
-   
-  },
+  components: {},
   bodyClass: "login-page",
   data() {
-    return {
-      
-    };
+    return {};
   },
   props: {
     img1: {
       type: String,
-      default: require("@/assets/img/Regist/hat.png")
+      default: require("@/assets/img/Regist/hat.png"),
     },
     img: {
       type: String,
-      default: require("@/assets/img/faces/dunami.jpg")
+      default: require("@/assets/img/faces/dunami.jpg"),
     },
     header: {
       type: String,
-      default: require("@/assets/img/Regist/back.jpg")
-    }
+      default: require("@/assets/img/Regist/back.jpg"),
+    },
   },
   computed: {
     headerStyle() {
       return {
-        backgroundImage: `url(${this.header})`
+        backgroundImage: `url(${this.header})`,
       };
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="css">
-
-
 .white {
   z-index: 4;
 }
@@ -118,7 +107,7 @@ export default {
   left: 28.5%;
 }
 .md-layout-item {
-  position:relative;
+  position: relative;
   width: 100%;
 }
 .my-box1 {
@@ -128,25 +117,24 @@ export default {
   height: 10%;
   left: 3.5%;
   padding-right: 50px;
-  background-color:rgba(240, 240, 240, 0.753);
+  background-color: rgba(240, 240, 240, 0.753);
   margin: auto;
 }
 
 .content {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   position: absolute;
   display: inline-block;
-  left: 33%;
-  top: 15%;
+  left: 29%;
+  top: 8%;
   margin: auto;
 }
 .check {
-
   margin-left: 100px;
 }
 .hat {
   z-index: 3;
-  left: 23.5%;
+  left: 20.5%;
   top: 44.5%;
   z-index: 1;
   position: absolute;
@@ -158,7 +146,7 @@ export default {
   position: absolute;
   display: inline-block;
   left: 43%;
-  top: 53%;
+  top: 45%;
   width: 30%;
   height: 0.3%;
   background-color: rgba(243, 243, 243, 0.788);
@@ -177,7 +165,7 @@ export default {
 }
 .con {
   position: absolute;
-  font-family: Georgia, 'Times New Roman', Times, serif ;
+  font-family: Georgia, "Times New Roman", Times, serif;
   margin-top: 10%;
   margin-left: 40%;
   margin: auto;
@@ -187,7 +175,7 @@ export default {
   margin-top: 20%;
 }
 .my-box4 {
-  position:absolute;
+  position: absolute;
   display: inline-block;
   width: 50%;
   height: 0.3%;
@@ -196,7 +184,7 @@ export default {
   background-color: rgba(243, 243, 243, 0.788);
 }
 .my-box5 {
-  position:absolute;
+  position: absolute;
   display: inline-block;
   width: 50%;
   height: 0.2%;
@@ -216,9 +204,4 @@ export default {
   top: 65%;
   left: 43%;
 }
-
-
-
-
-
 </style>
