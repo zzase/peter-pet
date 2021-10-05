@@ -27,7 +27,8 @@
             </div>
             <div class="page-line2">
             </div>
-            <div v-if="this.peterpet.missing">
+
+            <div v-if="!this.peterpet.missing">
             <div class="page-content4">
               <h6># {{ peterpet.missing }}</h6></div>
           <div class="page-content3">
@@ -36,9 +37,19 @@
           </div>
               <div class="page-content2">
                 <p>보호자 이름 : {{ wenddy.name }}</p>
-                <p>보호자 연락처 : {{ wenddy.phoneNumber }}</p>
+                <p>보호자 연락처 : {{ wenddy.phone }}</p>
               </div>
               </div>
+            <div v-else>
+              <div class="page-content5">
+             <p> #Happy</p>
+              </div>
+              <div class="page-content2">
+                <img src="@/assets/img/DID/nice.png">
+                <h6>오늘도 {{ peterpet.name }}와 행복한 하루 되세요!</h6><br>
+              </div>
+            </div>
+
             </div>
             </div>
         </b-flex>
@@ -89,6 +100,11 @@ export default {
 </script>
 
 <style>
+.page-content5 {
+  position:absolute;
+  bottom: 4%;
+  left: 27%;
+}
 .DID-page1 {
   position: relative;
   margin-top: -3%;
@@ -139,14 +155,14 @@ export default {
   height: 25px;
   background-color: rgba(241, 170, 112, 0.705);
   border-radius: 3em;
-  top:87.5%;
-  left: 25%;
+  top:88.5%;
+  left: 23%;
 }
 .page-content2 {
   display: inline-block;
   position: absolute;
   left: 13%;
-  bottom: -34%;
+  bottom: -29%;
 }
 .page-content3 {
   display: inline-block;
@@ -162,7 +178,7 @@ export default {
   position: absolute;
   width:23%;
   height: 23%;
-  bottom: 21%;
+  bottom: 20%;
   left: 36%;
 }
 .page-content4 {
@@ -170,14 +186,27 @@ export default {
   color: rgb(0, 0, 0);
   z-index: 2;
   position: absolute;
-  margin-top: -17.5%;
-  left: 30%;
+  margin-top: -16%;
+  left: 26%;
 }
 .Img {
+  position: relative;
   display:inline-block;
   z-index: 1;
-  left: 40%;
-  top: 33%;
+  left: 21%;
+  top: 15%;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+.Img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(50, 50);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 </style>

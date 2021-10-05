@@ -179,6 +179,8 @@ export default {
 }
 .a-card {
   position: relative;
+  margin-top: 10%;
+  margin-bottom: 30%;
 }
 #dids {
   margin-left: 0px;
@@ -194,58 +196,74 @@ export default {
   top:10%;
 }
 .name {
+  z-index: 1;
   left: 28%;
   position:absolute;
-  top: 51%;
+  bottom: -21%;
 }
 .number {
   position: absolute;
-  top: 6%;
+  top: 13%;
   left: 29%;
 }
-.imghash{
-  position: absolute;
-  left: 27%;
+
+.imghash {
+  position: relative;
+  left: 22%;
   top: 29%;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  margin-top: -36%;
+  
+}
+.imghash img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(50, 50);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .birth {
   position: absolute;
   left: 29.5%;
-  top: 61.5%;
+  bottom: -41%;
 }
 .gender {
   position: absolute;
   left: 28%;
-  top: 71%;
+  bottom: -60%;
 }
 .breedOfDog {
   position: absolute;
   left: 56%;
-  top: 11.5%;
+  top: 24%;
 }
 .furColor {
   position: absolute;
   left: 56%;
-  top: 21%;
+  top: 43%;
 }
 .adoptionDate {
   position: absolute;
   left: 56%;
-  top: 30%;
+  top: 62%;
 }
 .isNeutering {
   position: absolute;
-  top: 41%;
+  bottom: 2%;
   left: 59%;
 }
 .vaccinationHistory {
   position: absolute;
-  top: 51.7%;
+  bottom: -21%;
   left: 58%;
 }
 .notes {
   position: absolute;
-  top: 67.5%;
+  bottom: -54%;
   left: 57.5%;
 }
 p {
@@ -339,4 +357,9 @@ p {
 .container-fluid{
   left: 30%;
 }
+.owl-theme .owl-dots .owl-dot.active span, 
+  .owl-theme .owl-dots .owl-dot:hover span {
+      background: #2caae1;
+  }
+
 </style>

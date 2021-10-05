@@ -6,7 +6,8 @@
                    @click="modal = false" 
                    style="cursor:pointer;
                           margin-left: 17%;
-                          margin-bottom: -1%;"> 
+                          margin-bottom: -1%;
+                          border: 1px solid rgba(175, 175, 175, 0.671)"> 
               </div>
               <div class="number" >
                 <p style="font-size: 18px;">{{ this.peterpet.did }}</p>
