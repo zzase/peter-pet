@@ -139,14 +139,14 @@ export default {
   height: 25px;
   background-color: rgba(241, 170, 112, 0.705);
   border-radius: 3em;
-  top:87.5%;
-  left: 25%;
+  top:88.5%;
+  left: 23%;
 }
 .page-content2 {
   display: inline-block;
   position: absolute;
   left: 13%;
-  bottom: -34%;
+  bottom: -29%;
 }
 .page-content3 {
   display: inline-block;
@@ -170,14 +170,27 @@ export default {
   color: rgb(0, 0, 0);
   z-index: 2;
   position: absolute;
-  margin-top: -17.5%;
-  left: 30%;
+  margin-top: -16%;
+  left: 26%;
 }
 .Img {
+  position: relative;
   display:inline-block;
   z-index: 1;
-  left: 40%;
-  top: 33%;
+  left: 21%;
+  top: 15%;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+.Img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(50, 50);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 </style>

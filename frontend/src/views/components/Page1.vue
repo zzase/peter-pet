@@ -167,7 +167,7 @@ export default {
   position: relative;
   left: 22%;
   top: 29%;
-   width: 200px;
+  width: 200px;
   height: 200px;
   overflow: hidden;
   margin-top: -36%;
