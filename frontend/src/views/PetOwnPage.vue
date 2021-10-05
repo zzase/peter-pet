@@ -28,7 +28,7 @@
             <div class="page-line2">
             </div>
 
-            <div v-if="!this.peterpet.missing">
+            <div v-if="this.peterpet.missing">
             <div class="page-content4">
               <h6># {{ peterpet.missing }}</h6></div>
           <div class="page-content3">
