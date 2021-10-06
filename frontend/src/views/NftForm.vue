@@ -75,7 +75,7 @@
                           class="md-success md-lg"
                           type="submit"
                           style="font-size: 27px;"
-                          >Create &nbsp;&nbsp; NFT</md-button
+                          ><b>Create &nbsp;&nbsp; NFT</b></md-button
                         >
             </div>
 
