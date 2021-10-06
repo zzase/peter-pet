@@ -52,7 +52,7 @@
                   target="_blank"
                   v-if="showDownload"
                 >
-                  <p>About</p>
+                  <p style="font-size: 19px; color: black">회사 소개</p>
                   <md-tooltip md-direction="bottom">Peter Pet ?</md-tooltip>
                 </md-list-item>
 
@@ -61,7 +61,7 @@
                   @click="scrollToElement()"
                   v-if="showDownload"
                 >
-                  <p>Animal registration</p>
+                  <p style="font-size: 19px; color: black">동물등록</p>
                   <md-tooltip md-direction="bottom"
                     >Animal registration</md-tooltip
                   >
@@ -72,8 +72,8 @@
                   @click="scrollToElement()"
                   v-if="showDownload"
                 >
-                  <p>External Device/Recognition ID</p>
-                  <md-tooltip md-direction="bottom">Tinkerbell</md-tooltip>
+                  <p style="font-size: 19px; color: black">NFT 생성</p>
+                  <md-tooltip md-direction="bottom">Create NFT</md-tooltip>
                 </md-list-item>
 
                 <md-list-item
@@ -81,8 +81,26 @@
                   @click="scrollToElement()"
                   v-if="showDownload"
                 >
-                  <p>NAVERLAND</p>
+                  <p style="font-size: 19px; color:black">네버랜드</p>
                   <md-tooltip md-direction="bottom">NAVERLAND</md-tooltip>
+                </md-list-item>
+
+                 <md-list-item
+                  href="#/neverland"
+                  @click="scrollToElement()"
+                  v-if="showDownload"
+                >
+                  <p style="font-size: 19px; color:black">외장칩/인식표</p>
+                  <md-tooltip md-direction="bottom">Necklace</md-tooltip>
+                </md-list-item>
+
+                <md-list-item
+                  href="#/neverland"
+                  @click="scrollToElement()"
+                  v-if="showDownload"
+                >
+                  <p style="font-size: 19px; color:black">고객센터</p>
+                  <md-tooltip md-direction="bottom">Customer Service</md-tooltip>
                 </md-list-item>
 
                 <li class="md-list-item" v-else>
@@ -130,8 +148,9 @@
                     </div>
                   </a>
                 </li>
-                <div>
+                <div class="login-mypage">
                   <div v-if="this.$store.state.isLogin">
+                    &nbsp;&nbsp;&nbsp;
                     <b-button pill variant="outline-primary" @click="myPage()">MyPage</b-button> &nbsp;
                     <b-button pill variant="outline-primary" @click="logout()">로그아웃</b-button>
                   </div>
@@ -366,8 +385,7 @@ export default {
 @media screen and (min-width: 1140) {
   .md-toolbar-section-start {
     position: absolute;
-    margin-left: -15%;
-    margin-top: 0.5%;
+    margin-top: 30px;
   }
   .navbar {
     position: absolute;
