@@ -44,14 +44,54 @@ const ABI = [
 			},
 			{
 				"name": "_vaccinationHistory",
-				"type": "string"
+				"type": "string[]"
 			},
 			{
 				"name": "_notes",
 				"type": "string"
+			},
+			{
+				"name": "_paNftId",
+				"type": "string"
 			}
 		],
 		"name": "addDid",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_did",
+				"type": "string"
+			},
+			{
+				"name": "_recipient",
+				"type": "address"
+			}
+		],
+		"name": "changeWenddy",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_did",
+				"type": "string"
+			},
+			{
+				"name": "_myNft",
+				"type": "string"
+			}
+		],
+		"name": "mappingNFT",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -112,7 +152,7 @@ const ABI = [
 			},
 			{
 				"name": "_vaccinationHistory",
-				"type": "string"
+				"type": "string[]"
 			},
 			{
 				"name": "_notes",
@@ -142,12 +182,6 @@ const ABI = [
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
-		"inputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "constructor"
 	},
 	{
 		"anonymous": false,
@@ -231,15 +265,19 @@ const ABI = [
 					},
 					{
 						"name": "vaccinationHistory",
-						"type": "string"
+						"type": "string[]"
 					},
 					{
 						"name": "notes",
 						"type": "string"
 					},
 					{
-						"name": "misiing",
+						"name": "missing",
 						"type": "bool"
+					},
+					{
+						"name": "paNftId",
+						"type": "string"
 					}
 				],
 				"name": "",
@@ -381,6 +419,44 @@ const ABI = [
 				"type": "string"
 			}
 		],
+		"name": "getMyNftByDid",
+		"outputs": [
+			{
+				"name": "_myNft",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_did",
+				"type": "string"
+			}
+		],
+		"name": "getMyParNftByDid",
+		"outputs": [
+			{
+				"name": "_paNftId",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_did",
+				"type": "string"
+			}
+		],
 		"name": "getPetAdoptionDateByDid",
 		"outputs": [
 			{
@@ -480,7 +556,7 @@ const ABI = [
 		"outputs": [
 			{
 				"name": "_vaccinationHistory",
-				"type": "string"
+				"type": "string[]"
 			}
 		],
 		"payable": false,
@@ -518,6 +594,25 @@ const ABI = [
 		"outputs": [
 			{
 				"name": "_isNeutering",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_did",
+				"type": "string"
+			}
+		],
+		"name": "getPetMissingByDid",
+		"outputs": [
+			{
+				"name": "_missing",
 				"type": "bool"
 			}
 		],
@@ -639,16 +734,16 @@ const ABI = [
 				"type": "string"
 			},
 			{
-				"name": "vaccinationHistory",
-				"type": "string"
-			},
-			{
 				"name": "notes",
 				"type": "string"
 			},
 			{
-				"name": "misiing",
+				"name": "missing",
 				"type": "bool"
+			},
+			{
+				"name": "paNftId",
+				"type": "string"
 			}
 		],
 		"payable": false,
@@ -682,8 +777,8 @@ const ABI = [
 		"stateMutability": "pure",
 		"type": "function"
 	}
-];
-const CA = '0x6C5D5A2244b0B5517537Ffb563083a0ada7f0024';
+]
+const CA = '0xAD911989917A394fd8b3f90D19f7E83188d5C626';
 const contract = new caver.contract(ABI,CA);
 
 export {contract,CA};

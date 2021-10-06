@@ -193,6 +193,11 @@
                           </div>
                         </md-field>
 
+                        <md-field class="md-form-group" slot="inputs">
+                          <label> <md-icon>face</md-icon>부모견 NFT ID</label>
+                          <md-input v-model="peterpet.paNftId"></md-input>
+                        </md-field>
+
                         <md-button
                           id="tab-content"
                           slot="footer"
@@ -562,8 +567,9 @@ export default {
         adoptionDate: null,
         isNeutering: null,
         furColor: null,
-        vaccinationHistory: null,
+        vaccinationHistory: [],
         notes: null,
+        paNftId : 'X'
       },
       wenddy: {
         name: "",

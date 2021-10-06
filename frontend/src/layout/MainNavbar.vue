@@ -297,12 +297,12 @@ export default {
             this.$store.commit("setUser", res.data.user);
             this.$router.push({ name: "main" }).catch(() => {});
 
-            alert("login 성공");
-            this.$bvModal.hide("modal-center");
           } else {
             this.$store.commit("loginError");
-            alert("비밀번호가 틀렸습니다!");
           }
+
+          alert(res.data.msg);
+          this.$bvModal.hide("modal-center");
         })
         .catch((err) => {
           console.error(err);

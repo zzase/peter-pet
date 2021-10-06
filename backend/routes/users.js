@@ -130,12 +130,11 @@ router.post('/login',async function(req,res,next) {
       const salt = bcrypt.genSaltSync();
       const encryptedPassword = bcrypt.hashSync(newUser.password,salt);
 
-      connection.query(`INSERT INTO user(u_id,password,address,publickey) VALUES("${newUser.id}", "${encryptedPassword}", "${newUser.address}", "${newUser.publicKey}")`,newUser,function(err,rows2){
+      connection.query(`INSERT INTO user(u_id,password,address,publickey,auth) VALUES("${newUser.id}", "${encryptedPassword}", "${newUser.address}", "${newUser.publicKey}","member")`,newUser,function(err,rows2){
         if(err) throw err;
       });
 
-      console.log('회원가입 성공');
-      res.send({user : newUser, loginCheck:true, remitTx:remitTx});
+      res.send({user : newUser, loginCheck:true, remitTx:remitTx, msg:"회원가입 성공, klaytn 주소가 생성되었습니다"});
       //3.생성된 user 정보로 로그인
     }
 
@@ -147,12 +146,12 @@ router.post('/login',async function(req,res,next) {
           console.log("login success");
           connection.query(`SELECT address FROM user WHERE u_id = "${rows[0].u_id}"`,async function(err, rows3){
             user.address = rows3[0].address; 
-            res.send({user : user, loginCheck:true });
+            res.send({user : user, loginCheck:true , msg:"로그인 성공"});
           })
         }
         else { //비밀번호가 틀림
           console.log("비밀번호 틀림");
-          res.send({loginCheck:false})
+          res.send({loginCheck:false, msg:"비밀번호가 틀립니다."}, )
           //alert("비밀번호가 틀립니다");
         }
       })
