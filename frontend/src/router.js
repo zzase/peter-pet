@@ -8,6 +8,7 @@ import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 import Regist from "./views/Regist.vue";
 import Main from "./views/Main.vue";
+import NftForm from "./views/NftForm.vue";
 
 import Neverland from "./views/Neverland.vue";
 import RegisterComplete from "./views/RegisterComplete.vue"
@@ -100,6 +101,14 @@ export default new Router({
       path: "/pet/own/:did",
       name: "petOwn",
       components: { default: PetOwn,  },
+      props: {
+        
+      }
+    },
+    {
+      path: "/nft/form",
+      name: "nftForm",
+      components: { default: NftForm,  },
       props: {
         
       }
