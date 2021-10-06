@@ -100,21 +100,30 @@ export default {
 .link {
   z-index: 2;
   position: relative;
-  width: 60%;
-  height: 60%;
-  top: 45%;
-  margin: auto;
-  left: 28.5%;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  margin-bottom: 1120px;
+  margin-left: 400px;
+}
+.link img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(50,50);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .md-layout-item {
   position: relative;
   width: 100%;
 }
 .my-box1 {
-  position: absolute;
+  position: relative;
   display: inline-block;
-  width: 93%;
-  height: 10%;
+  width: 1600px;
+  height: 300px;
   left: 3.5%;
   padding-right: 50px;
   background-color: rgba(240, 240, 240, 0.753);
