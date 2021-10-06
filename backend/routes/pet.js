@@ -61,6 +61,7 @@ router.get('/get/all/petInfos/:did', async function(req, res, next) {
               notes : peterpet.notes,
               missing : peterpet.misiing,
               gender : peterpet.gender,
+              paNftId : peterpet.paNftId,
               issueDate : {
                 year : issueDate.getFullYear(),
                 month : issueDate.getMonth() +1,
@@ -91,7 +92,7 @@ router.post('/regist',async function(req,res,next){
     //   peterpet.isNeutering, peterpet.furColor, peterpet.vaccinationHistory, peterpet.notes).send({ from: address, gas: 5000000 });
 
     const addDidData = await contract.methods.addDid(peterpet.imgHash, peterpet.name, peterpet.birth, peterpet.breedOfDog, peterpet.gender, peterpet.adoptionDate,
-    peterpet.isNeutering, peterpet.furColor, peterpet.vaccinationHistory, peterpet.notes).encodeABI();
+    peterpet.isNeutering, peterpet.furColor, peterpet.vaccinationHistory, peterpet.notes,peterpet.paNftId).encodeABI();
 
     console.log("addDidData : " + addDidData);
 
