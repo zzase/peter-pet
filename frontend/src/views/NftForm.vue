@@ -48,8 +48,8 @@
             ></b-form-textarea>
             </div>
             <!-- 강아지 성격 및 정보 -->
-            <div class="description">
-                <label class="description-dog"> 분양견의 성격과 특징에 대해 기입해주세요* </label>
+            <div class="description-dog">
+                <label class="description-d"> 분양견의 성격과 특징에 대해 기입해주세요* </label>
             <b-form-textarea
                 id="textarea-rows"
                 placeholder="Tall textarea"
@@ -147,13 +147,13 @@ export default{
 .health-r {
     float: left;
 }
-.description {
+.description-dog {
     position: relative;
     width: 60%;
     margin-left: 330px;
     margin-top: 300px;
 }
-.description-dog {
+.description-d {
     color: black;
     float: left;
 }
