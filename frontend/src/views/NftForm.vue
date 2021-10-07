@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <parallax class="section page-header" :style="headerStyle"> </parallax>
+    <parallax class="section page" :style="headerStyle"> </parallax>
 
     <div class="main main-raised">
        <div class="section">
@@ -81,7 +81,6 @@
                           ><b>Create &nbsp;&nbsp; NFT</b></md-button
                         >
             </div>
-
           </div>
         </div>
        </div>
@@ -141,6 +140,7 @@ export default{
     width: 100%;
     text-align: center;
     margin-top: 600px;
+    background-color: white;
 }
 .header {
     position: relative;

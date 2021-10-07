@@ -19,26 +19,34 @@
          <div class="select-headerImg2">
           <img src="@/assets/img/nft/picture-nft2.png">
         </div>
-        
+        <div class="message-n">
+          <h4>생성할 NFT의 종류를 선택해주세요</h4>
+        </div>
         <div class="sale-nft">
+          <img src="@/assets/img/nft/sale-nft.png">
+          <br><br><br>
+          <span>Peter-Pet에서 발급받은 DID동물등록증을 통해 <br>분양견의 정보를 담는 NFT를 생성합니다</span>
         </div>
 
             <div class="to-saleform">
             <md-button
+                          href="#/nft/form"
                           class="md-info md-lg"
-                          type="submit"
                           style="font-size: 30px;"
                           ><b>분양 &nbsp;NFT&nbsp; 만들기</b></md-button
                         >
             </div>
 
         <div class="my-nft">
+          <img src="@/assets/img/nft/my-nft.png">
+          <br><br><br>
+          <span> 내 반려견과 관련된 추억을 <br>담을 수 있는 개인 소장용 NFT입니다 </span>
         </div>
 
         <div class="to-myform">
             <md-button
+                          href="#/nft/form/personal"
                           class="md-info md-lg"
-                          type="submit"
                           style="font-size: 30px;"
                           ><b>MY&nbsp;NFT&nbsp; 만들기</b></md-button
                         >
@@ -62,7 +70,9 @@ export default {
 </script>
 
 <style>
-
+.section1{
+  background-color: coral;
+}
 .select-header {
   margin-top: -70px;
   background-color: rgba(199, 231, 233, 0.452);
@@ -81,32 +91,39 @@ export default {
   top: 125PX;
   left: 1300px;
 }
+.message-n {
+  position: absolute;
+  top: 550px;
+  left: 715px;
+}
 .sale-nft {
   position: relative;
   left: 520px;
-  top: 200px;
+  top: 250px;
   margin-bottom: 300px;
   margin-top: 300px;
   width: 350px;
   height: 400px;
   border: 1px solid rgb(196, 196, 196);
   border-radius: 1em;
+  text-align: center;
 }
 .to-saleform {
   position: relative;
   left: 610px;
-  margin-top: -70px;
+  margin-top: -20px;
 }
 .my-nft {
   position: absolute;
   left: 930px;
-  top: 270px;
+  top: 320px;
   margin-bottom: 100px;
   margin-top: 300px;
   width: 350px;
   height: 400px;
   border: 1px solid rgb(196, 196, 196);
   border-radius: 1em;
+  text-align: center;
 }
 .to-myform {
   position: relative;

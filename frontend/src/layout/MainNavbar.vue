@@ -68,7 +68,7 @@
                 </md-list-item>
 
                 <md-list-item
-                  href="javascript:void(0)"
+                  href="#/select/form"
                   @click="scrollToElement()"
                   v-if="showDownload"
                 >
