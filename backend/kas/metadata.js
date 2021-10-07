@@ -21,7 +21,7 @@ class Metadata extends ApiCaller {
         const res = await this.call(options);
         console.log(res);
 
-        return res.data.uri;
+        return res.uri;
     }
     async certiNFTUri(name,did,history,desc,certi,repreImg,addImgs,price) {
         const options = {

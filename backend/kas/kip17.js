@@ -5,13 +5,13 @@ class Kip17 extends ApiCaller {
         super('https://kip17-api.klaytnapi.com');
     }
 
-    async makeCertiNft(address,id,uri) {
+    async makeNft(address,id,uri,ca) {
         const options = {
             method: 'POST',
-            url : '/v1/contract/0xdf47abaec9b9c628c6190b3dcd289b499dcba8b5/token',
+            url : `/v1/contract/${ca}/token`,
             body : {
                 to : address,
-                id : id,
+                id : `0x${id}`,
                 uri : uri
             },
             json : true
@@ -19,6 +19,7 @@ class Kip17 extends ApiCaller {
 
         const res = await this.call(options);
         console.log(res);
+        return res;
     }
 
 }
