@@ -9,13 +9,29 @@
                 enabled: true,
                 trigger: 'enter'}"
                 @on-row-click="makeQR"/>
+
+                <Modal v-if="showModal" @close="showModal = false">
+                    <h3 slot="header"> 생성된 QR코드 </h3>
+                    <div slot="body">
+                        <vue-qr :text="text" :qId="qId"></vue-qr>
+                    </div>
+                    <div slot="footer">
+                        <b-button pill variant="outline-secondary" @click="close">닫기</b-button>
+                        <b-button pill variant="success" @click="printQR">QR 출력</b-button>
+                    </div>
+                </Modal>
+                
             </div>
         </parallax>
     </div>
 </template>
 <script>
+import Modal from '../components/Modal.vue';
+
+import VueQr from 'vue-qr'
 
 export default {
+  components: { Modal, VueQr },
   name: 'my-component',
   data(){
     return {
@@ -38,12 +54,36 @@ export default {
         },
       ],
       rows: [],
+
+      //qr config
+      qId : '',
+      text : '',
+      
+      showModal : false
     };
   },
   methods : {
+      close : function(){
+          this.showModal = false;
+      },
+
+      printQR : function() {
+          this.$http
+          .put(`http://localhost:3000/api/pet/make/qr`, {did : this.qId})
+          .then((res)=>{
+              console.log(res.data);
+              alert(res.data.msg);
+              this.showModal = false;
+              this.$router.go();
+          })
+          .catch((err) => {
+            console.error(err);
+        });
+      },
+
       getNoQrDids : function() {
        this.$http
-        .get(`http://localhost:3000/api/pet/noQR`)
+        .get(`http://localhost:3000/api/pet/noqr`)
         .then((res) => {
           if (res.data.rows) {
             console.log(res.data.rows)
@@ -58,7 +98,9 @@ export default {
     },
 
     makeQR : function(params) {
-        alert(params.row.url);
+        this.text = `http://172.30.1.10:8080/#/pet/own/${params.row.did}`;
+        this.qId = params.row.did;
+        this.showModal = true;
     }
   },
   created () {
