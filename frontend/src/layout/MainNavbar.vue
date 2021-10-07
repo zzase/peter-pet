@@ -314,12 +314,17 @@ export default {
           if (res.data.loginCheck) {
             this.$store.commit("loginSuccess");
             this.$store.commit("setUser", res.data.user);
-            this.$router.push({ name: "main" }).catch(() => {});
+
+            if(this.$store.state.user.auth === 'manager'){
+              this.$router.push({ name: "manager" }).catch(() => {});
+            }
+            else{
+              this.$router.push({ name: "main" }).catch(() => {});
+            }
 
           } else {
             this.$store.commit("loginError");
           }
-
           alert(res.data.msg);
           this.$bvModal.hide("modal-center");
         })

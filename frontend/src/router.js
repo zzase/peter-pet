@@ -9,6 +9,7 @@ import MainFooter from "./layout/MainFooter.vue";
 import Regist from "./views/Regist.vue";
 import Main from "./views/Main.vue";
 import NftForm from "./views/NftForm.vue";
+import Manager from "./views/Manager.vue"
 
 import Neverland from "./views/Neverland.vue";
 import RegisterComplete from "./views/RegisterComplete.vue"
@@ -125,6 +126,15 @@ export default new Router({
       path: "/profile",
       name: "profile",
       components: { default: Profile, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/manager",
+      name: "manager",
+      components: { default: Manager, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
