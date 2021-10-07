@@ -54,7 +54,7 @@
     transform: translate(-50%, -50%);
     width: 100%;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 51px;
     height: 1000px;
 }
 .header1 {
