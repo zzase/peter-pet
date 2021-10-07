@@ -30,6 +30,26 @@ router.get('/get/all/dids/:address', async function(req, res, next) {
   }
 });
 
+router.get('/noQR', async function(req, res, next) {
+  console.log('get noQR did list api call');
+
+  connection.query(`SELECT d.did as did , d.u_id as id, u.address as address ,d.issueDate as issueDate , d.url as url FROM did d, user u 
+  WHERE d.u_id = u.u_id and d.isQR = FALSE 
+  ORDER BY d.issueDate;`
+  ,function(err,rows){
+    if(rows === undefined){
+      res.status(400).send({msg : "잘못된 요청"})
+    }
+    else {
+      for(var i=0; i< Object.keys(rows).length; i++){
+        var date = new Date(rows[i].issueDate);
+        rows[i].issueDate = `${date.getFullYear()}년 ${date.getMonth()+1}월 ${date.getDate()}일`
+      }
+      res.status(200).send({rows:rows});
+    }
+  })
+});
+
 router.get('/get/all/petInfos/:did', async function(req, res, next) {
   console.log('get all pet Info api call');
   const did = req.params.did;
