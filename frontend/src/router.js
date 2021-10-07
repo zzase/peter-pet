@@ -9,6 +9,8 @@ import MainFooter from "./layout/MainFooter.vue";
 import Regist from "./views/Regist.vue";
 import Main from "./views/Main.vue";
 import NftForm from "./views/NftForm.vue";
+import NftFormPersonal from "./views/NftFormPersonal.vue";
+import SelectForm from "./views/SelectForm.vue";
 
 import Neverland from "./views/Neverland.vue";
 import RegisterComplete from "./views/RegisterComplete.vue"
@@ -106,11 +108,30 @@ export default new Router({
       }
     },
     {
+      path: "/select/form",
+      name: "selectForm",
+      components: { default: SelectForm, header: MainNavbar, footer: MainFooter  },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
       path: "/nft/form",
       name: "nftForm",
-      components: { default: NftForm,  },
+      components: { default: NftForm, header: MainNavbar, footer: MainFooter  },
       props: {
-        
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/nft/form/personal",
+      name: "nftFormPersonal",
+      components: { default: NftFormPersonal, header: MainNavbar, footer: MainFooter  },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
       }
     },
     {

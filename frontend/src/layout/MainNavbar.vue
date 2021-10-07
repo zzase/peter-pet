@@ -81,7 +81,7 @@
                   @click="scrollToElement()"
                   v-if="showDownload"
                 >
-                  <p style="font-size: 19px; color:black">네버랜드</p>
+                  <p style="font-size: 19px; color:purple">네버랜드</p>
                   <md-tooltip md-direction="bottom">NAVERLAND</md-tooltip>
                 </md-list-item>
 
