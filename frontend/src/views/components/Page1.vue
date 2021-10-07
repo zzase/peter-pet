@@ -185,56 +185,56 @@ export default {
 .birth {
   position: relative;
   left: 408px;
-  bottom: 17px;
+  bottom: 12px;
 }
 .gender {
   position: relative;
   left: 385px;
-  bottom: 6px;
+  bottom: 0px;
 }
 .breedOfDog {
   position: relative;
   left: 778px;
-  top: -397px;
+  top: -390px;
 }
 .furColor {
   position: relative;
   left: 778px;
-  top: -383px;
+  top: -378px;
 }
 .adoptionDate {
   position: relative;
   left: 778px;
-  top: -374px;
+  top: -368px;
 }
 .isNeutering {
   position: relative;
-  bottom: 355px;
+  bottom: 349px;
   left: 823px;
 }
 .vaccinationHistory {
   position: relative;
-  bottom: 335px;
-  left: 806px;
+  bottom: 328px;
+  left: 804px;
 }
 .notes {
   position: relative;
-  bottom: 285px;
+  bottom: 279px;
   left: 800px;
 }
 .issueyear {
   position: relative;
-  bottom: 206px;
+  bottom: 200px;
   left: 533px;
 }
 .issuemonth {
   position: relative;
-  bottom: 252px;
+  bottom: 247px;
   left: 640px;
 }
 .issuedate {
   position: relative;
-  bottom: 298px;
+  bottom: 293px;
   left: 727px;
 }
 p {
