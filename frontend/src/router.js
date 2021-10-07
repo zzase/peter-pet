@@ -11,6 +11,7 @@ import Main from "./views/Main.vue";
 import NftForm from "./views/NftForm.vue";
 import NftFormPersonal from "./views/NftFormPersonal.vue";
 import SelectForm from "./views/SelectForm.vue";
+import NftPage1 from "./views/NftPage1.vue";
 
 import Neverland from "./views/Neverland.vue";
 import RegisterComplete from "./views/RegisterComplete.vue"
@@ -129,6 +130,15 @@ export default new Router({
       path: "/nft/form/personal",
       name: "nftFormPersonal",
       components: { default: NftFormPersonal, header: MainNavbar, footer: MainFooter  },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/mypage/nftpage1",
+      name: "nftpage1",
+      components: { default: NftPage1, header: MainNavbar, footer: MainFooter  },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
