@@ -3,7 +3,6 @@
     <parallax class="section page-header" :style="headerStyle"> </parallax>
     <div class="main main-raised">
       <div class="section">
-        <img id="white" src="@/assets/img/Regist/white.jpg" />
         <div class="my-box1"></div>
         <div class="md-layout">
           <div class="content">
@@ -19,20 +18,22 @@
           </div>
 
           <div class="my-box2">
-            <label>이름 : </label>
+            <label><b>이름 : </b></label>
             <label>{{ $route.query.peterpet.name }}</label>
             <br />
             <br />
-            <label>등록번호 : </label>
+            <label><b>등록번호 : </b></label>
             <label>{{ $route.query.peterpet.did }}</label>
             <br />
             <br />
-            <label>전용페이지 : </label>
+            <label><b>DID 조회페이지 : </b></label>
             <a>{{ $route.query.peterpet.url }}</a>
             <br />
             <br />
-            <label>{{ $route.query.msg }}</label>
-            <br />
+          </div>
+          <div class="query-line"></div>
+          <div class="query">
+            <label><b>{{ $route.query.msg }}</b></label>
           </div>
           <div class="link">
             <img
@@ -44,7 +45,6 @@
           </div>
           <div class="my-box3"></div>
           <div class="my-box4"></div>
-          <div class="my-box5"></div>
           <div class="mypage">
             <md-button id="mypage" href="#/mypage" class="md-success">
               <b>마이 페이지</b></md-button
@@ -94,39 +94,47 @@ export default {
 </script>
 
 <style lang="css">
-.white {
-  z-index: 4;
-}
+
 .link {
   z-index: 2;
   position: relative;
-  width: 60%;
-  height: 60%;
-  top: 45%;
-  margin: auto;
-  left: 28.5%;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  margin-top: -225px;
+  left: -650px;
+}
+.link img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(50,50);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .md-layout-item {
   position: relative;
   width: 100%;
 }
 .my-box1 {
-  position: absolute;
+  position: relative;
   display: inline-block;
-  width: 93%;
-  height: 10%;
-  left: 3.5%;
+  width: 1700px;
+  height: 250px;
+  margin-top: 10px;
+  margin-left: 40px;
   padding-right: 50px;
-  background-color: rgba(240, 240, 240, 0.753);
-  margin: auto;
+  border-radius: 1em;
+  background-color: rgba(235, 235, 235, 0.897);
 }
 
 .content {
   font-family: Georgia, "Times New Roman", Times, serif;
-  position: absolute;
+  position: relative;
   display: inline-block;
-  left: 29%;
-  top: 8%;
+  left: 350px;
+  top: -200px;
   margin: auto;
 }
 .check {
@@ -134,33 +142,50 @@ export default {
 }
 .hat {
   z-index: 3;
-  left: 20.5%;
-  top: 44.5%;
+  left: 485px;
+  top: 650px;
   z-index: 1;
   position: absolute;
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
   margin: auto;
 }
 .my-box2 {
-  position: absolute;
+  position: relative;
   display: inline-block;
-  left: 43%;
-  top: 45%;
+  left: -370px;
+  top: 120px;
   width: 30%;
   height: 0.3%;
-  background-color: rgba(243, 243, 243, 0.788);
+  font-size: 19px;
+  color:rgb(125, 125, 133);
   margin: auto;
 }
+.query {
+  position: relative;
+  top: 20px;
+  left: -100px;
+  font-size: 20px;
+  color:rgb(125, 125, 133);
+
+}
+.query-line {
+  position: relative;
+  width: 750px;
+  height: 2px;
+  top: 0px;
+  left: 450px;
+  background-color: rgba(235, 235, 235, 0.897);
+}
 .my-box3 {
-  position: absolute;
+  position: relative;
   display: inline-block;
-  width: 15%;
-  height: 19%;
+  width: 870px;
+  height: 380px;
   border-radius: 3em;
-  top: 44%;
-  left: 26%;
-  border: 2px solid rgba(214, 214, 214, 0.616);
+  top: -335px;
+  left: 350px;
+  border: 2px solid rgba(221, 219, 219, 0.897);
   margin: auto;
 }
 .con {
@@ -175,33 +200,34 @@ export default {
   margin-top: 20%;
 }
 .my-box4 {
-  position: absolute;
+  position: relative;
   display: inline-block;
-  width: 50%;
+  width: 30%;
   height: 0.3%;
-  left: 25%;
-  top: 64%;
-  background-color: rgba(243, 243, 243, 0.788);
+  left: 200px;
+  top: 400px;
+  background-color: rgba(12, 255, 4, 0.897);
 }
 .my-box5 {
-  position: absolute;
+  position: relative;
   display: inline-block;
   width: 50%;
   height: 0.2%;
   left: 25%;
-  top: 43%;
-  background-color: rgba(167, 164, 164, 0.788);
+  top: 38%;
+  background-color: rgba(248, 129, 17, 0.788);
 }
 .mypage {
-  position: absolute;
+  z-index: 2;
+  position: relative;
   display: inline-block;
-  top: 65%;
-  left: 52%;
+  top: 1000px;
+  left: 750px;
 }
 .mainpage {
-  position: absolute;
+  position: relative;
   display: inline-block;
-  top: 65%;
-  left: 43%;
+  top: 1000px;
+  left: 900px;
 }
 </style>
