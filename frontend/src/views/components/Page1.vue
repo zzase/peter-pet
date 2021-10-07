@@ -153,20 +153,20 @@ export default {
 }
 .name {
   z-index: 1;
-  left: 28%;
-  position:absolute;
-  bottom: -21%;
+  left: 386px;
+  position:relative;
+  bottom: 328px;
 }
 .number {
-  position: absolute;
-  top: 12.8%;
-  left: 29%;
+  position: relative;
+  top: -551px;
+  left: 398px;
 }
 
 .imghash {
   position: relative;
-  left: 22%;
-  top: 29%;
+  left: 310px;
+  top: -90px;
   width: 200px;
   height: 200px;
   overflow: hidden;
@@ -183,59 +183,59 @@ export default {
   object-fit: cover;
 }
 .birth {
-  position: absolute;
-  left: 29.5%;
-  bottom: -41%;
+  position: relative;
+  left: 408px;
+  bottom: 12px;
 }
 .gender {
-  position: absolute;
-  left: 28%;
-  bottom: -59.5%;
+  position: relative;
+  left: 385px;
+  bottom: 0px;
 }
 .breedOfDog {
-  position: absolute;
-  left: 56%;
-  top: 24%;
+  position: relative;
+  left: 778px;
+  top: -390px;
 }
 .furColor {
-  position: absolute;
-  left: 56%;
-  top: 43.5%;
+  position: relative;
+  left: 778px;
+  top: -378px;
 }
 .adoptionDate {
-  position: absolute;
-  left: 56.2%;
-  top: 62%;
+  position: relative;
+  left: 778px;
+  top: -368px;
 }
 .isNeutering {
-  position: absolute;
-  bottom: 1.7%;
-  left: 59.5%;
+  position: relative;
+  bottom: 349px;
+  left: 823px;
 }
 .vaccinationHistory {
-  position: absolute;
-  bottom: -21%;
-  left: 58%;
+  position: relative;
+  bottom: 328px;
+  left: 804px;
 }
 .notes {
-  position: absolute;
-  bottom: -53%;
-  left: 57.5%;
+  position: relative;
+  bottom: 279px;
+  left: 800px;
 }
 .issueyear {
-  position: absolute;
-  bottom: -95.7%;
-  left: 39%;
+  position: relative;
+  bottom: 200px;
+  left: 533px;
 }
 .issuemonth {
-  position: absolute;
-  bottom: -95.7%;
-  left: 46.5%;
+  position: relative;
+  bottom: 247px;
+  left: 640px;
 }
 .issuedate {
-  position: absolute;
-  bottom: -95.7%;
-  left: 53%;
+  position: relative;
+  bottom: 293px;
+  left: 727px;
 }
 p {
   font-size: 20px;
