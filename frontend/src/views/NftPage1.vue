@@ -63,7 +63,7 @@ export default{
 }
 .col-5 {
     height: 600px;
-    background-color: rgba(233, 233, 233, 0.712);
+    background-color: rgba(240, 240, 240, 0.712);
 }
 .nft-num {
     position: absolute;
