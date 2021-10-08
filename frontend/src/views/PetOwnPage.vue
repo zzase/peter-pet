@@ -75,7 +75,7 @@ export default {
   },
   methods : {
     getPetInfo: function(did) {
-       this.$http.get(`http://localhost:3000/api/pet/get/all/petInfos/${did}`,{
+       this.$http.get(`${BACKEND_SERVER_URI}api/pet/get/all/petInfos/${did}`,{
        })
        .then((res) => {
          console.log(res.data);
@@ -83,7 +83,7 @@ export default {
        })
      },
     getWenddyInfo: function(did) {
-      this.$http.get(`http://localhost:3000/api/user/wenddy/info/${did}`,{
+      this.$http.get(`${BACKEND_SERVER_URI}api/user/wenddy/info/${did}`,{
       })
       .then((res)=>{
         console.log(res.data.wenddy);
