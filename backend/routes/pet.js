@@ -110,7 +110,7 @@ router.post('/regist',async function(req,res,next){
     
     // const result = await contract.methods.addDid(peterpet.imgHash, peterpet.name, peterpet.birth, peterpet.breedOfDog, peterpet.gender, peterpet.adoptionDate,
     //   peterpet.isNeutering, peterpet.furColor, peterpet.vaccinationHistory, peterpet.notes).send({ from: address, gas: 5000000 });
-
+    
     const addDidData = await contract.methods.addDid(peterpet.imgHash, peterpet.name, peterpet.birth, peterpet.breedOfDog, peterpet.gender, peterpet.adoptionDate,
     peterpet.isNeutering, peterpet.furColor, peterpet.vaccinationHistory, peterpet.notes,peterpet.paNftId).encodeABI();
 
@@ -123,19 +123,23 @@ router.post('/regist',async function(req,res,next){
     console.log('----------------------------------------------------');
 
     setTimeout(async ()=> {
-      const lastDid = await contract.methods.getLastDidByWenddy(address).call();
-      console.log('lastDid : ' + lastDid);
+      try{
+        const lastDid = await contract.methods.getLastDidByWenddy(address).call();
+        console.log('lastDid : ' + lastDid);
 
-      let date = new Date();
-      let today = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
-      connection.query(`INSERT INTO did(did,t_id,u_id,url,issueDate,isQR) VALUES("${lastDid}", 0, "${id}","http://localhost:8080/#/pet/own/${lastDid}","${today}",false)`,function(err,rows2){
-        if(err){
-          res.status(404).send({err:err , checkReg : false});
-        }
-        else {
-          res.status(200).send({user : {id : id, address : address}, did : lastDid , txHash:txHash, checkReg:true});
-        }
-      });
+        let date = new Date();
+        let today = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
+        connection.query(`INSERT INTO did(did,t_id,u_id,url,issueDate,isQR) VALUES("${lastDid}", 0, "${id}","http://localhost:8080/#/pet/own/${lastDid}","${today}",false)`,function(err,rows2){
+          if(err){
+            res.status(404).send({err:err , checkReg : false});
+          }
+          else {
+            res.status(200).send({user : {id : id, address : address}, did : lastDid , txHash:txHash, checkReg:true});
+          }
+        });
+      }catch(err){
+        console.log(err)
+      }
 
     },2000);
 
