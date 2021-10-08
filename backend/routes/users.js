@@ -101,7 +101,8 @@ router.post('/login',async function(req,res,next) {
   const user = {
     'id' : req.body.user.id,
     'password' : req.body.user.password,
-    'address' : ''
+    'address' : '',
+    'auth' : ''
   };
   console.log(user);
   connection.query(`SELECT u_id, password FROM user WHERE u_id="${user.id}"`,async function(err,rows){
@@ -119,6 +120,7 @@ router.post('/login',async function(req,res,next) {
         'password': user.password,
         'address': account.address,
         'publicKey': account.publicKey,
+        'auth' : 'member'
       }
 
       const memo = `"${newUser.id}" 웬디님 신규 회원가입 기념 1 KLAY 충전`
@@ -130,7 +132,7 @@ router.post('/login',async function(req,res,next) {
       const salt = bcrypt.genSaltSync();
       const encryptedPassword = bcrypt.hashSync(newUser.password,salt);
 
-      connection.query(`INSERT INTO user(u_id,password,address,publickey,auth) VALUES("${newUser.id}", "${encryptedPassword}", "${newUser.address}", "${newUser.publicKey}","member")`,newUser,function(err,rows2){
+      connection.query(`INSERT INTO user(u_id,password,address,publickey,auth) VALUES("${newUser.id}", "${encryptedPassword}", "${newUser.address}", "${newUser.publicKey}","${newUser.auth}")`,newUser,function(err,rows2){
         if(err) throw err;
       });
 
@@ -144,8 +146,9 @@ router.post('/login',async function(req,res,next) {
         if(res2){ //로그인 성공
           console.log('res2:'+res2);
           console.log("login success");
-          connection.query(`SELECT address FROM user WHERE u_id = "${rows[0].u_id}"`,async function(err, rows3){
-            user.address = rows3[0].address; 
+          connection.query(`SELECT * FROM user WHERE u_id = "${rows[0].u_id}"`,async function(err, rows3){
+            user.address = rows3[0].address;
+            user.auth = rows3[0].auth;
             res.send({user : user, loginCheck:true , msg:"로그인 성공"});
           })
         }
