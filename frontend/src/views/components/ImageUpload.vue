@@ -24,3 +24,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.centerx {
+   flex-wrap: wrap;
+   flex-direction: row;
+}
+</style>

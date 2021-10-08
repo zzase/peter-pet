@@ -22,23 +22,24 @@
             <div class="create-box">
               <h2>새 NFT만들기</h2>
               <div class="file_info">Image, Video, Audio or 3D Model</div>
-              <div class="file_info_detail">
-                File types supported: JPG,PNG,GIF,MP4,MP3,WAV, Max size: 100MB
-              </div>
-              <div class="file_info_detail">
-                Safari 외 브라우저에서는 동영상 'Hevc' 코덱을 지원하지 않아<br />
-                해당 코덱의 영상 파일 첨부 시 동영상 재생이 원활하지 않을 수
-                있습니다.
+                <div class="file_info_detail">
+                  File types supported: JPG,PNG,GIF,MP4,MP3,WAV, Max size: 100MB
+                </div>
+                <div class="file_info_detail">
+                  Safari 외 브라우저에서는 동영상 'Hevc' 코덱을 지원하지 않아<br />
+                  해당 코덱의 영상 파일 첨부 시 동영상 재생이 원활하지 않을 수
+                  있습니다.
+                </div>
+            <br />
+            <br />
+            <br />
+                <div class="row flex-row flex-nowrap">
+                <div class="Imageupload">
+                  <ImageUpload></ImageUpload>
+                </div>
               </div>
             </div>
 
-            <!-- <div class="container-fluidcontainer-fluid">
-              <div class="row flex-row flex-nowrap"> -->
-            <div class="Imageupload">
-              <ImageUpload></ImageUpload>
-            </div>
-            <!-- </div>
-            </div> -->
             <br />
             <br />
             <br />
@@ -141,19 +142,21 @@ export default {
 </script>
 
 <style>
+@media screen and (min-width:1280px) {
+
 .body {
   height: 100%;
   margin: 0;
 }
 .d-container {
   position: relative;
-  left: 47%;
-  right: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
+  display: inline-block;
+  width: 1580px;
+  max-height: 2600px;
+  top: 50px;
   text-align: center;
-  margin-top: 610px;
-  background-color: white;
+  padding: 70px 0px;
+  margin-bottom: 50px;
 }
 .header {
   position: relative;
@@ -164,9 +167,17 @@ export default {
   display: inline-block;
   background-color: rgba(221, 221, 221, 0.377);
 }
+.con-img-upload {
+  flex-direction: row;
+  display: flex;
+  margin:0px auto;
+  display: inline-flexbox;
+}
 .Imageupload {
   width: 250px;
   margin: 20px auto;
+  flex-direction: row;
+  display: flex;
 }
 .file_info {
   font-size: 1.8rem;
@@ -175,6 +186,7 @@ export default {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
+  text-align: center;
 }
 .dropdown {
   z-index: 1;
@@ -194,7 +206,7 @@ export default {
 }
 .health-record {
   position: absolute;
-  width: 60%;
+  width: 940px;
   margin-left: 330px;
 }
 .health-r {
@@ -202,7 +214,7 @@ export default {
 }
 .description-dog {
   position: relative;
-  width: 60%;
+  width: 940px;
   margin-left: 330px;
   margin-top: 300px;
 }
@@ -218,12 +230,13 @@ export default {
   float: left;
 }
 .cert {
-  margin-left: -2250px;
+  margin-left: -2080px;
   margin-top: 70px;
 }
 .create-complete {
   position: relative;
   margin-right: 0;
   margin-top: 200px;
+}
 }
 </style>
