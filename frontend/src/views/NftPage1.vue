@@ -6,7 +6,28 @@
        <div class="section">
            <div class="md-layout">
                <div class="flex-container1">
+                   <!-- img  -->
+                    <div class="nft-img">
+                        <h1>img</h1>
+                    </div>
 
+                    <div class="nft-num">
+                        <h4 style="color:white; margin-top: 40px; margin-left: 50px;">NFT NUMBER: </h4>
+                    </div>
+                    <div class="nft-contents">
+                       <p> 이름 : </p>
+                       <br>
+                       <p> 동물등록증 : </p>
+                       <br>
+                       <p> 건강이력 : </p>
+                       <br>
+                       <br>
+                       <p> 성격 및 특징 : </p>
+                       <br>
+                       <br>
+                       <br>
+                       <p> 혈통증명서 : </p>
+                    </div>
                </div>
         </div>
        </div>
@@ -41,22 +62,21 @@ export default{
 </script>
 
 <style>
+@media screen and (min-width:1177px) {
 .flex-container1 {
     display: inline-block;
     width: 1550px;
-    height: 600px;
-    padding: 20px 20px;
+    height: 660px;
+    padding: 40px 40px;
     margin: 0;
     box-sizing: border-box;
-    background-color: rgb(228, 210, 163);
+    border: 1px solid rgb(216, 216, 216);
 }
-
 .nft-img {
     position:relative;
-    margin-left: 140px;
-    max-width: 550px;
+    max-width: 700px;
     border: 1px solid black;
-    height: 600px;
+    height: 560px;
     box-sizing:border-box;
 }
 .col-5 {
@@ -66,20 +86,23 @@ export default{
     box-sizing: border-box;
 }
 .nft-num {
+    display: inline-block;
     position: absolute;
-    width: 705px;
+    width: 720px;
     height: 100px;
-    right: 270px;
-    top: 170px;
+    right: 190px;
+    top: 210px;
     margin-bottom: 50px;
+    box-sizing:border-box;
     background-color: rgba(12, 161, 161, 0.596);
 }
 .nft-contents {
-    margin-top: 150px;
-    margin-left: 50px;
-    box-sizing: border-box;
+    position: absolute;
+    margin-left: 775px;
+    bottom: 160px;
 }
 .nft-contents p {
-    font-size: 20px;
+    font-size: 19px;
+}
 }
 </style>

@@ -44,7 +44,24 @@
             <br />
             <br />
             <br />
-
+            <div class="nft-name">
+              <label class="nft-n"> NFT 이름* </label><br />
+            <b-form-input v-model="text" placeholder="NFT Name"></b-form-input>
+            </div>
+              
+            <br />
+            <br />
+            <br />
+            <br />
+            <div class="nft-price">
+              <label class="nft-p"> 분양가* </label><br />
+            <b-form-input v-model="text" placeholder="NFT Price"></b-form-input>
+            </div>
+            <br /><br />
+            <br /><br />
+            <br /><br />
+            <br /><br />
+            
             <div class="dropdown">
               <label class="drop"> 동물등록증을 선택해주세요* </label><br />
               <dropdown
@@ -84,7 +101,7 @@
               ></b-form-textarea>
             </div>
             <!-- 혈통증명서 -->
-            <label class="cert"> 혈통증명서 첨부* </label>
+            
             <div class="certification">
               <b-form-file multiple="multiple">
                 <template slot="file-name" slot-scope="{ names }">
@@ -106,7 +123,7 @@
                 type="submit"
                 style="font-size: 27px"
               >
-                <b>Create &nbsp;&nbsp; NFT</b>
+                <b>Create</b>
               </md-button>
             </div>
           </div>
@@ -187,6 +204,25 @@ export default {
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
+}
+.nft-name {
+  position: absolute;
+  top: 900px;
+  width: 920px;
+}
+.nft-p {
+  float: left;
+}
+.nft-price {
+ position: absolute;
+ width: 940px;
+ margin-top: 50px;
+ margin-left: 330px;
+
+}
+.nft-n {
+  float: left;
+
 }
 .dropdown {
   z-index: 1;
