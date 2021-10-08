@@ -9,24 +9,30 @@
                    <!-- img  -->
                     <div class="nft-img">
                         <h1>img</h1>
+                        this is nft img space
                     </div>
 
                     <div class="nft-num">
                         <h4 style="color:white; margin-top: 40px; margin-left: 50px;">NFT NUMBER: </h4>
                     </div>
                     <div class="nft-contents">
-                       <p> 이름 : </p>
-                       <br>
-                       <p> 동물등록증 : </p>
-                       <br>
-                       <p> 건강이력 : </p>
-                       <br>
-                       <br>
-                       <p> 성격 및 특징 : </p>
+                       <hr width="670px;">
+                       <p> &nbsp;&nbsp; 이름 : </p>
+                       <hr width="670px;">
+                       <p> &nbsp;&nbsp;동물등록증 : </p>
+                       <hr width="670px;">
+                       <p> &nbsp;&nbsp;건강이력 : </p>
                        <br>
                        <br>
+                       <hr width="670px;">
+                       <p> &nbsp;&nbsp;성격 및 특징 : </p>
                        <br>
-                       <p> 혈통증명서 : </p>
+                       <br>
+                       <br>
+                       <hr width="670px;">
+                       <p> &nbsp;&nbsp;혈통증명서 : </p>
+                       <br>
+                       <br>
                     </div>
                </div>
         </div>
@@ -62,47 +68,44 @@ export default{
 </script>
 
 <style>
-@media screen and (min-width:1177px) {
 .flex-container1 {
+    position: relative;
     display: inline-block;
     width: 1550px;
-    height: 660px;
+    height: 750px;
     padding: 40px 40px;
     margin: 0;
     box-sizing: border-box;
-    border: 1px solid rgb(216, 216, 216);
+    border: 1px solid rgb(236, 236, 236);
 }
 .nft-img {
     position:relative;
     max-width: 700px;
     border: 1px solid black;
-    height: 560px;
+    height: 630px;
     box-sizing:border-box;
-}
-.col-5 {
-    position: absolute;
-    height: 600px;
-    background-color: rgba(240, 240, 240, 0.712);
-    box-sizing: border-box;
 }
 .nft-num {
     display: inline-block;
-    position: absolute;
+    position: relative;
     width: 720px;
     height: 100px;
-    right: 190px;
-    top: 210px;
+    left: 755px;
+    top: -620px;
     margin-bottom: 50px;
     box-sizing:border-box;
     background-color: rgba(12, 161, 161, 0.596);
 }
 .nft-contents {
-    position: absolute;
-    margin-left: 775px;
-    bottom: 160px;
+    position: relative;
+    margin: auto;
+    bottom: 620px;
+    margin-left: 780px;
+}
+.nft-contents hr {
+    color: rgb(172, 172, 172);
 }
 .nft-contents p {
-    font-size: 19px;
-}
+    font-size: 18px;
 }
 </style>
