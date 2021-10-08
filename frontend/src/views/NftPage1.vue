@@ -5,31 +5,8 @@
     <div class="main main-raised">
        <div class="section">
            <div class="md-layout">
-               <div clss="nftpage-container">
-               <div class="col-4">
-                   <h1>img</h1>
-               </div>
-                <div class="col-5">
-                    <div class="nft-num">
-                        <h4 style="color:white; margin-top: 40px; margin-left: 50px;">NFT NUMBER: </h4>
-                    </div>
-                 <div class="nft-contents">
-                     <table>
-                         <tr>
-                            <td> 동물등록증 : </td>
-                            <td> 건강이력 : </td>
-                            <td> 성격 및 특징 : </td>
-                            <td> 혈통증명서 : </td>
-                         </tr>
-                         <tr>
-                             <td> did:1234 </td>
-                             <td> healthy </td>
-                             <td> happy </td>
-                             <td> certification </td>
-                         </tr>
-                     </table>
-                 </div>
-                </div>
+               <div class="flex-container1">
+
                </div>
         </div>
        </div>
@@ -64,18 +41,20 @@ export default{
 </script>
 
 <style>
-.nftpage-container {
-    z-index: 1;
-    position: relative;
-    left: 200px;
-    top: 20px;
-    width: 1300px;
-    height: 1700px;
-    background-color:burlywood;
+.flex-container1 {
+    display: inline-block;
+    width: 1550px;
+    height: 600px;
+    padding: 20px 20px;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: rgb(228, 210, 163);
 }
-.col-4 {
-    position:absolute;
+
+.nft-img {
+    position:relative;
     margin-left: 140px;
+    max-width: 550px;
     border: 1px solid black;
     height: 600px;
     box-sizing:border-box;
