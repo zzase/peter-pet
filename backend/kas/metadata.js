@@ -23,7 +23,7 @@ class Metadata extends ApiCaller {
 
         return res.uri;
     }
-    async certiNFTUri(name,did,history,desc,certi,repreImg,addImgs,price) {
+    async certiNFTUri(name,did,history,desc,certi,repreImg,addImgs) {
         const options = {
             method : 'POST',
             url : '/v1/metadata',
@@ -37,7 +37,6 @@ class Metadata extends ApiCaller {
                     certi : certi,
                     repreImg : repreImg,
                     addImgs : addImgs,
-                    price : price
                 },
                 filename : `${name}.json`
             },

@@ -1,3 +1,5 @@
+import {contract,CA} from '../kas/peterpetDid.js';
+
 const metadata = require('../kas/metadata');
 const kip17 = require('../kas/kip17');
 
@@ -21,7 +23,7 @@ router.post('/make/certiMetaData',async function(req,res,next) {
     const data = req.body.metadata;
 
     try{
-        const result = await metadata.certiNFTUri(data.name,data.did,data.history,data.desc,data.certi,data.repreImg,data.addImgs,data.price);
+        const result = await metadata.certiNFTUri(data.name,data.did,data.history,data.desc,data.certi,data.repreImg,data.addImgs);
         if(result.uri){
             res.status(200).send({uri : result.uri});
         }
@@ -60,20 +62,26 @@ router.post('/make/certiMetaData',async function(req,res,next) {
     let uri = ''
 
     try{
-        const result = await metadata.certiNFTUri(data.name,data.did,data.history,data.desc,data.certi,data.repreImg,data.addImgs,data.price);
+        const result = await metadata.certiNFTUri(data.name,data.did,data.history,data.desc,data.certi,data.repreImg,data.addImgs);
         if(result.uri){
             uri = result.uri
             try{
                 const nft = await kip17.makeNft(address,id,uri,nftCA);
                 if(nft.transactionHash){
-                    res.status(200).send({id:`0x${id}`, transactionHash : nft.transactionHash});
+                    try{
+                        const mappingNFT = await contract.methods.mappingNFT(`did:peterpet:${id}`,`0x${id}`).send({ from: address, gas: 5000000 });
+                        console.log(mappingNFT);
+                        res.status(200).send({id:`0x${id}`, transactionHash : nft.transactionHash});
+                    }catch(err){
+                        res.status(400).send({msg : '잔액부족'})
+                    }
                 }
                 else {
                     if(nft.code === 1100050){
-                        res.status(400).send(nft.message);
+                        res.status(400).send({msg : nft.message});
                     }
                     else {
-                        res.status(401).send(nft.message);
+                        res.status(401).send({msg : nft.message});
                     }
                 }
             }catch(err){
@@ -81,7 +89,7 @@ router.post('/make/certiMetaData',async function(req,res,next) {
             }
         }
         else {
-            res.status(400).send(result);
+            res.status(400).send({result : result});
         }
     }catch(err){
         res.status(400).send({msg : "Make Certi-NFT-Uri Fail"});
