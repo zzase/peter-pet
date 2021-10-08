@@ -10,7 +10,8 @@ export const store = new Vuex.Store({
         user : {
             id : null,
             password : null,
-            address : null
+            address : null,
+            auth : null
         },
         isLogin : false,
         isLoginError: false
@@ -35,6 +36,7 @@ export const store = new Vuex.Store({
             state.user.id = user.id;
             state.user.password = user.password;
             state.user.address = user.address;
+            state.user.auth = user.auth
         },
         logout(state,user) {
             state.user.id = null;

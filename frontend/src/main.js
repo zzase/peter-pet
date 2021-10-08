@@ -22,6 +22,12 @@ import axios from 'axios'
 import { store } from './store';
 import vuetify from '@/plugins/vuetify' // path to vuetify export
 
+import VueGoodTablePlugin from 'vue-good-table';
+
+// import the styles 
+import 'vue-good-table/dist/vue-good-table.css'
+
+
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -30,7 +36,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
-
+Vue.use(VueGoodTablePlugin);
 Vue.prototype.$http = axios
 
 Vue.config.productionTip = false;

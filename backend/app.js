@@ -8,6 +8,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var peterpetRouter = require("./routes/pet");
 var IPFSRouter = require("./routes/ipfs");
+var nftRouter = require("./routes/nft");
 
 const cfg = require("./cfg");
 
@@ -42,6 +43,7 @@ app.use("/", indexRouter);
 app.use("/api/user", usersRouter);
 app.use("/api/pet", peterpetRouter);
 app.use("/api/ipfs", IPFSRouter);
+app.use("/api/nft",nftRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

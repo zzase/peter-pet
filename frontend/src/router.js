@@ -9,6 +9,10 @@ import MainFooter from "./layout/MainFooter.vue";
 import Regist from "./views/Regist.vue";
 import Main from "./views/Main.vue";
 import NftForm from "./views/NftForm.vue";
+import NftFormPersonal from "./views/NftFormPersonal.vue";
+import SelectForm from "./views/SelectForm.vue";
+import NftPage1 from "./views/NftPage1.vue";
+import Manager from "./views/Manager.vue"
 
 import Neverland from "./views/Neverland.vue";
 import RegisterComplete from "./views/RegisterComplete.vue"
@@ -106,11 +110,39 @@ export default new Router({
       }
     },
     {
+      path: "/select/form",
+      name: "selectForm",
+      components: { default: SelectForm, header: MainNavbar, footer: MainFooter  },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
       path: "/nft/form",
       name: "nftForm",
-      components: { default: NftForm,  },
+      components: { default: NftForm, header: MainNavbar, footer: MainFooter  },
       props: {
-        
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/nft/form/personal",
+      name: "nftFormPersonal",
+      components: { default: NftFormPersonal, header: MainNavbar, footer: MainFooter  },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/mypage/nftpage1",
+      name: "nftpage1",
+      components: { default: NftPage1, header: MainNavbar, footer: MainFooter  },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
       }
     },
     {
@@ -125,6 +157,15 @@ export default new Router({
       path: "/profile",
       name: "profile",
       components: { default: Profile, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/manager",
+      name: "manager",
+      components: { default: Manager, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }

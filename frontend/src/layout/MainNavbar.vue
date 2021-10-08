@@ -68,7 +68,7 @@
                 </md-list-item>
 
                 <md-list-item
-                  href="javascript:void(0)"
+                  href="#/select/form"
                   @click="scrollToElement()"
                   v-if="showDownload"
                 >
@@ -81,7 +81,7 @@
                   @click="scrollToElement()"
                   v-if="showDownload"
                 >
-                  <p style="font-size: 19px; color:black">네버랜드</p>
+                  <p style="font-size: 19px; color:purple">네버랜드</p>
                   <md-tooltip md-direction="bottom">NAVERLAND</md-tooltip>
                 </md-list-item>
 
@@ -314,12 +314,17 @@ export default {
           if (res.data.loginCheck) {
             this.$store.commit("loginSuccess");
             this.$store.commit("setUser", res.data.user);
-            this.$router.push({ name: "main" }).catch(() => {});
+
+            if(this.$store.state.user.auth === 'manager'){
+              this.$router.push({ name: "manager" }).catch(() => {});
+            }
+            else{
+              this.$router.push({ name: "main" }).catch(() => {});
+            }
 
           } else {
             this.$store.commit("loginError");
           }
-
           alert(res.data.msg);
           this.$bvModal.hide("modal-center");
         })

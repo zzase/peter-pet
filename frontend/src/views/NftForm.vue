@@ -1,13 +1,13 @@
 <template>
   <div class="wrapper">
-    <parallax class="section page-header" :style="headerStyle"> </parallax>
+    <parallax class="section page" :style="headerStyle"> </parallax>
 
     <div class="main main-raised">
        <div class="section">
            <div class="md-layout">
                <div class="d-container">
                    <div class="header">
-           <h1> this is NFT page</h1>
+           <h1 style="color: navygray; margin-top: 25px;"> 분양 NFT </h1>
                    </div>
            <br>
            <br>
@@ -24,7 +24,9 @@
            <br>
 
            <div class="dropdown">
-               <h5>select your did*</h5>
+               <label class="drop"> 동물등록증을 선택해주세요* </label><br>
+               <dropdown :options="arrayOfObjects" :selected="object" v-on:updateOption="methodToRunOnSelect"></dropdown>
+
                 <!-- <select
                 v-model="this.value"
                 class="custom-select"
@@ -43,7 +45,7 @@
                 <label class="health-r"> 분양견의 건강 이력에 대해 기입해주세요* </label>
             <b-form-textarea
                 id="textarea-rows"
-                placeholder="Tall textarea"
+                placeholder="textarea"
                 rows="8"
             ></b-form-textarea>
             </div>
@@ -52,11 +54,12 @@
                 <label class="description-d"> 분양견의 성격과 특징에 대해 기입해주세요* </label>
             <b-form-textarea
                 id="textarea-rows"
-                placeholder="Tall textarea"
+                placeholder="textarea"
                 rows="8"
             ></b-form-textarea>
             </div>
             <!-- 혈통증명서 -->
+            <label class="cert"> 혈통증명서 첨부* </label>
             <div class="certification">
                 <b-form-file multiple>
                 <template slot="file-name" slot-scope="{ names }">
@@ -78,7 +81,6 @@
                           ><b>Create &nbsp;&nbsp; NFT</b></md-button
                         >
             </div>
-
           </div>
         </div>
        </div>
@@ -89,24 +91,35 @@
 
 
 <script>
+import dropdown from 'vue-dropdowns';
 
 
 export default{
-    name: "SelectBox",
 
     data() {
         return {
+            arrayOfObjects: [
+                'did1',
+                'did2',
+                'did3',
+                'did4',
+                'did5'
+            ],
+            object: {
+                name: 'choose did',
+            }
             
         };
     },
     props: ['value', 'items', 'input_id'],
 
     methods: {
-        updateValue: function (value) {
-                this.$emit('input', value);
-    }
+        methodToRunOnSelect(payload) {
+            this.object = payload;
+          }
     },
     components: {
+        'dropdown': dropdown,
     },
 
 
@@ -126,11 +139,17 @@ export default{
     transform: translate(-50%, -50%);
     width: 100%;
     text-align: center;
-    margin-top: 600px;
+    margin-top: 610px;
+    background-color: white;
 }
 .header {
     position: relative;
     margin-top: 50px;
+    height:100px;
+    width: 1300px;
+    text-align: center;
+    display: inline-block;
+    background-color: rgba(221, 221, 221, 0.377);
 }
 .dropdown {
     z-index: 1;
@@ -138,6 +157,15 @@ export default{
     margin-top: 50px;
     margin-left: 100px;
     width: 1000px;
+}
+.drop {
+    margin-left: -320px;
+}
+.btn-group {
+    width: 500px;
+}
+.dropdown-toggle {
+    width: 500px;
 }
 .health-record {
     position: absolute;
@@ -164,10 +192,15 @@ export default{
     margin-left: 330px;
     float: left;
 }
+.cert {
+    margin-left: -2250px;
+    margin-top: 70px;
+
+}
 .create-complete {
     position: relative;
     margin-right: 0px;
-    margin-top: 300px;
+    margin-top: 200px;
 }
 
 
