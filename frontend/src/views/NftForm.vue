@@ -21,7 +21,7 @@
             <br />
             <div class="create-box">
               <h2>새 NFT만들기</h2>
-              <div class="file_info">Image, Video, Audio or 3D Model</div>
+              <div class="file_info">Image, Video, Audio or 3D Model</div><br>
                 <div class="file_info_detail">
                   File types supported: JPG,PNG,GIF,MP4,MP3,WAV, Max size: 100MB
                 </div>
@@ -29,6 +29,7 @@
                   Safari 외 브라우저에서는 동영상 'Hevc' 코덱을 지원하지 않아<br />
                   해당 코덱의 영상 파일 첨부 시 동영상 재생이 원활하지 않을 수
                   있습니다.
+                  <br><br> *파일은 최대 3개까지 업로드할 수 있습니다
                 </div>
             <br />
             <br />
@@ -53,23 +54,12 @@
               
             
             <br />
-            <div class="nft-price">
-              <label class="nft-p"> 분양가* </label><br />
-            <b-form-input v-model="text" placeholder="NFT Price"></b-form-input>
-            </div>
-       
-            
-            <div class="dropdown">
-              <label class="drop"> 동물등록증을 선택해주세요* </label><br />
-              <dropdown
-                :options="arrayOfObjects"
-                :selected="object"
-                v-on:updateOption="methodToRunOnSelect"
-              ></dropdown>
-
-              <!-- <select v-model="this.value" class="custom-select" v-bind:id="input_id"
-                            v-on:input="updateValue($event.target.value)" > <option v-for="(item, index) in
-                            items" :value="index"{{ item }}</option> </select> -->
+           
+            <div class="choose-did">
+              <label class="choose-d"> 동물등록증을 선택해주세요* </label><br />
+            <select class="form-control">
+              <option :key="i" :value="d.v" v-for="(d, i) in options">{{ d.t }}</option>
+            </select>
             </div>
             <br />
             <br />
@@ -131,33 +121,60 @@
 </template>
 
 <script>
-import dropdown from "vue-dropdowns";
 import ImageUpload from "./components/ImageUpload.vue";
 
 export default {
   data() {
     return {
-      arrayOfObjects: ["did1", "did2", "did3", "did4", "did5"],
-      object: {},
+      name: "select-did",
+      input: "text",
+      options: [],
+      metadata : {
+        did : null
+      },
+      isLoading: false
     };
   },
   props: ["value", "items", "input_id"],
 
   methods: {
-    methodToRunOnSelect(payload) {
-      this.object = payload;
-    },
+    getDids: function(address) {
+      if(address === undefined) {
+        this.isLoading = ture;
+      }
+      else {
+        this.isLoading = false;
+        this.$http.get(`http://localhost:3000/api/pet/get/all/dids/${address}`,{
+       })
+       .then((res) => {
+         console.log(res.data);
+         for(var i=0; i<res.data.length; i++) {
+           this.options.push({v: i+1, t: `${res.data.dids[i]}`});
+         }
+       })
+      }
+    }
   },
   components: {
-    dropdown: dropdown,
     ImageUpload,
   },
+  created() {
+    const address = this.$store.state.user.address
+
+    this.getDids(address);
+}
 };
 </script>
 
 <style>
 @media screen and (min-width:1280px) {
-
+.choose-d {
+    float: left;
+  }
+.choose-did {
+  width: 60%;
+  margin-left: 330px;
+}
 .body {
   height: 100%;
   margin: 0;
@@ -206,7 +223,7 @@ export default {
   position: absolute;
   top: 900px;
   width: 940px;
-  margin-top: 40px;
+  margin-top: 110px;
   margin-left: 330px;
 }
 .nft-p {

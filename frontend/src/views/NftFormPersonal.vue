@@ -15,20 +15,20 @@
 
           <!-- nft이름 -->
            <div class="nft-name1">
-             <label class="nft-n1"> NFT 이름* </label>
+             <label class="nft-n1"> *NFT 이름 </label>
             <b-form-input v-model="text" placeholder="NFT내용을 입력해주세요"></b-form-input>
           </div>
           <!-- nft price -->
           <div class="nft-price1">
-              <label class="nft-p1"> 분양가* </label><br />
+              <label class="nft-p1"> *분양가 </label><br />
             <b-form-input v-model="text" placeholder="NFT Price"></b-form-input>
             </div>
           <!-- NFT-description -->
            <div class="description-nft">
-                <label class="description-n"> 분양견의 성격과 특징에 대해 기입해주세요* </label>
+                <label class="description-n"> *NFT에 들어갈 내용란입니다 </label>
             <b-form-textarea
                 id="textarea-rows"
-                placeholder="Tall textarea"
+                placeholder="Description"
                 rows="8"
             ></b-form-textarea>
             </div>
@@ -57,7 +57,7 @@
 
 <style> 
 .d-container1 {
-    position: relative;
+  position: relative;
   display: inline-block;
   width: 1580px;
   max-height: 2600px;
