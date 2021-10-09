@@ -6,7 +6,7 @@
 
             <div class="nft-card1">
             <b-card
-            title="Card Title"
+            title="Nft Name"
             img-src="https://picsum.photos/600/300/?image=25"
             img-alt="Image"
             img-top
@@ -15,10 +15,9 @@
             class="mb-2"
         >
             <b-card-text>
-            Some quick example text to build on the card title and make up the bulk of the card's content.
+            분양용 NFT입니다
             </b-card-text>
-
-            <b-button href="#/mypage/nftpage1" variant="primary">Go somewhere</b-button>
+            <b-button href="#/mypage/nftpage1" variant="rose">NFT page</b-button>
             </b-card>
             </div>
         
@@ -29,7 +28,7 @@
 
         <div class="nft-card2">
             <b-card
-            title="Card Title"
+            title="Nft Name"
             img-src="https://picsum.photos/600/300/?image=25"
             img-alt="Image"
             img-top
@@ -38,10 +37,10 @@
             class="mb-2"
         >
             <b-card-text>
-            Some quick example text to build on the card title and make up the bulk of the card's content.
+            소장용 NFT입니다
             </b-card-text>
 
-            <b-button href="#" variant="primary">Go somewhere</b-button>
+            <b-button href="#/mypage/nftpage2" variant="rose">NFT page</b-button>
             </b-card>
             </div>
 
@@ -63,6 +62,7 @@
     margin-top: 100px;
     position: absolute;
     height: 300px;
+    text-align: center;
 }
 .myOwn-nft {
     position: relative;
@@ -76,6 +76,7 @@
     margin-top: 600px;
     position:absolute;
     height: 300px;
+    text-align: center;
 }
 
 </style>
