@@ -79,7 +79,7 @@ router.get('/get/all/petInfos/:did', async function(req, res, next) {
               furColor : peterpet.furColor,
               vaccinationHistory : peterpet.vaccinationHistory,
               notes : peterpet.notes,
-              missing : peterpet.misiing,
+              missing : peterpet.missing,
               gender : peterpet.gender,
               paNftId : peterpet.paNftId,
               issueDate : {

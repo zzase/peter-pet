@@ -30,7 +30,7 @@
 
             <div v-if="this.peterpet.missing">
             <div class="page-content4">
-              <h6># {{ peterpet.missing }}</h6></div>
+              <h6># 실종</h6></div>
           <div class="page-content3">
             <h6>보호자님이 애타게 기다리고 있습니다<br>
           아래의 번호로 연락주시면 감사하겠습니다</h6>
