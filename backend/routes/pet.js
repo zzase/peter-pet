@@ -13,19 +13,23 @@ var router = express.Router();
 router.get('/get/all/dids/:address', async function(req, res, next) {
   console.log('get all dids api call');
   const address = req.params.address;
-  if(address === undefined) res.status(404).send('address 정보가 올바르지 않습니다');
+  if(address === "undefined") res.status(404).send('address 정보가 올바르지 않습니다');
   else {
-    const dids = await contract.methods.getDidsByWenddy(address).call();
-    const length = await contract.methods.getCountDidByWenddy(address).call();
-    const names = [];
-    for(var i =0; i<length; i++){
-      names.push(await contract.methods.getPetNameByDid(`${dids[i]}`).call());
-    }
-    if(dids === undefined){
-      res.status(404).send(`${address}로 등록된 did가 없습니다`);
-    }
-    else {
-      res.status(200).send({address : address, dids: dids, names:names, length:length});
+    try{
+      const dids = await contract.methods.getDidsByWenddy(address).call();
+      const length = await contract.methods.getCountDidByWenddy(address).call();
+      const names = [];
+      for(var i =0; i<length; i++){
+        names.push(await contract.methods.getPetNameByDid(`${dids[i]}`).call());
+      }
+      if(dids === undefined){
+        res.status(404).send(`${address}로 등록된 did가 없습니다`);
+      }
+      else {
+        res.status(200).send({address : address, dids: dids, names:names, length:length});
+      }
+    }catch(err){
+      res.status(400).send({msg : err})
     }
   }
 });
@@ -55,44 +59,49 @@ router.get('/get/all/petInfos/:did', async function(req, res, next) {
   const did = req.params.did;
   if(did === undefined) res.status(404).send('did 정보가 올바르지 않습니다');
   else {
-    const peterpet = await contract.methods.getAllInfoByDid(did).call();
+    try{
+      const peterpet = await contract.methods.getAllInfoByDid(did).call();
     
-    if(peterpet === undefined){
-      res.status(404).send(`${did}로 등록된 peterpet정보를 찾을수 없습니다.`);
-    }
-    else {
-      connection.query(`SELECT issueDate FROM did WHERE did="${did}"`,async function(err,rows){
-        if(err){
-          res.status(404).send(`${did}로 등록된 peterpet정보를 찾을수 없습니다.`);
-        }
-        else {
-          const issueDate = new Date(rows[0].issueDate);
-          res.status(200).send({ 
-            peterpet: {
-              did : did,
-              imgHash : peterpet.imgHash,
-              name : peterpet.name,
-              birth : peterpet.birth,
-              breedOfDog : peterpet.breedOfDog,
-              adoptionDate : peterpet.adoptionDate,
-              isNeutering : peterpet.isNeutering,
-              furColor : peterpet.furColor,
-              vaccinationHistory : peterpet.vaccinationHistory,
-              notes : peterpet.notes,
-              missing : peterpet.missing,
-              gender : peterpet.gender,
-              paNftId : peterpet.paNftId,
-              issueDate : {
-                year : issueDate.getFullYear(),
-                month : issueDate.getMonth() +1,
-                date : issueDate.getDate()
-              },
-              imgLink : `https://ipfs.io/ipfs/${peterpet.imgHash}`
+      if(peterpet === undefined){
+        res.status(404).send(`${did}로 등록된 peterpet정보를 찾을수 없습니다.`);
+      }
+      else {
+        connection.query(`SELECT issueDate FROM did WHERE did="${did}"`,async function(err,rows){
+          if(err){
+            res.status(404).send(`${did}로 등록된 peterpet정보를 찾을수 없습니다.`);
           }
+          else {
+            const issueDate = new Date(rows[0].issueDate);
+            res.status(200).send({ 
+              peterpet: {
+                did : did,
+                imgHash : peterpet.imgHash,
+                name : peterpet.name,
+                birth : peterpet.birth,
+                breedOfDog : peterpet.breedOfDog,
+                adoptionDate : peterpet.adoptionDate,
+                isNeutering : peterpet.isNeutering,
+                furColor : peterpet.furColor,
+                vaccinationHistory : peterpet.vaccinationHistory,
+                notes : peterpet.notes,
+                missing : peterpet.missing,
+                gender : peterpet.gender,
+                paNftId : peterpet.paNftId,
+                issueDate : {
+                  year : issueDate.getFullYear(),
+                  month : issueDate.getMonth() +1,
+                  date : issueDate.getDate()
+                },
+                imgLink : `https://ipfs.io/ipfs/${peterpet.imgHash}`
+            }
         });
         }
       })
     }
+    }catch(err){
+      console.log(err)
+    }
+    
   }
 });
 
@@ -153,44 +162,50 @@ router.post('/tinkerbell',async function(req,res,next) {
   console.log('팅커벨 선택 api 호출');
   const tinkerbellType = req.body.tinkerbellType;
   const address = req.body.address;
-  const lastDid = await contract.methods.getLastDidByWenddy(address).call();
+  try{
+    const lastDid = await contract.methods.getLastDidByWenddy(address).call();
   
-  console.log('lastDid : ' + lastDid);
-
-  connection.query(`SELECT did FROM did WHERE did="${lastDid}"`,async function(err,rows){
-    let checkUpdate = false;
-    let msg = '';
-    if(rows[0] === undefined) {
-      res.send({did : lastDid, checkUpdate : checkUpdate, msg : '존재하지 않는 DID'});  
+    console.log('lastDid : ' + lastDid);
+    if(lastDid === undefined){
+      res.status(404).send({msg : "Last DID is undefined"})
     }
-
-    else {
-      connection.query(`update did set t_id = ${tinkerbellType} where did = "${lastDid}"`,async function(err,rows){
-        if(err) {
-          console.error(err);
-          checkUpdate = false;
-          msg = 'db 오류발생'
-          res.status(404).send({msg:msg , error:err});
+    else{
+      connection.query(`SELECT did FROM did WHERE did="${lastDid}"`,async function(err,rows){
+        let checkUpdate = false;
+        let msg = '';
+        if(rows[0] === undefined) {
+          res.send({did : lastDid, checkUpdate : checkUpdate, msg : '존재하지 않는 DID'});  
         }
+  
         else {
-          checkUpdate = true;
-          const name = await contract.methods.getPetNameByDid(`${lastDid}`).call();
-          const imgHash = await contract.methods.getPetImgByDid(`${lastDid}`).call();
-          //const name = '두남이';
-          console.log(name);
-
-          if(tinkerbellType === 1){
-            msg = '입력하신 주소로 외장칩이 발송되었습니다';
-          }
-
-          else {
-            msg = '가까운 동물병원으로 가셔서 발급된 QR코드나 DID를 알려주세요!'
-          }
-          res.status(200).send({peterpet : {name : name, did : lastDid, imgLink:`https://ipfs.io/ipfs/${imgHash}`, url : `"http://localhost:8080/#/pet/own/${lastDid}"`}, checkUpdate:checkUpdate, tinkerbellType : tinkerbellType, msg : msg});
-        } 
-      }); 
+          connection.query(`update did set t_id = ${tinkerbellType} where did = "${lastDid}"`,async function(err,rows){
+            if(err) {
+              console.error(err);
+              checkUpdate = false;
+              msg = 'db 오류발생'
+              res.status(404).send({msg:msg , error:err});
+            }
+            else {
+              checkUpdate = true;
+              const name = await contract.methods.getPetNameByDid(`${lastDid}`).call();
+              const imgHash = await contract.methods.getPetImgByDid(`${lastDid}`).call();
+              console.log(name);
+  
+              if(tinkerbellType === 1){
+                msg = '입력하신 주소로 외장칩이 발송되었습니다';
+              }
+  
+              else {
+                msg = '가까운 동물병원으로 가셔서 발급된 QR코드나 DID를 알려주세요!'
+              }
+              res.status(200).send({peterpet : {name : name, did : lastDid, imgLink:`https://ipfs.io/ipfs/${imgHash}`, url : `"http://localhost:8080/#/pet/own/${lastDid}"`}, checkUpdate:checkUpdate, tinkerbellType : tinkerbellType, msg : msg});
+            } 
+          }); 
+        }
+      })
     }
-  })
+  }catch{ 
+  }
 })
 
 

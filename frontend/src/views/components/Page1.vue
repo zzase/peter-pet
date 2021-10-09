@@ -4,6 +4,7 @@
           <div class="page-head">
           <h2 data-v-clf1971a class="title-text-center">MY 동물등록증</h2></div>
       <div class="carousel"> 
+      <pulse-loader v-if="isLoading"  :loading="isLoading" :color="color" :size="size"></pulse-loader>
            
       <carousel v-if="loaded" :autoplay="true" :nav="false" :dots="true" class="container-fluidcontainer-fluid">
       <div class="row flex-row flex-nowrap">
@@ -50,14 +51,25 @@
 <script>
 import carousel from 'vue-owl-carousel'
 import Card from './Card.vue'
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 
 export default {
   name:"Accordion",
 
+  components: {
+    carousel,
+    Card,
+    PulseLoader
+  },
+
   data (){
     return {
       loaded : false,
-      
+
+      isLoading : false,
+      color : "#ff00ff",
+      size : "300",
+
       accordionDIDs: [],
 
       modal : false,
@@ -82,7 +94,12 @@ export default {
         })
       },
       getDids: function(address) {
-       this.$http.get(`http://localhost:3000/api/pet/get/all/dids/${address}`,{
+        if(address === undefined){
+           this.isLoading = true;
+        }
+        else{
+           this.isLoading =false;
+           this.$http.get(`http://localhost:3000/api/pet/get/all/dids/${address}`,{
        })
        .then((res) => {
          console.log(res.data);
@@ -90,6 +107,7 @@ export default {
            this.accordionDIDs.push({id:i+1, did:`${res.data.dids[i]}` ,name:res.data.names[i]});
          }
        })
+        }
      },
      getInfo: function(did) {
        this.$http.get(`http://localhost:3000/api/pet/get/all/petInfos/${did}`,{
@@ -108,11 +126,10 @@ export default {
      }
   },
   created() {
-    this.getDids(this.$store.state.user.address);
-  },
-  components: {
-    carousel,
-    Card
+    const address = this.$store.state.user.address
+
+    this.getDids(address);
+ 
   },
   
   computed: {
