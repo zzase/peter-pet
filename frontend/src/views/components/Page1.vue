@@ -3,38 +3,49 @@
           <div class="v-application--wrap">
           <div class="page-head">
           <h2 data-v-clf1971a class="title-text-center">MY 동물등록증</h2></div>
-      <div class="carousel"> 
-      <pulse-loader v-if="isLoading"  :loading="isLoading" :color="color" :size="size"></pulse-loader>
-           
-      <carousel v-if="loaded" :autoplay="true" :nav="false" :dots="true" class="container-fluidcontainer-fluid">
-      <div class="row flex-row flex-nowrap">
-        <div class="b-card2" v-for="did in accordionDIDs" :key="did.accld">
-          <b-card @click="clickCard(did.did)"  
-              header-tag="header" 
-              footer-tag="footer"
-              >
-              <template #header> {{ did.did }}
-              </template>
-              <br>
-              <b-card-body>
-                <b-card-title>{{did.name}}</b-card-title><br>
-                <img src="@/assets/img/Board/card-back.png">
-                <b-card-text>동물등록증을 보려면 클릭하세요!</b-card-text>
-              <b-button href="#" variant="default" @click="missingReport(`${did.did}`)">실종 신고</b-button>
-              </b-card-body>
-              <template #footer>
-                <em>Peter-Pet</em>
-              </template>
-            </b-card>
-              </div>
-              </div>  
-      </carousel> 
 
-          <div class="page1-line">
-          </div>
-          <div class="page1-line2">
-          </div>
-        </div> 
+              <div class="m-5">
+        <carousel-3d
+          :autoplay="false"
+          :autoplay-timeout="1000"
+          :display="5"
+          :controlsVisible="true"
+          :border="0"
+          :width="585"
+          :height="370"
+          :space="500"
+          :clickable="true"
+          v-if="accordionDIDs.length"
+        >
+          <slide
+            v-for="(did, index) in accordionDIDs"
+            :index="index"
+            :key="index"
+          >
+            <b-card id="b-did-card"
+              @click="clickCard(did.did)"
+              header-tag="header"
+              footer-tag="footer"
+            >
+              <template #header> {{ did.did }} </template>
+              <br />
+              <b-card-body style="text-align: center;">
+                <b-card-title>{{ did.name }}</b-card-title
+                ><br />
+                <img style="width: 200px; height: 150px;" src="@/assets/img/Board/card-back.png">
+                <br>
+                <b-button
+                  href="#"
+                  variant="default"
+                  @click="missingReport(`${did.did}`)"
+                  >실종 신고</b-button
+                >
+              </b-card-body>
+          
+            </b-card>
+          </slide>
+        </carousel-3d>
+      </div>
 
         <!-- pop-up DID CARD -->
        <div class="black-bg" v-if="modal == true">
@@ -49,107 +60,109 @@
 </template>
 
 <script>
-import carousel from 'vue-owl-carousel'
+import { Carousel3d, Slide } from "vue-carousel-3d"
 import Card from './Card.vue'
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 
 export default {
-  name:"Accordion",
+  name: "Accordion",
 
-  components: {
-    carousel,
-    Card,
-    PulseLoader
-  },
-
-  data (){
+  data() {
     return {
-      loaded : false,
-
-      isLoading : false,
-      color : "#ff00ff",
-      size : "300",
+      loaded: false,
 
       accordionDIDs: [],
 
-      modal : false,
+      modal: false,
       counter: 0,
 
-      peterpet: { }
-    }
+      peterpet: {},
+    };
   },
   mounted() {
-    if(this.getDids() !== null) {
-    this.loaded = true;
+    if (this.getDids() !== null) {
+      this.loaded = true;
     }
   },
   methods: {
     toast(toaster, append = false) {
-        this.counter++
-        this.$bvToast.toast(`실종신고가 완료되었습니다.`, {
-          title: `Toaster ${toaster}`,
-          toaster: toaster,
-          solid: true,
-          appendToast: append
-        })
-      },
-      getDids: function(address) {
-        if(address === undefined){
-           this.isLoading = true;
-        }
-        else{
-           this.isLoading =false;
-           this.$http.get(`http://localhost:3000/api/pet/get/all/dids/${address}`,{
-       })
-       .then((res) => {
-         console.log(res.data);
-         for(var i=0; i<res.data.length; i++){
-           this.accordionDIDs.push({id:i+1, did:`${res.data.dids[i]}` ,name:res.data.names[i]});
-         }
-       })
-        }
-     },
-     getInfo: function(did) {
-       this.$http.get(`http://localhost:3000/api/pet/get/all/petInfos/${did}`,{
-       })
-       .then((res) => {
-         console.log(res.data);
-         this.peterpet = res.data.peterpet;
-       })
-     },
-     clickCard : function(did) {
-       this.modal = true;
-       this.getInfo(did);
-     },
-     missingReport : function(did) {
-       this.$router.push({name :"Page 2", query : {did:did}}).catch(()=>{});
-     }
+      this.counter++;
+      this.$bvToast.toast(`실종신고가 완료되었습니다.`, {
+        title: `Toaster ${toaster}`,
+        toaster: toaster,
+        solid: true,
+        appendToast: append,
+      });
+    },
+    getDids: function(address) {
+      this.$http
+        .get(`http://localhost:3000/api/pet/get/all/dids/${address}`, {})
+        .then((res) => {
+          console.log(res.data);
+          for (var i = 0; i < res.data.length; i++) {
+            this.accordionDIDs.push({
+              id: i + 1,
+              did: `${res.data.dids[i]}`,
+              name: res.data.names[i],
+            });
+          }
+        });
+    },
+    getInfo: function(did) {
+      this.$http
+        .get(`http://localhost:3000/api/pet/get/all/petInfos/${did}`, {})
+        .then((res) => {
+          console.log(res.data);
+          this.peterpet = res.data.peterpet;
+        });
+    },
+    clickCard: function(did) {
+      this.modal = true;
+      this.getInfo(did);
+    },
+    missingReport: function(did) {
+      this.$router
+        .push({ name: "Page 2", query: { did: did } })
+        .catch(() => {});
+    },
   },
   created() {
-    const address = this.$store.state.user.address
-
-    this.getDids(address);
- 
+    this.getDids(this.$store.state.user.address);
   },
-  
+  components: {
+    Card,
+    Carousel3d,
+    Slide,
+  },
+
   computed: {
     headerStyle() {
       return {
-        backgroundImage: `url(${this.header})`
+        backgroundImage: `url(${this.header})`,
       };
     },
-    formattedDids (){
-          return this.accordionDIDs.reduce((c, n, i) => {
-              if (i % 2 === 0) c.push([]);
-              c[c.length - 1].push(n);
-              return c;
-          }, []);
-      }
-  }
+    formattedDids() {
+      return this.accordionDIDs.reduce((c, n, i) => {
+        if (i % 2 === 0) c.push([]);
+        c[c.length - 1].push(n);
+        return c;
+      }, []);
+    },
+  },
 };
 </script>
 
 <style>
+
+.b-did-card {
+  margin-top: 50px;
+}
+.carousel-3d-slide{
+  margin-right: 100px;
+  width: 268px;
+  margin-top: 50px;
+  margin: 50px 50px 0 0;
+  background: rgba(128, 128, 128, 0);
+}
 .a-card {
   position: relative;
   margin-top: 10%;
@@ -298,38 +311,14 @@ p {
 .Image {
   height: 50%;
 }
-.carousel {
-  text-align: center;
-  z-index: 1;
-  position: absolute;
-  margin-top: 10%;
-  margin-left: -3%;
-  width: 100%;
 
-}
-.page1-line{
-  position: absolute;
-  width: 100%;
-  height: 110%;
-  background-color: rgba(143, 162, 173, 0.397);
-  margin-top: -34%;
-  left: 3%;
-  border-radius: 1.5em;
-}
 .bar {
  margin-left: -60%;
   font-size: 20px;
   font-family: 'Righteous', cursive;
   color:rgb(125, 120, 150)
 }
-.page1-line2 {
-  position: absolute;
-  width: 100%;
-  height: 1%;
-  background-color: rgba(147, 161, 170, 0.171);
-  margin-top: 5%;
-  margin-left: 3%;
-}
+
 .page-head {
   position:absolute;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;

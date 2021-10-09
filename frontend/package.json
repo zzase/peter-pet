@@ -34,6 +34,7 @@
     "v-tooltip": "2.0.2",
     "vue": "^2.6.10",
     "vue-carousel": "^0.18.0",
+    "vue-carousel-3d": "^1.0.1",
     "vue-clickaway": "2.2.2",
     "vue-dropdowns": "^1.1.2",
     "vue-flickity": "^1.2.1",
