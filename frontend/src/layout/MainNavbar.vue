@@ -387,14 +387,17 @@ export default {
 </script>
 
 <style>
-@media screen and (min-width: 1140) {
+@media screen and (min-width: 1000px) {
   .md-toolbar-section-start {
-    position: absolute;
-    margin-top: 30px;
+    margin-top: 20px;
+    margin-left: -400px;
   }
   .navbar {
-    position: absolute;
-    margin-left: 70%;
+    margin-left: 220px;
   }
+  .md-toolbar-row {
+    margin-left: 550px;
+  }
+  
 }
 </style>
