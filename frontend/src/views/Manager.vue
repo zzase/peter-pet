@@ -14,6 +14,10 @@
                     <h3 slot="header"> 생성된 QR코드 </h3>
                     <div slot="body">
                         <vue-qr :text="text" :qId="qId"></vue-qr>
+                        <h4>-------------------------------------</h4>
+                         <barcode v-bind:value="did" :width="1">
+                            Show this if the rendering fails.
+                         </barcode>
                     </div>
                     <div slot="footer">
                         <b-button pill variant="outline-secondary" @click="close">닫기</b-button>
@@ -27,11 +31,11 @@
 </template>
 <script>
 import Modal from '../components/Modal.vue';
-
 import VueQr from 'vue-qr'
+import VueBarcode from 'vue-barcode';
 
 export default {
-  components: { Modal, VueQr },
+  components: { Modal, VueQr, 'barcode': VueBarcode, },
   name: 'my-component',
   data(){
     return {
@@ -58,6 +62,8 @@ export default {
       //qr config
       qId : '',
       text : '',
+
+      did : '',
       
       showModal : false
     };
@@ -99,6 +105,7 @@ export default {
 
     makeQR : function(params) {
         this.text = `${FRONTEND_SERVER_URI}pet/own/${params.row.did}`;
+        this.did = `${params.row.did}`;
         this.qId = params.row.did;
         this.showModal = true;
     }
