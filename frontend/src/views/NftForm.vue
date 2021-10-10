@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <parallax class="section page" :style="headerStyle"></parallax>
+    <parallax class="section page" ></parallax>
 
     <div class="main main-raised">
       <div class="section">
@@ -63,16 +63,13 @@
 
             <div class="choose-did">
               <label class="choose-d"> 동물등록증을 선택해주세요* </label><br />
-              <b-form-select v-model="metadata.did" :options="options">
+              <b-form-select v-model="metadata.did" :options="options" >
                 <template #first>
-                  <b-form-select-option :value="null" disabled
+                  <b-form-select-option :value="null" disabled :v-onclick="setName(`${metadata.did}`)"
                     >-- Please select an option --</b-form-select-option
                   >
                 </template>
               </b-form-select>
-            </div>
-            <div class="mt-3">
-              Selected: <strong>{{ metadata.did }}</strong>
             </div>
             <br />
             <br />
@@ -183,8 +180,20 @@ export default {
       }
     },
     addNft: function() {
-        alert(this.metadata.did);
+        console.log(this.metadata);
     },
+    setName: function(did){
+      console.log('call setName')
+      this.$http.get(`http://localhost:3000/api/pet/name/${did}`, {})
+      .then((res)=> {
+        if(res.data.peterpet){
+          this.metadata.name = `${res.data.peterpet.name} 분양 NFT`;
+        }
+        else {
+          this.metadata.name = '생성불가';
+        }
+      })
+    }
   },
   components: {
     ImageUpload,

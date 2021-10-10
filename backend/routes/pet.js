@@ -105,6 +105,39 @@ router.get('/get/all/petInfos/:did', async function(req, res, next) {
   }
 });
 
+router.get('/name/:did', async function(req, res, next) {
+  console.log('get pet Name api call');
+  const did = req.params.did;
+  if(did === undefined) res.status(404).send('did 정보가 올바르지 않습니다');
+  else {
+    try{
+      const name = await contract.methods.getPetNameByDid(did).call();
+    
+      if(name === undefined){
+        res.status(404).send(`${did}로 등록된 peterpet 이름을 찾을수 없습니다.`);
+      }
+      else {
+        connection.query(`SELECT * FROM did WHERE did="${did}"`,async function(err,rows){
+          if(err){
+            res.status(404).send(`${did}로 등록된 peterpet정보를 찾을수 없습니다.`);
+          }
+          else {
+            res.status(200).send({ 
+              peterpet: {
+                did : did,
+                name : name,
+            }
+        });
+        }
+      })
+    }
+    }catch(err){
+      console.log(err)
+    }
+    
+  }
+});
+
 router.post('/regist',async function(req,res,next){
   try{
     console.log("post api 호출됨");
