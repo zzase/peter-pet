@@ -86,7 +86,7 @@
                 </md-list-item>
 
                  <md-list-item
-                  href="#/neverland"
+                  href="#/mall"
                   @click="scrollToElement()"
                   v-if="showDownload"
                 >
@@ -95,7 +95,7 @@
                 </md-list-item>
 
                 <md-list-item
-                  href="#/neverland"
+                  href="#/customer/service"
                   @click="scrollToElement()"
                   v-if="showDownload"
                 >

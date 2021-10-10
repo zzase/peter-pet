@@ -199,6 +199,10 @@ export default {
 
 <style>
 @media screen and (min-width:1280px) {
+
+.custom-select {
+  width: 100%;
+}
 .choose-d {
     float: left;
   }
