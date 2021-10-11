@@ -202,7 +202,7 @@ export default {
 <style>
 @media screen and (min-width:1280px) {
 .custom-file-input{
-  margin-left: -450px
+  margin-left: -480px
 }
 
 .custom-select {
