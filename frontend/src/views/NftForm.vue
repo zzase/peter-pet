@@ -60,10 +60,9 @@
             </div>
 
             <br />
-
+          <label class="choose-d"> 동물등록증을 선택해주세요* </label><br />
             <div class="choose-did">
-              <label class="choose-d"> 동물등록증을 선택해주세요* </label><br />
-              <b-form-select v-model="metadata.did" :options="options" >
+              <b-form-select v-model="metadata.did" :options="options">
                 <template #first>
                   <b-form-select-option :value="null" disabled :v-onclick="setName(`${metadata.did}`)"
                     >-- Please select an option --</b-form-select-option
@@ -101,6 +100,9 @@
             </div>
             <!-- 혈통증명서 -->
 
+           <label class="cert">
+                혈통증명서 첨부
+              </label>
             <div class="certification">
               <b-form-file multiple="multiple">
                 <template slot="file-name" slot-scope="{ names }">
@@ -208,8 +210,15 @@ export default {
 
 <style>
 @media screen and (min-width:1280px) {
+.custom-file-input{
+  margin-left: -480px
+}
+
+.custom-select {
+  width: 100%;
+}
 .choose-d {
-    float: left;
+  margin-left: -730px;
   }
 .choose-did {
   width: 60%;
@@ -256,6 +265,7 @@ export default {
   font-size: 1.8rem;
 }
 .create-box {
+  margin-top: 50px;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;

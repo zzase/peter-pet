@@ -12,6 +12,30 @@
 
           <!-- img -->
           <br><br><br><br><br><br>
+          <div class="create-box">
+              <h2>새 NFT만들기</h2>
+              <div class="file_info">Image, Video, Audio or 3D Model</div>
+              <br />
+              <div class="file_info_detail">
+                File types supported: JPG,PNG,GIF,MP4,MP3,WAV, Max size: 100MB
+              </div>
+              <div class="file_info_detail">
+                Safari 외 브라우저에서는 동영상 'Hevc' 코덱을 지원하지 않아<br />
+                해당 코덱의 영상 파일 첨부 시 동영상 재생이 원활하지 않을 수
+                있습니다.
+                <br /><br />
+                *파일은 최대 3개까지 업로드할 수 있습니다
+              </div>
+              <br />
+              <br />
+              <br />
+          
+              <div class="row flex-row flex-nowrap">
+                <div class="Imageupload">
+                  <ImageUpload></ImageUpload>
+                </div>
+              </div>
+            </div>
 
           <!-- nft이름 -->
            <div class="nft-name1">
@@ -52,6 +76,14 @@
 </template>
 
 <script>
+import ImageUpload from "./components/ImageUpload.vue";
+
+export default {
+components: {
+    ImageUpload,
+  }
+}
+
 
 </script>
 
@@ -69,6 +101,10 @@
 .header1 {
     position: relative;
     background-color: rgba(221, 221, 221, 0.377);
+    height: 100px;
+    width: 1300px;
+    margin-left: 150px;
+
 }
 
 .nft-name1 {

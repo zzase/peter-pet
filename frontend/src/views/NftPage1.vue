@@ -17,20 +17,20 @@
                     </div>
                     <div class="nft-contents">
                        <hr width="670px;">
-                       <p> &nbsp;&nbsp; 이름 : </p>
+                       <p> &nbsp;&nbsp; 이름 : {{ metadata.name }}</p>
                        <hr width="670px;">
-                       <p> &nbsp;&nbsp;동물등록증 : </p>
+                       <p> &nbsp;&nbsp;동물등록증 : {{ metadata.did }}</p>
                        <hr width="670px;">
-                       <p> &nbsp;&nbsp;건강이력 : </p>
-                       <br>
-                       <br>
-                       <hr width="670px;">
-                       <p> &nbsp;&nbsp;성격 및 특징 : </p>
-                       <br>
+                       <p> &nbsp;&nbsp;건강이력 : {{ metadata.history }}</p>
                        <br>
                        <br>
                        <hr width="670px;">
-                       <p> &nbsp;&nbsp;혈통증명서 : </p>
+                       <p> &nbsp;&nbsp;성격 및 특징 : {{ metadata.desc }}</p>
+                       <br>
+                       <br>
+                       <br>
+                       <hr width="670px;">
+                       <p> &nbsp;&nbsp;혈통증명서 : {{ metadata.cert }}</p>
                        <br>
                        <br>
                     </div>
@@ -50,19 +50,45 @@ export default{
 
     data() {
         return {
-            
-            
+        metadata: {
+        name: null,
+        did: null,
+        history: null,
+        desc: null,
+        cert1: null,
+        repreImg: null,
+        addImgs : []
+      },
             
         };
     },
 
     methods: {
+        getDids: function(address) {
+      if (address === undefined) {
+        this.isLoading = ture;
+      } else {
+        this.isLoading = false;
+        this.$http
+          .get(`http://localhost:3000/api/pet/get/all/dids/${address}`, {})
+          .then((res) => {
+            console.log(res.data);
+            for (var i = 0; i < res.data.length; i++) {
+              this.options.push({
+                text: res.data.dids[i],
+                value: res.data.dids[i],
+              });
+            }
+          });
+      }
+    },
+    created() {
+    const address = this.$store.state.user.address;
+
+    this.getDids(address);
+  },
         
     },
-    components: {
-    },
-
-
 }
 
 </script>
