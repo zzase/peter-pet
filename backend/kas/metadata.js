@@ -48,7 +48,7 @@ class Metadata extends ApiCaller {
         return res;
     }
 
-    async normalNFTUri(name,img,desc) {
+    async personalNFTUri(name,img,desc) {
         const options = {
             method : 'POST',
             url : '/v1/metadata',

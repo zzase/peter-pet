@@ -28,12 +28,12 @@
             <h3>소장 NFT</h3>
         </div>
 
-        <div v-if="normalNfts.length === 0" class="nft-card2">
+        <div v-if="personalNfts.length === 0" class="nft-card2">
             <h2>아직 NFT를 만들지 않았어요!</h2>
             <b-button variant="default" href="/#/nft/form/personal">소장용 NFT 만들기</b-button>
         </div>
 
-        <div v-else class="nft-card2" v-for="(nft,index) in normalNfts" :key="nft" :index="index">
+        <div v-else class="nft-card2" v-for="(nft,index) in personalNfts" :key="nft" :index="index">
             <b-card
             :title= nft.name
             :img-src= nft.img
@@ -43,7 +43,7 @@
             style="max-width: 20rem; max-height: 80rem;"
             class="mb-2">
             
-            <b-button v-on:click="goDetailPersonalNft(normalNftTokenIds[index])" variant="rose">상세보기</b-button>
+            <b-button v-on:click="goDetailPersonalNft(personalNftTokenIds[index])" variant="rose">상세보기</b-button>
             </b-card>
         </div>
 
@@ -58,8 +58,8 @@ export default {
         return {
             certiNfts : [],
             certiNftTokenIds : [],
-            normalNfts : [],
-            normalNftTokenIds : []   
+            personalNfts : [],
+            personalNftTokenIds : []   
         };
     },
     methods : {
@@ -108,19 +108,19 @@ export default {
             });
         },
 
-        getNormalNfts : async function(address){
+        getPersonalNfts : async function(address){
             await this.$http
-            .get(`http://localhost:3000/api/nft/normal/list/owner/${address}`, {})
+            .get(`http://localhost:3000/api/nft/personal/list/owner/${address}`, {})
             .then((res) => {
                 console.log(res.data.items.length);
                 if(res.data.msg){
                     for(var i=0; i<res.data.items.length; i++){
-                      this.normalNftTokenIds.push(res.data.items[i].tokenId);
+                      this.personalNftTokenIds.push(res.data.items[i].tokenId);
                   }
                   for(var i=0; i<res.data.items.length; i++){
                       this.$http.get(res.data.items[i].tokenUri,{})
                       .then((res) => {
-                          this.normalNfts.push({
+                          this.personalNfts.push({
                               name : res.data.name,
                               kind : res.data.kind,
                               desc : res.data.desc,
@@ -128,7 +128,7 @@ export default {
                           });
                       })
                   }
-                  console.log(this.normalNfts);
+                  console.log(this.personalNfts);
                 }
                 else {
                     alert(res.data);
@@ -140,7 +140,7 @@ export default {
     },
     created() {
         this.getCertiNfts(this.$store.state.user.address);
-        this.getNormalNfts(this.$store.state.user.address);
+        this.getPersonalNfts(this.$store.state.user.address);
     }
 }
 </script>

@@ -49,7 +49,7 @@ export default{
 
     methods: {
         getNft : function(tokenId)  {
-        this.$http.get(`http://localhost:3000/api/nft/normal/info/token/${tokenId}`,{})
+        this.$http.get(`http://localhost:3000/api/nft/personal/info/token/${tokenId}`,{})
         .then((res)=> {
           if(res.data.msg){
             this.$http.get(res.data.tokenUri)

@@ -25,8 +25,8 @@ router.get('/certi/list/owner/:address', async function(req,res,next){
     
 })
 
-router.get('/normal/list/owner/:address', async function(req,res,next){
-    console.log('Get List of Normal NFT By Address API call');
+router.get('/personal/list/owner/:address', async function(req,res,next){
+    console.log('Get List of personal NFT By Address API call');
     const address = req.params.address;
     const nftCA = '0x504e0749223ea5d8b5cfa167813b0ccab9d254df';
 
@@ -39,7 +39,7 @@ router.get('/normal/list/owner/:address', async function(req,res,next){
             res.status(400).send({msg : false, result : result});
         }
     }catch(err){
-        res.status(404).send({msg : "Get List of Normal NFT By Address API call Fail"});
+        res.status(404).send({msg : "Get List of personal NFT By Address API call Fail"});
     }
     
 })
@@ -62,8 +62,8 @@ router.get('/certi/info/token/:tokenId', async function(req,res,next){
     }
 })
 
-router.get('/normal/info/token/:tokenId', async function(req,res,next){
-    console.log('Get Normal NFT Info By TokenID API call');
+router.get('/personal/info/token/:tokenId', async function(req,res,next){
+    console.log('Get personal NFT Info By TokenID API call');
     const tokenId = req.params.tokenId;
     const nftCA = '0x504e0749223ea5d8b5cfa167813b0ccab9d254df';
     
@@ -76,7 +76,7 @@ router.get('/normal/info/token/:tokenId', async function(req,res,next){
             res.status(400).send({msg:false,result:result});
         }
     }catch(err){
-        res.status(404).send({msg : "Get Normal NFT Info By TokenID API call Fail"});
+        res.status(404).send({msg : "Get personal NFT Info By TokenID API call Fail"});
     }
 })
 
@@ -109,12 +109,12 @@ router.post('/make/certiMetaData',async function(req,res,next) {
     }
   })
 
-  router.post('/make/normalMetaData',async function(req,res,next) {
+  router.post('/make/personalMetaData',async function(req,res,next) {
     console.log('기념용 nft 메타데이터 api 호출');
     const data = req.body.metadata;
 
     try{
-        const result = await metadata.normalNFTUri(data.name, data.img, data.desc);
+        const result = await metadata.personalNFTUri(data.name, data.img, data.desc);
         if(result.uri){
             res.status(200).send({uri : result.uri});
         }
@@ -170,9 +170,9 @@ router.post('/make/certiMetaData',async function(req,res,next) {
     }
   })
 
-  router.post('/make/normalNFT',async function(req,res,next) {
+  router.post('/make/personalNFT',async function(req,res,next) {
     const nftCA = '0x504e0749223ea5d8b5cfa167813b0ccab9d254df'
-    console.log('Make Normal-NFT api 호출');
+    console.log('Make personal-NFT api 호출');
     const address = req.body.address; //address = this.$store.state.user.address
     const id = req.body.id; // id = did 맨 끝 10자리 
     const data = req.body.metadata;
@@ -180,7 +180,7 @@ router.post('/make/certiMetaData',async function(req,res,next) {
     let uri = ''
 
     try{
-        const result = await metadata.normalNFTUri(data.name, data.img, data.desc);
+        const result = await metadata.personalNFTUri(data.name, data.img, data.desc);
         if(result.uri){
             uri = result.uri
             try{
