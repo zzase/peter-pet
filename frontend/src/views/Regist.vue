@@ -470,6 +470,9 @@
                                 md-small-size-100
                               "
                             >
+                            <div class="info-num1"
+                                 style="border 1px black;">
+                              <h3>1</h3></div>
                               <div class="info">
                                 <img
                                   alt="brand"
@@ -496,6 +499,8 @@
                                 md-small-size-100
                               "
                             >
+                            <div class="info-num1">
+                              <h3>2</h3></div>
                               <div class="info">
                                 <img
                                   alt="brand"
@@ -1151,8 +1156,23 @@ div#selectbutton {
   padding-left: 30px;
 }
 .info {
-  margin-top: -80px;
+  margin-top: -120px;
   margin-bottom: 100px;
   margin-left: -60px;
+  }
+  .info-num1 {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    margin-left: 60px;
+    margin-bottom: 70px;
+    border: 1px solid black;
+  }
+  .info-num2 {
+    width: 40px;
+    text-align: center;
+    margin-left: 60px;
+    margin-bottom: 70px;
+    border: 1px solid black;
   }
 </style>
