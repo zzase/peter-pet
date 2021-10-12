@@ -11,8 +11,8 @@ import Main from "./views/Main.vue";
 import NftForm from "./views/NftForm.vue";
 import NftFormPersonal from "./views/NftFormPersonal.vue";
 import SelectForm from "./views/SelectForm.vue";
-import NftPage1 from "./views/NftPage1.vue";
-import NftPage2 from "./views/NftPage2.vue";
+import CertiNft from "./views/CertiNft.vue";
+import PersonalNft from "./views/PersonalNft.vue";
 import Manager from "./views/Manager.vue"
 import PetMall from "./views/PetMall.vue";
 import CustomerService from "./views/CustomerService.vue";
@@ -160,7 +160,7 @@ export default new Router({
     {
       path: "/nft/detail",
       name: "certiNftDetail",
-      components: { default: NftPage1, header: MainNavbar, footer: MainFooter  },
+      components: { default: CertiNft, header: MainNavbar, footer: MainFooter  },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
@@ -169,7 +169,7 @@ export default new Router({
     {
       path: "/nft/detail/personal",
       name: "personalNftDetail",
-      components: { default: NftPage2, header: MainNavbar, footer: MainFooter  },
+      components: { default: PersonalNft, header: MainNavbar, footer: MainFooter  },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
