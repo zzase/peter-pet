@@ -271,7 +271,7 @@
                         </md-field>
                         <md-field class="md-form-group" slot="inputs">
                           <label> <md-icon>home</md-icon>주소</label>
-                          <title>주소 입력 샘플</title>
+                          <title>주소 입력</title>
                           <body>
                             <form name="form" id="form" method="post">
                               <table>
@@ -300,6 +300,8 @@
                                       <input
                                         type="button"
                                         value="주소검색"
+                                        style="background-color:gray; color: white; width: 90px;"
+                                        
                                         @click="getPostalcode()"
                                       />
                                     </td>
@@ -338,25 +340,27 @@
                           </body>
                         </md-field>
                         <md-field class="md-form-group" slot="inputs">
-                          <div id="app">
+                          <br>
+                          <div id="personal-id" style="margin-top: 10px;">
                             <input
                               type="text"
                               inputmode="numeric"
                               pattern="[0-9]*"
                               maxlength="6"
                               @input="firstRRNCheck($event.data)"
-                              v-model="firstRRNView"
+                              v-model="resultfirstRRN"
                               class="tf_register"
                               placeholder="주민번호 앞자리"
                             />
                             -
                             <input
+                            style="position: absolute; width: 30%; bottom: 20px;"
                               type="text"
                               pattern="[0-9]*"
                               inputmode="numeric"
                               maxlength="7"
                               @input="secondRRNCheck($event.data)"
-                              v-model="secondRRNView"
+                              v-model="resultsecondRRNView"
                               placeholder="OOOOOOO"
                             />
                           </div>
@@ -476,7 +480,7 @@
                                     id="tooltip-button-1"
                                     style="margin: 0 auto; display: block"
                                     :pressed="true"
-                                    variant="success"
+                                    pill variant="outline-secondary"
                                     v-model="tinkerbellType"
                                     @click="selectTinkerbellType(1)"
                                     >외장칩 목걸이</b-button
@@ -502,7 +506,7 @@
                                     id="tooltip-button-1"
                                     style="margin: 0 auto; display: block"
                                     :pressed="true"
-                                    variant="success"
+                                    pill variant="outline-secondary"
                                     v-model="tinkerbellType"
                                     @click="selectTinkerbellType(2)"
                                     >내장칩 목걸이</b-button
@@ -607,6 +611,18 @@ export default {
 
       breeds: [
         "포메라니안",
+        "슈나우저",
+        "웰시코기",
+        "페키니즈",
+        "스피츠",
+        "래브라도 리트리버",
+        "아메리칸 코카 스파니엘",
+        "보스턴테리어",
+        "사모예드",
+        "롯드와일러",
+        "잭러셀테리어",
+        "달마시안",
+        "믹스견",
         "말티즈",
         "요크셔테리어",
         "시츄",
@@ -919,9 +935,9 @@ export default {
 
       for (let j = 1; j < 7; j++) {
         if (j < 3) {
-          N += this.secondRRN[j - 1] * (j + 7);
+          N += this.secondRRN[j - 1] * (j + 7)
         } else {
-          N += this.secondRRN[j - 1] * (j - 1);
+          N += this.secondRRN[j - 1] * (j - 1)
         }
       }
 
@@ -937,6 +953,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped="scoped">
+
 .register-form {
   margin-top: -20%;
 }
@@ -1085,7 +1102,7 @@ textarea {
   padding: 10px 20px;
   margin: 5px 0;
   box-sizing: 80px;
-  border: solid 2px #cccccc;
+  border: solid 2px #e0e0e0;
   border-radius: 8px;
 }
 
@@ -1094,7 +1111,7 @@ input[type="text"] {
   padding: 10px 20px;
   margin: 5px 0;
   box-sizing: 80px;
-  border: solid 2px #cccccc;
+  border: solid 2px #e0e0e0;
   border-radius: 8px;
 }
 
@@ -1103,19 +1120,19 @@ input[type="tel"] {
   padding: 10px 20px;
   margin: 5px 0;
   box-sizing: 80px;
-  border: solid 2px #cccccc;
+  border: solid 2px #e0e0e0;
   border-radius: 8px;
 }
 
 input[type="button"] {
   margin-left: 15px;
   border-radius: 8px;
-  border: solid 2px #cccccc;
+  border: solid 2px #e0e0e0;
 }
 
 input[type="submit"] {
   border-radius: 8px;
-  border: solid 2px #cccccc;
+  border: solid 2px #e0e0e0;
 }
 
 input[type="email"] {
@@ -1123,7 +1140,7 @@ input[type="email"] {
   padding: 10px 20px;
   margin: 5px 0;
   box-sizing: 80px;
-  border: solid 2px #cccccc;
+  border: solid 2px #e0e0e0;
   border-radius: 8px;
 }
 
@@ -1133,4 +1150,9 @@ div#selectbutton {
 .b-button {
   padding-left: 30px;
 }
+.info {
+  margin-top: -80px;
+  margin-bottom: 100px;
+  margin-left: -60px;
+  }
 </style>

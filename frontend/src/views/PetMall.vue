@@ -5,20 +5,24 @@
     <div class="main main-raised">
        <div class="section">
            <div class="md-layout">
-               <p style="margin-left: 450px; font-size: 60px;"> Welcome to Peter-Pet Mall </p>
+             <hr width="1570px;">
+             <br><br><br>
+               <p style="margin-left: 450px; font-size: 60px; color: darkgreen;"><b> Tinkerbell for Your Dog </b> </p>
+               <img style="width: 250px; height: 200px;" src="@/assets/img/Mall/tinkerbell-necklace.png">
                <div class="ad">
                <img style= "width: 1500px;" src="@/assets/img/Mall/ad.png">
                </div>
 
                <section class="serv_list">
                  <div class="item-container">
+                   <hr width="1150px;">
                    <div class="i-title">
                      <h1> Item List </h1>
                      <ul>
-                       <li><a href="">A</a></li>
-                       <li><a href="">B</a></li>
-                       <li><a href="">C</a></li>
-                       <li><a href="">D</a></li>
+                       <li><a href="">외장칩 목걸이</a></li>
+                       <li><a href="">장난감</a></li>
+                       <li><a href="">간식</a></li>
+                       <li><a href="">패션</a></li>
                      </ul>
                    </div>
                    <div class="item_list">
@@ -27,78 +31,78 @@
                          <img src="@/assets/img/Mall/necklace1.png">
                        </div>
                        <div class="i-text">
-                         <h2>Necklace1</h2>
-                         <p>welcome to peter-pet mall. this is necklace1 </p>
+                         <h5>가죽 외장칩</h5>
+                         <p>welcome to peter-pet mall. </p>
                          <button><i class="fas fa-check"></i> Buy </button>
                        </div>
                      </div>
                      <div class="i-card">
                        <div class="i-img">
-                         <img src="@/assets/img/Mall/necklace1.png">
+                         <img src="@/assets/img/Mall/necklace-2.png">
                        </div>
                        <div class="i-text">
-                         <h2>Necklace1</h2>
-                         <p>welcome to peter-pet mall. this is necklace1 </p>
+                         <h5>4색 외장칩</h5>
+                         <p>welcome to peter-pet mall.</p>
                          <button><i class="fas fa-check"></i> Buy </button>
                        </div>
                      </div>
                      <div class="i-card">
                        <div class="i-img">
-                         <img src="@/assets/img/Mall/necklace1.png">
+                         <img src="@/assets/img/Mall/necklace-3.png">
                        </div>
                        <div class="i-text">
-                         <h2>Necklace1</h2>
-                         <p>welcome to peter-pet mall. this is necklace1 </p>
+                         <h5>천연 가죽 고급지개</h5>
+                         <p>welcome to peter-pet mall.  </p>
                          <button><i class="fas fa-check"></i> Buy </button>
                        </div>
                      </div>
                      <div class="i-card">
                        <div class="i-img">
-                         <img src="@/assets/img/Mall/necklace1.png">
+                         <img src="@/assets/img/Mall/necklace-4.png">
                        </div>
                        <div class="i-text">
-                         <h2>Necklace1</h2>
-                         <p>welcome to peter-pet mall. this is necklace1 </p>
+                         <h5>우리집 삼남매</h5>
+                         <p>welcome to peter-pet mall. </p>
                          <button><i class="fas fa-check"></i> Buy </button>
                        </div>
                      </div>
                      <div class="i-card">
                        <div class="i-img">
-                         <img src="@/assets/img/Mall/necklace1.png">
+                         <img src="@/assets/img/Mall/necklace-5.png">
                        </div>
                        <div class="i-text">
-                         <h2>Necklace1</h2>
-                         <p>welcome to peter-pet mall. this is necklace1 </p>
+                         <h5>퍼스널컬러 외장칩</h5>
+                         <p>welcome to peter-pet mall.  </p>
                          <button><i class="fas fa-check"></i> Buy </button>
                        </div>
                      </div>
                      <div class="i-card">
                        <div class="i-img">
-                         <img src="@/assets/img/Mall/necklace1.png">
+                         <img src="@/assets/img/Mall/necklace-6.png">
                        </div>
                        <div class="i-text">
-                         <h2>Necklace1</h2>
-                         <p>welcome to peter-pet mall. this is necklace1 </p>
+                         <h5>페콩칩</h5>
+                         <p>welcome to peter-pet mall. </p>
                          <button><i class="fas fa-check"></i> Buy </button>
                        </div>
                      </div>
                      <div class="i-card">
                        <div class="i-img">
-                         <img src="@/assets/img/Mall/necklace1.png">
+                         <img src="@/assets/img/Mall/necklace-7.png">
                        </div>
                        <div class="i-text">
-                         <h2>Necklace1</h2>
-                         <p>welcome to peter-pet mall. this is necklace1 </p>
+                         <h5>홀로그램 외장칩</h5>
+                         <p>welcome to peter-pet mall. </p>
                          <button><i class="fas fa-check"></i> Buy </button>
                        </div>
                      </div>
                      <div class="i-card">
                        <div class="i-img">
-                         <img src="@/assets/img/Mall/necklace1.png">
+                         <img src="@/assets/img/Mall/necklace-8.png">
                        </div>
                        <div class="i-text">
-                         <h2>Necklace1</h2>
-                         <p>welcome to peter-pet mall. this is necklace1 </p>
+                         <h5>민트 외장칩</h5>
+                         <p>welcome to peter-pet mall.  </p>
                          <button><i class="fas fa-check"></i> Buy </button>
                        </div>
                      </div>
@@ -144,6 +148,7 @@
     justify-content: space-between;
   }
   .serv_list .item-container .item_list .i-card {
+    text-align: center;
     border: 1px solid #eee;
     border-radius: 5px;
     height: 350px;
@@ -157,11 +162,13 @@
     height: 200px;
   }
   .serv_list .item-container .item_list .i-card .i-text p{
+    margin-top: 20px;
+    text-align: center;
     font-size: 14px;
     opacity: .8;
   }
   .serv_list .item-container .item_list .i-card .i-text button {
-    background: black;
+    background: rgb(0, 0, 0);
     color:white;
     border: 2px solid white;
     border-radius: 5px;
