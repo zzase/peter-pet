@@ -7,7 +7,7 @@
            <div class="md-layout">
              <hr width="1570px;">
              <br><br><br>
-               <p style="margin-left: 450px; font-size: 60px; color: darkgreen;"><b> Tinkerbell for Your Dog </b> </p>
+               <p style="margin-left: 450px; font-size: 60px; color: navy;"><b> Tinkerbell for Your Dog </b> </p>
                <img style="width: 250px; height: 200px;" src="@/assets/img/Mall/tinkerbell-necklace.png">
                <div class="ad">
                <img style= "width: 1500px;" src="@/assets/img/Mall/ad.png">
