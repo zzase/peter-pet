@@ -35,7 +35,7 @@
           <div class="query">
             <label><b>{{ $route.query.msg }}</b></label>
           </div>
-          <div class="link">
+          <div class="complete-img">
             <img
               id="dog"
               :src="$route.query.peterpet.imgLink"
@@ -95,7 +95,7 @@ export default {
 
 <style lang="css">
 
-.link {
+.complete-img {
   z-index: 2;
   position: relative;
   width: 200px;
@@ -104,7 +104,7 @@ export default {
   margin-top: -225px;
   left: -650px;
 }
-.link img {
+.complete-img img {
   position: absolute;
   top: 0;
   left: 0;
