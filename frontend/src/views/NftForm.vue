@@ -153,7 +153,7 @@ export default {
         did: null,
         history: null,
         desc: null,
-        cert1: null,
+        certi: null,
         repreImg: null,
         addImgs : []
       },
