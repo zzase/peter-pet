@@ -41,8 +41,16 @@
                        <div v-else>
 
                        </div>
-                       <p> &nbsp;&nbsp; 혈통증명서</p>
-                       <img :src="nft.certi">
+                       <b-button pill variant="outline-secondary" @click="showCerti"> 혈통증명서 보기</b-button>
+                       <Modal v-if="isCerti" @close="isCerti = false">
+                        <h3 slot="header"> 혈통증명서 </h3>
+                        <div slot="body">
+                          <img :src="nft.certi">
+                        </div>
+                        <div slot="footer">
+                          <b-button pill variant="outline-secondary" @click="closeCerti">닫기</b-button>
+                        </div>
+                      </Modal>
                        <br>
                        <br>
                     </div>
@@ -56,17 +64,24 @@
 
 
 <script>
-
+import Modal from '../components/Modal.vue';
 
 export default{
-
+  components: {Modal},
     data() {
       return {
-        nft: null
+        nft: null,
+        isCerti : false
       }
     },
 
     methods: {
+      showCerti : function() {
+        this.isCerti = true;
+      },
+      closeCerti : function(){
+        this.isCerti = false;
+      },
       getNft : function(tokenId)  {
         this.$http.get(`http://localhost:3000/api/nft/certi/info/token/${tokenId}`,{})
         .then((res)=> {
