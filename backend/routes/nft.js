@@ -6,6 +6,80 @@ const kip17 = require('../kas/kip17');
 var express = require('express');
 var router = express.Router();
 
+router.get('/certi/list/owner/:address', async function(req,res,next){
+    console.log('Get List Certi NFT By Address API call');
+    const address = req.params.address;
+    const nftCA = '0xdf47abaec9b9c628c6190b3dcd289b499dcba8b5';
+
+    try{
+        const result = await kip17.getNftsByAdress(nftCA,address);
+        if(result.items){
+            res.status(200).send({msg : true, items : result.items});
+        }
+        else {
+            res.status(400).send({msg : false, result : result});
+        }
+    }catch(err){
+        res.status(404).send({msg : "Get List of Certi NFT By Address API call Fail"});
+    }
+    
+})
+
+router.get('/normal/list/owner/:address', async function(req,res,next){
+    console.log('Get List of Normal NFT By Address API call');
+    const address = req.params.address;
+    const nftCA = '0x504e0749223ea5d8b5cfa167813b0ccab9d254df';
+
+    try{
+        const result = await kip17.getNftsByAdress(nftCA,address);
+        if(result.items){
+            res.status(200).send({msg : true, items : result.items});
+        }
+        else {
+            res.status(400).send({msg : false, result : result});
+        }
+    }catch(err){
+        res.status(404).send({msg : "Get List of Normal NFT By Address API call Fail"});
+    }
+    
+})
+
+router.get('/certi/info/token/:tokenId', async function(req,res,next){
+    console.log('Get Certi NFT Info By TokenID API call');
+    const tokenId = req.params.tokenId;
+    const nftCA = '0xdf47abaec9b9c628c6190b3dcd289b499dcba8b5';
+    
+    try{
+        const result = await kip17.getNFtInfoByTokenId(nftCA,tokenId);
+        if(result.tokenUri){
+            res.status(200).send({msg:true, tokenId : result.tokenId, tokenUri : result.tokenUri});
+        }
+        else{
+            res.status(400).send({msg:false,result:result});
+        }
+    }catch(err){
+        res.status(404).send({msg : "Get Certi NFT Info By TokenID API call Fail"});
+    }
+})
+
+router.get('/normal/info/token/:tokenId', async function(req,res,next){
+    console.log('Get Normal NFT Info By TokenID API call');
+    const tokenId = req.params.tokenId;
+    const nftCA = '0x504e0749223ea5d8b5cfa167813b0ccab9d254df';
+    
+    try{
+        const result = await kip17.getNFtInfoByTokenId(nftCA,tokenId);
+        if(result.tokenUri){
+            res.status(200).send({msg:true, tokenId : result.tokenId, tokenUri : result.tokenUri});
+        }
+        else{
+            res.status(400).send({msg:false,result:result});
+        }
+    }catch(err){
+        res.status(404).send({msg : "Get Normal NFT Info By TokenID API call Fail"});
+    }
+})
+
 router.post('/make/asset',async function(req,res,next) {
     console.log('asset 메타데이터 api 호출');
     const file = req.body.file;

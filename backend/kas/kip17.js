@@ -22,6 +22,30 @@ class Kip17 extends ApiCaller {
         return res;
     }
 
+    async getNftsByAdress(ca,address) {
+        const options = {
+            method: 'GET',
+            url : `/v1/contract/${ca}/owner/${address}`,
+            json : true
+        };
+
+        const res = await this.call(options);
+        console.log(res);
+        return res;
+    }
+
+    async getNftInfoByTokenId(ca,tokenId) {
+        const options = {
+            method: 'GET',
+            url : `/v1/contract/${ca}/token/${tokenId}`,
+            json : true
+        };
+
+        const res = await this.call(options);
+        console.log(res);
+        return res;
+    }
+
 }
 
 const kip17 = new Kip17();
