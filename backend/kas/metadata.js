@@ -57,7 +57,7 @@ class Metadata extends ApiCaller {
                     kind : "기념용 NFT",
                     name : name,
                     img : img,
-                    desd : desc
+                    desc : desc
                 },
                 filename : `${name}.json`
             },

@@ -50,7 +50,7 @@ router.get('/certi/info/token/:tokenId', async function(req,res,next){
     const nftCA = '0xdf47abaec9b9c628c6190b3dcd289b499dcba8b5';
     
     try{
-        const result = await kip17.getNFtInfoByTokenId(nftCA,tokenId);
+        const result = await kip17.getNftInfoByTokenId(nftCA,tokenId);
         if(result.tokenUri){
             res.status(200).send({msg:true, tokenId : result.tokenId, tokenUri : result.tokenUri});
         }
@@ -68,7 +68,7 @@ router.get('/normal/info/token/:tokenId', async function(req,res,next){
     const nftCA = '0x504e0749223ea5d8b5cfa167813b0ccab9d254df';
     
     try{
-        const result = await kip17.getNFtInfoByTokenId(nftCA,tokenId);
+        const result = await kip17.getNftInfoByTokenId(nftCA,tokenId);
         if(result.tokenUri){
             res.status(200).send({msg:true, tokenId : result.tokenId, tokenUri : result.tokenUri});
         }
