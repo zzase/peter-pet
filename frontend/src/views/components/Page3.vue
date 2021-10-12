@@ -18,7 +18,8 @@
             style="max-width: 20rem; max-height: 80rem;"
             class="mb-2">
             
-            <b-button href="#/mypage/nftpage1" variant="rose">상세보기</b-button>
+            <b-button v-on:click="goDetailCertiNft(certiNftTokenIds[index])" variant="rose">상세보기</b-button>
+            
             </b-card>
         </div>
         
@@ -42,7 +43,7 @@
             style="max-width: 20rem; max-height: 80rem;"
             class="mb-2">
             
-            <b-button href="#/mypage/nftpage1" variant="rose">상세보기</b-button>
+            <b-button v-on:click="goDetailPersonalNft(normalNftTokenIds[index])" variant="rose">상세보기</b-button>
             </b-card>
         </div>
 
@@ -51,20 +52,38 @@
 </template>
 
 <script>
+import Vue from 'vue';
 export default {
     data() {
         return {
             certiNfts : [],
-            normalNfts : []   
+            certiNftTokenIds : [],
+            normalNfts : [],
+            normalNftTokenIds : []   
         };
     },
     methods : {
+        goDetailCertiNft : function(tokenId) {
+            //this.$router.push({
+              //  name: "certiNftDetail",
+                //query: {
+                //tokenId: tokenId,
+                //},
+            //}).catch(() => {});
+            window.location.href = `#/nft/detail?tokenId=${tokenId}`
+        },
+         goDetailPersonalNft : function(tokenId) {
+            window.location.href = `#/nft/detail/personal?tokenId=${tokenId}`
+        },
         getCertiNfts : async function(address){
             await this.$http
             .get(`http://localhost:3000/api/nft/certi/list/owner/${address}`, {})
             .then((res) => {
                 console.log(res.data.items.length);
                 if(res.data.msg){
+                  for(var i=0; i<res.data.items.length; i++){
+                      this.certiNftTokenIds.push(res.data.items[i].tokenId);
+                  }
                   for(var i=0; i<res.data.items.length; i++){
                       this.$http.get(res.data.items[i].tokenUri,{})
                       .then((res) => {
@@ -95,6 +114,9 @@ export default {
             .then((res) => {
                 console.log(res.data.items.length);
                 if(res.data.msg){
+                    for(var i=0; i<res.data.items.length; i++){
+                      this.normalNftTokenIds.push(res.data.items[i].tokenId);
+                  }
                   for(var i=0; i<res.data.items.length; i++){
                       this.$http.get(res.data.items[i].tokenUri,{})
                       .then((res) => {

@@ -158,8 +158,8 @@ export default new Router({
       }
     },
     {
-      path: "/mypage/nftpage1",
-      name: "nftpage1",
+      path: "/nft/detail",
+      name: "certiNftDetail",
       components: { default: NftPage1, header: MainNavbar, footer: MainFooter  },
       props: {
         header: { colorOnScroll: 400 },
@@ -167,8 +167,8 @@ export default new Router({
       }
     },
     {
-      path: "/mypage/nftpage2",
-      name: "nftpage2",
+      path: "/nft/detail/personal",
+      name: "personalNftDetail",
       components: { default: NftPage2, header: MainNavbar, footer: MainFooter  },
       props: {
         header: { colorOnScroll: 400 },

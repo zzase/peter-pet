@@ -9,19 +9,17 @@
                    <!-- img  -->
                     <div class="nft-img">
                         <h1>img</h1>
-                        this is nft img space
+                        <img :src="nft.img" width="300" height="500">
                     </div>
 
                     <div class="nft-num">
-                        <h4 style="color:white; margin-top: 40px; margin-left: 50px;">NFT NUMBER: </h4>
+                        <h4 style="color:white; margin-top: 40px; margin-left: 50px;">{{nft.name}} </h4>
                     </div>
                     <div class="nft-contents">
                        <hr width="670px;">
-                       <p> &nbsp;&nbsp; 이름 : </p>
+                       <p> &nbsp;&nbsp; TOKEN ID : {{ $route.query.tokenId }} </p>
                        <hr width="670px;">
-                       <p> &nbsp;&nbsp;동물등록증 : </p>
-                       <hr width="670px;">
-                       <p> &nbsp;&nbsp;내용 : </p>
+                       <p> &nbsp;&nbsp; 내용 : {{ nft.desc }}</p>
                        <br><br>
                        <br><br>
                        <br><br>
@@ -45,17 +43,31 @@ export default{
 
     data() {
         return {
-            
-            
-            
+            nft : null
         };
     },
 
     methods: {
-        
+        getNft : function(tokenId)  {
+        this.$http.get(`http://localhost:3000/api/nft/normal/info/token/${tokenId}`,{})
+        .then((res)=> {
+          if(res.data.msg){
+            this.$http.get(res.data.tokenUri)
+            .then((res)=> {
+              this.nft = res.data;
+            })
+          }
+        })        
+      }
     },
     components: {
     },
+
+    created() {
+        const tokenId = this.$route.query.tokenId;
+
+        this.getNft(tokenId);
+  },
 
 
 }

@@ -8,29 +8,41 @@
                <div class="flex-container1">
                    <!-- img  -->
                     <div class="nft-img">
-                        <h1>img</h1>
-                        this is nft img space
+                        <h1>대표 이미지</h1>
+                        <img :src="nft.repreImg">
+
+                        <h3>추가 이미지</h3>
+                        <div v-for="(img,index) in nft.addImgs" :key="img" :index="index" >
+                          <img :src="img" width="100" height="100">
+                        </div>
                     </div>
 
                     <div class="nft-num">
-                        <h4 style="color:white; margin-top: 40px; margin-left: 50px;">NFT NUMBER: </h4>
+                        <h4 style="color:white; margin-top: 40px; margin-left: 50px;">{{nft.name}} </h4>
                     </div>
                     <div class="nft-contents">
                        <hr width="670px;">
-                       <p> &nbsp;&nbsp; 이름 : {{ metadata.name }}</p>
+                       <p> &nbsp;&nbsp; TOKEN ID : {{ $route.query.tokenId }}</p>
                        <hr width="670px;">
-                       <p> &nbsp;&nbsp;동물등록증 : {{ metadata.did }}</p>
+                       <p> &nbsp;&nbsp; 등록번호 : {{ nft.did }}</p>
                        <hr width="670px;">
-                       <p> &nbsp;&nbsp;건강이력 : {{ metadata.history }}</p>
-                       <br>
-                       <br>
-                       <hr width="670px;">
-                       <p> &nbsp;&nbsp;성격 및 특징 : {{ metadata.desc }}</p>
-                       <br>
+                       <p> &nbsp;&nbsp; 건강이력 : {{ nft.history }}</p>
                        <br>
                        <br>
                        <hr width="670px;">
-                       <p> &nbsp;&nbsp;혈통증명서 : {{ metadata.cert }}</p>
+                       <p> &nbsp;&nbsp; 성격 및 특징 : {{ nft.desc }}</p>
+                       <br>
+                       <br>
+                       <br>
+                       <hr width="670px;">
+                       <div v-if="nft.certi ==='X'">
+                         <p> &nbsp;&nbsp; 혈통증명서 없음</p>  
+                       </div>
+                       <div v-else>
+
+                       </div>
+                       <p> &nbsp;&nbsp; 혈통증명서</p>
+                       <img :src="nft.certi">
                        <br>
                        <br>
                     </div>
@@ -49,46 +61,29 @@
 export default{
 
     data() {
-        return {
-        metadata: {
-        name: null,
-        did: null,
-        history: null,
-        desc: null,
-        cert1: null,
-        repreImg: null,
-        addImgs : []
-      },
-            
-        };
+      return {
+        nft: null
+      }
     },
 
     methods: {
-        getDids: function(address) {
-      if (address === undefined) {
-        this.isLoading = ture;
-      } else {
-        this.isLoading = false;
-        this.$http
-          .get(`http://localhost:3000/api/pet/get/all/dids/${address}`, {})
-          .then((res) => {
-            console.log(res.data);
-            for (var i = 0; i < res.data.length; i++) {
-              this.options.push({
-                text: res.data.dids[i],
-                value: res.data.dids[i],
-              });
-            }
-          });
+      getNft : function(tokenId)  {
+        this.$http.get(`http://localhost:3000/api/nft/certi/info/token/${tokenId}`,{})
+        .then((res)=> {
+          if(res.data.msg){
+            this.$http.get(res.data.tokenUri)
+            .then((res)=> {
+              this.nft = res.data;
+            })
+          }
+        })        
       }
-    },
-    created() {
-    const address = this.$store.state.user.address;
-
-    this.getDids(address);
   },
-        
-    },
+  created() {
+    const tokenId = this.$route.query.tokenId;
+
+    this.getNft(tokenId);
+  },
 }
 
 </script>
