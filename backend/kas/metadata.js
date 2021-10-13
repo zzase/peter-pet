@@ -38,7 +38,6 @@ class Metadata extends ApiCaller {
                     repreImg : repreImg,
                     addImgs : addImgs,
                 },
-                filename : `${name}.json`
             },
             json : true
         };
@@ -59,7 +58,6 @@ class Metadata extends ApiCaller {
                     img : img,
                     desc : desc
                 },
-                filename : `${name}.json`
             },
             json : true
         };

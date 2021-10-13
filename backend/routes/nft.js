@@ -163,7 +163,7 @@ router.post('/make/certiMetaData',async function(req,res,next) {
             }
         }
         else {
-            res.status(400).send({result : result});
+            res.status(400).send({msg : "Make Certi-NFT-Uri Fail"});
         }
     }catch(err){
         res.status(400).send({msg : "Make Certi-NFT-Uri Fail"});

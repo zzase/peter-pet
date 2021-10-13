@@ -6,6 +6,7 @@
       <div class="section">
         <div class="md-layout">
           <div class="d-container1">
+            <form @submit.prevent="addNft">
             <div class="header1">
               <h1>this is NFT page</h1>
             </div>
@@ -48,16 +49,8 @@
             <div class="nft-name1">
               <label class="nft-n1"> *NFT 이름 </label>
               <b-form-input
-                v-model="text"
+                v-model="metadata.name"
                 placeholder="NFT내용을 입력해주세요"
-              ></b-form-input>
-            </div>
-            <!-- nft price -->
-            <div class="nft-price1">
-              <label class="nft-p1"> *분양가 </label><br />
-              <b-form-input
-                v-model="text"
-                placeholder="NFT Price"
               ></b-form-input>
             </div>
             <!-- NFT-description -->
@@ -65,6 +58,7 @@
               <label class="description-n"> *NFT에 들어갈 내용란입니다 </label>
               <b-form-textarea
                 id="textarea-rows"
+                v-model="metadata.desc"
                 placeholder="Description"
                 rows="8"
               ></b-form-textarea>
@@ -79,6 +73,7 @@
                 ><b>Create</b></md-button
               >
             </div>
+            </form>
           </div>
         </div>
       </div>
@@ -90,6 +85,16 @@
 import UploadImages from "vue-upload-drop-images";
 import axios from "axios";
 export default {
+  data() {
+    return{
+      id : null,
+      metadata : {
+        name : null,
+        img : null,
+        desc : null
+      }
+    }
+  },
   components: {
     UploadImages,
   },
@@ -109,10 +114,54 @@ export default {
           },
         })
         .then((res) => {
-          console.log(res.data.uri);
+          this.metadata.img = res.data.uri;
         });
     },
+
+    addNft: async function () {
+      const address = this.$store.state.user.address;
+      const id = this.id +1;
+
+      const metadata = this.metadata;
+      
+      console.log({address : address, id: id, metadata : metadata});
+
+      try{
+        await this.$http.post("http://localhost:3000/api/nft/make/personalNFT",{
+          address : address,
+          id : id,
+          metadata : metadata
+        },
+        {"Content-Type": "application-json"})
+        .then((res)=>{
+          if(res.data.id){
+            window.location.href = `#/nft/personal/complete?tokenId=${res.data.id}`
+          }
+          else {
+            alert(res.data.id);
+          }
+        })
+      }catch(err){
+        alert("해당 DID의 NFT가 이미 존재합니다.");
+      }
+    },
+
+    getNftListLength: async function(address){
+      try{
+        await this.$http.get(`http://localhost:3000/api/nft/personal/list/owner/${address}`,{})
+        .then((res)=>{
+          this.id = res.data.items.length;
+        })
+      }catch(err){
+        this.id = 0;
+      }
+    }
+
   },
+
+  created() {
+    this.getNftListLength(this.$store.state.user.address);
+  }
 };
 </script>
 

@@ -39,9 +39,9 @@
                          <p> &nbsp;&nbsp; 혈통증명서 없음</p>  
                        </div>
                        <div v-else>
-
+                         <b-button pill variant="outline-secondary" @click="showCerti"> 혈통증명서 보기</b-button>
                        </div>
-                       <b-button pill variant="outline-secondary" @click="showCerti"> 혈통증명서 보기</b-button>
+                       
                        <Modal v-if="isCerti" @close="isCerti = false">
                         <h3 slot="header"> 혈통증명서 </h3>
                         <div slot="body">

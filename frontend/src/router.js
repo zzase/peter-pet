@@ -16,6 +16,8 @@ import PersonalNft from "./views/PersonalNft.vue";
 import Manager from "./views/Manager.vue"
 import PetMall from "./views/PetMall.vue";
 import CustomerService from "./views/CustomerService.vue";
+import NftComplete from "./views/NftComplete.vue";
+import PersonalNftComplete from "./views/PersonalNftComplete.vue";
 
 import Neverland from "./views/Neverland.vue";
 import RegisterComplete from "./views/RegisterComplete.vue"
@@ -137,7 +139,25 @@ export default new Router({
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
-      }
+      },
+    },
+    {
+      path: "/nft/complete",
+      name: "nftComplete",
+      components: { default: NftComplete, header: MainNavbar, footer: MainFooter  },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      },
+    },
+    {
+      path: "/nft/personal/complete",
+      name: "personalNftComplete",
+      components: { default: PersonalNftComplete, header: MainNavbar, footer: MainFooter  },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      },
     },
     {
       path: "/mall",

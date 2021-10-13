@@ -32,12 +32,12 @@
                   해당 코덱의 영상 파일 첨부 시 동영상 재생이 원활하지 않을 수
                   있습니다.
                   <br /><br />
-                  *파일은 최대 3개까지 업로드할 수 있습니다
+                  *파일은 최대 3개까지 업로드할 수 있으며 첫번째 파일이 대표 이미지가 됩니다. <br/>
+                  *기존에 등록된 이미지를 대표 이미지로 하고 싶으신 경우 체크해주세요 <input type="checkbox" id="checkbox" v-model="checked">
                 </div>
+                <br/>
                 <br />
                 <br />
-                <br />
-
                 <div class="row flex-row flex-nowrap">
                   <div class="UploadImages">
                     <UploadImages
@@ -51,7 +51,7 @@
                   </div>
                 </div>
               </div>
-
+              
               <br />
               <br />
               <br />
@@ -76,6 +76,9 @@
                 </template>
               </b-form-select>
             </div>
+
+            <br/><br/>
+
             <br />
             <br />
             <br />
@@ -108,7 +111,7 @@
 
               <label class="cert"> 혈통증명서 첨부 </label>
               <div class="certification">
-                <b-form-file multiple="multiple">
+                <!--<b-form-file multiple="multiple" @changed="addCerti">
                   <template slot="file-name" slot-scope="{ names }">
                     <b-badge variant="dark">{{ names[0] }}</b-badge>
                     <b-badge
@@ -121,7 +124,17 @@
                       More files
                     </b-badge>
                   </template>
-                </b-form-file>
+                </b-form-file>-->
+                <div class="UploadImages">
+                    <UploadImages
+                      name="UploadImages"
+                      ref="fileInput"
+                      @changed="addCerti"
+                      :max="3"
+                      uploadMsg="피터펫의 혈통증명서를 업로드 하세요!"
+                      clearAll="clear All"
+                    ></UploadImages>
+                  </div>
               </div>
 
               <!-- create complete button -->
@@ -156,13 +169,14 @@ export default {
       },
       name: "select-did",
       input: "text",
+      checked : false,
       options: [],
       metadata: {
         name: null,
         did: null,
         history: null,
         desc: null,
-        certi: null,
+        certi: 'X',
         repreImg: null,
         addImgs: [],
       },
@@ -191,16 +205,68 @@ export default {
       }
     },
 
-    addNft: function () {
-      alert(this.metadata.did);
+    addNft: async function () {
+      const address = this.$store.state.user.address;
+      const id = this.metadata.did[0].slice(-10,23);
+
+      this.getRepreImg(this.metadata.did);
+
+      this.metadata.did = this.metadata.did[0];
+      const metadata = this.metadata;
+      
+      console.log({address : address, id: id, metadata : metadata});
+
+      try{
+        await this.$http.post("http://localhost:3000/api/nft/make/certiNFT",{
+          address : address,
+          id : id,
+          metadata : metadata
+        },
+        {"Content-Type": "application-json"})
+        .then((res)=>{
+          if(res.data.id){
+            window.location.href = `#/nft/complete?tokenId=${res.data.id}`
+          }
+          else {
+            alert(res.data.id);
+          }
+        })
+      }catch(err){
+        alert("해당 DID의 NFT가 이미 존재합니다.");
+      }
+      
+    },
+
+    getRepreImg : function(did) {
+      if(this.checked){
+        this.$http.get(`http://localhost:3000/api/pet/get/all/petInfos/${did}`)
+        .then((res)=>{
+          this.metadata.repreImg = res.data.peterpet.imgLink;
+        })
+      }
+      else {
+        this.metadata.repreImg = this.metadata.addImgs[0];
+      }
     },
 
     handleImages(files) {
       console.log(files);
+      let index = 0;
+      if(files[0]===undefined){
+        console.log("clear all");
+        index=0;
+        this.metadata.addImgs.splice(0,this.metadata.addImgs.length);
+      } 
+      else{
 
-      let fd = new FormData();
-      fd.append("file", files[0]);
-      axios
+        let fd = new FormData();
+        
+        if(this.metadata.addImgs.length>0) {
+          index = this.metadata.addImgs.length
+        }
+        fd.append("file", files[index]);
+
+        axios
         .post("https://metadata-api.klaytnapi.com/v1/metadata/asset", fd, {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -210,8 +276,38 @@ export default {
           },
         })
         .then((res) => {
-          console.log(res.data.uri);
+          this.metadata.addImgs.push(res.data.uri);
+          for(var i=0; i<this.metadata.addImgs.length; i++){
+            console.log(this.metadata.addImgs[i]);
+          }
         });
+      }
+    },
+
+    addCerti(files) {
+      console.log(files);
+
+      let fd = new FormData();
+      fd.append("file", files[0]);
+      if(files[0]===undefined){
+        console.log("clear all");
+        this.metadata.certi = 'X';
+      } 
+      else{
+        axios
+        .post("https://metadata-api.klaytnapi.com/v1/metadata/asset", fd, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            "x-chain-id": "1001",
+            Authorization:
+              "Basic S0FTS1ZMNThRUUtaWFE2NUVQUEJERjJOOnJFRW9MdUJvUjVHdXBsU08tSlpMZXZ1X2xYOC1OeGc3dHhESmVBZDM=",
+          },
+        })
+        .then((res) => {
+          this.metadata.certi = res.data.uri
+          console.log(this.metadata.certi);
+        });
+      }
     },
     setName: function(did){
       console.log('call setName')
