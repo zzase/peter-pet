@@ -21,9 +21,6 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import axios from 'axios'
 import { store } from './store';
 import vuetify from '@/plugins/vuetify' // path to vuetify export
-import Vuesax from 'vuesax' 
-import 'vuesax/dist/vuesax.css'
-import 'material-icons/iconfont/material-icons.css';
 
 import VueGoodTablePlugin from 'vue-good-table';
 
@@ -45,7 +42,6 @@ Vue.prototype.$http = axios
 Vue.config.productionTip = false;
 Vue.use(MaterialKit);
 Vue.use(VueComp);
-Vue.use(Vuesax);
 
 const NavbarStore = {
   showNavbar: false
