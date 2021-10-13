@@ -54,17 +54,22 @@ export default {
   },
   methods : {
       getNft :async function(tokenId)  {
-        await this.$http.get(`http://localhost:3000/api/nft/personal/info/token/${tokenId}`,{})
-        .then((res)=> {
-          if(res.data.msg){
-            this.$http.get(res.data.tokenUri)
-            .then((res)=> {
-              this.nft = res.data;
-            })
-          }
-        })        
+        try{
+          await this.$http.get(`http://localhost:3000/api/nft/personal/info/token/${tokenId}`,{})
+          .then((res)=> {
+            if(res.data.msg){
+              this.$http.get(res.data.tokenUri)
+              .then((res)=> {
+                this.nft = res.data;
+              })
+            }
+          })
+        }catch(err){
+          this.$router.go();
+        }
+                
       },
-      goDetailNormalNft : function(tokenId) {
+      goDetailPersonalNft : function(tokenId) {
             window.location.href = `#/nft/detail/personal?tokenId=${tokenId}`
         },
   },

@@ -123,6 +123,9 @@ export default {
       const id = this.id +1;
 
       const metadata = this.metadata;
+      if(metadata.img === null){
+        metadata.img = 'https://metadata-store.klaytnapi.com/6ffb8132-6f33-26a2-7a24-cc256fc0158e/3e5c6265-089f-c4c0-1fc1-cf3fe9d2629f.gif'
+      }
       
       console.log({address : address, id: id, metadata : metadata});
 
@@ -142,7 +145,7 @@ export default {
           }
         })
       }catch(err){
-        alert("해당 DID의 NFT가 이미 존재합니다.");
+        alert("해당 NFT가 이미 존재합니다.");
       }
     },
 
