@@ -47,6 +47,7 @@
     "vue-sidebar-menu": "^5.0.1",
     "vue-simple-search-dropdown": "^1.0.1",
     "vue-spinner": "^1.0.4",
+    "vue-upload-drop-images": "^1.0.7",
     "vuelidate": "^0.7.6",
     "vuesax": "^3.12.2",
     "vuetify": "^2.5.8",
