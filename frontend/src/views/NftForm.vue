@@ -6,59 +6,65 @@
       <div class="section">
         <div class="md-layout">
           <div class="d-container">
-             <form @submit.prevent="addNft">
-            <div class="header">
-              <h1 style="color: navygray; margin-top: 25px">분양 NFT</h1>
-            </div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <div class="create-box">
-              <h2>새 NFT만들기</h2>
-              <div class="file_info">Image, Video, Audio or 3D Model</div>
-              <br />
-              <div class="file_info_detail">
-                File types supported: JPG,PNG,GIF,MP4,MP3,WAV, Max size: 100MB
-              </div>
-              <div class="file_info_detail">
-                Safari 외 브라우저에서는 동영상 'Hevc' 코덱을 지원하지 않아<br />
-                해당 코덱의 영상 파일 첨부 시 동영상 재생이 원활하지 않을 수
-                있습니다.
-                <br /><br />
-                *파일은 최대 3개까지 업로드할 수 있습니다
+            <form @submit.prevent="addNft">
+              <div class="header">
+                <h1 style="color: navygray; margin-top: 25px">분양 NFT</h1>
               </div>
               <br />
               <br />
               <br />
-          
-              <div class="row flex-row flex-nowrap">
-                <div class="Imageupload">
-                  <ImageUpload></ImageUpload>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <div class="create-box">
+                <h2>새 NFT만들기</h2>
+                <div class="file_info">Image, Video, Audio or 3D Model</div>
+                <br />
+                <div class="file_info_detail">
+                  File types supported: JPG,PNG,GIF,MP4,MP3,WAV, Max size: 100MB
+                </div>
+                <div class="file_info_detail">
+                  Safari 외 브라우저에서는 동영상 'Hevc' 코덱을 지원하지 않아<br />
+                  해당 코덱의 영상 파일 첨부 시 동영상 재생이 원활하지 않을 수
+                  있습니다.
+                  <br /><br />
+                  *파일은 최대 3개까지 업로드할 수 있습니다
+                </div>
+                <br />
+                <br />
+                <br />
+
+                <div class="row flex-row flex-nowrap">
+                  <div class="UploadImages">
+                    <UploadImages
+                      name="UploadImages"
+                      ref="fileInput"
+                      @changed="handleImages"
+                      :max="3"
+                      uploadMsg="웬디님이 분양할 피터펫 이미지들을 업로드 하세요!"
+                      clearAll="clear All"
+                    ></UploadImages>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <br />
-            <br />
-            <br />
-            <br /><br />
-            <br />
-            <br />
-            <div class="nft-name">
-              <label class="nft-n"> NFT 이름* </label><br />
-              <b-form-input
-                v-model="metadata.name"
-                placeholder="NFT Name"
-              ></b-form-input>
-            </div>
-
+              <br />
+              <br />
+              <br />
+              <br /><br />
+              <br />
+              <br />
+              <div class="nft-name">
+                <label class="nft-n"> NFT 이름* </label><br />
+                <b-form-input
+                  v-model="metadata.name"
+                  placeholder="NFT Name"
+                ></b-form-input>
+              </div>
             <br />
           <label class="choose-d"> 동물등록증을 선택해주세요* </label><br />
             <div class="choose-did">
@@ -100,34 +106,35 @@
             </div>
             <!-- 혈통증명서 -->
 
-           <label class="cert">
-                혈통증명서 첨부
-              </label>
-            <div class="certification">
-              <b-form-file multiple="multiple">
-                <template slot="file-name" slot-scope="{ names }">
-                  <b-badge variant="dark">{{ names[0] }}</b-badge>
-                  <b-badge v-if="names.length > 1" variant="dark" class="ml-1">
-                    +
-                    {{ names.length - 1 }}
-                    More files
-                  </b-badge>
-                </template>
-              </b-form-file>
-            </div>
+              <label class="cert"> 혈통증명서 첨부 </label>
+              <div class="certification">
+                <b-form-file multiple="multiple">
+                  <template slot="file-name" slot-scope="{ names }">
+                    <b-badge variant="dark">{{ names[0] }}</b-badge>
+                    <b-badge
+                      v-if="names.length > 1"
+                      variant="dark"
+                      class="ml-1"
+                    >
+                      +
+                      {{ names.length - 1 }}
+                      More files
+                    </b-badge>
+                  </template>
+                </b-form-file>
+              </div>
 
-            <!-- create complete button -->
-            <div class="create-complete">
-              <md-button
-                id="create-complete"
-                class="md-success md-lg"
-                type="submit"
-                style="font-size: 27px"
-              >
-                <b>Create</b>
-              </md-button>
-              
-            </div>
+              <!-- create complete button -->
+              <div class="create-complete">
+                <md-button
+                  id="create-complete"
+                  class="md-success md-lg"
+                  type="submit"
+                  style="font-size: 27px"
+                >
+                  <b>Create</b>
+                </md-button>
+              </div>
             </form>
           </div>
         </div>
@@ -137,7 +144,9 @@
 </template>
 
 <script>
-import ImageUpload from "./components/ImageUpload.vue";
+import UploadImages from "vue-upload-drop-images";
+
+import axios from "axios";
 
 export default {
   data() {
@@ -155,7 +164,7 @@ export default {
         desc: null,
         certi: null,
         repreImg: null,
-        addImgs : []
+        addImgs: [],
       },
       isLoading: false,
     };
@@ -163,7 +172,7 @@ export default {
   props: ["value", "items", "input_id"],
 
   methods: {
-    getDids: function(address) {
+    getDids: function (address) {
       if (address === undefined) {
         this.isLoading = ture;
       } else {
@@ -181,8 +190,28 @@ export default {
           });
       }
     },
-    addNft: function() {
-        console.log(this.metadata);
+
+    addNft: function () {
+      alert(this.metadata.did);
+    },
+
+    handleImages(files) {
+      console.log(files);
+
+      let fd = new FormData();
+      fd.append("file", files[0]);
+      axios
+        .post("https://metadata-api.klaytnapi.com/v1/metadata/asset", fd, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            "x-chain-id": "1001",
+            Authorization:
+              "Basic S0FTS1ZMNThRUUtaWFE2NUVQUEJERjJOOnJFRW9MdUJvUjVHdXBsU08tSlpMZXZ1X2xYOC1OeGc3dHhESmVBZDM=",
+          },
+        })
+        .then((res) => {
+          console.log(res.data.uri);
+        });
     },
     setName: function(did){
       console.log('call setName')
@@ -198,7 +227,7 @@ export default {
     }
   },
   components: {
-    ImageUpload,
+    UploadImages,
   },
   created() {
     const address = this.$store.state.user.address;
@@ -209,138 +238,136 @@ export default {
 </script>
 
 <style>
-@media screen and (min-width:1280px) {
-.custom-file-input{
-  margin-left: -480px
-}
-
-.custom-select {
-  width: 100%;
-}
-.choose-d {
-  margin-left: -730px;
+@media screen and (min-width: 1280px) {
+  .custom-file-input {
+    margin-left: -480px;
   }
-.choose-did {
-  width: 60%;
-  margin-left: 330px;
-  border: 0.8px solid rgba(182, 182, 182, 0.637);
-  border-radius: 0.3em;
-}
-.body {
-  height: 100%;
-  margin: 0;
-}
-.d-container {
-  position: relative;
-  display: inline-block;
-  width: 1580px;
-  max-height: 2600px;
-  top: 50px;
-  text-align: center;
-  padding: 70px 0px;
-  margin-bottom: 50px;
-}
-.header {
-  position: relative;
-  margin-top: 50px;
-  height: 100px;
-  width: 1300px;
-  text-align: center;
-  display: inline-block;
-  background-color: rgba(221, 221, 221, 0.377);
-}
-.con-img-upload {
-  flex-direction: row;
-  display: flex;
-  margin:0px auto;
-  display: inline-flexbox;
-}
-.Imageupload {
-  width: 250px;
-  margin: 20px auto;
-  flex-direction: row;
-  display: flex;
-}
-.file_info {
-  font-size: 1.8rem;
-}
-.create-box {
-  margin-top: 50px;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-.nft-name {
-  position: absolute;
-  top: 900px;
-  width: 940px;
-  margin-top: 110px;
-  margin-left: 330px;
-}
-.nft-p {
-  float: left;
-}
-.nft-price {
- position: absolute;
- width: 940px;
- margin-top: -60px;
- margin-left: 330px;
 
-}
-.nft-n {
-  float: left;
-
-}
-.dropdown {
-  z-index: 1;
-  position: absolute;
-  margin-top: 70px;
-  margin-left: 100px;
-  width: 1000px;
-}
-.drop {
-  margin-left: -320px;
-}
-.btn-group {
-  width: 500px;
-}
-.dropdown-toggle {
-  width: 500px;
-}
-.health-record {
-  position: absolute;
-  width: 940px;
-  margin-left: 330px;
-}
-.health-r {
-  float: left;
-}
-.description-dog {
-  position: relative;
-  width: 940px;
-  margin-left: 330px;
-  margin-top: 300px;
-}
-.description-d {
-  color: black;
-  float: left;
-}
-.certification {
-  border: 0.5px solid rgb(216, 216, 216);
-  width: 60%;
-  margin-top: 100px;
-  margin-left: 330px;
-  float: left;
-}
-.cert {
-  margin-left: -2080px;
-  margin-top: 70px;
-}
-.create-complete {
-  position: relative;
-  margin-right: 0;
-  margin-top: 200px;
-}
+  .custom-select {
+    width: 100%;
+  }
+  .choose-d {
+    margin-left: -730px;
+  }
+  .choose-did {
+    width: 60%;
+    margin-left: 330px;
+    border: 0.8px solid rgba(182, 182, 182, 0.637);
+    border-radius: 0.3em;
+  }
+  .body {
+    height: 100%;
+    margin: 0;
+  }
+  .d-container {
+    position: relative;
+    display: inline-block;
+    width: 1580px;
+    max-height: 2600px;
+    top: 50px;
+    text-align: center;
+    padding: 70px 0px;
+    margin-bottom: 50px;
+  }
+  .header {
+    position: relative;
+    margin-top: 50px;
+    height: 100px;
+    width: 1300px;
+    text-align: center;
+    display: inline-block;
+    background-color: rgba(221, 221, 221, 0.377);
+  }
+  .con-img-upload {
+    flex-direction: row;
+    display: flex;
+    margin: 0px auto;
+    display: inline-flexbox;
+  }
+  .UploadImages {
+    width: 250px;
+    margin: 20px auto;
+    flex-direction: row;
+    display: flex;
+  }
+  .file_info {
+    font-size: 1.8rem;
+  }
+  .create-box {
+    margin-top: 50px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .nft-name {
+    position: absolute;
+    top: 900px;
+    width: 940px;
+    margin-top: 110px;
+    margin-left: 330px;
+  }
+  .nft-p {
+    float: left;
+  }
+  .nft-price {
+    position: absolute;
+    width: 940px;
+    margin-top: -60px;
+    margin-left: 330px;
+  }
+  .nft-n {
+    float: left;
+  }
+  .dropdown {
+    z-index: 1;
+    position: absolute;
+    margin-top: 70px;
+    margin-left: 100px;
+    width: 1000px;
+  }
+  .drop {
+    margin-left: -320px;
+  }
+  .btn-group {
+    width: 500px;
+  }
+  .dropdown-toggle {
+    width: 500px;
+  }
+  .health-record {
+    position: absolute;
+    width: 940px;
+    margin-left: 330px;
+  }
+  .health-r {
+    float: left;
+  }
+  .description-dog {
+    position: relative;
+    width: 940px;
+    margin-left: 330px;
+    margin-top: 300px;
+  }
+  .description-d {
+    color: black;
+    float: left;
+  }
+  .certification {
+    border: 0.5px solid rgb(216, 216, 216);
+    width: 60%;
+    margin-top: 100px;
+    margin-left: 330px;
+    float: left;
+  }
+  .cert {
+    margin-left: -2080px;
+    margin-top: 70px;
+  }
+  .create-complete {
+    position: relative;
+    margin-right: 0;
+    margin-top: 200px;
+  }
 }
 </style>
