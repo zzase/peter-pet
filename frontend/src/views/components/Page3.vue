@@ -3,10 +3,10 @@
         <div class="mySale-nft">
             <h3>분양 NFT</h3>
         </div>
-        <!-- <div v-if="certiNfts.length === 0" class="nft-card1">
+        <div v-if="certiNfts.length === 0" class="nft-card1">
             <h2>아직 NFT를 만들지 않았어요!</h2>
             <b-button variant="default" href="/#/nft/form">분양용 NFT 만들기</b-button>
-        </div> -->
+        </div>
 
         <div class="m-5" >
                 <carousel-3d
@@ -16,7 +16,7 @@
                 :controlsVisible="true"
                 :border="0"
                 :width="585"
-                :height="370"
+                :height="470"
                 :space="500"
                 :clickable="true"
                 v-if="certiNfts.length"
@@ -29,7 +29,7 @@
                     img-alt="Image"
                     img-top
                     tag="article"
-                    style="max-width: 20rem; max-height: 80rem;"
+                    style="max-width: 20rem; max-height: 80rem; text-align: center;"
                     class="mb-2">
                     
                     <b-button v-on:click="goDetailCertiNft(certiNftTokenIds[index])" variant="rose">상세보기</b-button>
@@ -69,7 +69,7 @@
                     img-alt="Image"
                     img-top
                     tag="article"
-                    style="max-width: 20rem; max-height: 80rem;"
+                    style="max-width: 20rem; max-height: 80rem; text-align: center;"
                     class="mb-2">
                     
                     <b-button v-on:click="goDetailPersonalNft(personalNftTokenIds[index])" variant="rose">상세보기</b-button>

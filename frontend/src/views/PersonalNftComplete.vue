@@ -7,12 +7,14 @@
         <div class="md-layout">
           <div class="content">
             <!-- <h4>두남이의 Peter-Pet 등록이 완료되었습니다!</h4> -->
+            <div class="complete-m1">
             <img
               id="check"
               alt="brand"
               src="@/assets/img/nft/nft-c.png"
             />
-
+            </div>
+          <div class="nftcard2">
           <b-card
             id="personal-nft"
             :title= nft.name
@@ -20,18 +22,19 @@
             img-alt="Image"
             img-top
             tag="article"
-            style="max-width: 300px; max-height: 500px;"
+            style="max-width: 300px; max-height: 500px; text-align:center;"
             class="mb-2">
-            
+
             <b-button v-on:click="goDetailPersonalNft($route.query.tokenId)" variant="rose">상세보기</b-button>
-            
             </b-card>
-          <div class="mypage">
+          </div>
+
+          <div class="mypage2">
             <md-button id="mypage" href="#/mypage" class="md-success">
               <b>마이 페이지</b></md-button
             >
           </div>
-          <div class="mainpage">
+          <div class="mainpage2">
             <md-button id="mainpage" href="#/" class="md-default">
               <b>메인 페이지</b></md-button
             >
@@ -136,107 +139,18 @@ export default {
   border-radius: 1em;
   background-color: rgba(235, 235, 235, 0.897);
 }
-
-.content {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  position: relative;
-  display: inline-block;
-  left: 350px;
-  top: -200px;
-  margin: auto;
-}
-.check {
-  margin-left: 100px;
-}
-.hat {
-  z-index: 3;
-  left: 485px;
-  top: 650px;
-  z-index: 1;
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  margin: auto;
-}
-.my-box2 {
-  position: relative;
-  display: inline-block;
-  left: -370px;
-  top: 120px;
-  width: 30%;
-  height: 0.3%;
-  font-size: 19px;
-  color:rgb(125, 125, 133);
-  margin: auto;
-}
-.query {
-  position: relative;
-  top: 20px;
-  left: -100px;
-  font-size: 20px;
-  color:rgb(125, 125, 133);
-
-}
-.query-line {
-  position: relative;
-  width: 750px;
-  height: 2px;
-  top: 0px;
-  left: 450px;
-  background-color: rgba(235, 235, 235, 0.897);
-}
-.my-box3 {
-  position: relative;
-  display: inline-block;
-  width: 870px;
-  height: 380px;
-  border-radius: 3em;
-  top: -335px;
-  left: 350px;
-  border: 2px solid rgba(221, 219, 219, 0.897);
-  margin: auto;
-}
-.con {
-  position: absolute;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  margin-top: 10%;
-  margin-left: 40%;
-  margin: auto;
-}
-.check {
-  margin-left: 40%;
-  margin-top: 20%;
-}
-.my-box4 {
-  position: relative;
-  display: inline-block;
-  width: 30%;
-  height: 0.3%;
-  left: 200px;
-  top: 400px;
-  background-color: rgba(12, 255, 4, 0.897);
-}
-.my-box5 {
-  position: relative;
-  display: inline-block;
-  width: 50%;
-  height: 0.2%;
-  left: 25%;
-  top: 38%;
-  background-color: rgba(248, 129, 17, 0.788);
-}
-.mypage {
+.mypage2 {
   z-index: 2;
   position: relative;
   display: inline-block;
-  top: 1000px;
-  left: 750px;
+  top: 150px;
+  left: -210px;
 }
-.mainpage {
+.mainpage2 {
   position: relative;
   display: inline-block;
-  top: 1000px;
-  left: 900px;
+  top: 150px;
+  left: -180px;
 }
 .personal-nft img {
   position: absolute;
@@ -246,5 +160,13 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.complete-m1 {
+  position: relative;
+  left: -360px;
+}
+.nftcard2 {
+  position: relative;
+  left: -330px;
 }
 </style>

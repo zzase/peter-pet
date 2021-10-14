@@ -8,12 +8,16 @@
                <div class="flex-container1">
                    <!-- img  -->
                     <div class="nft-img">
-                        <h1>대표 이미지</h1>
-                        <img :src="nft.repreImg">
+                      <div class="main-img">
+                        <!-- <h3>대표 이미지</h3> -->
+                        <img id="main" :src="nft.repreImg">
+                      </div>
 
-                        <h3>추가 이미지</h3>
+                        <!-- <h3>추가 이미지</h3> -->
+                        <div class="sub-img">
                         <div v-for="(img,index) in nft.addImgs" :key="img" :index="index" >
                           <img :src="img" width="100" height="100">
+                        </div>
                         </div>
                     </div>
 
@@ -117,7 +121,7 @@ export default{
 .nft-img {
     position:relative;
     max-width: 700px;
-    border: 1px solid black;
+    border: 1px solid rgb(224, 224, 224);
     height: 630px;
     box-sizing:border-box;
 }
@@ -143,5 +147,30 @@ export default{
 }
 .nft-contents p {
     font-size: 18px;
+}
+.main-img{
+  position: relative;
+  left: 150px;
+  top: 20px;
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+}
+.main-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(50, 50);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.sub-img {
+  position: relative;
+  top: 100px;
+  left: 70px;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
 }
 </style>
