@@ -174,7 +174,7 @@ router.post('/make/certiMetaData',async function(req,res,next) {
     const nftCA = '0x504e0749223ea5d8b5cfa167813b0ccab9d254df'
     console.log('Make personal-NFT api 호출');
     const address = req.body.address; //address = this.$store.state.user.address
-    const id = req.body.id; // id = did 맨 끝 10자리 
+    const id = req.body.id; // address + index
     const data = req.body.metadata;
 
     let uri = ''

@@ -95,7 +95,7 @@ export default {
     },
     getDids: function(address) {
       this.$http
-        .get(`http://localhost:3000/api/pet/get/all/dids/${address}`, {})
+        .get(`http://localhost:3000/api/pet/dids/owner/${address}`, {})
         .then((res) => {
           console.log(res.data);
           for (var i = 0; i < res.data.length; i++) {
@@ -109,7 +109,7 @@ export default {
     },
     getInfo: function(did) {
       this.$http
-        .get(`http://localhost:3000/api/pet/get/all/petInfos/${did}`, {})
+        .get(`http://localhost:3000/api/pet/info/did/${did}`, {})
         .then((res) => {
           console.log(res.data);
           this.peterpet = res.data.peterpet;

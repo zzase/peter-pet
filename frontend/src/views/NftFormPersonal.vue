@@ -120,7 +120,7 @@ export default {
 
     addNft: async function () {
       const address = this.$store.state.user.address;
-      const id = this.id +1;
+      const id = this.id;
 
       const metadata = this.metadata;
       if(metadata.img === null){
@@ -145,7 +145,7 @@ export default {
           }
         })
       }catch(err){
-        alert("해당 NFT가 이미 존재합니다.");
+        alert(id);
       }
     },
 
@@ -153,7 +153,8 @@ export default {
       try{
         await this.$http.get(`http://localhost:3000/api/nft/personal/list/owner/${address}`,{})
         .then((res)=>{
-          this.id = res.data.items.length;
+          this.id = `${this.$store.state.user.address.substring(2,12)}${res.data.items.length+1}`;
+          console.log(this.id);
         })
       }catch(err){
         this.id = 0;
