@@ -55,18 +55,9 @@
               <br />
               <br />
               <br />
-              <br /><br />
               <br />
-              <br />
-              <div class="nft-name">
-                <label class="nft-n"> NFT 이름* </label><br />
-                <b-form-input
-                  v-model="metadata.name"
-                  placeholder="NFT Name"
-                ></b-form-input>
-              </div>
-            <br />
-          <label class="choose-d"> 동물등록증을 선택해주세요* </label><br />
+
+               <label class="choose-d"> 동물등록증을 선택해주세요* </label><br />
             <div class="choose-did">
               <b-form-select v-model="metadata.did" :options="options">
                 <template #first>
@@ -75,7 +66,18 @@
                   >
                 </template>
               </b-form-select>
+
             </div>
+              <div class="nft-name">
+                <label class="nft-n"> NFT 이름* </label><br />
+                <b-form-input
+                  v-model="metadata.name"
+                  placeholder="NFT Name"
+                  readonly
+                ></b-form-input>
+              </div>
+            <br />
+         
 
             <br/><br/>
 
@@ -138,7 +140,7 @@
               </div>
 
               <!-- create complete button -->
-              <div class="create-complete">
+              <div class="create-completeb">
                 <md-button
                   id="create-complete"
                   class="md-success md-lg"
@@ -359,7 +361,7 @@ export default {
     position: relative;
     display: inline-block;
     width: 1580px;
-    max-height: 2600px;
+    max-height: 2700px;
     top: 50px;
     text-align: center;
     padding: 70px 0px;
@@ -400,16 +402,7 @@ export default {
     position: absolute;
     top: 900px;
     width: 940px;
-    margin-top: 110px;
-    margin-left: 330px;
-  }
-  .nft-p {
-    float: left;
-  }
-  .nft-price {
-    position: absolute;
-    width: 940px;
-    margin-top: -60px;
+    margin-top: 320px;
     margin-left: 330px;
   }
   .nft-n {
@@ -460,10 +453,12 @@ export default {
     margin-left: -2080px;
     margin-top: 70px;
   }
-  .create-complete {
+  .create-completeb {
+    width: 300px;
+    height: 300px;
     position: relative;
-    margin-right: 0;
-    margin-top: 200px;
+    margin-left: 650px;
+    top: 40px;
   }
 }
 </style>

@@ -5,12 +5,12 @@
       <div class="section">
         <div class="my-box1"></div>
         <div class="md-layout">
-          <div class="content">
+          <div class="complete-content">
             <!-- <h4>두남이의 Peter-Pet 등록이 완료되었습니다!</h4> -->
             <img
               id="check"
               alt="brand"
-              src="@/assets/img/Regist/complete.png"
+              src="@/assets/img/nft/nft-c.png"
             />
 
           <b-card
@@ -25,12 +25,12 @@
             <b-button v-on:click="goDetailCertiNft($route.query.tokenId)" variant="rose">상세보기</b-button>
             
             </b-card>
-          <div class="mypage">
+          <div class="mypage-1">
             <md-button id="mypage" href="#/mypage" class="md-success">
               <b>마이 페이지</b></md-button
             >
           </div>
-          <div class="mainpage">
+          <div class="mainpage-2">
             <md-button id="mainpage" href="#/" class="md-default">
               <b>메인 페이지</b></md-button
             >
@@ -136,12 +136,12 @@ export default {
   background-color: rgba(235, 235, 235, 0.897);
 }
 
-.content {
+.complete-content {
   font-family: Georgia, "Times New Roman", Times, serif;
   position: relative;
   display: inline-block;
-  left: 350px;
-  top: -200px;
+  left: -40px;
+  top: -100px;
   margin: auto;
 }
 .check {
@@ -224,17 +224,17 @@ export default {
   top: 38%;
   background-color: rgba(248, 129, 17, 0.788);
 }
-.mypage {
+.mypage-1 {
   z-index: 2;
-  position: relative;
+  position: absolute;
   display: inline-block;
-  top: 1000px;
-  left: 750px;
+  top: 1050px;
+  left: 130px;
 }
-.mainpage {
-  position: relative;
+.mainpage-2 {
+  position: absolute;
   display: inline-block;
-  top: 1000px;
-  left: 900px;
+  top: 1050px;
+  left: 280px;
 }
 </style>

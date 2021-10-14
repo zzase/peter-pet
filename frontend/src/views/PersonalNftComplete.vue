@@ -10,16 +10,17 @@
             <img
               id="check"
               alt="brand"
-              src="@/assets/img/Regist/complete.png"
+              src="@/assets/img/nft/nft-c.png"
             />
 
           <b-card
+            id="personal-nft"
             :title= nft.name
             :img-src= nft.img
             img-alt="Image"
             img-top
             tag="article"
-            style="max-width: 20rem; max-height: 80rem;"
+            style="max-width: 300px; max-height: 500px;"
             class="mb-2">
             
             <b-button v-on:click="goDetailPersonalNft($route.query.tokenId)" variant="rose">상세보기</b-button>
@@ -236,5 +237,14 @@ export default {
   display: inline-block;
   top: 1000px;
   left: 900px;
+}
+.personal-nft img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(50, 50);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>
