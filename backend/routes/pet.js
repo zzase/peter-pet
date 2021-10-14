@@ -10,10 +10,10 @@ var router = express.Router();
 
 /* GET home page. */
 
-router.get('/get/all/dids/:address', async function(req, res, next) {
+router.get('/dids/owner/:address', async function(req, res, next) {
   console.log('get all dids api call');
   const address = req.params.address;
-  if(address === "undefined") res.status(404).send('address 정보가 올바르지 않습니다');
+  if(address === "undefined") res.status(400).send('address 정보가 올바르지 않습니다');
   else {
     try{
       const dids = await contract.methods.getDidsByWenddy(address).call();
@@ -23,7 +23,7 @@ router.get('/get/all/dids/:address', async function(req, res, next) {
         names.push(await contract.methods.getPetNameByDid(`${dids[i]}`).call());
       }
       if(dids === undefined){
-        res.status(404).send(`${address}로 등록된 did가 없습니다`);
+        res.status(400).send(`${address}로 등록된 did가 없습니다`);
       }
       else {
         res.status(200).send({address : address, dids: dids, names:names, length:length});

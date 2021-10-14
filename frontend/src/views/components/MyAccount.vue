@@ -58,7 +58,7 @@
        })
      },
      getDidInfo: function(address) {
-       this.$http.get(`http://localhost:3000/api/pet/get/all/dids/${address}`,{
+       this.$http.get(`http://localhost:3000/api/pet/dids/owner/${address}`,{
        })
        .then((res) => {
          console.log(res.data);
