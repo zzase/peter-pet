@@ -12,7 +12,8 @@
                         <!-- <h3>대표 이미지</h3> -->
                         <img id="main" :src="nft.repreImg">
                       </div>
-
+                      <br><br>
+                      <hr width="700px;">
                         <!-- <h3>추가 이미지</h3> -->
                         <div class="sub-img">
                         <div v-for="(img,index) in nft.addImgs" :key="img" :index="index" >
@@ -121,9 +122,10 @@ export default{
 .nft-img {
     position:relative;
     max-width: 700px;
-    border: 1px solid rgb(224, 224, 224);
+    border: 1px solid rgba(235, 235, 235, 0.719);
     height: 630px;
     box-sizing:border-box;
+    border-radius: 2em;
 }
 .nft-num {
     display: inline-block;
@@ -151,7 +153,7 @@ export default{
 .main-img{
   position: relative;
   left: 150px;
-  top: 20px;
+  top: 30px;
   width: 400px;
   height: 400px;
   overflow: hidden;
@@ -167,10 +169,14 @@ export default{
 }
 .sub-img {
   position: relative;
-  top: 100px;
-  left: 70px;
-  width: 100px;
-  height: 100px;
+  top: 15px;
+  left: 100px;
+  width: 200px;
+  height: 200px;
   overflow: hidden;
+  display: flex;
+  flex-direction: row;
 }
+
+
 </style>

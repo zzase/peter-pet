@@ -37,6 +37,7 @@
               <b>메인 페이지</b></md-button
             >
           </div>
+          <br><br>
         </div>
       </div>
     </div>
@@ -140,14 +141,14 @@ export default {
   z-index: 2;
   position: absolute;
   display: inline-block;
-  top: 960px;
-  left: 110px;
+  top: 980px;
+  left: 108px;
 }
 .mainpage-2 {
   position: absolute;
   display: inline-block;
-  top: 960px;
-  left: 260px;
+  top: 980px;
+  left: 245px;
 }
 
 </style>
