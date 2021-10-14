@@ -145,7 +145,7 @@ export default {
           }
         })
       }catch(err){
-        alert(id);
+        alert("이미 존재하는 NFT ID입니다");
       }
     },
 
@@ -153,7 +153,7 @@ export default {
       try{
         await this.$http.get(`http://localhost:3000/api/nft/personal/list/owner/${address}`,{})
         .then((res)=>{
-          this.id = `${this.$store.state.user.address.substring(2,12)}${res.data.items.length+1}`;
+          this.id = `${res.data.items.length+1}${this.$store.state.user.address.substring(2,10)}${res.data.items.length+1}`;
           console.log(this.id);
         })
       }catch(err){
