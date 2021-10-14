@@ -54,7 +54,7 @@ router.get('/noqr', async function(req, res, next) {
   })
 });
 
-router.get('/get/all/petInfos/:did', async function(req, res, next) {
+router.get('/info/did/:did', async function(req, res, next) {
   console.log('get all pet Info api call');
   const did = req.params.did;
   if(did === undefined) res.status(404).send('did 정보가 올바르지 않습니다');

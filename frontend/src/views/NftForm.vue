@@ -239,7 +239,7 @@ export default {
 
     getRepreImg : function(did) {
       if(this.checked){
-        this.$http.get(`http://localhost:3000/api/pet/get/all/petInfos/${did}`)
+        this.$http.get(`http://localhost:3000/api/pet/info/did/${did}`)
         .then((res)=>{
           this.metadata.repreImg = res.data.peterpet.imgLink;
         })

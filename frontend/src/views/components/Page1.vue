@@ -109,7 +109,7 @@ export default {
     },
     getInfo: function(did) {
       this.$http
-        .get(`http://localhost:3000/api/pet/get/all/petInfos/${did}`, {})
+        .get(`http://localhost:3000/api/pet/info/did/${did}`, {})
         .then((res) => {
           console.log(res.data);
           this.peterpet = res.data.peterpet;
