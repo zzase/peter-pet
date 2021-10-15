@@ -8,17 +8,17 @@ const node = require('../kas/node')
 import {connection} from '../mysql/connector';
 
 /* GET users listing. */
-router.get('/get/balance/:address',async function(req, res, next) {
+router.get('/balance/address/:address',async function(req, res, next) {
   const address = req.params.address;
   try{
     const balance = await node.getBalance(address);
     res.json({balance:balance});
   }catch{
-    res.status(404).send('올바르지 않은 주소');
+    res.status(400).send({msg : '올바르지 않은 주소'});
   }
 });
 
-router.get('/wenddy/info/:did', async function(req,res,next){
+router.get('/info/did/:did', async function(req,res,next){
   const did = req.params.did;
   connection.query(`select g.name as name, g.phone as phone from government g , user u , did d where d.u_id = u.u_id and g.u_id=u.u_id and d.did ='${did}';`
   ,async function(err,rows){
@@ -36,7 +36,7 @@ router.get('/wenddy/info/:did', async function(req,res,next){
   })
 })
 
-router.get('/wenddy/check/:uid', async function(req,res,nex){
+router.get('/check/gov/id/:uid', async function(req,res,nex){
   const uid = req.params.uid;
   connection.query(`select * from government g ,user u where g.u_id  = u.u_id and g.u_id = '${uid}';`,(err,rows)=>{
     let isReg = false;
@@ -63,7 +63,7 @@ router.get('/wenddy/check/:uid', async function(req,res,nex){
   })
 })
 
-router.post('/regist',async function(req,res,next) {
+router.post('/regist/gov',async function(req,res,next) {
   console.log('등록 api 호출');
   const wenddy = {
     'name' : req.body.wenddy.name,

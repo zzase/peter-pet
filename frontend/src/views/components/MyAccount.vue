@@ -47,7 +47,7 @@
    },
    methods: {
      getBalance: function(address) {
-       this.$http.get(`http://localhost:3000/api/user/get/balance/${address}`,{
+       this.$http.get(`http://localhost:3000/api/wenddy/balance/address/${address}`,{
        })
        .then((res) => {
          console.log(res.data);

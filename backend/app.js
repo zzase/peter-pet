@@ -40,7 +40,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/api/user", usersRouter);
+app.use("/api/wenddy", usersRouter);
 app.use("/api/pet", peterpetRouter);
 app.use("/api/ipfs", IPFSRouter);
 app.use("/api/nft",nftRouter);

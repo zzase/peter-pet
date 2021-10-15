@@ -743,7 +743,7 @@ export default {
 
     checkIsReg : function(uid) {
        this.$http
-        .get(`http://localhost:3000/api/user/wenddy/check/${uid}`)
+        .get(`http://localhost:3000/api/wenddy/check/gov/id/${uid}`)
         .then((res) => {
           if (res.data.isReg) {
             console.log(res.data.wenddy);
@@ -808,7 +808,7 @@ export default {
 
       this.$http
         .post(
-          "http://localhost:3000/api/user/regist",
+          "http://localhost:3000/api/wenddy/regist/gov",
           {
             wenddy: wenddy,
           },

@@ -305,7 +305,7 @@ export default {
     login: function () {
       this.$http
         .post(
-          "http://localhost:3000/api/user/login",
+          "http://localhost:3000/api/wenddy/login",
           { user: this.user },
           { "Content-Type": "application-json" }
         )
