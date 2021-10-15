@@ -19,7 +19,6 @@
               <br />
               <br />
               <br />
-              <br />
               <div class="create-box">
                 <h2>새 NFT만들기</h2>
                 <div class="file_info">Image, Video, Audio or 3D Model</div>
@@ -33,7 +32,7 @@
                   있습니다.
                   <br /><br />
                   *파일은 최대 3개까지 업로드할 수 있으며 첫번째 파일이 대표 이미지가 됩니다. <br/>
-                  *기존에 등록된 이미지를 대표 이미지로 하고 싶으신 경우 체크해주세요 <input type="checkbox" id="checkbox" v-model="checked">
+                  
                 </div>
                 <br/>
                 <br />
@@ -50,6 +49,7 @@
                     ></UploadImages>
                   </div>
                 </div>
+                *기존에 등록된 이미지를 대표 이미지로 하고 싶으신 경우 체크해주세요 <input type="checkbox" id="checkbox" v-model="checked">
               </div>
               
               <br />
@@ -96,7 +96,7 @@
                 placeholder="textarea"
                 rows="8"
               ></b-form-textarea>
-            </div>
+            </div><br>
             <!-- 강아지 성격 및 정보 -->
             <div class="description-dog">
               <label class="description-d">
@@ -108,7 +108,7 @@
                 placeholder="textarea"
                 rows="8"
               ></b-form-textarea>
-            </div>
+            </div><br>
             <!-- 혈통증명서 -->
 
               <label class="cert"> 혈통증명서 첨부 </label>
@@ -402,7 +402,7 @@ export default {
     position: absolute;
     top: 900px;
     width: 940px;
-    margin-top: 320px;
+    margin-top: 290px;
     margin-left: 330px;
   }
   .nft-n {
