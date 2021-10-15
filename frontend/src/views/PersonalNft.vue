@@ -8,9 +8,21 @@
                <div class="flex-container1">
                    <!-- img  -->
                     <div class="nft-img">
-                        <h1>img</h1>
+                         <div class="main-img">
+                      <!-- 대표 이미지 -->
                         <img :src="nft.img" width="300" height="500">
+                         </div>
+                         <br><br>
+                      <hr width="700px;">
+                      <!-- 추가 이미지 -->
+                      <div class="sub-img">
+                        <div v-for="(img,index) in nft.addImgs" :key="img" :index="index" >
+                          <img :src="img" width="100" height="100">
+                        </div>
+                        </div>
                     </div>
+
+
 
                     <div class="nft-num">
                         <h4 style="color:white; margin-top: 40px; margin-left: 50px;">{{nft.name}} </h4>

@@ -8,12 +8,17 @@
                <div class="flex-container1">
                    <!-- img  -->
                     <div class="nft-img">
-                        <h1>대표 이미지</h1>
-                        <img :src="nft.repreImg">
-
-                        <h3>추가 이미지</h3>
+                      <div class="main-img">
+                        <!-- <h3>대표 이미지</h3> -->
+                        <img id="main" :src="nft.repreImg">
+                      </div>
+                      <br><br>
+                      <hr width="700px;">
+                        <!-- <h3>추가 이미지</h3> -->
+                        <div class="sub-img">
                         <div v-for="(img,index) in nft.addImgs" :key="img" :index="index" >
                           <img :src="img" width="100" height="100">
+                        </div>
                         </div>
                     </div>
 
@@ -117,9 +122,10 @@ export default{
 .nft-img {
     position:relative;
     max-width: 700px;
-    border: 1px solid black;
+    border: 1px solid rgba(235, 235, 235, 0.719);
     height: 630px;
     box-sizing:border-box;
+    border-radius: 2em;
 }
 .nft-num {
     display: inline-block;
@@ -144,4 +150,33 @@ export default{
 .nft-contents p {
     font-size: 18px;
 }
+.main-img{
+  position: relative;
+  left: 150px;
+  top: 30px;
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+}
+.main-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(50, 50);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.sub-img {
+  position: relative;
+  top: 15px;
+  left: 100px;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+
+
 </style>
