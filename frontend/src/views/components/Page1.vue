@@ -1,4 +1,5 @@
 <template>
+    <div class="container">
         <div class="contents">
           <div class="v-application--wrap">
           <div class="page-head">
@@ -55,7 +56,8 @@
        </div>
        <br><br>
    </div>
-      </div>
+  </div>
+ </div>
 
 </template>
 
@@ -167,6 +169,7 @@ export default {
   position: relative;
   margin-top: 10%;
   margin-bottom: 30%;
+  margin-left: -90px;
 }
 #dids {
   margin-left: 0px;
@@ -183,20 +186,20 @@ export default {
 }
 .name {
   z-index: 1;
-  left: 386px;
+  left: 360px;
   position:relative;
   bottom: 328px;
 }
 .number {
   position: relative;
   top: -551px;
-  left: 398px;
+  left: 365px;
 }
 
 .imghash {
   position: relative;
-  left: 310px;
-  top: -90px;
+  left: 275px;
+  top: -165px;
   width: 200px;
   height: 200px;
   overflow: hidden;
@@ -214,58 +217,58 @@ export default {
 }
 .birth {
   position: relative;
-  left: 408px;
-  bottom: 12px;
+  left: 380px;
+  bottom: 78px;
 }
 .gender {
   position: relative;
-  left: 385px;
-  bottom: 0px;
+  left: 360px;
+  bottom: 67px;
 }
 .breedOfDog {
   position: relative;
-  left: 778px;
-  top: -390px;
+  left: 747px;
+  top: -456px;
 }
 .furColor {
   position: relative;
-  left: 778px;
-  top: -378px;
+  left: 747px;
+  top: -445px;
 }
 .adoptionDate {
   position: relative;
-  left: 778px;
-  top: -368px;
+  left: 750px;
+  top: -435px;
 }
 .isNeutering {
   position: relative;
-  bottom: 349px;
-  left: 823px;
+  bottom: 415px;
+  left: 795px;
 }
 .vaccinationHistory {
   position: relative;
-  bottom: 328px;
-  left: 804px;
+  bottom: 395px;
+  left: 775px;
 }
 .notes {
   position: relative;
-  bottom: 279px;
-  left: 800px;
+  bottom: 344px;
+  left: 770px;
 }
 .issueyear {
   position: relative;
-  bottom: 200px;
-  left: 533px;
+  bottom: 266px;
+  left: 505px;
 }
 .issuemonth {
   position: relative;
-  bottom: 247px;
-  left: 640px;
+  bottom: 312px;
+  left: 610px;
 }
 .issuedate {
   position: relative;
-  bottom: 293px;
-  left: 727px;
+  bottom: 358px;
+  left: 698px;
 }
 p {
   font-size: 20px;

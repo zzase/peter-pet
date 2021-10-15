@@ -1,4 +1,5 @@
 <template>
+<div class="container">
     <v-app id="page3">
         <div class="mySale-nft">
             <br>
@@ -83,7 +84,7 @@
         </div>
 
 </v-app>
-
+</div>
 </template>
 
 <script>
