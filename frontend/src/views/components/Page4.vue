@@ -25,26 +25,25 @@ export default {
     return {
       columns: [
         {
-          label: '신고자',
-          field: 'did',
-        },
-        {
-          label: '신고날짜',
+          label: '신고자 ID',
           field: 'id',
         },
         {
+          label: '신고날짜',
+          field: 'missingDate',
+        },
+        {
           label: '반려견DID',
-          field: 'issueDate',
+          field: 'did',
         },
         {
           label: '상태',
-          field: 'url',
+          field: '',
         },
       ],
       rows: [],
 
       did: '',
-      test: '',
 
       };
     }

@@ -144,7 +144,7 @@ export default {
   position: relative;
   display: inline-block;
   top: 150px;
-  left: -210px;
+  left: -200px;
 }
 .mainpage2 {
   position: relative;

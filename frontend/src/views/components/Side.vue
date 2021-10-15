@@ -96,10 +96,10 @@ let router = new VueRouter({
     data () {
       return {
         items: [
-          { title: 'My 동물등록증', icon: 'mdi-view-dashboard', url: '/mypage/page1' },
-          { title: 'My 실종신고', icon: 'mdi-image', url: '/mypage/page2' },
-          { title: 'My NFT', icon: 'mdi-help-box', url: '/mypage/page3' },
-          { title: 'My 실종현황 관리', icon: 'mdi-help-box', url: '/mypage/page4' }
+          { title: 'My 동물등록증', icon: 'mdi-clipboard-multiple', url: '/mypage/page1' },
+          { title: 'My 실종신고', icon: 'mdi-magnify-scan', url: '/mypage/page2' },
+          { title: 'My NFT', icon: 'mdi-database', url: '/mypage/page3' },
+          { title: 'My 실종현황 관리', icon: 'mdi-file-search-outline', url: '/mypage/page4' }
         ],
         right: null,
       }

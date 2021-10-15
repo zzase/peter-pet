@@ -3,7 +3,7 @@
     <v-app id="page3">
         <div class="mySale-nft">
             <br>
-            <h3>분양 NFT</h3>
+            <h4>분양 NFT</h4>
         </div>
         <div v-if="certiNfts.length === 0" class="nft-card1">
             <h2>아직 NFT를 만들지 않았어요!</h2>
@@ -45,7 +45,7 @@
 
         <div class="myOwn-nft">
             <br>
-            <h3>소장 NFT</h3>
+            <h4>소장 NFT</h4>
         </div>
 
         <div v-if="personalNfts.length === 0" class="nft-card2">
@@ -190,11 +190,11 @@ export default {
 
 <style>
 .mySale-nft {
-    background-color: rgb(231, 229, 117);
+    background-color: darkslategray;
     border-radius: 4em;
     position: absolute;
     width: 170px;
-    height: 80px;
+    height: 70px;
     text-align: center;
     left: 30px;
     margin-top: 5px;
@@ -209,10 +209,10 @@ export default {
     flex-direction: row;
 }
 .myOwn-nft {
-    background-color:rgb(76, 177, 218);
+    background-color:darkslategray;
     position: absolute;
     width: 170px;
-    height: 80px;
+    height: 70px;
     top: 1000px;
     margin-top: -300px;
     margin-bottom: 200px;
