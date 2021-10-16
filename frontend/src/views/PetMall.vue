@@ -26,86 +26,21 @@
                      </ul>
                    </div>
                    <div class="item_list">
-                     <div class="i-card">
+         
+                     <div class="i-card" v-for="(nft, index) in certiNfts" :index="index" :key="index">
                        <div class="i-img">
-                         <img src="@/assets/img/Mall/necklace1.png">
+                         <img v-bind:src="nft.repreImgs">
                        </div>
                        <div class="i-text">
-                         <h5>가죽 외장칩</h5>
+                         <h5>{{ nft.name }}</h5>
                          <p>welcome to peter-pet mall. </p>
                          <button><i class="fas fa-check"></i> Buy </button>
                        </div>
                      </div>
-                     <div class="i-card">
-                       <div class="i-img">
-                         <img src="@/assets/img/Mall/necklace-2.png">
-                       </div>
-                       <div class="i-text">
-                         <h5>4색 외장칩</h5>
-                         <p>welcome to peter-pet mall.</p>
-                         <button><i class="fas fa-check"></i> Buy </button>
-                       </div>
-                     </div>
-                     <div class="i-card">
-                       <div class="i-img">
-                         <img src="@/assets/img/Mall/necklace-3.png">
-                       </div>
-                       <div class="i-text">
-                         <h5>천연 가죽 고급지개</h5>
-                         <p>welcome to peter-pet mall.  </p>
-                         <button><i class="fas fa-check"></i> Buy </button>
-                       </div>
-                     </div>
-                     <div class="i-card">
-                       <div class="i-img">
-                         <img src="@/assets/img/Mall/necklace-4.png">
-                       </div>
-                       <div class="i-text">
-                         <h5>우리집 삼남매</h5>
-                         <p>welcome to peter-pet mall. </p>
-                         <button><i class="fas fa-check"></i> Buy </button>
-                       </div>
-                     </div>
-                     <div class="i-card">
-                       <div class="i-img">
-                         <img src="@/assets/img/Mall/necklace-5.png">
-                       </div>
-                       <div class="i-text">
-                         <h5>퍼스널컬러 외장칩</h5>
-                         <p>welcome to peter-pet mall.  </p>
-                         <button><i class="fas fa-check"></i> Buy </button>
-                       </div>
-                     </div>
-                     <div class="i-card">
-                       <div class="i-img">
-                         <img src="@/assets/img/Mall/necklace-6.png">
-                       </div>
-                       <div class="i-text">
-                         <h5>페콩칩</h5>
-                         <p>welcome to peter-pet mall. </p>
-                         <button><i class="fas fa-check"></i> Buy </button>
-                       </div>
-                     </div>
-                     <div class="i-card">
-                       <div class="i-img">
-                         <img src="@/assets/img/Mall/necklace-7.png">
-                       </div>
-                       <div class="i-text">
-                         <h5>홀로그램 외장칩</h5>
-                         <p>welcome to peter-pet mall. </p>
-                         <button><i class="fas fa-check"></i> Buy </button>
-                       </div>
-                     </div>
-                     <div class="i-card">
-                       <div class="i-img">
-                         <img src="@/assets/img/Mall/necklace-8.png">
-                       </div>
-                       <div class="i-text">
-                         <h5>민트 외장칩</h5>
-                         <p>welcome to peter-pet mall.  </p>
-                         <button><i class="fas fa-check"></i> Buy </button>
-                       </div>
-                     </div>
+             
+                     
+                    
+            
                    </div>
                </div>
                </section>
@@ -117,7 +52,39 @@
 </template>
 
 <script> 
+export default {
+  data() {
+    return {
+      certiNfts: [],
+      certiNftTokenIds: []
+    }
+  },
+  methods: {
+    getCertiNfts: async function(address) {
+      const certiOfOwner = await this.$http.get(
+        `http://localhost:3000/api/nft/certi/list/owner/${address}`,
+        {}
+      );
+       if (certiOfOwner.data.msg) {
+        for (var i = 0; i < certiOfOwner.data.items.length; i++) {
+          console.log("indexcount", i);
+          const targetItems = certiOfOwner.data.items[i];
 
+          this.certiNftTokenIds.push(targetItems.tokenId);
+
+          const certiInfos = await this.$http.get(targetItems.tokenUri, {});
+          this.certiNfts.push({
+            name: certiInfos.data.name,
+            repreImg: certiInfos.data.repreImg
+           });
+         }
+       }
+    },
+    created() {
+      this.getCertiNfts(this.$store.state.user.address);
+    }
+  }
+}
 </script>
 
 <style>

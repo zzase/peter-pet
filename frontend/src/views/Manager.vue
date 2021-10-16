@@ -108,7 +108,7 @@ export default {
     },
 
     makeQR: function (params) {
-      this.text = `${FRONTEND_SERVER_URI}pet/own/${params.row.did}`;
+      this.text = `http://localhost:3000/pet/own/${params.row.did}`;
       this.did = `${params.row.did}`;
       this.qId = params.row.did;
       this.showModal = true;
