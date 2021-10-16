@@ -6,6 +6,10 @@
           <h2 data-v-clf1971a class="title-text-center">MY 동물등록증</h2>
         </div>
 
+        <div class="spinner-div" v-if="isLoading">
+          <Spinner></Spinner>
+        </div>
+
         <div class="m-5">
           <carousel-3d
             :autoplay="false"
@@ -67,6 +71,7 @@
 <script>
 import { Carousel3d, Slide } from "vue-carousel-3d";
 import Card from "./Card.vue";
+import Spinner from "./Spinner.vue";
 
 export default {
   name: "Accordion",
@@ -81,6 +86,7 @@ export default {
       counter: 0,
 
       peterpet: {},
+      isLoading: true,
     };
   },
   mounted() {
@@ -110,6 +116,7 @@ export default {
               name: res.data.names[i],
             });
           }
+          this.isLoading = false;
         });
     },
     getInfo: function (did) {
@@ -137,6 +144,7 @@ export default {
     Card,
     Carousel3d,
     Slide,
+    Spinner,
   },
 
   computed: {
