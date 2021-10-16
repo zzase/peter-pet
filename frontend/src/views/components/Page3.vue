@@ -5,6 +5,7 @@
     <div class="container">
                 <br><br>
                 <vue-good-table 
+                text-align: center;
                 :columns="columns" :rows="rows"
                 :search-options="{
                 enabled: true,
@@ -25,16 +26,16 @@ export default {
     return {
       columns: [
         {
-          label: '신고자 ID',
-          field: 'id',
+          label: '신고자',
+          field: 'wenddy.name',
         },
         {
           label: '신고날짜',
           field: 'missingDate',
         },
         {
-          label: '반려견DID',
-          field: 'did',
+          label: '실종된 반려견',
+          field: 'peterpet.name',
         },
         {
           label: '상태',
@@ -44,6 +45,9 @@ export default {
       rows: [],
 
       did: '',
+      peterpet: [],
+      wenddy: [],
+      
 
       };
     }

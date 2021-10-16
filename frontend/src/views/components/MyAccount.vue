@@ -28,7 +28,7 @@
             <br><h5><md-icon>pets</md-icon>&nbsp;&nbsp;&nbsp;&nbsp;내 반려견 </h5>
             <br>
         <div >
-            <h5 style="display:inline" v-for="pet in pets" :key="pet">{{pet.name}}  </h5>
+            <h5 style="display:inline" v-for="(pet,index) in pets" :key="index">{{pet.name}}  </h5>
         </div>
       </div>
         <br><br><br><br>

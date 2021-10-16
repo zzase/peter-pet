@@ -116,6 +116,10 @@
                
 </template>
 
+<script> 
+
+</script>
+
 <style>
   .ad {
       margin-top: 60px;
