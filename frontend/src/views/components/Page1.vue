@@ -1,69 +1,77 @@
 <template>
-    <div class="container">
-        <div class="contents">
-          <div class="v-application--wrap">
-          <div class="page-head">
-          <h2 data-v-clf1971a class="title-text-center">MY 동물등록증</h2></div>
+  <div class="container">
+    <div class="contents">
+      <div class="v-application--wrap">
+        <div class="page-head">
+          <h2 data-v-clf1971a class="title-text-center">MY 동물등록증</h2>
+        </div>
 
-              <div class="m-5">
-        <carousel-3d
-          :autoplay="false"
-          :autoplay-timeout="1000"
-          :display="5"
-          :controlsVisible="true"
-          :border="0"
-          :width="585"
-          :height="370"
-          :space="500"
-          :clickable="true"
-          v-if="accordionDIDs.length"
-        >
-          <slide
-            v-for="(did, index) in accordionDIDs"
-            :index="index"
-            :key="index"
+        <div class="spinner-div" v-if="isLoading">
+          <Spinner></Spinner>
+        </div>
+
+        <div class="m-5">
+          <carousel-3d
+            :autoplay="false"
+            :autoplay-timeout="1000"
+            :display="5"
+            :controlsVisible="true"
+            :border="0"
+            :width="585"
+            :height="370"
+            :space="500"
+            :clickable="true"
+            v-if="accordionDIDs.length"
           >
-            <b-card id="b-did-card"
-              @click="clickCard(did.did)"
-              header-tag="header"
-              footer-tag="footer"
+            <slide
+              v-for="(did, index) in accordionDIDs"
+              :index="index"
+              :key="index"
             >
-              <template #header> {{ did.did }} </template>
-              <br />
-              <b-card-body style="text-align: center;">
-                <b-card-title>{{ did.name }}</b-card-title
-                ><br />
-                <img style="width: 200px; height: 150px;" src="@/assets/img/Board/card-back.png">
-                <br>
-                <b-button
-                  href="#"
-                  variant="default"
-                  @click="missingReport(`${did.did}`)"
-                  >실종 신고</b-button
-                >
-              </b-card-body>
-          
-            </b-card>
-          </slide>
-        </carousel-3d>
-      </div>
+              <b-card
+                id="b-did-card"
+                @click="clickCard(did.did)"
+                header-tag="header"
+                footer-tag="footer"
+              >
+                <template #header> {{ did.did }} </template>
+                <br />
+                <b-card-body style="text-align: center">
+                  <b-card-title>{{ did.name }}</b-card-title
+                  ><br />
+                  <img
+                    style="width: 200px; height: 150px"
+                    src="@/assets/img/Board/card-back.png"
+                  />
+                  <br />
+                  <b-button
+                    href="#"
+                    variant="default"
+                    @click="missingReport(`${did.did}`)"
+                    >실종 신고</b-button
+                  >
+                </b-card-body>
+              </b-card>
+            </slide>
+          </carousel-3d>
+        </div>
 
         <!-- pop-up DID CARD -->
-       <div class="black-bg" v-if="modal == true">
-           <div class="white-bg">
-          <Card v-bind:peterpet="peterpet" />
-           </div>
-       </div>
-       <br><br>
-   </div>
+        <div class="black-bg" v-if="modal == true">
+          <div class="white-bg">
+            <Card v-bind:peterpet="peterpet" />
+          </div>
+        </div>
+        <br /><br />
+      </div>
+    </div>
   </div>
- </div>
-
 </template>
 
 <script>
-import { Carousel3d, Slide } from "vue-carousel-3d"
-import Card from './Card.vue'
+import { Carousel3d, Slide } from "vue-carousel-3d";
+import Card from "./Card.vue";
+import Spinner from "./Spinner.vue";
 
 export default {
   name: "Accordion",
@@ -78,6 +86,7 @@ export default {
       counter: 0,
 
       peterpet: {},
+      isLoading: true,
     };
   },
   mounted() {
@@ -95,7 +104,7 @@ export default {
         appendToast: append,
       });
     },
-    getDids: function(address) {
+    getDids: function (address) {
       this.$http
         .get(`http://localhost:3000/api/pet/dids/owner/${address}`, {})
         .then((res) => {
@@ -107,9 +116,10 @@ export default {
               name: res.data.names[i],
             });
           }
+          this.isLoading = false;
         });
     },
-    getInfo: function(did) {
+    getInfo: function (did) {
       this.$http
         .get(`http://localhost:3000/api/pet/info/did/${did}`, {})
         .then((res) => {
@@ -117,11 +127,11 @@ export default {
           this.peterpet = res.data.peterpet;
         });
     },
-    clickCard: function(did) {
+    clickCard: function (did) {
       this.modal = true;
       this.getInfo(did);
     },
-    missingReport: function(did) {
+    missingReport: function (did) {
       this.$router
         .push({ name: "Page 2", query: { did: did } })
         .catch(() => {});
@@ -134,6 +144,7 @@ export default {
     Card,
     Carousel3d,
     Slide,
+    Spinner,
   },
 
   computed: {
@@ -154,11 +165,10 @@ export default {
 </script>
 
 <style>
-
 .b-did-card {
   margin-top: 50px;
 }
-.carousel-3d-slide{
+.carousel-3d-slide {
   margin-right: 100px;
   width: 268px;
   margin-top: 50px;
@@ -175,19 +185,19 @@ export default {
   margin-left: 0px;
 }
 .md-layout-item {
-  position:relative;
+  position: relative;
   top: 10%;
   width: 100%;
 }
 
 .contents {
   position: relative;
-  top:10%;
+  top: 10%;
 }
 .name {
   z-index: 1;
   left: 360px;
-  position:relative;
+  position: relative;
   bottom: 328px;
 }
 .number {
@@ -204,7 +214,6 @@ export default {
   height: 200px;
   overflow: hidden;
   margin-top: -36%;
-  
 }
 .imghash img {
   position: absolute;
@@ -292,9 +301,8 @@ p {
 .agree {
   position: absolute;
   margin-top: 17%;
-  
 }
-.card-on{
+.card-on {
   z-index: 1;
   width: 40%;
   height: 40%;
@@ -316,30 +324,29 @@ p {
 }
 
 .bar {
- margin-left: -60%;
+  margin-left: -60%;
   font-size: 20px;
-  font-family: 'Righteous', cursive;
-  color:rgb(125, 120, 150)
+  font-family: "Righteous", cursive;
+  color: rgb(125, 120, 150);
 }
 
 .page-head {
-  position:absolute;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  color:rgba(75, 77, 85, 0.801);
+  position: absolute;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: rgba(75, 77, 85, 0.801);
   position: absolute;
   left: 42%;
-  font-family: 'Black Han Sans', sans-serif;
+  font-family: "Black Han Sans", sans-serif;
 }
 .b-card2 {
   display: inline-flex;
 }
-  
-.container-fluid{
+
+.container-fluid {
   left: 30%;
 }
-.owl-theme .owl-dots .owl-dot.active span, 
-  .owl-theme .owl-dots .owl-dot:hover span {
-      background: #2caae1;
-  }
-
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+  background: #2caae1;
+}
 </style>

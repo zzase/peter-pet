@@ -81,16 +81,16 @@
                   @click="scrollToElement()"
                   v-if="showDownload"
                 >
-                  <p style="font-size: 19px; color:purple">네버랜드</p>
+                  <p style="font-size: 19px; color: purple">네버랜드</p>
                   <md-tooltip md-direction="bottom">NAVERLAND</md-tooltip>
                 </md-list-item>
 
-                 <md-list-item
+                <md-list-item
                   href="#/mall"
                   @click="scrollToElement()"
                   v-if="showDownload"
                 >
-                  <p style="font-size: 19px; color:black">외장칩/인식표</p>
+                  <p style="font-size: 19px; color: black">외장칩/인식표</p>
                   <md-tooltip md-direction="bottom">Necklace</md-tooltip>
                 </md-list-item>
 
@@ -99,8 +99,10 @@
                   @click="scrollToElement()"
                   v-if="showDownload"
                 >
-                  <p style="font-size: 19px; color:black">고객센터</p>
-                  <md-tooltip md-direction="bottom">Customer Service</md-tooltip>
+                  <p style="font-size: 19px; color: black">고객센터</p>
+                  <md-tooltip md-direction="bottom"
+                    >Customer Service</md-tooltip
+                  >
                 </md-list-item>
 
                 <li class="md-list-item" v-else>
@@ -151,8 +153,13 @@
                 <div class="login-mypage">
                   <div v-if="this.$store.state.isLogin">
                     &nbsp;&nbsp;&nbsp;
-                    <b-button pill variant="outline-primary" @click="myPage()">MyPage</b-button> &nbsp;
-                    <b-button pill variant="outline-primary" @click="logout()">로그아웃</b-button>
+                    <b-button pill variant="outline-primary" @click="myPage()"
+                      >MyPage</b-button
+                    >
+                    &nbsp;
+                    <b-button pill variant="outline-primary" @click="logout()"
+                      >로그아웃</b-button
+                    >
                   </div>
 
                   <div v-else>
@@ -173,6 +180,9 @@
                     centered
                     title=""
                   >
+                    <div class="spinner-div" v-if="isLoading">
+                      <Spinner></Spinner>
+                    </div>
                     <form @submit.prevent="login">
                       <login-card header-color="green">
                         <br />
@@ -244,6 +254,7 @@ function resizeThrottler(actualResizeHandler) {
 import MobileMenu from "@/layout/MobileMenu";
 
 import { LoginCard } from "@/components";
+import Spinner from "/Users/majestyharia/Final/Backup/perterpet-backup/peterpet-new5/peter-pet/frontend/src/views/components/Spinner.vue";
 
 const Key = {
   auth: {
@@ -256,6 +267,7 @@ export default {
   components: {
     MobileMenu,
     LoginCard,
+    Spinner,
   },
   props: {
     type: {
@@ -286,6 +298,7 @@ export default {
         id: null,
         password: null,
       },
+      isLoading: false,
     };
   },
   computed: {
@@ -298,11 +311,12 @@ export default {
     myPage: function () {
       window.location.href = "#/myPage";
     },
-    logout: function() {
+    logout: function () {
       this.$store.commit("logout");
       this.$router.push({ name: "main" }).catch(() => {});
     },
     login: function () {
+      this.isLoading = true;
       this.$http
         .post(
           "http://localhost:3000/api/wenddy/login",
@@ -315,18 +329,19 @@ export default {
             this.$store.commit("loginSuccess");
             this.$store.commit("setUser", res.data.user);
 
-            if(this.$store.state.user.auth === 'manager'){
+            if (this.$store.state.user.auth === "manager") {
               this.$router.push({ name: "manager" }).catch(() => {});
-            }
-            else{
+            } else {
               this.$router.push({ name: "main" }).catch(() => {});
             }
-
           } else {
             this.$store.commit("loginError");
           }
-          alert(res.data.msg);
-          this.$bvModal.hide("modal-center");
+          // alert(res.data.msg);
+          setTimeout(() => {
+            this.$bvModal.hide("modal-center");
+            this.isLoading = false;
+          }, 2000);
         })
         .catch((err) => {
           console.error(err);
@@ -357,7 +372,7 @@ export default {
         document.body.scrollTop || document.documentElement.scrollTop;
       let navbarColor = document.getElementById("toolbar");
       this.currentScrollValue = scrollValue;
-      if (this.colorOnScroll > 0 && scrollValue > this.colorOnScroll/500) {
+      if (this.colorOnScroll > 0 && scrollValue > this.colorOnScroll / 500) {
         this.extraNavClasses = `md-${this.type}`;
         navbarColor.classList.remove("md-transparent");
       } else {
@@ -398,6 +413,5 @@ export default {
   .md-toolbar-row {
     margin-left: 550px;
   }
-  
 }
 </style>
