@@ -89,7 +89,7 @@ export default {
 
       getNoQrDids : function() {
        this.$http
-        .get(`${BACKEND_SERVER_URI}api/pet/noqr`)
+        .get(`http://localhost:3000/api/pet/noqr`)
         .then((res) => {
           if (res.data.rows) {
             console.log(res.data.rows)

@@ -24,7 +24,7 @@
                 v-if="certiNfts.length"
                 >
                 
-                <slide v-for="(nft,index) in certiNfts" :key="nft" :index="index">
+                <slide v-for="(nft,index) in certiNfts" :key="index" :index="index">
                     <b-card
                     :title= nft.name
                     :img-src= nft.repreImg
