@@ -254,7 +254,7 @@ function resizeThrottler(actualResizeHandler) {
 import MobileMenu from "@/layout/MobileMenu";
 
 import { LoginCard } from "@/components";
-import Spinner from "/Users/majestyharia/Final/Backup/perterpet-backup/peterpet-new5/peter-pet/frontend/src/views/components/Spinner.vue";
+import Spinner from "././../views/components/Spinner.vue";
 
 const Key = {
   auth: {

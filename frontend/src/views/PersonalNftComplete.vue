@@ -120,7 +120,7 @@ export default {
 <style lang="css">
 .Spinner {
   text-align: center;
-  margin-left: 500px;
+  margin-left: 750px;
 }
 .complete-img {
   z-index: 2;
