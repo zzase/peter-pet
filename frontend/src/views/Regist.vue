@@ -7,7 +7,8 @@
           <div class="profile-tabs">
             <div class="md-layout">
               <div class="md-layout-item md-size-50 mx-auto">
-                <div class="profile"><br><br>
+                <div class="profile">
+                  <br /><br />
                   <div class="avatar">
                     <img
                       :src="img"
@@ -215,37 +216,43 @@
               </template>
 
               <template slot="tab-pane-2">
-                
                 <div class="md-layout">
-                  <div class="md-layout-item md-size-100 ml-auto" v-if ="isReg">
+                  <div class="md-layout-item md-size-100 ml-auto" v-if="isReg">
                     <form @submit.prevent="registGov">
-                      
                       <login-card header-color="orange">
-                        
                         <h2 slot="title" class="card-title">Wenddy</h2>
                         <md-field class="md-form-group" slot="inputs">
-                          <h4>{{this.$store.state.user.id}}님의 동물등록 이력이 있어 아래 정보로 동물 등록을 진행합니다</h4>
+                          <h4>
+                            {{ this.$store.state.user.id }}님의 동물등록 이력이
+                            있어 아래 정보로 동물 등록을 진행합니다
+                          </h4>
                         </md-field>
                         <md-field class="md-form-group" slot="inputs">
                           <label> <md-icon>person_outline</md-icon>이름</label>
                           <md-input v-model="wenddy2.name"></md-input>
                         </md-field>
                         <md-field class="md-form-group" slot="inputs">
-                          <label><md-icon>lock_outline</md-icon>주민등록번호</label>
+                          <label
+                            ><md-icon>lock_outline</md-icon>주민등록번호</label
+                          >
                           <md-input v-model="wenddy2.jumin"></md-input>
                         </md-field>
-                        <md-button id="tab-content" slot="footer" class="md-success md-lg" type="submit"> 동의 </md-button>
+                        <md-button
+                          id="tab-content"
+                          slot="footer"
+                          class="md-success md-lg"
+                          type="submit"
+                        >
+                          동의
+                        </md-button>
                       </login-card>
                     </form>
                   </div>
                   <div class="md-layout-item md-size-100 ml-auto" v-else>
-          
                     <form @submit.prevent="registGov">
-                      
                       <login-card header-color="orange">
-                        
                         <h2 slot="title" class="card-title">Wenddy</h2>
-                            <md-field class="md-form-group" slot="inputs">
+                        <md-field class="md-form-group" slot="inputs">
                           <label> <md-icon>person_outline</md-icon>이름</label>
                           <md-input v-model="wenddy.name"></md-input>
                         </md-field>
@@ -300,8 +307,11 @@
                                       <input
                                         type="button"
                                         value="주소검색"
-                                        style="background-color:gray; color: white; width: 90px;"
-                                        
+                                        style="
+                                          background-color: gray;
+                                          color: white;
+                                          width: 90px;
+                                        "
                                         @click="getPostalcode()"
                                       />
                                     </td>
@@ -340,8 +350,8 @@
                           </body>
                         </md-field>
                         <md-field class="md-form-group" slot="inputs">
-                          <br>
-                          <div id="personal-id" style="margin-top: 10px;">
+                          <br />
+                          <div id="personal-id" style="margin-top: 10px">
                             <input
                               type="text"
                               inputmode="numeric"
@@ -354,7 +364,11 @@
                             />
                             -
                             <input
-                            style="position: absolute; width: 30%; bottom: 20px;"
+                              style="
+                                position: absolute;
+                                width: 30%;
+                                bottom: 20px;
+                              "
                               type="text"
                               pattern="[0-9]*"
                               inputmode="numeric"
@@ -364,7 +378,9 @@
                               placeholder="OOOOOOO"
                             />
                           </div>
-                          <label><md-icon>lock_outline</md-icon>주민등록번호</label>
+                          <label
+                            ><md-icon>lock_outline</md-icon>주민등록번호</label
+                          >
                         </md-field>
                         <md-field class="md-form-group" slot="inputs">
                           <form action="" id="joinForm">
@@ -455,8 +471,14 @@
                   </div>
                 </div>
               </template>
+
               <template slot="tab-pane-3">
-                <div class="md-layout">
+                <div class="Spinner" v-if="isLoading">
+                  <div class="spinner-div">
+                    <Spinner></Spinner>
+                  </div>
+                </div>
+                <div class="md-layout" v-else>
                   <div class="md-layout-item md-size-100 ml-auto">
                     <form @submit.prevent="selectTinkerbell">
                       <login-card header-color="red">
@@ -470,9 +492,9 @@
                                 md-small-size-100
                               "
                             >
-                            <div class="info-num1"
-                                 style="border 1px black;">
-                              <h3>1</h3></div>
+                              <div class="info-num1" style="border 1px black;">
+                                <h3>1</h3>
+                              </div>
                               <div class="info">
                                 <img
                                   alt="brand"
@@ -483,7 +505,8 @@
                                     id="tooltip-button-1"
                                     style="margin: 0 auto; display: block"
                                     :pressed="true"
-                                    pill variant="outline-secondary"
+                                    pill
+                                    variant="outline-secondary"
                                     v-model="tinkerbellType"
                                     @click="selectTinkerbellType(1)"
                                     >외장칩 목걸이</b-button
@@ -499,8 +522,9 @@
                                 md-small-size-100
                               "
                             >
-                            <div class="info-num1">
-                              <h3>2</h3></div>
+                              <div class="info-num1">
+                                <h3>2</h3>
+                              </div>
                               <div class="info">
                                 <img
                                   alt="brand"
@@ -511,7 +535,8 @@
                                     id="tooltip-button-1"
                                     style="margin: 0 auto; display: block"
                                     :pressed="true"
-                                    pill variant="outline-secondary"
+                                    pill
+                                    variant="outline-secondary"
                                     v-model="tinkerbellType"
                                     @click="selectTinkerbellType(2)"
                                     >내장칩 목걸이</b-button
@@ -550,6 +575,7 @@ import Vue from "vue";
 import VMdDateRangePicker from "v-md-date-range-picker";
 import checkbox from "@/assets/js/checkbox.js";
 import ImagePreview from "./components/ImagePreview.vue";
+import Spinner from "./components/Spinner.vue";
 
 Vue.use(checkbox);
 Vue.use(VMdDateRangePicker);
@@ -562,11 +588,13 @@ export default {
     Tabs,
     LoginCard,
     ImagePreview,
+    Spinner,
   },
 
   bodyClass: "profile-page",
   data() {
     return {
+      isLoading: false,
       peterpet: {
         name: null,
         imgHash: null,
@@ -578,7 +606,7 @@ export default {
         furColor: null,
         vaccinationHistory: [],
         notes: null,
-        paNftId : 'X'
+        paNftId: "X",
       },
       wenddy: {
         name: "",
@@ -589,9 +617,9 @@ export default {
         id: "",
       },
 
-      wenddy2 : {},
+      wenddy2: {},
 
-      isReg : false,
+      isReg: false,
 
       tinkerbellType: null,
       activePanel: this.tabName,
@@ -741,8 +769,8 @@ export default {
       }
     },
 
-    checkIsReg : function(uid) {
-       this.$http
+    checkIsReg: function (uid) {
+      this.$http
         .get(`http://localhost:3000/api/wenddy/check/gov/id/${uid}`)
         .then((res) => {
           if (res.data.isReg) {
@@ -790,11 +818,10 @@ export default {
         });
     },
     registGov: function () {
-      if(this.isReg){
+      if (this.isReg) {
         console.log("api 호출안하고 넘어가 버리기");
         this.switchPanel("Tinkerbell");
-      }
-      else {
+      } else {
         console.log("regist gov api call");
         const wenddy = this.wenddy;
         wenddy.id = this.$store.state.user.id;
@@ -806,25 +833,27 @@ export default {
           this.addressInfo.detailAddress;
         wenddy.jumin = this.resultRRN();
 
-      this.$http
-        .post(
-          "http://localhost:3000/api/wenddy/regist/gov",
-          {
-            wenddy: wenddy,
-          },
-          { "Content-Type": "application-json" }
-        )
-        .then((res) => {
-          console.log(res.data);
-          if (res.data.checkReg) {
-            this.switchPanel("Tinkerbell");
-          } else {
-            alert("정부 등록에 실패하였습니다. 입력 정보를 다시 확인해주세요");
-          }
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+        this.$http
+          .post(
+            "http://localhost:3000/api/wenddy/regist/gov",
+            {
+              wenddy: wenddy,
+            },
+            { "Content-Type": "application-json" }
+          )
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.checkReg) {
+              this.switchPanel("Tinkerbell");
+            } else {
+              alert(
+                "정부 등록에 실패하였습니다. 입력 정보를 다시 확인해주세요"
+              );
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       }
     },
     selectTinkerbellType(type) {
@@ -832,7 +861,7 @@ export default {
       console.log(this.tinkerbellType);
     },
 
-    selectTinkerbell: function () {
+    selectTinkerbell: async function () {
       const tinkerbellType = this.tinkerbellType;
       const address = this.$store.state.user.address;
 
@@ -841,34 +870,74 @@ export default {
       if (tinkerbellType === null) {
         alert("칩을 선택해주세요!");
       } else {
-        this.$http
-          .post(
+        console.log("button click");
+
+        this.isLoading = true;
+
+        try {
+          const result = await this.$http.post(
             "http://localhost:3000/api/pet/tinkerbell",
             {
               tinkerbellType: tinkerbellType,
               address: address,
             },
             { "Content-Type": "application-json" }
-          )
-          .then((res) => {
-            console.log(res.data);
-            if (res.data.checkUpdate) {
-              this.$router
-                .push({
-                  name: "complete",
-                  query: {
-                    peterpet: res.data.peterpet,
-                    msg: res.data.msg,
-                  },
-                })
-                .catch(() => {});
-            } else {
-              alert("입력하신 정보가 잘못되었습니다.");
-            }
-          })
-          .catch((err) => {
-            console.error(err);
-          });
+          );
+          const sleep = (ms) => {
+            return new Promise((resolve) => {
+              setTimeout(resolve, ms);
+            });
+          };
+
+          console.log("sleep start");
+          await sleep(3000);
+          console.log("sleep end");
+
+          this.isLoading = false;
+
+          if (result?.data?.checkUpdate) {
+            this.$router.push({
+              name: "complete",
+              query: { peterpet: result.data.peterpet, msg: result.data.msg },
+            });
+          } else {
+            alert("입력하신 정보가 잘못되었습니다.");
+          }
+        } catch (e) {
+          console.error(e);
+        }
+
+        // this.$http
+        //   .post(
+        //     "http://localhost:3000/api/pet/tinkerbell",
+        //     {
+        //       tinkerbellType: tinkerbellType,
+        //       address: address,
+        //     },
+        //     { "Content-Type": "application-json" }
+        //   )
+        //   .then((res) => {
+        //     setTimeout(() => {
+        //       this.isLoading = false;
+        //     }, 5000);
+        //     console.log(res.data);
+        //     if (res.data.checkUpdate) {
+        //       this.$router
+        //         .push({
+        //           name: "complete",
+        //           query: {
+        //             peterpet: res.data.peterpet,
+        //             msg: res.data.msg,
+        //           },
+        //         })
+        //         .catch(() => {});
+        //     } else {
+        //       alert("입력하신 정보가 잘못되었습니다.");
+        //     }
+        //   })
+        //   .catch((err) => {
+        //     console.error(err);
+        //   });
       }
     },
 
@@ -940,9 +1009,9 @@ export default {
 
       for (let j = 1; j < 7; j++) {
         if (j < 3) {
-          N += this.secondRRN[j - 1] * (j + 7)
+          N += this.secondRRN[j - 1] * (j + 7);
         } else {
-          N += this.secondRRN[j - 1] * (j - 1)
+          N += this.secondRRN[j - 1] * (j - 1);
         }
       }
 
@@ -954,11 +1023,13 @@ export default {
   },
   created() {
     this.checkIsReg(this.$store.state.user.id);
-  }
+  },
 };
 </script>
 <style lang="scss" scoped="scoped">
+// .Spinner {
 
+// }
 .register-form {
   margin-top: -20%;
 }
@@ -1159,20 +1230,20 @@ div#selectbutton {
   margin-top: -120px;
   margin-bottom: 100px;
   margin-left: -60px;
-  }
-  .info-num1 {
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    margin-left: 60px;
-    margin-bottom: 70px;
-    border: 1px solid black;
-  }
-  .info-num2 {
-    width: 40px;
-    text-align: center;
-    margin-left: 60px;
-    margin-bottom: 70px;
-    border: 1px solid black;
-  }
+}
+.info-num1 {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  margin-left: 60px;
+  margin-bottom: 70px;
+  border: 1px solid black;
+}
+.info-num2 {
+  width: 40px;
+  text-align: center;
+  margin-left: 60px;
+  margin-bottom: 70px;
+  border: 1px solid black;
+}
 </style>
