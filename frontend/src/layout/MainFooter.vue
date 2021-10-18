@@ -96,6 +96,7 @@ export default {
 </script>
 
 <style> 
+
 .main-text {
   position: absolute;
   left: 5%;

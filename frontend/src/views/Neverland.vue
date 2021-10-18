@@ -11,9 +11,9 @@
         </div>
         <div class="neverland-link1"><img onclick="javascript:location.href='#/regist';" src="@/assets/img/Neverland/menu1.png" 
         style="cursor:pointer;"/></div>
-         <div class="neverland-link2"><img onclick="javascript:location.href='#/nft/form';" src="@/assets/img/Neverland/menu2.png" 
+         <div class="neverland-link2"><img onclick="javascript:location.href='#/select/form';" src="@/assets/img/Neverland/menu2.png" 
         style="cursor:pointer;"/></div>
-         <div class="neverland-link3"><img onclick="javascript:location.href='#/regist';" src="@/assets/img/Neverland/menu3.png" 
+         <div class="neverland-link3"><img onclick="javascript:location.href='#/mypage';" src="@/assets/img/Neverland/menu3.png" 
         style="cursor:pointer;"/></div>
 
        <div id="testImg">

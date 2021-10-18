@@ -8,7 +8,8 @@
           <div class="d-container1">
             <form @submit.prevent="addNft">
             <div class="header1">
-              <h1>this is NFT page</h1>
+              <br>
+              <h1>MY NFT</h1>
             </div>
 
             <!-- img -->

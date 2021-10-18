@@ -5,76 +5,90 @@
       <div class="section">
         <div class="my-box1"></div>
         <div class="md-layout">
-          <div class="complete-content">
+          <div class="Spinner" v-if="isLoading">
+            <div class="spinner-div">
+              <Spinner></Spinner>
+            </div>
+          </div>
+          <div class="complete-content" v-else>
             <!-- <h4>두남이의 Peter-Pet 등록이 완료되었습니다!</h4> -->
             <div class="complete-m">
-            <img
-              class="check"
-              alt="brand"
-              src="@/assets/img/nft/nft-c.png"
-            />
+              <img class="check" alt="brand" src="@/assets/img/nft/nft-c.png" />
             </div>
 
-          <b-card
-            :title= nft.name
-            :img-src= nft.repreImg
-            img-alt="Image"
-            img-top
-            tag="article"
-            style="width: 300px; height: 450px; overflow:hidden; text-align: center;"
-            class="nft-complete1">
-            
-            <b-button v-on:click="goDetailCertiNft($route.query.tokenId)" variant="rose">상세보기</b-button>
-            
+            <b-card
+              :title="nft.name"
+              :img-src="nft.repreImg"
+              img-alt="Image"
+              img-top
+              tag="article"
+              style="
+                width: 300px;
+                height: 450px;
+                overflow: hidden;
+                text-align: center;
+              "
+              class="nft-complete1"
+            >
+              <b-button
+                v-on:click="goDetailCertiNft($route.query.tokenId)"
+                variant="rose"
+                >상세보기</b-button
+              >
             </b-card>
-          <div class="mypage-1">
-            <md-button id="mypage" href="#/mypage" class="md-success">
-              <b>마이 페이지</b></md-button
-            >
+            <div class="mypage-1">
+              <md-button id="mypage" href="#/mypage" class="md-success">
+                <b>마이 페이지</b></md-button
+              >
+            </div>
+            <div class="mainpage-2">
+              <md-button id="mainpage" href="#/" class="md-default">
+                <b>메인 페이지</b></md-button
+              >
+            </div>
+            <br /><br />
           </div>
-          <div class="mainpage-2">
-            <md-button id="mainpage" href="#/" class="md-default">
-              <b>메인 페이지</b></md-button
-            >
-          </div>
-          <br><br>
         </div>
       </div>
     </div>
-  </div>
   </div>
 </template>
 
 
 <script>
+import Spinner from "./components/Spinner.vue";
+
 export default {
-  components: {},
+  components: {
+    Spinner,
+  },
   bodyClass: "login-page",
   data() {
     return {
-        nft : null
+      isLoading: true,
+      nft: null,
     };
   },
-  methods : {
-      getNft : async function(tokenId)  {
-        try{
-          await this.$http.get(`http://localhost:3000/api/nft/certi/info/token/${tokenId}`,{})
-          .then((res)=> {
-            if(res.data.msg){
-              this.$http.get(res.data.tokenUri)
-              .then((res)=> {
+  methods: {
+    getNft: async function (tokenId) {
+      try {
+        await this.$http
+          .get(`http://localhost:3000/api/nft/certi/info/token/${tokenId}`, {})
+          .then((res) => {
+            if (res.data.msg) {
+              this.$http.get(res.data.tokenUri).then((res) => {
                 this.nft = res.data;
-              })
+                this.isLoading = false;
+              });
             }
-          })
-        }catch(err){
-          this.$router.go();
-        }
-                
-      },
-      goDetailCertiNft : function(tokenId) {
-            window.location.href = `#/nft/detail?tokenId=${tokenId}`
-        },
+          });
+      } catch (err) {
+        this.$router.go();
+      }
+    },
+    goDetailCertiNft: function (tokenId) {
+      window.location.href = `#/nft/detail?tokenId=${tokenId}`;
+    },
   },
   props: {
     img1: {
@@ -98,13 +112,16 @@ export default {
     },
   },
   created() {
-        this.getNft(this.$route.query.tokenId);
-    }
+    this.getNft(this.$route.query.tokenId);
+  },
 };
 </script>
 
 <style lang="css">
-
+.Spinner {
+  text-align: center;
+  margin-left: 500px;
+}
 .md-layout-item {
   position: relative;
   width: 100%;
@@ -130,7 +147,7 @@ export default {
   margin: auto;
 }
 .complete-m {
-  position:relative;
+  position: relative;
   left: -200px;
   top: -100px;
   width: 500px;
@@ -150,5 +167,4 @@ export default {
   top: 980px;
   left: 245px;
 }
-
 </style>

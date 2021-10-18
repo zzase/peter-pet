@@ -41,22 +41,7 @@
      <b-card>
      <router-view></router-view>
      </b-card>
-</div>
-    <!-- <div class="v-card">
-        <v-card
-          height="100%"
-          width="100%"
-          class="mx-auto"
-        >
-          <v-col style="max-width:100%">
-                  <v-sheet min-height="70vh" rounded="lg">
-                    <v-fade-transition mode="out-in">
-                      <router-view></router-view>
-                    </v-fade-transition>
-                  </v-sheet>
-                </v-col>
-        </v-card>
-    </div> -->
+  </div>
 </div>
 </template>
 
@@ -67,6 +52,7 @@ import MyAccount from "./MyAccount.vue";
 import Page1 from "./Page1";
 import Page2 from "./Page2";
 import Page3 from "./Page3";
+import Page4 from "./Page4";
 
 Vue.use(VueRouter);
 
@@ -91,6 +77,11 @@ const routes = [
     name: "Page 3",
     component: Page3,
   },
+  {
+    path: "/mypage/page4",
+    name: "Page 4",
+    component: Page4,
+  },
   
 ];
 
@@ -105,9 +96,10 @@ let router = new VueRouter({
     data () {
       return {
         items: [
-          { title: 'My 동물등록증', icon: 'mdi-view-dashboard', url: '/mypage/page1' },
-          { title: 'My 실종신고', icon: 'mdi-image', url: '/mypage/page2' },
-          { title: 'My NFT', icon: 'mdi-help-box', url: '/mypage/page3' },
+          { title: 'My 동물등록증', icon: 'mdi-clipboard-multiple', url: '/mypage/page1' },
+          { title: 'My 실종신고', icon: 'mdi-magnify-scan', url: '/mypage/page2' },
+          { title: 'My 실종현황 관리', icon: 'mdi-file-search-outline', url: '/mypage/page3' },
+          { title: 'My NFT', icon: 'mdi-database', url: '/mypage/page4' },
         ],
         right: null,
       }
