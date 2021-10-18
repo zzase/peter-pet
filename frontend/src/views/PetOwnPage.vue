@@ -20,7 +20,7 @@
             <div class="page-content1">
               <p>이름 : {{ peterpet.name }}</p>
               <p>견종 : {{ peterpet.breedOfDog }} </p>
-              <p>나이 : {{ peterpet.birth }} </p>
+              <p>나이 : {{ age }}살 </p>
               <p>상태 :  </p>
             </div>
             <div class="page-line1">
@@ -62,7 +62,8 @@
 export default {
  data (){
     return {
-    
+      age : null,
+      today : null,
       peterpet: { },
       wenddy: { },
       props: {
@@ -75,21 +76,27 @@ export default {
   },
   methods : {
     getPetInfo: function(did) {
-       this.$http.get(`${BACKEND_SERVER_URI}api/pet/get/all/petInfos/${did}`,{
+       this.$http.get(`http://172.30.1.38:3000/api/pet/info/did/${did}`,{
        })
        .then((res) => {
          console.log(res.data);
          this.peterpet = res.data.peterpet;
+         let dt = new Date();
+         let birth = new Date(`${this.peterpet.birth}`);
+         console.log('birth : ' + birth);
+         this.age = (dt.getFullYear() - birth.getFullYear()) + 1
+         console.log(this.peterpet.imgLink)
        })
      },
     getWenddyInfo: function(did) {
-      this.$http.get(`${BACKEND_SERVER_URI}api/user/wenddy/info/${did}`,{
+      this.$http.get(`http://172.30.1.38:3000/api/wenddy/info/did/${did}`,{
       })
       .then((res)=>{
         console.log(res.data.wenddy);
         this.wenddy = res.data.wenddy
       })
-    }
+    },
+
   },
   created() {
     this.getPetInfo(this.$route.params.did);

@@ -208,5 +208,54 @@ router.post('/make/certiMetaData',async function(req,res,next) {
     }
   })
 
+  router.delete('/certi/token/:tokenId',async function(req,res,next) {
+      console.log('DELETE CERTI NFT API CALL')
+      const nftCA = '0xdf47abaec9b9c628c6190b3dcd289b499dcba8b5';
+      const tokenId = req.params.tokenId;
+      const address = req.body.address;
+
+      try{
+          const result = await kip17.deleteNft(nftCA,tokenId,address);
+          if(result.transactionHash){
+            res.status(200).send({submitted : true, transactionHash : result.transactionHash});
+        }
+        else {
+            if(result.code === 1100050){
+                res.status(400).send({submitted : false, msg : result.message});
+            }
+            else {
+                res.status(401).send({submitted : false, msg : result.message});
+            }
+        }
+      }catch(err){
+        res.status(400).send({submitted : false, msg : 'api 호출 오류'});
+      }
+  })
+
+  router.delete('/personal/token/:tokenId',async function(req,res,next) {
+    console.log('DELETE PERSONAL NFT API CALL')
+    console.log(req.body);
+    const nftCA = '0x504e0749223ea5d8b5cfa167813b0ccab9d254df';
+    const tokenId = req.params.tokenId;
+    const address = req.body.address;
+
+    try{
+        const result = await kip17.deleteNft(nftCA,tokenId,address);
+        if(result.transactionHash){
+          res.status(200).send({submitted : true, transactionHash : result.transactionHash});
+      }
+      else {
+          if(result.code === 1100050){
+              res.status(400).send({submitted : false, msg : result.message});
+          }
+          else {
+              res.status(401).send({submitted : false, msg : result.message});
+          }
+      }
+    }catch(err){
+      res.status(400).send({submitted : false, msg : 'api 호출 오류'});
+    }
+})
+
 
 module.exports = router;

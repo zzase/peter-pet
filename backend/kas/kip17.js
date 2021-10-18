@@ -46,6 +46,21 @@ class Kip17 extends ApiCaller {
         return res;
     }
 
+    async deleteNft(ca,tokenId,address) {
+        const options = {
+            method: 'DELETE',
+            url : `/v1/contract/${ca}/token/${tokenId}`,
+            body : {
+                from : address
+            },
+            json : true
+        };
+
+        const res = await this.call(options);
+        console.log(res);
+        return res;
+    }
+
 }
 
 const kip17 = new Kip17();
