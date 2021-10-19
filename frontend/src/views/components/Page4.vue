@@ -38,11 +38,11 @@
             >
               <br />
               <b-button
-                v-on:click="goDetailCertiNft(certiNftTokenIds[index])"
+                v-on:click="goDetailCertiNft(certiNfts[index].tokenId)"
                 variant="outline-primary"
                 >상세보기</b-button
               >&nbsp;
-              <b-button variant="outline-secondary">삭제</b-button>
+              <b-button @click="showModal('certi',certiNfts[index].tokenId)" variant="outline-secondary">삭제</b-button>
             </b-card>
           </slide>
         </carousel-3d>
@@ -88,11 +88,11 @@
               class="mb-2"
             > <br />
               <b-button
-                v-on:click="goDetailPersonalNft(personalNftTokenIds[index])"
+                v-on:click="goDetailPersonalNft(personalNfts[index].tokenId)"
                 variant="outline-primary"
                 >상세보기</b-button
               >&nbsp;
-              <b-button variant="outline-secondary">삭제</b-button>
+              <b-button @click="showModal('personal',personalNfts[index].tokenId)" variant="outline-secondary">삭제</b-button>
             </b-card>
           </slide>
         </carousel-3d>
@@ -115,6 +115,8 @@ export default {
       personalNfts: [],
       personalNftTokenIds: [],
       personalLoading: false,
+
+      deleteConfirm : false
     };
   },
   components: {
@@ -137,13 +139,15 @@ export default {
 
       if (certiOfOwner.data.msg) {
         for (var i = 0; i < certiOfOwner.data.items.length; i++) {
-          console.log("indexcount", i);
+          //console.log("indexcount", i);
           const targetItems = certiOfOwner.data.items[i];
 
-          this.certiNftTokenIds.push(targetItems.tokenId);
+          //this.certiNftTokenIds.push(targetItems.tokenId);
 
+          let tokenId = targetItems.tokenId;
           const certiInfos = await this.$http.get(targetItems.tokenUri, {});
           this.certiNfts.push({
+            tokenId : tokenId,
             name: certiInfos.data.name,
             did: certiInfos.data.did,
             kind: certiInfos.data.kind,
@@ -166,13 +170,14 @@ export default {
 
       if (personalOfOwner.data.msg) {
         for (var i = 0; i < personalOfOwner.data.items.length; i++) {
-          console.log("indexcount", i);
+          //console.log("indexcount", i);
           const targetItems = personalOfOwner.data.items[i];
 
-          this.personalNftTokenIds.push(targetItems.tokenId);
-
+          //this.personalNftTokenIds.push(targetItems.tokenId);
+          let tokenId = targetItems.tokenId;
           const personalInfos = await this.$http.get(targetItems.tokenUri, {});
           this.personalNfts.push({
+            tokenId : tokenId,
             name: personalInfos.data.name,
             kind: personalInfos.data.kind,
             desc: personalInfos.data.desc,
@@ -183,6 +188,49 @@ export default {
       }
 
     },
+
+    showModal(type, tokenId) {
+        this.deleteConfirm = false
+        this.$bvModal.msgBoxConfirm('정말로 해당 NFT를 삭제하시겠습니까?', {
+          title: 'NFT 소각',
+          size: 'md',
+          buttonSize: 'sm',
+          okVariant: 'danger',
+          okTitle: 'YES',
+          cancelTitle: 'NO',
+          footerClass: 'p-2',
+          hideHeaderClose: false,
+          centered: true
+        })
+          .then(value => {
+            this.deleteConfirm = value
+            console.log('this.deleteConfirm : ' + this.deleteConfirm)
+            if(this.deleteConfirm){
+              //console.log("check");
+              this.$http.delete(`http://localhost:3000/api/nft/${type}/token/${tokenId}`,
+              {
+                data: {
+                  address : this.$store.state.user.address
+                }
+              },{"Content-Type": "application-json"})
+              .then((res) => {
+                if(res.data.submitted){
+                  alert(`${tokenId} 소각 완료`);
+                  this.$router.go(-1);
+                }
+                else{
+                  alert(res.data.msg);
+                }
+              })
+            }
+            else{
+              this.deleteConfirm = ''
+            }
+          })
+          .catch(err => {
+            // An error occurred
+          })
+      }
   },
   created() {
     this.getCertiNfts(this.$store.state.user.address);
