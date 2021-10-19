@@ -49,7 +49,7 @@
                 <md-list-item
                   a
                   href="#/about"
-                  target="_blank"
+                  @click="scrollToElement()"
                   v-if="showDownload"
                 >
                   <p style="font-size: 19px; color: black">회사 소개</p>

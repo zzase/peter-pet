@@ -18,6 +18,7 @@ import PetMall from "./views/PetMall.vue";
 import CustomerService from "./views/CustomerService.vue";
 import NftComplete from "./views/NftComplete.vue";
 import PersonalNftComplete from "./views/PersonalNftComplete.vue";
+import About from "./views/About.vue";
 
 import Neverland from "./views/Neverland.vue";
 import RegisterComplete from "./views/RegisterComplete.vue"
@@ -40,6 +41,18 @@ export default new Router({
         footer: { backgroundColor: "black" }
       }
     },
+
+    {
+      path: "/about",
+      name: "about",
+      components: { default: About, header: MainNavbar, footer: MainFooter  },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+
+    
 
     {
       path: "/result",
