@@ -79,7 +79,7 @@ export default {
 
     printQR: function () {
       this.$http
-        .put(`${BACKEND_SERVER_URI}api/pet/make/qr`, { did: this.qId })
+        .put(`http://localhost:3000/api/pet/make/qr`, { did: this.qId })
         .then((res) => {
           console.log(res.data);
           alert(res.data.msg);
