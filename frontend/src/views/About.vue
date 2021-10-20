@@ -1,31 +1,8 @@
 <template>
   <div class="wrapper">
     <parallax class="section page-header" :style="headerStyle">
-      <div class="container">
-        <div class="md-layout">
-          <div
-            class="
-              md-layout-item md-size-50 md-small-size-70 md-xsmall-size-100
-            "
-          >
-            <h1 class="title">I'm your wenddy!</h1>
-            <h1 class="title">I'm your pet!</h1>
-            <h1 class="title">I'm your Peter-pet!</h1>
-            <h1 class="title">We are friend!!</h1>
-
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-
-            <!-- <md-button href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                        class="md-success md-lg" target="_blank" ><i class="fas fa-play"></i> Watch
-                        video</md-button > -->
-          </div>
-        </div>
-      </div>
     </parallax>
+
     <div class="main main-raised">
       <div class="section">
         <div class="container">
@@ -37,54 +14,25 @@
                 text-center
               "
             >
-              <h2 class="title text-center">What to do?</h2>
-              <h5 class="description">
-                Peter-pet은 국가동물등록 정식대행기관으로써 신원 증명 블록체인
-                DID를 활용해 동물등록을 하고 실종 반려견 찾기,분양 및 개인소장용
-                NFT 생성 제공하여 분양사기를 방지하고, 개인의 반려견과의 추억을
-                저장 할 수 있는 서비스를 제공합니다.
-              </h5>
+            <img src="@/assets/img/About/about-text.png">
+                                            <h2 style="font-size: 26px; color: darkgray;"><br><br>Peter-Pet</h2>
+              <hr width="550px">
               <br />
-              <div class="icon icon-danger">
-                <img
-                  :src="img7"
-                  alt="Thumbnail Image"
-                  class="img-raised Rounded Raised"
-                />
-              </div>
-            </div>
-          </div>
-          <br />
-          <br />
-          <br />
+              <img src="@/assets/img/About/about-peterpet.png">
+              <br /> <br /> <br />
+             
+              <p style="font-size: 20px;"> <b>어렸을 적 읽었던 동화 피터펫을 기억하시나요? <br><br><br>
+              순수함을 간직한 채 네버랜드에서 살아가는 피터팬처럼 <br>
+              Peter-Pet은 '우리 주위의 순수한 반려견들을 지켜주자'는 의미에서 시작되었습니다.<br></b></p>
+              <br /><br /><br />
+              
+              <img src="@/assets/img/About/about-wenddy.png">
+              <br /><br /><br />
+              <p style="font-size: 20px;"><b>피터팬의 친구 웬디처럼<br> 반려견과의 소중한 삶을 옆에서 지켜주세요 <br><br></b></p>
+              <p style="font-size: 23px; color: rgb(218, 138, 114)"><b>여러분이 바로 Peter-Pet의 "웬디"입니다!</b></p>
+              <br /><br /><br />
+              <hr width="550px">
 
-          <div class="md-layout">
-            <div
-              class="
-                md-layout-item md-size-66 md-xsmall-size-100
-                mx-auto
-                text-center
-              "
-            >
-              <h2 class="title text-center">What is Peterpet?</h2>
-
-              <br />
-              <div class="icon icon-danger">
-                <img
-                  :src="img8"
-                  alt="Thumbnail Image"
-                  class="img-raised Rounded Raised"
-                />
-              </div>
-              <br />
-              <h5 class="description">
-                Peterpet이란 월트 디즈니 애니메이션 피터팬을 인용한
-                단어로,피터펫은 피터팬처럼 순수하게 웬디(견주)를 지키는
-                반려견을,웬디는 피터팬의 보호자이자 영원한 친구를,팅커벨은 항상
-                피터팬을 쫒아다니는 요정으로 QR,내장칩으로 의미를 두어 견주와
-                반려견의 거리감을 줄이고 영원히 함께하는 인생의 동반자라는
-                네이밍하게 되었습니다.
-              </h5>
             </div>
           </div>
           <br />
@@ -93,7 +41,6 @@
           <div class="features text-center">
             <div class="md-layout">
               <div class="md-medium-size-33 md-small-size-33">
-                <h2 class="text-center title">Peter-Pet</h2>
                 <h1 align="center">01</h1>
                 <br /><br />
                 <div class="text-center">
@@ -106,11 +53,11 @@
                   </div>
                   <br />
                   <br />
-                  <h4 class="info-title">동물등록</h4>
+                  <h4 class="info-title">피터펫의 동물등록증</h4>
                   <br />
-                  <p>
-                    동물등록증을 블록체인 기반 DID로 발급함으로써 등록절차를
-                    간소화시키고 실종 신고 서비스와 연계를 가능합니다.
+                  <p style="font-size: 17px;">
+                   블록체인 기반 분산 신원증명 기술인 DID를 통해 동물등록증을 발급함으로써<br>
+                   실종 신고 서비스 및 반려동물 정보가 필요한 타 서비스와의 연계가 가능합니다.
                   </p>
                   <br />
                   <br />
@@ -119,7 +66,7 @@
                   <br />
                 </div>
               </div>
-
+            <div class="part2">
               <div class="md-medium-size-33 md-small-size-33">
                 <h1 align="center">02</h1>
                 <br /><br />
@@ -133,12 +80,13 @@
                   </div>
                   <br />
                   <br />
-                  <h4 class="info-title">실종신고</h4>
+                  <h4 class="info-title">피터펫의 실종신고 서비스</h4>
                   <br />
-                  <p>
-                    반려견을 잃어버렸을 경우, 신고 접수와 동시에 DID동물등록증을
-                    서비스 유저들이 모두 열람할 수 있게함으로써 실종 정보 및
-                    정황을 공유가 가능합니다.
+                  <p style="font-size: 17px;"> 
+                    반려견을 잃어버렸을 경우, 신고 접수와 동시에 반려동물에 대한 실종 상태가 업데이트되며, <br>
+                    반려견 목걸이의 QR코드를 통해 모든 사람들이 해당 반려견의 DID동물등록증과 보호자님의 정보를 조회할 수 있습니다.<br>
+                    따라서 목격자는 보호자님께 즉각적으로 신고가 가능합니다.
+
                   </p>
                   <br />
                   <br />
@@ -147,7 +95,8 @@
                   <br />
                 </div>
               </div>
-
+            </div>
+            <div class="part3">
               <div class="md-medium-size-33 md-small-size-33">
                 <h1 align="center">03</h1>
                 <br /><br />
@@ -161,10 +110,11 @@
                   </div>
                   <br />
                   <br />
-                  <h4 class="info-title">NFT</h4>
+                  <h4 class="info-title">피터펫 NFT</h4>
                   <br />
-                  <p>
-                    DID 동물등록증을 NFT화하여 분양사기를 방지하고, 소장용 NFT를
+                  <p style="font-size: 17px;">
+                    피터펫은 분양과 개인 소장용 NFT 생성 서비스를 제공합니다.<br>
+                    DID 동물등록증을 NFT화하여 분양사기를 방지하고, <br>소장용 NFT를
                     만들어 반려견과의 추억을 저장 할 수 있습니다.
                   </p>
                   <br />
@@ -174,7 +124,8 @@
                   <br />
                 </div>
               </div>
-
+            </div>
+            <div class="part4">
               <div class="md-medium-size-33 md-small-size-33">
                 <h1 align="center">04</h1>
                 <br /><br />
@@ -190,10 +141,8 @@
                   <br />
                   <h4 class="info-title">Peter-Pet API 제공</h4>
                   <br />
-                  <p>
-                    저희 사이트를 통해 동물등록을 한 웬디님들(견주님들)이 타
-                    반려견 관련 서비스 이용의 편리함을 위해 해당 이용 기관들에
-                    저희 PETERPET API를 제공합니다.
+                  <p style="font-size: 17px;">
+                   협력업체에 API를 제공함으로써 이용자들에게 보다 편리한 반려동물 연계 서비스를 제공합니다.
                   </p>
 
                   <div class="box">
@@ -287,7 +236,7 @@
                     </div>
                     <br />
                     <div class="post-button">
-                      <b-button variant="outline-primary" @click="goip()"
+                      <b-button variant="outline-primary" style="width: 500px; height: 80px; font-size: 20px;" @click="goip()"
                         >Peter-Pet API</b-button
                       >
                     </div>
@@ -300,6 +249,7 @@
                   <br />
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </div>
@@ -527,5 +477,14 @@ export default {
 }
 .post-button {
   position: center;
+}
+.part2 {
+  margin-left: 50px;
+}
+.part3 {
+  margin-left: 245px;
+}
+.part4 {
+  margin-left: -115px;
 }
 </style>
