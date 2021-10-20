@@ -5,7 +5,6 @@
     <div class="container">
                 <br><br>
                 <vue-good-table 
-                text-align: center;
                 :columns="columns" :rows="rows"
                 :search-options="{
                 enabled: true,

@@ -102,7 +102,7 @@ export default {
   height: 200px;
   overflow: hidden;
   margin-top: -225px;
-  left: -650px;
+  left: -850px;
 }
 .complete-img img {
   position: absolute;
@@ -164,7 +164,7 @@ export default {
 .query {
   position: relative;
   top: 20px;
-  left: -100px;
+  left: -170px;
   font-size: 20px;
   color:rgb(125, 125, 133);
 

@@ -5,18 +5,15 @@
     <div class="main main-raised">
        <div class="section">
            <div class="md-layout">
+             <h3>Peter-Pet 분양 </h3>
              <hr width="1570px;">
              <br><br><br>
-               <p style="margin-left: 450px; font-size: 60px; color: navy;"><b> Tinkerbell for Your Dog </b> </p>
-               <img style="width: 250px; height: 200px;" src="@/assets/img/Mall/tinkerbell-necklace.png">
-               <div class="ad">
-               <img style= "width: 1500px;" src="@/assets/img/Mall/ad.png">
-               </div>
-
-               <section class="serv_list">
+              <div class="market-tab">
+              <b-tabs content-class="mt-3" fill>
+                <b-tab title="전체보기" active>
+                                 <section class="serv_list">
                  <div class="item-container">
-                   <hr width="1150px;">
-                   <div class="i-title">
+                   <!-- <div class="i-title">
                      <h1> Item List </h1>
                      <ul>
                        <li><a href="">외장칩 목걸이</a></li>
@@ -24,7 +21,7 @@
                        <li><a href="">간식</a></li>
                        <li><a href="">패션</a></li>
                      </ul>
-                   </div>
+                   </div> -->
                    <div class="item_list">
          
                      <div class="i-card" v-for="(nft, index) in certiNfts" :index="index" :key="index">
@@ -44,6 +41,16 @@
                    </div>
                </div>
                </section>
+                  
+                  <p>I'm the first tab</p></b-tab>
+
+                <b-tab title="견종별 모아보기"><p>I'm the second tab</p></b-tab>
+                <b-tab title="유기견 입양"><p>I'm the tab with the very, very long title</p></b-tab>
+              </b-tabs>
+            </div>
+            
+
+
             </div>
          </div>
        </div>
@@ -88,6 +95,9 @@ export default {
 </script>
 
 <style>
+.market-tab {
+  width: 1570px;
+}
   .ad {
       margin-top: 60px;
       margin-left: 40px;
