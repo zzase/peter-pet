@@ -104,13 +104,13 @@ export default {
 
       missingReport: function() {
         this.$http.post('http://localhost:3000/api/pet/report/missing',
-        {address : this.$store.state.user.address, did : this.$route.query.did },
+        {address : this.$store.state.user.address, did : this.$route.query.did, id : this.$store.state.user.id },
         {"Content-Type":"application-json"})
       .then((res)=>{
         console.log('res.data : ' + res.data);
         if(res.data.checkUpdate){
           alert(res.data.msg);
-          this.$router.push({name:'Page 1'});
+          this.$router.push({name:'Page 3'});
         }
         else {
           alert("실종신고 실패");
