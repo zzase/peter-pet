@@ -1027,9 +1027,15 @@ export default {
 };
 </script>
 <style lang="scss" scoped="scoped">
-// .Spinner {
-
-// }
+.Spinner {
+  z-index: index 1;
+  display: inline-flex;
+  margin-left: 720px;
+ }
+ .spinner-div {
+  display: flex;
+  flex-direction: row;
+ }
 .register-form {
   margin-top: -20%;
 }
