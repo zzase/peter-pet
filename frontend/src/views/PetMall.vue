@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <parallax class="section page" :style="headerStyle"> </parallax>
+    <parallax class="section page" > </parallax>
 
     <div class="main main-raised">
        <div class="section">
@@ -26,18 +26,14 @@
          
                      <div class="i-card" v-for="(nft, index) in certiNfts" :index="index" :key="index">
                        <div class="i-img">
-                         <img v-bind:src="nft.repreImgs">
+                         <img v-bind:src="nft.repreImg">
                        </div>
                        <div class="i-text">
                          <h5>{{ nft.name }}</h5>
-                         <p>welcome to peter-pet mall. </p>
+                         <p>{{nft.tokenId}} </p>
                          <button><i class="fas fa-check"></i> Buy </button>
                        </div>
                      </div>
-             
-                     
-                    
-            
                    </div>
                </div>
                </section>
@@ -63,34 +59,32 @@ export default {
   data() {
     return {
       certiNfts: [],
-      certiNftTokenIds: []
     }
   },
   methods: {
-    getCertiNfts: async function(address) {
+    getCertiNfts: async function() {
       const certiOfOwner = await this.$http.get(
-        `http://localhost:3000/api/nft/certi/list/owner/${address}`,
+        `http://localhost:3000/api/nft/certi/list/all`,
         {}
       );
        if (certiOfOwner.data.msg) {
         for (var i = 0; i < certiOfOwner.data.items.length; i++) {
-          console.log("indexcount", i);
           const targetItems = certiOfOwner.data.items[i];
-
-          this.certiNftTokenIds.push(targetItems.tokenId);
+          let tokenId = targetItems.tokenId;
 
           const certiInfos = await this.$http.get(targetItems.tokenUri, {});
           this.certiNfts.push({
+            tokenId : tokenId,
             name: certiInfos.data.name,
             repreImg: certiInfos.data.repreImg
            });
          }
        }
     },
-    created() {
+  },
+  created() {
       this.getCertiNfts(this.$store.state.user.address);
     }
-  }
 }
 </script>
 
