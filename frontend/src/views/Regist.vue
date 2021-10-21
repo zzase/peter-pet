@@ -1031,11 +1031,12 @@ export default {
   z-index: index 1;
   display: inline-flex;
   margin-left: 720px;
- }
- .spinner-div {
+}
+.spinner-div {
   display: flex;
   flex-direction: row;
- }
+  margin-left: -235px;
+}
 .register-form {
   margin-top: -20%;
 }
