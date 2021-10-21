@@ -167,7 +167,7 @@
     width:65%;
     height:65%;
     bottom: -250px;
-    left: -70px;
+    left: -80px;
     }
     .neverland-link2 {
     position:absolute;
@@ -186,7 +186,7 @@
     .neverland-img {
     position: relative;
     margin-top: 100px;
-    margin-left: -185px;
+    margin-left: -195px;
     width: 1500px;
     }
 </style>
