@@ -63,22 +63,22 @@ const routes = [
     component: MyAccount,
   },
   {
-    path: "/mypage/page1",
+    path: "/mypage/cards",
     name: "Page 1",
     component: Page1,
   },
   {
-    path: "/mypage/page2",
+    path: "/mypage/report",
     name: "Page 2",
     component: Page2,
   },
   {
-    path: "/mypage/page3",
+    path: "/mypage/missing",
     name: "Page 3",
     component: Page3,
   },
   {
-    path: "/mypage/page4",
+    path: "/mypage/nfts",
     name: "Page 4",
     component: Page4,
   },
@@ -96,10 +96,9 @@ let router = new VueRouter({
     data () {
       return {
         items: [
-          { title: 'My 동물등록증', icon: 'mdi-clipboard-multiple', url: '/mypage/page1' },
-          { title: 'My 실종신고', icon: 'mdi-magnify-scan', url: '/mypage/page2' },
-          { title: 'My 실종현황 관리', icon: 'mdi-file-search-outline', url: '/mypage/page3' },
-          { title: 'My NFT', icon: 'mdi-database', url: '/mypage/page4' },
+          { title: 'My 동물등록증', icon: 'mdi-clipboard-multiple', url: '/mypage/cards' },
+          { title: 'My 실종현황 관리', icon: 'mdi-file-search-outline', url: '/mypage/missing' },
+          { title: 'My NFT', icon: 'mdi-database', url: '/mypage/nfts' },
         ],
         right: null,
       }
