@@ -6,7 +6,7 @@
         <br />
         <h4>분양 NFT</h4>
       </div>
-      <div v-if="certiNfts.length === 0" class="nft-card1">
+      <div v-if="certiNfts.length === 0" class="m-5">
         <h2>아직 NFT를 만들지 않았어요!</h2>
         <b-button variant="default" href="/#/nft/form"
           >분양용 NFT 만들기</b-button
@@ -53,7 +53,7 @@
         <h4>소장 NFT</h4>
       </div>
 
-      <div v-if="personalNfts.length === 0" class="nft-card2">
+      <div v-if="personalNfts.length === 0" class="m-5">
         <h2>아직 NFT를 만들지 않았어요!</h2>
         <b-button variant="default" href="/#/nft/form/personal"
           >소장용 NFT 만들기</b-button
@@ -216,7 +216,7 @@ export default {
               .then((res) => {
                 if(res.data.submitted){
                   alert(`${tokenId} 소각 완료`);
-                  this.$router.go(-1);
+                  this.$router.push({name:'Page 4'});
                 }
                 else{
                   alert(res.data.msg);

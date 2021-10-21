@@ -54,6 +54,25 @@ router.get('/noqr', async function(req, res, next) {
   })
 });
 
+router.get('/missing', async function(req, res, next) {
+  console.log('get missing did list api call');
+
+  connection.query(`SELECT did, u_id as id, missingDate from missing`
+  ,async function(err,rows){
+    if(rows === undefined){
+      res.status(400).send({msg : "잘못된 요청"})
+    }
+    else {
+      for(var i=0; i< Object.keys(rows).length; i++){
+        var date = new Date(rows[i].missingDate);
+        rows[i].missingDate = `${date.getFullYear()}년 ${date.getMonth()+1}월 ${date.getDate()}일`
+        rows[i].name = await contract.methods.getPetNameByDid(rows[i].did).call();
+      }
+      res.status(200).send({rows:rows});
+    }
+  })
+});
+
 router.get('/info/did/:did', async function(req, res, next) {
   console.log('get all pet Info api call');
   const did = req.params.did;
@@ -246,21 +265,68 @@ router.post('/report/missing',async function(req,res,next) {
   console.log('실종신고 api 호출');
   const did = req.body.did;
   const address = req.body.address;
+  const id = req.body.id;
 
+  let date = new Date();
+  let today = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
+  
   connection.query(`SELECT did FROM did WHERE did="${did}"`,async function(err,rows){
     let checkUpdate = false;
     let msg = '';
+
+    
     if(rows[0] === undefined) {
       msg = '존재하지 않는 DID'
       res.status(404).send({did : did, checkUpdate : checkUpdate, msg : msg});  
     }
     else {
-      
-      msg = `${did} 실종신고 완료`
       try{
-        checkUpdate = true;
-        const result = await contract.methods.updateMissingStatus(did,true).send({ from: address, gas: 5000000 });
-        res.status(200).send({did : did , result:result, checkUpdate:checkUpdate, msg:msg})
+        connection.query(`insert into missing(did,u_id,missingDate) values ('${did}','${id}','${today}');`,async function(err,rows2){
+          if(err){
+            res.status(404).send({err:err , checkUpdate : checkUpdate});
+          }
+          else {
+            checkUpdate = true;
+            msg = `${did} 실종신고 완료`
+            const result = await contract.methods.updateMissingStatus(did,true).send({ from: address, gas: 5000000 });
+            res.status(200).send({did : did , result:result, checkUpdate:checkUpdate, msg:msg}) 
+          }
+        });
+      }catch(error){
+        checkUpdate = false;
+        res.status(400).send({ checkUpdate:checkUpdate,msg:"잔액부족"});
+      }
+    }
+  })
+})
+
+router.delete('/report/missing/cancel',async function(req,res,next) {
+  console.log('실종신고 취소 api 호출');
+  const did = req.body.did;
+  const address = req.body.address;
+
+  connection.query(`SELECT did FROM missing WHERE did="${did}"`,async function(err,rows){
+    let checkUpdate = false;
+    let msg = '';
+
+    
+    if(rows[0] === undefined) {
+      msg = '존재하지 않는 DID'
+      res.status(404).send({did : did, checkUpdate : checkUpdate, msg : msg});  
+    }
+    else {
+      try{
+        connection.query(`DELETE from missing WHERE did = '${did}'`,async function(err,rows2){
+          if(err){
+            res.status(404).send({err:err , checkUpdate : checkUpdate});
+          }
+          else {
+            checkUpdate = true;
+            msg = `${did} 실종신고 취소`
+            const result = await contract.methods.updateMissingStatus(did,false).send({ from: address, gas: 5000000 });
+            res.status(200).send({did : did , result:result, checkUpdate:checkUpdate, msg:msg}) 
+          }
+        });
       }catch(error){
         checkUpdate = false;
         res.status(400).send({ checkUpdate:checkUpdate,msg:"잔액부족"});

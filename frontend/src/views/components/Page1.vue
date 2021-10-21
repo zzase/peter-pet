@@ -6,6 +6,10 @@
           <h2 data-v-clf1971a class="title-text-center">MY 동물등록증</h2>
         </div>
 
+        <div v-if="accordionDIDs.length === 0" class="title-text-center m-5" >
+          <h2>아직 동물을 등록하지 않았어요!</h2>
+          <b-button variant="default" href="/#/regist">동물등록 하러 가기</b-button>
+        </div>
         <div class="spinner-div" v-if="isLoading">
           <Spinner></Spinner>
         </div>
