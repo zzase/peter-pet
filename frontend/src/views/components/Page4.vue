@@ -216,7 +216,7 @@ export default {
               .then((res) => {
                 if(res.data.submitted){
                   alert(`${tokenId} 소각 완료`);
-                  this.$router.go(-1);
+                  this.$router.push({name:'Page 4'});
                 }
                 else{
                   alert(res.data.msg);
