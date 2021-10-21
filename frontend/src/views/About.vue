@@ -21,7 +21,7 @@
               <img src="@/assets/img/About/about-peterpet.png">
               <br /> <br /> <br />
              
-              <p style="font-size: 20px;"> <b>어렸을 적 읽었던 동화 피터펫을 기억하시나요? <br><br><br>
+              <p style="font-size: 20px;"> <b>어렸을 적 읽었던 동화 피터팬을 기억하시나요? <br><br><br>
               순수함을 간직한 채 네버랜드에서 살아가는 피터팬처럼 <br>
               Peter-Pet은 '우리 주위의 순수한 반려견들을 지켜주자'는 의미에서 시작되었습니다.<br></b></p>
               <br /><br /><br />
