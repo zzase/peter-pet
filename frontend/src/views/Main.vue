@@ -29,12 +29,12 @@
                             <br><br><br>
                             <h2 class="title text-center">피터펫의 DID동물등록증이란?</h2>
                             <br>
-                            <h5 class="description">
+                            <p style="font-size: 20px" >
                                 DID 동물등록증은 기존의 동물등록 기능뿐만 아니라 그 정보를 타 기능과 연계시키는 것이 가능합니다. 
                                 피터펫은 DID에 담긴 동물등록증을 통해 실종 반려견 찾기, 펫샵, 펫보험 등의 서비스를 제공하며
                                 메타마스크로 로그인이 가능해, ID와 비밀번호를 입력하는 번거로움도 줄일 수 있습니다. 
                                 또한 DID는 개인이 자신의 데이터를 직접 관리해 서비스 이용 과정에서 꼭 필요한 정보만을 선택, 제출 가능합니다.
-                            </h5>
+                            </p>
                         </div>
                     </div>
                     <div class="features text-center">
@@ -119,12 +119,12 @@
                                 <h1 align="center">04</h1>
                                 <br><br>
                                 <img alt="brand" src="@/assets/img/Main/neverland.jpg">
-                                <h4 class="text-center description">
+                                <p style="font-size: 20px;">
                             <br><br>
                             소중한 반려견들이 우리 곁에 항상 있을 수 있게끔 피터펫은 네버랜드 서비스를 제공합니다.
                             반려견이 실종되었을 경우, 네버랜드에서 반려견을 꼭 찾을 수 있도록 도와드리겠습니다.
                             실종견 및 유기견이 없는 환경 및 건전한 분양 환경을 피터펫에서 만들어 나갑니다.            
-                                 </h4>                    
+                                 </p>                    
                                 </div>
                             </div>
                          </div>

@@ -1243,7 +1243,7 @@ div#selectbutton {
   text-align: center;
   margin-left: 60px;
   margin-bottom: 70px;
-  border: 1px solid black;
+  border: 1px solid rgb(0, 0, 0);
 }
 .info-num2 {
   width: 40px;

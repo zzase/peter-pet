@@ -90,8 +90,8 @@
                   @click="scrollToElement()"
                   v-if="showDownload"
                 >
-                  <p style="font-size: 19px; color: black">외장칩/인식표</p>
-                  <md-tooltip md-direction="bottom">Necklace</md-tooltip>
+                  <p style="font-size: 19px; color: black"> 분양 </p>
+                  <md-tooltip md-direction="bottom">Adoption</md-tooltip>
                 </md-list-item>
 
                 <md-list-item
