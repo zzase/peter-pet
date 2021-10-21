@@ -5,11 +5,15 @@
         <div class="page-head">
           <h2 data-v-clf1971a class="title-text-center">MY 동물등록증</h2>
         </div>
-
-        <div v-if="accordionDIDs.length === 0" class="title-text-center m-5" >
-          <h2>아직 동물을 등록하지 않았어요!</h2>
+        <div v-if="accordionDIDs.length === 0" class="go-register" >
+          <h3>등록된 동물등록증이 없습니다</h3>
+          <img src="@/assets/img/MyPage/register.png"><br>
+          <div class="register-b">
           <b-button variant="default" href="/#/regist">동물등록 하러 가기</b-button>
+          </div>
         </div>
+
+          
         <div class="spinner-div" v-if="isLoading">
           <Spinner></Spinner>
         </div>
@@ -352,5 +356,14 @@ p {
 .owl-theme .owl-dots .owl-dot.active span,
 .owl-theme .owl-dots .owl-dot:hover span {
   background: #2caae1;
+}
+.go-register {
+  margin-top: 200px;
+  margin-left: 390px;
+}
+.register-b {
+  position: absolute;
+  margin-top: -100px;
+  margin-left: 90px;
 }
 </style>

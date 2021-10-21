@@ -78,57 +78,30 @@
                             </div>
                         </div>
 					  	<p></p>
-					  </div> <br><br><br><br><br><br>
-                        <div class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto text-center">
-                        </div>
-                        <div class="section section-contacts">
-                        <div class="container">
-                          <div class="md-layout">
-                             <div class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto">
-                                 <h2 class="text-center title">Peter-Pet</h2>
-                                 <h1 align="center">02</h1>
-                                 <br><br>
-                                 <img alt="brand" src="@/assets/img/Main/registration.jpg">                    
-                             </div>
-                            </div>
-                            </div>
-                         </div>
-                            <br>
-                         <div class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto text-center">                            
-                         </div>
-                        <div class="section section-contacts">
-                         <div class="container">
-                         <div class="md-layout">
-                            <div class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto">
-                                 <h2 class="text-center title"></h2>
-                                 <h1 align="center">03</h1>
-                                 <br><br>
-                                <img alt="brand" src="@/assets/img/Main/necklace.jpg">                    
-                             </div>
-                            </div>
-                            </div>
-                         </div>
-                            <br>
-                        <div class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto text-center">
-                        </div>
-                        <div class="section section-contacts">
-                         <div class="container">
-                          <div class="md-layout">
-                            <div class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto">
-                                <h2 class="text-center title"></h2>
-                                <h1 align="center">04</h1>
-                                <br><br>
-                                <img alt="brand" src="@/assets/img/Main/neverland.jpg">
-                                <p style="font-size: 20px;">
-                            <br><br>
-                            소중한 반려견들이 우리 곁에 항상 있을 수 있게끔 피터펫은 네버랜드 서비스를 제공합니다.
-                            반려견이 실종되었을 경우, 네버랜드에서 반려견을 꼭 찾을 수 있도록 도와드리겠습니다.
-                            실종견 및 유기견이 없는 환경 및 건전한 분양 환경을 피터펫에서 만들어 나갑니다.            
-                                 </p>                    
-                                </div>
-                            </div>
-                         </div>
-                     </div>
+					  </div> 
+                    <div class="container">
+                    <div class="neverland-img">
+                    <img alt="brand" src="@/assets/img/Neverland/NeverlandBackground.jpg">
+                    </div>
+                    <div class="neverland-link1">
+                        <img 
+                        onclick="javascript:location.href='#/regist';" 
+                        src="@/assets/img/Neverland/menu1.png" 
+                        style="cursor:pointer;"/>
+                    </div>
+                    <div class="neverland-link2">
+                        <img onclick="javascript:location.href='#/select/form';"
+                         src="@/assets/img/Neverland/menu2.png" 
+                         style="cursor:pointer;/
+                         margin-top: 500px;">
+                    </div>
+                    <div class="neverland-link3">
+                        <img onclick="javascript:location.href='#/mypage';"
+                         src="@/assets/img/Neverland/menu3.png" 
+                        style="cursor:pointer;"/>
+                    </div>
+                      </div>
+                   
                  </div>
              </div>
          </div>
@@ -188,5 +161,32 @@
 
     .md-has-textarea + .md-layout {
         margin-top: 15px;
+    }
+    .neverland-link1 {
+    position:absolute;
+    width:65%;
+    height:65%;
+    bottom: -250px;
+    left: -70px;
+    }
+    .neverland-link2 {
+    position:absolute;
+    width: 90%;
+    height: 90%;
+    top: 630px;
+    bottom: -900px;
+    left: 450px;
+    }
+    .neverland-link3 {
+    position:absolute;
+    top: 610px;
+    bottom: -130px;
+    right: -120px;
+    }
+    .neverland-img {
+    position: relative;
+    margin-top: 100px;
+    margin-left: -185px;
+    width: 1500px;
     }
 </style>
