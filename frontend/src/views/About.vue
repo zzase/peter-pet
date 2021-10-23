@@ -71,11 +71,13 @@
                 <h1 align="center">02</h1>
                 <br /><br />
                 <div class="text-center">
+                  <img src="@/assets/img/About/qr-necklace.png">
                   <div class="icon icon-info">
                     <img
                       :src="img5"
                       alt="Thumbnail Image"
                       class="img-raised Rounded Raised img"
+                      style="margin-top: -70px;"
                     />
                   </div>
                   <br />
@@ -479,7 +481,7 @@ export default {
   position: center;
 }
 .part2 {
-  margin-left: 50px;
+  margin-left: 40px;
 }
 .part3 {
   margin-left: 245px;

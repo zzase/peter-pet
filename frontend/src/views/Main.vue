@@ -100,7 +100,7 @@
             </div>
             <div class="neverland-link1">
               <img
-                onclick="javascript:location.href='#/regist';"
+                onclick="javascript:location.href='#/mall';"
                 src="@/assets/img/Neverland/menu1.png"
                 style="cursor: pointer"
               />
@@ -108,14 +108,14 @@
             <div class="neverland-link2">
               <img
                 onclick="javascript:location.href='#/select/form';"
-                src="@/assets/img/Neverland/menu2.png"
+                src="@/assets/img/Neverland/menu3.png"
                 style="cursor: pointer; /margin-top: 500px"
               />
             </div>
             <div class="neverland-link3">
               <img
                 onclick="javascript:location.href='#/mypage';"
-                src="@/assets/img/Neverland/menu3.png"
+                src="@/assets/img/Neverland/menu2.png"
                 style="cursor: pointer"
               />
             </div>
@@ -182,22 +182,22 @@ export default {
   position: absolute;
   width: 65%;
   height: 65%;
-  bottom: -250px;
-  left: -80px;
+  bottom: -240px;
+  left: -300px;
 }
 .neverland-link2 {
   position: absolute;
   width: 90%;
   height: 90%;
-  top: 630px;
+  top: 530px;
   bottom: -900px;
-  left: 450px;
+  left: 300px;
 }
 .neverland-link3 {
   position: absolute;
-  top: 610px;
-  bottom: -130px;
-  right: -120px;
+  top: 580px;
+  bottom: -590px;
+  right: -240px;
 }
 .neverland-img {
   position: relative;

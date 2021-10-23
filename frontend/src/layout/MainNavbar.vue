@@ -82,15 +82,6 @@
                 </md-list-item>
 
                 <md-list-item
-                  href="#/mall"
-                  @click="scrollToElement()"
-                  v-if="showDownload"
-                >
-                  <p style="font-size: 19px; color: black">분양</p>
-                  <md-tooltip md-direction="bottom">Adoption</md-tooltip>
-                </md-list-item>
-
-                <md-list-item
                   href="#/customer/service"
                   @click="scrollToElement()"
                   v-if="showDownload"

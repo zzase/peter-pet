@@ -484,7 +484,8 @@
                       <login-card header-color="red">
                         <h2 slot="title" class="card-title">Tinkerbell</h2>
                         <md-field class="md-form-group" slot="inputs">
-                          <div class="md-layout">
+                          <div class="e-layout">
+                            <p style="font-size: 20px; margin-left: 15px; margin-top: 100px; margin-bottom: -50px;"><b>목걸이 디자인을 선택해주세요</b></p>
                             <div
                               class="
                                 md-layout-item
@@ -498,7 +499,7 @@
                               <div class="info">
                                 <img
                                   alt="brand"
-                                  src="@/assets/img/Regist/necklace1.jpg"
+                                  src="@/assets/img/Regist/design1.jpg"
                                 />
                                 <div>
                                   <b-button
@@ -509,7 +510,7 @@
                                     variant="outline-secondary"
                                     v-model="tinkerbellType"
                                     @click="selectTinkerbellType(1)"
-                                    >외장칩 목걸이</b-button
+                                    > 파랭이 목걸이</b-button
                                   >
                                 </div>
                               </div>
@@ -528,7 +529,7 @@
                               <div class="info">
                                 <img
                                   alt="brand"
-                                  src="@/assets/img/Regist/necklace2.jpg"
+                                  src="@/assets/img/Regist/design2.jpg"
                                 />
                                 <div>
                                   <b-button
@@ -539,12 +540,12 @@
                                     variant="outline-secondary"
                                     v-model="tinkerbellType"
                                     @click="selectTinkerbellType(2)"
-                                    >내장칩 목걸이</b-button
+                                    >노랭이 목걸이</b-button
                                   >
                                 </div>
+                                <br><br><br><br><br><br>
                               </div>
                             </div>
-                            <div></div>
                           </div>
                         </md-field>
 
@@ -1242,7 +1243,7 @@ div#selectbutton {
   width: 40px;
   height: 40px;
   text-align: center;
-  margin-left: 60px;
+  margin-left: 100px;
   margin-bottom: 70px;
   border: 1px solid rgb(0, 0, 0);
 }
@@ -1252,5 +1253,8 @@ div#selectbutton {
   margin-left: 60px;
   margin-bottom: 70px;
   border: 1px solid black;
+}
+.e-layout {
+  margin-left: 240px;
 }
 </style>
