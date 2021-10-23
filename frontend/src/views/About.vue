@@ -64,6 +64,8 @@
                   <br />
                   <br />
                   <br />
+                  <br />
+                  <br />
                 </div>
               </div>
             <div class="part2">
@@ -72,6 +74,25 @@
                 <br /><br />
                 <div class="text-center">
                   <img src="@/assets/img/About/qr-necklace.png">
+                   <img src="@/assets/img/About/description.png"
+                        style="margin-top: -180px; margin-bottom: -150px;">
+                </div>
+               
+                 <h4 class="info-title">피터펫 반려견 목걸이</h4>
+                  <br />
+                  <p style="font-size: 17px;"> 
+                    피터펫은 신고서비스와 연계하여 조회할 수 있는 DID 페이지를 반려견 목걸이의 QR코드를 통해 제공합니다.<br>
+                    목걸이 뒷면의 바코드는 스캔 시, 해당 반려견의 동물등록번호 조회가 가능합니다. 
+                  </p>
+                  <br /> <br /> <br /> <br /><br /> <br /> <br />
+              </div>
+            </div>
+            <div class="part3">
+              <div class="md-medium-size-33 md-small-size-33">
+                <h1 align="center">03</h1>
+                <br /><br />
+                <br /><br /><br /><br />
+                <div class="text-center">
                   <div class="icon icon-info">
                     <img
                       :src="img5"
@@ -98,9 +119,10 @@
                 </div>
               </div>
             </div>
-            <div class="part3">
+            <div class="part4">
               <div class="md-medium-size-33 md-small-size-33">
-                <h1 align="center">03</h1>
+               <br /><br /> <br /><br />
+                <h1 align="center">04</h1>
                 <br /><br />
                 <div class="text-center">
                   <div class="icon icon-info">
@@ -127,9 +149,10 @@
                 </div>
               </div>
             </div>
-            <div class="part4">
+            <div class="part5">
               <div class="md-medium-size-33 md-small-size-33">
-                <h1 align="center">04</h1>
+                <br /><br /><br /><br />
+                <h1 align="center">05</h1>
                 <br /><br />
                 <div class="text-center">
                   <div class="icon icon-info">
@@ -481,12 +504,15 @@ export default {
   position: center;
 }
 .part2 {
-  margin-left: 40px;
+  margin-left: -120px;
 }
 .part3 {
-  margin-left: 245px;
+  margin-left: 35px;
 }
 .part4 {
-  margin-left: -115px;
+  margin-left: 235px;
+}
+.part5 {
+  margin-left: -130px;
 }
 </style>
