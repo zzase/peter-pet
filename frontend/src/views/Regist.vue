@@ -233,10 +233,11 @@
                         </md-field>
                         <md-field class="md-form-group" slot="inputs">
                           <label
-                            ><md-icon>lock_outline</md-icon>주민등록번호</label
+                            ><md-icon>home</md-icon>주민등록상 거주지</label
                           >
-                          <md-input v-model="wenddy2.jumin"></md-input>
+                          <md-input v-model="wenddy2.home"></md-input>
                         </md-field>
+                        
                         <md-button
                           id="tab-content"
                           slot="footer"
@@ -398,6 +399,8 @@
                                       name="chkAll"
                                       id="chk"
                                       class="chkAll"
+                                      v-model="agree.checkAll"
+                                      @change="checkAll"
                                     />
                                   </li>
                                 </ul>
@@ -406,7 +409,7 @@
                                 <ul class="clearfix">
                                   <li>이용약관 동의(필수)</li>
                                   <li class="checkBtn">
-                                    <input type="checkbox" name="chk" />
+                                    <input type="checkbox" name="chk" v-model="agree.check1" />
                                   </li>
                                 </ul>
                                 <textarea name="" id="">
@@ -422,7 +425,7 @@
                                     개인정보 수집 및 이용에 대한 안내(필수)
                                   </li>
                                   <li class="checkBtn">
-                                    <input type="checkbox" name="chk" />
+                                    <input type="checkbox" name="chk" v-model="agree.check2"/>
                                   </li>
                                 </ul>
                                 <textarea name="" id="">
@@ -436,7 +439,7 @@
                                 <ul class="clearfix">
                                   <li>위치정보 이용약관 동의(선택)</li>
                                   <li class="checkBtn">
-                                    <input type="checkbox" name="chk" />
+                                    <input type="checkbox" name="chk" v-model="agree.check3"/>
                                   </li>
                                 </ul>
                                 <textarea name="" id="">
@@ -452,7 +455,7 @@
                                     이벤트 등 프로모션 알림 메일 수신(선택)
                                   </li>
                                   <li class="checkBtn">
-                                    <input type="checkbox" name="chk" />
+                                    <input type="checkbox" name="chk" v-model="agree.check4"/>
                                   </li>
                                 </ul>
                               </li>
@@ -620,6 +623,14 @@ export default {
 
       wenddy2: {},
 
+      agree  :{
+        checkAll : false,
+        check1 : false,
+        check2 : false,
+        check3 : false,
+        check4 : false,
+    },
+
       isReg: false,
 
       tinkerbellType: null,
@@ -770,6 +781,13 @@ export default {
       }
     },
 
+    checkAll : function () {
+      this.agree.check1 = !this.agree.check1;
+      this.agree.check2 = !this.agree.check2;
+      this.agree.check3 = !this.agree.check3;
+      this.agree.check4 = !this.agree.check4;
+    },
+
     checkIsReg: function (uid) {
       this.$http
         .get(`http://localhost:3000/api/wenddy/check/gov/id/${uid}`)
@@ -823,7 +841,8 @@ export default {
         console.log("api 호출안하고 넘어가 버리기");
         this.switchPanel("Tinkerbell");
       } else {
-        console.log("regist gov api call");
+        if(this.agree.check1 && this.agree.check2){
+          console.log("regist gov api call");
         const wenddy = this.wenddy;
         wenddy.id = this.$store.state.user.id;
         wenddy.homeAddress =
@@ -855,6 +874,11 @@ export default {
           .catch((err) => {
             console.error(err);
           });
+        }
+        else {
+          alert("필수 이용약관에 동의해주셔야 합니다");
+        }
+        
       }
     },
     selectTinkerbellType(type) {

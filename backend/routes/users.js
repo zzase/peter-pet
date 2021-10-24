@@ -56,7 +56,8 @@ router.get('/check/gov/id/:uid', async function(req,res,nex){
       isReg = true;
       const wenddy = {
         name : rows[0].name,
-        jumin : rows[0].jumin
+        jumin : rows[0].jumin,
+        home : rows[0].home_address
       }
       res.status(200).send({wenddy: wenddy, isReg : isReg});
     }
