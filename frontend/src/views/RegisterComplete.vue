@@ -4,6 +4,7 @@
     <div class="main main-raised">
       <div class="section">
         <div class="my-box1"></div>
+        <div class="container">
         <div class="md-layout">
           <div class="content">
             <!-- <h4>두남이의 Peter-Pet 등록이 완료되었습니다!</h4> -->
@@ -56,6 +57,7 @@
             >
           </div>
         </div>
+        </div>
       </div>
     </div>
   </div>
@@ -97,12 +99,14 @@ export default {
 
 .complete-img {
   z-index: 2;
-  position: relative;
-  width: 200px;
-  height: 200px;
+  position: absolute;
+  width: 180px;
+  height: 180px;
   overflow: hidden;
-  margin-top: -225px;
-  left: -650px;
+  margin-top: 285px;
+  margin-left: 1090px;
+  left: -850px;
+  border-radius: 50px;
 }
 .complete-img img {
   position: absolute;
@@ -133,7 +137,7 @@ export default {
   font-family: Georgia, "Times New Roman", Times, serif;
   position: relative;
   display: inline-block;
-  left: 350px;
+  left: 150px;
   top: -200px;
   margin: auto;
 }
@@ -142,8 +146,8 @@ export default {
 }
 .hat {
   z-index: 3;
-  left: 485px;
-  top: 650px;
+  left: 180px;
+  top: 340px;
   z-index: 1;
   position: absolute;
   width: 300px;
@@ -153,7 +157,7 @@ export default {
 .my-box2 {
   position: relative;
   display: inline-block;
-  left: -370px;
+  left: -320px;
   top: 120px;
   width: 30%;
   height: 0.3%;
@@ -164,7 +168,7 @@ export default {
 .query {
   position: relative;
   top: 20px;
-  left: -100px;
+  left: 340px;
   font-size: 20px;
   color:rgb(125, 125, 133);
 
@@ -174,7 +178,7 @@ export default {
   width: 750px;
   height: 2px;
   top: 0px;
-  left: 450px;
+  left: 140px;
   background-color: rgba(235, 235, 235, 0.897);
 }
 .my-box3 {
@@ -184,7 +188,7 @@ export default {
   height: 380px;
   border-radius: 3em;
   top: -335px;
-  left: 350px;
+  left: 0px;
   border: 2px solid rgba(221, 219, 219, 0.897);
   margin: auto;
 }

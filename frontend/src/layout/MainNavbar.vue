@@ -56,23 +56,19 @@
                   <md-tooltip md-direction="bottom">Peter Pet ?</md-tooltip>
                 </md-list-item>
 
-                <md-list-item
-                  href="#/regist"
-                  @click="scrollToElement()"
-                  v-if="showDownload"
-                >
-                  <p style="font-size: 19px; color: black">동물등록</p>
+                <md-list-item @click="scrollToElement()" v-if="showDownload">
+                  <button class="Animal_regist" @click="regBtn()">
+                    동물등록
+                  </button>
                   <md-tooltip md-direction="bottom"
                     >Animal registration</md-tooltip
                   >
                 </md-list-item>
 
-                <md-list-item
-                  href="#/select/form"
-                  @click="scrollToElement()"
-                  v-if="showDownload"
-                >
-                  <p style="font-size: 19px; color: black">NFT 생성</p>
+                <md-list-item @click="scrollToElement()" v-if="showDownload">
+                  <button class="Animal_regist" @click="nftBtn()">
+                    NFT 생성
+                  </button>
                   <md-tooltip md-direction="bottom">Create NFT</md-tooltip>
                 </md-list-item>
 
@@ -83,15 +79,6 @@
                 >
                   <p style="font-size: 19px; color: purple">네버랜드</p>
                   <md-tooltip md-direction="bottom">NAVERLAND</md-tooltip>
-                </md-list-item>
-
-                <md-list-item
-                  href="#/mall"
-                  @click="scrollToElement()"
-                  v-if="showDownload"
-                >
-                  <p style="font-size: 19px; color: black">외장칩/인식표</p>
-                  <md-tooltip md-direction="bottom">Necklace</md-tooltip>
                 </md-list-item>
 
                 <md-list-item
@@ -308,6 +295,20 @@ export default {
     },
   },
   methods: {
+    regBtn: function () {
+      if (this.$store.state.isLogin) {
+        window.location.href = "#/regist";
+      } else {
+        alert("상단 메뉴의 'login'버튼을 이용해 로그인을 먼저 진행해주세요!");
+      }
+    },
+    nftBtn: function () {
+      if (this.$store.state.isLogin) {
+        window.location.href = "#/select/form";
+      } else {
+        alert("상단 메뉴의 'login'버튼을 이용해 로그인을 먼저 진행해주세요!");
+      }
+    },
     myPage: function () {
       window.location.href = "#/myPage";
     },
@@ -412,6 +413,10 @@ export default {
   }
   .md-toolbar-row {
     margin-left: 550px;
+  }
+  .Animal_regist {
+    font-size: 19px;
+    color: black;
   }
 }
 </style>

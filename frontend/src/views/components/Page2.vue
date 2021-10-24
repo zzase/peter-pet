@@ -32,18 +32,18 @@
         <div class="report-line1">
         </div>
 
-        <li>이용약관 동의[필수]</li>
+        <li>전체 선택</li> 
         <div class="checkBtn1">
-        <input type="checkbox" name="checkBox"></div>
-       <li>보호자 이름[필수]</li>
+        <input type="checkbox" name="checkBox" v-model="agree.check1" @change="checkAll"></div>
+       <li>이용약관 동의[필수]</li> 
         <div class="checkBtn2">
-        <input type="checkbox" name="checkBox"></div>
-        <li>보호자 연락처[필수]</li>
+        <input type="checkbox" name="checkBox" v-model="agree.check2"></div>
+        <li>보호자 이름[필수]</li>
         <div class="checkBtn3">
-        <input type="checkbox" name="checkBox"></div>
-         <li>보호자 주소[선택]</li>
+        <input type="checkbox" name="checkBox" v-model="agree.check3"></div>
+         <li>보호자 연락처[필수]</li>
         <div class="checkBtn4">
-        <input type="checkbox" name="checkBox"></div>
+        <input type="checkbox" name="checkBox" v-model="agree.check4"></div>
 
 
         <div class="report-line2"><br>
@@ -83,6 +83,12 @@ export default {
   data (){
     return {
     
+    agree  :{
+      check1 : false,
+      check2 : false,
+      check3 : false,
+      check4 : false,
+    },
     modal : false,
     counter: 0,
     }
@@ -92,6 +98,11 @@ export default {
   
   },
       methods: {
+        checkAll : function () {
+          this.agree.check2 = !this.agree.check2;
+          this.agree.check3 = !this.agree.check3;
+          this.agree.check4 = !this.agree.check4;
+        },
       toast(toaster, append = false) {
         this.counter++
         this.$bvToast.toast(`실종신고가 완료되었습니다.`, {
@@ -103,22 +114,27 @@ export default {
       },
 
       missingReport: function() {
-        this.$http.post('http://localhost:3000/api/pet/report/missing',
-        {address : this.$store.state.user.address, did : this.$route.query.did },
-        {"Content-Type":"application-json"})
-      .then((res)=>{
-        console.log('res.data : ' + res.data);
-        if(res.data.checkUpdate){
-          alert(res.data.msg);
-          this.$router.push({name:'Page 1'});
+        if(this.agree.check1&this.agree.check2&this.agree.check3&this.agree.check4){
+          this.$http.post('http://localhost:3000/api/pet/report/missing',
+          {address : this.$store.state.user.address, did : this.$route.query.did, id : this.$store.state.user.id },
+          {"Content-Type":"application-json"})
+          .then((res)=>{
+            console.log('res.data : ' + res.data);
+            if(res.data.checkUpdate){
+              alert(res.data.msg);
+              this.$router.push({name:'Page 3'});
+            }
+            else {
+              alert("실종신고 실패");
+            }
+          })
+          .catch((err)=>{
+            console.error(err);
+          })
         }
         else {
-          alert("실종신고 실패");
+          alert("정보제공 동의서에 체크 해주시기 바랍니다.");
         }
-      })
-      .catch((err)=>{
-        console.error(err);
-      })
       },
 
       selectAll: function() {

@@ -1,4 +1,5 @@
 import {contract,CA} from '../kas/peterpetDid.js';
+import {connection} from '../mysql/connector';
 
 const metadata = require('../kas/metadata');
 const kip17 = require('../kas/kip17');
@@ -20,9 +21,33 @@ router.get('/certi/list/owner/:address', async function(req,res,next){
             res.status(400).send({msg : false, result : result});
         }
     }catch(err){
-        res.status(404).send({msg : "Get List of Certi NFT By Address API call Fail"});
+        res.status(400).send({msg : "Get List of Certi NFT By Address API call Fail"});
     }
     
+})
+
+router.get('/certi/list/all', async function(req,res,next){
+    console.log('Get All List Certi NFT API Call');
+    const nftCA = '0xdf47abaec9b9c628c6190b3dcd289b499dcba8b5';
+    const nfts = [];
+    connection.query(`SELECT address FROM user`,async function(err,rows){
+        if(rows[0]===undefined){
+            res.status(400).send({msg:"sql 오류"})
+        }
+        else{
+            try{
+                for(var i=0; i<rows.length; i++){
+                    const result = await kip17.getNftsByAdress(nftCA,rows[i].address);
+                    for(var j=0; j<result.items.length; j ++){
+                        nfts.push(result.items[j]);
+                    }
+                }
+                res.status(200).send({msg:true, items : nfts});
+            }catch(err){
+                res.status(400).send({msg : "Get All List of Certi NFT API call Fail"});
+            }
+        }
+    })
 })
 
 router.get('/personal/list/owner/:address', async function(req,res,next){
@@ -79,6 +104,7 @@ router.get('/personal/info/token/:tokenId', async function(req,res,next){
         res.status(404).send({msg : "Get personal NFT Info By TokenID API call Fail"});
     }
 })
+
 
 router.post('/make/asset',async function(req,res,next) {
     console.log('asset 메타데이터 api 호출');

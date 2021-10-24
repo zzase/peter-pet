@@ -9,11 +9,11 @@
         <div class="box">
        <img alt="brand" src="@/assets/img/Neverland/NeverlandBackground.jpg">
         </div>
-        <div class="neverland-link1"><img onclick="javascript:location.href='#/regist';" src="@/assets/img/Neverland/menu1.png" 
+        <div class="neverland-link1-1"><img onclick="javascript:location.href='#/regist';" src="@/assets/img/Neverland/menu1.png" 
         style="cursor:pointer;"/></div>
-         <div class="neverland-link2"><img onclick="javascript:location.href='#/select/form';" src="@/assets/img/Neverland/menu2.png" 
+         <div class="neverland-link2-1"><img onclick="javascript:location.href='#/select/form';" src="@/assets/img/Neverland/menu2.png" 
         style="cursor:pointer;"/></div>
-         <div class="neverland-link3"><img onclick="javascript:location.href='#/mypage';" src="@/assets/img/Neverland/menu3.png" 
+         <div class="neverland-link3-1"><img onclick="javascript:location.href='#/mypage';" src="@/assets/img/Neverland/menu3.png" 
         style="cursor:pointer;"/></div>
 
        <div id="testImg">
@@ -117,26 +117,26 @@ a {
 .col-md-6:hover a{
   display: flex;
 }
-.neverland-link1 {
+.neverland-link1-1 {
   position:absolute;
   width:65%;
   height:65%;
-  bottom: -190px;
-  left: 210px;
+  bottom: -170px;
+  left: -10px;
 }
-.neverland-link2 {
+.neverland-link2-1 {
   position:absolute;
   width: 90%;
   height: 90%;
-  top: 630px;
+  top: 590px;
   bottom: 100px;
-  left: 750px;
+  left: 1100px;
 }
-.neverland-link3 {
+.neverland-link3-1 {
   position:absolute;
-  top: 610px;
-  bottom: 130px;
-  right: 160px;
+  top: 510px;
+  bottom: 300px;
+  right: 570px;
 }
 
 
