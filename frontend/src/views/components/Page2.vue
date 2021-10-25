@@ -115,7 +115,7 @@ export default {
 
       missingReport: function() {
         if(this.agree.check1&this.agree.check2&this.agree.check3&this.agree.check4){
-          this.$http.post('http://localhost:3000/api/pet/report/missing',
+          this.$http.post('http://210.114.18.112:3000/api/pet/report/missing',
           {address : this.$store.state.user.address, did : this.$route.query.did, id : this.$store.state.user.id },
           {"Content-Type":"application-json"})
           .then((res)=>{

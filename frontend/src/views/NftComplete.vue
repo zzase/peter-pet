@@ -73,7 +73,7 @@ export default {
     getNft: async function (tokenId) {
       try {
         await this.$http
-          .get(`http://localhost:3000/api/nft/certi/info/token/${tokenId}`, {})
+          .get(`http://210.114.18.112:3000/api/nft/certi/info/token/${tokenId}`, {})
           .then((res) => {
             if (res.data.msg) {
               this.$http.get(res.data.tokenUri).then((res) => {

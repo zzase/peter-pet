@@ -76,7 +76,7 @@ export default {
     },
     getCertiNfts: async function () {
       const certiOfOwner = await this.$http.get(
-        `http://localhost:3000/api/nft/certi/list/all`,
+        `http://210.114.18.112:3000/api/nft/certi/list/all`,
         {}
       );
       if (certiOfOwner.data.msg) {

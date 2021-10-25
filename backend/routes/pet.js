@@ -190,7 +190,7 @@ router.post('/regist',async function(req,res,next){
 
         let date = new Date();
         let today = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
-        connection.query(`INSERT INTO did(did,t_id,u_id,url,issueDate,isQR) VALUES("${lastDid}", 0, "${id}","http://localhost:8080/#/pet/own/${lastDid}","${today}",false)`,function(err,rows2){
+        connection.query(`INSERT INTO did(did,t_id,u_id,url,issueDate,isQR) VALUES("${lastDid}", 0, "${id}","http://210.114.18.112:8080/#/pet/own/${lastDid}","${today}",false)`,function(err,rows2){
           if(err){
             res.status(404).send({err:err , checkReg : false});
           }
@@ -250,7 +250,7 @@ router.post('/tinkerbell',async function(req,res,next) {
               else {
                 msg = '가까운 동물병원으로 가셔서 발급된 QR코드나 DID를 알려주세요!'
               }
-              res.status(200).send({peterpet : {name : name, did : lastDid, imgLink:`https://ipfs.io/ipfs/${imgHash}`, url : `"http://localhost:8080/#/pet/own/${lastDid}"`}, checkUpdate:checkUpdate, tinkerbellType : tinkerbellType, msg : msg});
+              res.status(200).send({peterpet : {name : name, did : lastDid, imgLink:`https://ipfs.io/ipfs/${imgHash}`, url : `"http://210.114.18.112:8080/#/pet/own/${lastDid}"`}, checkUpdate:checkUpdate, tinkerbellType : tinkerbellType, msg : msg});
             } 
           }); 
         }

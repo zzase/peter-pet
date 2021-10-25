@@ -828,7 +828,7 @@ export default {
 
     checkIsReg: function (uid) {
       this.$http
-        .get(`http://localhost:3000/api/wenddy/check/gov/id/${uid}`)
+        .get(`http://210.114.18.112:3000/api/wenddy/check/gov/id/${uid}`)
         .then((res) => {
           if (res.data.isReg) {
             console.log(res.data.wenddy);
@@ -854,7 +854,7 @@ export default {
       this.validCheck();
       this.$http
         .post(
-          "http://localhost:3000/api/pet/regist",
+          "http://210.114.18.112:3000/api/pet/regist",
           {
             peterpet: peterpet,
             address: address,
@@ -893,7 +893,7 @@ export default {
 
           this.$http
             .post(
-              "http://localhost:3000/api/wenddy/regist/gov",
+              "http://210.114.18.112:3000/api/wenddy/regist/gov",
               {
                 wenddy: wenddy,
               },
@@ -937,7 +937,7 @@ export default {
 
         try {
           const result = await this.$http.post(
-            "http://localhost:3000/api/pet/tinkerbell",
+            "http://210.114.18.112:3000/api/pet/tinkerbell",
             {
               tinkerbellType: tinkerbellType,
               address: address,

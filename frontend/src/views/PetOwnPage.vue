@@ -76,7 +76,7 @@ export default {
   },
   methods : {
     getPetInfo: function(did) {
-       this.$http.get(`http://172.30.1.38:3000/api/pet/info/did/${did}`,{
+       this.$http.get(`http://210.114.18.112:3000/api/pet/info/did/${did}`,{
        })
        .then((res) => {
          console.log(res.data);
@@ -89,7 +89,7 @@ export default {
        })
      },
     getWenddyInfo: function(did) {
-      this.$http.get(`http://172.30.1.38:3000/api/wenddy/info/did/${did}`,{
+      this.$http.get(`http://210.114.18.112:3000/api/wenddy/info/did/${did}`,{
       })
       .then((res)=>{
         console.log(res.data.wenddy);

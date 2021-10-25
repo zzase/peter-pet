@@ -194,7 +194,7 @@ export default {
       } else {
         this.isLoading = false;
         this.$http
-          .get(`http://localhost:3000/api/pet/dids/owner/${address}`, {})
+          .get(`http://210.114.18.112:3000/api/pet/dids/owner/${address}`, {})
           .then((res) => {
             console.log(res.data);
             for (var i = 0; i < res.data.length; i++) {
@@ -219,7 +219,7 @@ export default {
       console.log({address : address, id: id, metadata : metadata});
 
       try{
-        await this.$http.post("http://localhost:3000/api/nft/make/certiNFT",{
+        await this.$http.post("http://210.114.18.112:3000/api/nft/make/certiNFT",{
           address : address,
           id : id,
           metadata : metadata
@@ -241,7 +241,7 @@ export default {
 
     getRepreImg : function(did) {
       if(this.checked){
-        this.$http.get(`http://localhost:3000/api/pet/info/did/${did}`)
+        this.$http.get(`http://210.114.18.112:3000/api/pet/info/did/${did}`)
         .then((res)=>{
           this.metadata.repreImg = res.data.peterpet.imgLink;
         })
@@ -313,7 +313,7 @@ export default {
     },
     setName: function(did){
       console.log('call setName')
-      this.$http.get(`http://localhost:3000/api/pet/name/${did}`, {})
+      this.$http.get(`http://210.114.18.112:3000/api/pet/name/${did}`, {})
       .then((res)=> {
         if(res.data.peterpet){
           this.metadata.name = `${res.data.peterpet.name} 분양 NFT`;
