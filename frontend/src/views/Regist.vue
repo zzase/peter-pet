@@ -237,7 +237,7 @@
                           >
                           <md-input v-model="wenddy2.home"></md-input>
                         </md-field>
-                        
+
                         <md-button
                           id="tab-content"
                           slot="footer"
@@ -268,7 +268,17 @@
                             pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}"
                             maxlength="13"
                             v-model="wenddy.phone"
-                        /></md-field>
+                          />
+                          <p
+                            style="margin: 10px"
+                            class="text-danger"
+                            v-if="isvalidPhoneNumber"
+                          >
+                            * 피터펫은 실종신고 접수를 위해 이름과 연락처만
+                            저장합니다.
+                          </p>
+                        </md-field>
+
                         <md-field class="md-form-group" slot="inputs">
                           <label> <md-icon>email</md-icon>Email</label>
                           <input
@@ -365,11 +375,6 @@
                             />
                             -
                             <input
-                              style="
-                                position: absolute;
-                                width: 30%;
-                                bottom: 20px;
-                              "
                               type="text"
                               pattern="[0-9]*"
                               inputmode="numeric"
@@ -379,22 +384,30 @@
                               placeholder="OOOOOOO"
                             />
                           </div>
+                          <div style="margin: 25px">
+                            <p class="text-success" v-if="isvalidPrivateNumber">
+                              * 주민등록상 주소와 이름,주민등록번호가
+                              일치합니다.
+                            </p>
+                          </div>
+
                           <label
                             ><md-icon>lock_outline</md-icon>주민등록번호</label
                           >
                         </md-field>
+
                         <md-field class="md-form-group" slot="inputs">
                           <form action="" id="joinForm">
                             <ul class="join_box">
-                              <li class="checkBox check01">
-                                <ul class="clearfix">
-                                  <li>
-                                    이용약관, 개인정보 수집 및 이용, 위치정보
-                                    이용약관(선택), 프로모션 안내 메일
-                                    수신(선택)에 모두 동의합니다.
-                                  </li>
-                                  <li class="checkAllBtn">
+                              <div class="checkBox check01">
+                                <dlv class="clearfix">
+                                  <li style="margin: -20px">전체선택</li>
+                                  <div
+                                    class="checkAllBtn"
+                                    style="margin-left: 750px"
+                                  >
                                     <input
+                                      style="margin-left: -700px"
                                       type="checkbox"
                                       name="chkAll"
                                       id="chk"
@@ -402,15 +415,21 @@
                                       v-model="agree.checkAll"
                                       @change="checkAll"
                                     />
-                                  </li>
-                                </ul>
-                              </li>
-                              <li class="checkBox check02">
+                                  </div>
+                                </dlv>
+                              </div>
+
+                              <div class="checkBox check02">
                                 <ul class="clearfix">
                                   <li>이용약관 동의(필수)</li>
-                                  <li class="checkBtn">
-                                    <input type="checkbox" name="chk" v-model="agree.check1" />
-                                  </li>
+                                  <div class="checkBtn">
+                                    <input
+                                      style="margin: -450px"
+                                      type="checkbox"
+                                      name="chk"
+                                      v-model="agree.check1"
+                                    />
+                                  </div>
                                 </ul>
                                 <textarea name="" id="">
 여러분을 환영합니다. 피터펫 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은
@@ -418,47 +437,46 @@
                                                                                                                                                                 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 피터펫 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
                                                                                                                                                             </textarea
                                 >
-                              </li>
-                              <li class="checkBox check03">
+                              </div>
+                              <div class="checkBox check03">
                                 <ul class="clearfix">
                                   <li>
                                     개인정보 수집 및 이용에 대한 안내(필수)
                                   </li>
-                                  <li class="checkBtn">
-                                    <input type="checkbox" name="chk" v-model="agree.check2"/>
-                                  </li>
+                                  <div class="checkBtn">
+                                    <input
+                                      style="margin: -350px"
+                                      type="checkbox"
+                                      name="chk"
+                                      v-model="agree.check2"
+                                    />
+                                  </div>
                                 </ul>
                                 <textarea name="" id="">
 여러분을 환영합니다. 피터펫 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은
-                                                                                                                                                                    다양한 피터펫 서비스의 이용과 관련하여 피터펫 서비스를 제공하는 피터펫 주식회사(이하 ‘피터펫’)와 이를 이용하는 피터펫 서비스 회원(이하
-                                                                                                                                                                    ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 피터펫 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
-                                                                                                                                                                </textarea
+                                                                                                                                                                다양한 피터펫 서비스의 이용과 관련하여 피터펫 서비스를 제공하는 피터펫 주식회사(이하 ‘피터펫’)와 이를 이용하는 피터펫 서비스 회원(이하
+                                                                                                                                                                ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 피터펫 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다. 피터펫은 실종신고 서비스를 위해 필요한 최소한의 범위 내에서 다음과 같은 개인정보를 수집하고 있습니다.
+
+- 필수항목 : 이름,연락처
+                                                                       </textarea
                                 >
-                              </li>
-                              <li class="checkBox check03">
-                                <ul class="clearfix">
-                                  <li>위치정보 이용약관 동의(선택)</li>
-                                  <li class="checkBtn">
-                                    <input type="checkbox" name="chk" v-model="agree.check3"/>
-                                  </li>
-                                </ul>
-                                <textarea name="" id="">
-여러분을 환영합니다. 피터펫 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은
-                                                                                                                                                                        다양한 피터펫 서비스의 이용과 관련하여 피터펫 서비스를 제공하는 피터펫 주식회사(이하 ‘피터펫’)와 이를 이용하는 피터펫 서비스 회원(이하
-                                                                                                                                                                        ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 피터펫 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
-                                                                                                                                                                    </textarea
-                                >
-                              </li>
-                              <li class="checkBox check04">
+                              </div>
+
+                              <div class="checkBox check04">
                                 <ul class="clearfix">
                                   <li>
                                     이벤트 등 프로모션 알림 메일 수신(선택)
                                   </li>
-                                  <li class="checkBtn">
-                                    <input type="checkbox" name="chk" v-model="agree.check4"/>
-                                  </li>
+                                  <div class="checkBtn">
+                                    <input
+                                      style="margin: -350px"
+                                      type="checkbox"
+                                      name="chk"
+                                      v-model="agree.check4"
+                                    />
+                                  </div>
                                 </ul>
-                              </li>
+                              </div>
                             </ul>
                           </form>
                         </md-field>
@@ -486,71 +504,76 @@
                     <form @submit.prevent="selectTinkerbell">
                       <login-card header-color="red">
                         <h2 slot="title" class="card-title">Tinkerbell</h2>
-                        <md-field class="md-form-group" slot="inputs">
+                        <md-field2 class="" slot="inputs">
                           <div class="e-layout">
-                            <p style="font-size: 20px; margin-left: 15px; margin-top: 100px; margin-bottom: -50px;"><b>목걸이 디자인을 선택해주세요</b></p>
-                            <div
-                              class="
-                                md-layout-item
-                                md-medium-size-60
-                                md-small-size-100
-                              "
-                            >
-                              <div class="info-num1" style="border 1px black;">
-                                <h3>1</h3>
-                              </div>
-                              <div class="info">
-                                <img
-                                  alt="brand"
-                                  src="@/assets/img/Regist/design1.jpg"
-                                />
-                                <div>
-                                  <b-button
-                                    id="tooltip-button-1"
-                                    style="margin: 0 auto; display: block"
-                                    :pressed="true"
-                                    pill
-                                    variant="outline-secondary"
-                                    v-model="tinkerbellType"
-                                    @click="selectTinkerbellType(1)"
-                                    > 파랭이 목걸이</b-button
-                                  >
-                                </div>
-                              </div>
+                            <div class="maintext">
+                              <p
+                                style="
+                                  font-size: 20px;
+                                  margin-left: 15px;
+                                  margin-top: 100px;
+                                  margin-bottom: -50px;
+                                "
+                              >
+                                <b>목걸이 디자인을 선택해주세요</b>
+                              </p>
                             </div>
-
-                            <div
-                              class="
-                                md-layout-item
-                                md-medium-size-60
-                                md-small-size-100
-                              "
-                            >
-                              <div class="info-num1">
-                                <h3>2</h3>
-                              </div>
-                              <div class="info">
-                                <img
-                                  alt="brand"
-                                  src="@/assets/img/Regist/design2.jpg"
-                                />
-                                <div>
-                                  <b-button
-                                    id="tooltip-button-1"
-                                    style="margin: 0 auto; display: block"
-                                    :pressed="true"
-                                    pill
-                                    variant="outline-secondary"
-                                    v-model="tinkerbellType"
-                                    @click="selectTinkerbellType(2)"
-                                    >노랭이 목걸이</b-button
-                                  >
+                            <div class="Sub">
+                              <div class="bule">
+                                <div
+                                  class="info1-num1"
+                                  style="border 1px black;"
+                                >
+                                  <h3>1</h3>
                                 </div>
-                                <br><br><br><br><br><br>
+                                <div class="info1">
+                                  <img
+                                    alt="brand"
+                                    src="@/assets/img/Regist/design1.jpg"
+                                  />
+                                  <div>
+                                    <b-button
+                                      id="tooltip-button-1"
+                                      style="margin: 0 auto; display: block"
+                                      :pressed="true"
+                                      pill
+                                      variant="outline-secondary"
+                                      v-model="tinkerbellType"
+                                      @click="selectTinkerbellType(1)"
+                                    >
+                                      파랭이 목걸이</b-button
+                                    >
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="yellow">
+                                <div class="info2-num1">
+                                  <h3>2</h3>
+                                </div>
+                                <div class="info2">
+                                  <img
+                                    alt="brand"
+                                    src="@/assets/img/Regist/design2.jpg"
+                                  />
+                                  <div>
+                                    <b-button
+                                      id="tooltip-button-1"
+                                      style="margin: 0 auto; display: block"
+                                      :pressed="true"
+                                      pill
+                                      variant="outline-secondary"
+                                      v-model="tinkerbellType"
+                                      @click="selectTinkerbellType(2)"
+                                      >노랭이 목걸이</b-button
+                                    >
+                                  </div>
+                                  <br /><br /><br /><br /><br /><br />
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </md-field>
+                        </md-field2>
 
                         <md-button
                           slot="footer"
@@ -623,13 +646,13 @@ export default {
 
       wenddy2: {},
 
-      agree  :{
-        checkAll : false,
-        check1 : false,
-        check2 : false,
-        check3 : false,
-        check4 : false,
-    },
+      agree: {
+        checkAll: false,
+        check1: false,
+        check2: false,
+        check3: false,
+        check4: false,
+      },
 
       isReg: false,
 
@@ -758,6 +781,21 @@ export default {
     },
   },
   computed: {
+    isvalidPhoneNumber() {
+      if (this.wenddy.phone.length >= 7) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    isvalidPrivateNumber() {
+      if (this.secondRRN.length >= 7) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+
     headerStyle() {
       return { backgroundImage: `url(${this.header})` };
     },
@@ -781,7 +819,7 @@ export default {
       }
     },
 
-    checkAll : function () {
+    checkAll: function () {
       this.agree.check1 = !this.agree.check1;
       this.agree.check2 = !this.agree.check2;
       this.agree.check3 = !this.agree.check3;
@@ -841,44 +879,42 @@ export default {
         console.log("api 호출안하고 넘어가 버리기");
         this.switchPanel("Tinkerbell");
       } else {
-        if(this.agree.check1 && this.agree.check2){
+        if (this.agree.check1 && this.agree.check2) {
           console.log("regist gov api call");
-        const wenddy = this.wenddy;
-        wenddy.id = this.$store.state.user.id;
-        wenddy.homeAddress =
-          this.addressInfo.roadAddress +
-          " " +
-          this.addressInfo.buildingName +
-          " " +
-          this.addressInfo.detailAddress;
-        wenddy.jumin = this.resultRRN();
+          const wenddy = this.wenddy;
+          wenddy.id = this.$store.state.user.id;
+          wenddy.homeAddress =
+            this.addressInfo.roadAddress +
+            " " +
+            this.addressInfo.buildingName +
+            " " +
+            this.addressInfo.detailAddress;
+          wenddy.jumin = this.resultRRN();
 
-        this.$http
-          .post(
-            "http://localhost:3000/api/wenddy/regist/gov",
-            {
-              wenddy: wenddy,
-            },
-            { "Content-Type": "application-json" }
-          )
-          .then((res) => {
-            console.log(res.data);
-            if (res.data.checkReg) {
-              this.switchPanel("Tinkerbell");
-            } else {
-              alert(
-                "정부 등록에 실패하였습니다. 입력 정보를 다시 확인해주세요"
-              );
-            }
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-        }
-        else {
+          this.$http
+            .post(
+              "http://localhost:3000/api/wenddy/regist/gov",
+              {
+                wenddy: wenddy,
+              },
+              { "Content-Type": "application-json" }
+            )
+            .then((res) => {
+              console.log(res.data);
+              if (res.data.checkReg) {
+                this.switchPanel("Tinkerbell");
+              } else {
+                alert(
+                  "정부 등록에 실패하였습니다. 입력 정보를 다시 확인해주세요"
+                );
+              }
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+        } else {
           alert("필수 이용약관에 동의해주셔야 합니다");
         }
-        
       }
     },
     selectTinkerbellType(type) {
@@ -1078,6 +1114,15 @@ table {
   }
 }
 
+.maintext {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.Sub {
+  display: flex;
+}
+
 .section {
   padding: 0;
 }
@@ -1145,14 +1190,12 @@ table {
 }
 .checkBox > ul > li:first-child {
   width: 85%;
-  padding: 15px;
   top: 50%;
   right: 30px;
-  margin-top: -12px;
 }
 .checkBox textarea {
   width: 96%;
-  height: 90px;
+  height: 120px;
   margin: 0 2%;
   background-color: #f7f7f7;
   color: #888;
@@ -1181,7 +1224,6 @@ table {
   top: -80px;
 }
 input[id="chk"] {
-  position: relative;
   margin-left: 20px;
 }
 textarea {
@@ -1215,7 +1257,6 @@ textarea {
 }
 
 input[type="text"] {
-  width: 70%;
   padding: 10px 20px;
   margin: 5px 0;
   box-sizing: 80px;
@@ -1258,27 +1299,41 @@ div#selectbutton {
 .b-button {
   padding-left: 30px;
 }
-.info {
-  margin-top: -120px;
+.info1 {
+  margin-top: -110px;
   margin-bottom: 100px;
-  margin-left: -60px;
+  margin-left: 65px;
 }
-.info-num1 {
+.info1 {
+  max-width: 320px;
+  padding: 70px 0 30px;
+}
+.info1-num1 {
   width: 40px;
   height: 40px;
   text-align: center;
-  margin-left: 100px;
+  margin-left: 220px;
   margin-bottom: 70px;
+  margin-top: 100px;
   border: 1px solid rgb(0, 0, 0);
 }
-.info-num2 {
-  width: 40px;
-  text-align: center;
-  margin-left: 60px;
-  margin-bottom: 70px;
-  border: 1px solid black;
+
+.info2 {
+  margin-top: -110px;
+  margin-bottom: 100px;
+  margin-left: 100px;
 }
-.e-layout {
-  margin-left: 240px;
+.info2 {
+  max-width: 320px;
+  padding: 70px 0 30px;
+}
+.info2-num1 {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  margin-left: 245px;
+  margin-bottom: 70px;
+  margin-top: 100px;
+  border: 1px solid rgb(0, 0, 0);
 }
 </style>
