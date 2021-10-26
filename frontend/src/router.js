@@ -19,6 +19,7 @@ import CustomerService from "./views/CustomerService.vue";
 import NftComplete from "./views/NftComplete.vue";
 import PersonalNftComplete from "./views/PersonalNftComplete.vue";
 import About from "./views/About.vue";
+import BuyComplete from "./views/BuyComplete.vue"
 
 import Neverland from "./views/Neverland.vue";
 import RegisterComplete from "./views/RegisterComplete.vue"
@@ -172,6 +173,16 @@ export default new Router({
         footer: { backgroundColor: "black" }
       },
     },
+    {
+      path: "/nft/buy/complete",
+      name: "buyComplete",
+      components: { default: BuyComplete, header: MainNavbar, footer: MainFooter  },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      },
+    },
+    
     {
       path: "/mall",
       name: "petmall",

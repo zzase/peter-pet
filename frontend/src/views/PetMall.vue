@@ -35,7 +35,7 @@
                         <div class="i-text">
                           <h5>{{ nft.name }}</h5>
                           <p>{{ nft.tokenId }}</p>
-                          <button @click="buyBtn()">
+                          <button @click="showModal(nft.tokenId,nft.name)">
                             <i class="fas fa-check"></i> Buy
                           </button>
                         </div>
@@ -64,6 +64,8 @@ export default {
   data() {
     return {
       certiNfts: [],
+
+      buyConfirm : false
     };
   },
   methods: {
@@ -93,6 +95,50 @@ export default {
         }
       }
     },
+    showModal(tokenId, tokenName) {
+        this.buyConfirm = false
+        this.$bvModal.msgBoxConfirm(`[ ${tokenName} ]를 구매하여 분양을 진행합니다`, {
+          title: 'NFT 구매 및 분양',
+          size: 'lg',
+          buttonSize: 'md',
+          okVariant: 'success',
+          okTitle: 'YES',
+          cancelTitle: 'NO',
+          footerClass: 'p-2',
+          hideHeaderClose: false,
+          centered: true
+        })
+          .then(value => {
+            this.buyConfirm = value
+            if(this.buyConfirm){
+              console.log('confirm : ' + this.buyConfirm);
+              const did = 'did:peterpet:' + tokenId.substring(2);
+              const to = this.$store.state.user.address;
+              this.$http.post(`http://210.114.18.112:3000/api/pet/buy/did/${did}/token/${tokenId}`,
+              {
+                to : to
+              },{"Content-Type": "application-json"})
+              .then((res) => {
+                if(res.data.checkUpdate){
+                  const result = res.data;
+                  this.$router.push({
+                    name : "buyComplete",
+                    query : {result : result}
+                  })
+                }
+                else{
+                  alert(res.data.msg);
+                }
+              })
+            }
+            else{
+              this.buyConfirm = false
+            }
+          })
+          .catch(err => {
+            // An error occurred
+          })
+      }
   },
   created() {
     this.getCertiNfts(this.$store.state.user.address);
