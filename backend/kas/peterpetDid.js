@@ -6,7 +6,7 @@ const secretAccessKey = 'rEEoLuBoR5GuplSO-JZLevu_lX8-Nxg7txDJeAd3'
 
 const caver = new CaverExtKas(chainId,accessKeyId,secretAccessKey);
 
-const ABI = [
+const ABI =[
 	{
 		"constant": false,
 		"inputs": [
@@ -778,7 +778,7 @@ const ABI = [
 		"type": "function"
 	}
 ]
-const CA = '0xAD911989917A394fd8b3f90D19f7E83188d5C626';
+const CA = '0x9A8AC6e51C31d04567737f0C2A108ec620E3BBAE';
 const contract = new caver.contract(ABI,CA);
 
 export {contract,CA};

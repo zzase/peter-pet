@@ -357,4 +357,36 @@ router.put('/make/qr',async function(req,res,next){
   })
 })
 
+router.post('/buy/did/:did',async function(req,res,next){
+  console.log('buy did api call')
+  const did = req.params.did;
+  const buyer = req.body.buyer;
+  console.log(did);
+  var msg = ''
+  var checkUpdate = false
+  var status = 400
+
+  try{
+    const result = await contract.methods.changeWenddy(did,buyer).send({ from: buyer, gas: 5000000 });
+    connection.query(`select u_id as id from user where address = "${buyer}"`,function(err,rows){
+      connection.query(`update did set u_id = "${rows[0].id}" where did = "${did}"`,async function(err,rows2){
+        if(err) {
+          msg = '존재하지 않는 DID'
+          checkUpdate = false
+          status = 400  
+        }
+        else {
+          msg = '분양 완료'
+          checkUpdate = true
+          status = 200
+        }
+        res.status(status).send({did : did, checkUpdate:checkUpdate, result : result});
+      })
+    })
+  }catch(err){
+    res.status(400).send({msg : "contract error"});
+  }
+  
+})
+
 module.exports = router;
