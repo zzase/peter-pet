@@ -223,19 +223,206 @@
                         <h2 slot="title" class="card-title">Wenddy</h2>
                         <md-field class="md-form-group" slot="inputs">
                           <h4>
-                            {{ this.$store.state.user.id }}님의 동물등록 이력이
-                            있어 아래 정보로 동물 등록을 진행합니다
+                            {{ this.$store.state.user.id }}님의 동물등록 이력이 있어 번호를 제외한 주민등록 정보만 확인합니다.
                           </h4>
                         </md-field>
                         <md-field class="md-form-group" slot="inputs">
                           <label> <md-icon>person_outline</md-icon>이름</label>
                           <md-input v-model="wenddy2.name"></md-input>
                         </md-field>
+                        
+                         <md-field class="md-form-group" slot="inputs">
+                          <label> <md-icon>home</md-icon>주소</label>
+                          <title>주소 입력</title>
+                          <body>
+                            <form name="form" id="form" method="post">
+                              <table>
+                                <colgroup>
+                                  <col style="width: 20%" />
+                                  <col />
+                                </colgroup>
+                                <tbody>
+                                  <tr>
+                                    <th>우편번호</th>
+                                    <td>
+                                      <input
+                                        type="hidden"
+                                        id="confmKey"
+                                        name="confmKey"
+                                        value=""
+                                      />
+                                      <input
+                                        type="text"
+                                        id="zipNo"
+                                        name="zipNo"
+                                        readonly="readonly"
+                                        style="width: 100px"
+                                        v-model="addressInfo.zonecode"
+                                      />
+                                      <input
+                                        type="button"
+                                        value="주소검색"
+                                        style="
+                                          background-color: gray;
+                                          color: white;
+                                          width: 90px;
+                                        "
+                                        @click="getPostalcode()"
+                                      />
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <th>도로명주소</th>
+                                    <td>
+                                      <input
+                                        type="text"
+                                        id="roadAddrPart1"
+                                        style="width: 85%"
+                                        v-model="addressInfo.roadAddress"
+                                      />
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <th>상세주소</th>
+                                    <td>
+                                      <input
+                                        type="text"
+                                        id="addrDetail"
+                                        style="width: 40%"
+                                        v-model="addressInfo.buildingName"
+                                      />
+                                      <input
+                                        type="text"
+                                        id="roadAddrPart2"
+                                        style="width: 40%"
+                                        v-model="addressInfo.detailAddress"
+                                      />
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </form>
+                          </body>
+                        </md-field>
                         <md-field class="md-form-group" slot="inputs">
+                          <br />
+                          <div id="personal-id" style="margin-top: 10px">
+                            <input
+                              type="text"
+                              inputmode="numeric"
+                              pattern="[0-9]*"
+                              maxlength="6"
+                              @input="firstRRNCheck($event.data)"
+                              v-model="resultfirstRRN"
+                              class="tf_register"
+                              placeholder="주민번호 앞자리"
+                            />
+                            -
+                            <input
+                              type="text"
+                              pattern="[0-9]*"
+                              inputmode="numeric"
+                              maxlength="7"
+                              @input="secondRRNCheck($event.data)"
+                              v-model="resultsecondRRNView"
+                              placeholder="OOOOOOO"
+                            />
+                          </div>
+                          <div style="margin: 25px">
+                            <p class="text-success" v-if="isvalidPrivateNumber">
+                              * 주민등록상 주소와 이름,주민등록번호가
+                              일치합니다.
+                            </p>
+                          </div>
+
                           <label
-                            ><md-icon>home</md-icon>주민등록상 거주지</label
+                            ><md-icon>lock_outline</md-icon>주민등록번호</label
                           >
-                          <md-input v-model="wenddy2.home"></md-input>
+                        </md-field>
+
+                        <md-field class="md-form-group" slot="inputs">
+                          <form action="" id="joinForm">
+                            <ul class="join_box">
+                              <div class="checkBox check01">
+                                <dlv class="clearfix">
+                                  <li style="margin: -20px">전체선택</li>
+                                  <div
+                                    class="checkAllBtn"
+                                    style="margin-left: 750px"
+                                  >
+                                    <input
+                                      style="margin-left: -700px"
+                                      type="checkbox"
+                                      name="chkAll"
+                                      id="chk"
+                                      class="chkAll"
+                                      v-model="agree.checkAll"
+                                      @change="checkAll"
+                                    />
+                                  </div>
+                                </dlv>
+                              </div>
+
+                              <div class="checkBox check02">
+                                <ul class="clearfix">
+                                  <li>이용약관 동의(필수)</li>
+                                  <div class="checkBtn">
+                                    <input
+                                      style="margin: -450px"
+                                      type="checkbox"
+                                      name="chk"
+                                      v-model="agree.check1"
+                                    />
+                                  </div>
+                                </ul>
+                                <textarea name="" id="">
+여러분을 환영합니다. 피터펫 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은
+                                                                                                                                                                다양한 피터펫 서비스의 이용과 관련하여 피터펫 서비스를 제공하는 피터펫 주식회사(이하 ‘피터펫’)와 이를 이용하는 피터펫 서비스 회원(이하
+                                                                                                                                                                ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 피터펫 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
+                                                                                                                                                            </textarea
+                                >
+                              </div>
+                              <div class="checkBox check03">
+                                <ul class="clearfix">
+                                  <li>
+                                    개인정보 수집 및 이용에 대한 안내(필수)
+                                  </li>
+                                  <div class="checkBtn">
+                                    <input
+                                      style="margin: -350px"
+                                      type="checkbox"
+                                      name="chk"
+                                      v-model="agree.check2"
+                                    />
+                                  </div>
+                                </ul>
+                                <textarea name="" id="">
+여러분을 환영합니다. 피터펫 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은
+                                                                                                                                                                다양한 피터펫 서비스의 이용과 관련하여 피터펫 서비스를 제공하는 피터펫 주식회사(이하 ‘피터펫’)와 이를 이용하는 피터펫 서비스 회원(이하
+                                                                                                                                                                ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 피터펫 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다. 피터펫은 실종신고 서비스를 위해 필요한 최소한의 범위 내에서 다음과 같은 개인정보를 수집하고 있습니다.
+
+- 필수항목 : 이름,연락처
+                                                                       </textarea
+                                >
+                              </div>
+
+                              <div class="checkBox check04">
+                                <ul class="clearfix">
+                                  <li>
+                                    이벤트 등 프로모션 알림 메일 수신(선택)
+                                  </li>
+                                  <div class="checkBtn">
+                                    <input
+                                      style="margin: -350px"
+                                      type="checkbox"
+                                      name="chk"
+                                      v-model="agree.check4"
+                                    />
+                                  </div>
+                                </ul>
+                              </div>
+                            </ul>
+                          </form>
                         </md-field>
 
                         <md-button

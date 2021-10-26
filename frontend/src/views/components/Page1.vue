@@ -117,14 +117,18 @@ export default {
         .get(`http://210.114.18.112:3000/api/pet/dids/owner/${address}`, {})
         .then((res) => {
           console.log(res.data);
+          
           for (var i = 0; i < res.data.length; i++) {
-            this.accordionDIDs.push({
+            if(`${res.data.dids[i]}`.length > 1){
+              this.accordionDIDs.push({
               id: i + 1,
               did: `${res.data.dids[i]}`,
               name: res.data.names[i],
             });
+            console.log('did : ' +this.accordionDIDs[i].did);
           }
           this.isLoading = false;
+            }
         });
     },
     getInfo: function (did) {

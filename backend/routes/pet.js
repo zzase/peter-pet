@@ -3,6 +3,8 @@ import {connection} from '../mysql/connector';
 
 const wallet = require('../kas/wallet');
 
+const kip17 = require('../kas/kip17');
+
 var express = require('express');
 var router = express.Router();
 
@@ -357,17 +359,24 @@ router.put('/make/qr',async function(req,res,next){
   })
 })
 
-router.post('/buy/did/:did',async function(req,res,next){
+router.post('/buy/did/:did/token/:tokenId',async function(req,res,next){
   console.log('buy did api call')
+  const nftCA = '0xdf47abaec9b9c628c6190b3dcd289b499dcba8b5'
+  
+  const tokenId = req.params.tokenId;
   const did = req.params.did;
-  const buyer = req.body.buyer;
-  console.log(did);
+  const to = req.body.to;
+
+  const tokenInfo = await kip17.getNftInfoByTokenId(nftCA,tokenId);
+  const owner = tokenInfo.owner;
+
   var msg = ''
   var checkUpdate = false
   var status = 400
 
   try{
     const result = await contract.methods.changeWenddy(did,buyer).send({ from: buyer, gas: 5000000 });
+    const reicpt = await kip17.transferNft(tokenId,owner,to,nftCA);
     connection.query(`select u_id as id from user where address = "${buyer}"`,function(err,rows){
       connection.query(`update did set u_id = "${rows[0].id}" where did = "${did}"`,async function(err,rows2){
         if(err) {
@@ -380,7 +389,7 @@ router.post('/buy/did/:did',async function(req,res,next){
           checkUpdate = true
           status = 200
         }
-        res.status(status).send({did : did, checkUpdate:checkUpdate, result : result});
+        res.status(status).send({did : did, checkUpdate:checkUpdate, result : result, transactionHash : reicpt.transactionHash});
       })
     })
   }catch(err){

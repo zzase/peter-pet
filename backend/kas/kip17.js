@@ -22,6 +22,23 @@ class Kip17 extends ApiCaller {
         return res;
     }
 
+    async transferNft(tokenId,owner,to,ca) {
+        const options = {
+            method: 'POST',
+            url : `/v1/contract/${ca}/token/${tokenId}`,
+            body : {
+                sender : owner,
+                owner : owner,
+                to : to
+            },
+            json : true
+        };
+
+        const res = await this.call(options);
+        console.log(res);
+        return res;
+    }
+
     async getNftsByAdress(ca,address) {
         const options = {
             method: 'GET',
