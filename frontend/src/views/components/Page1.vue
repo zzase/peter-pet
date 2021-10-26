@@ -125,7 +125,6 @@ export default {
               did: `${res.data.dids[i]}`,
               name: res.data.names[i],
             });
-            console.log('did : ' +this.accordionDIDs[i].did);
           }
           this.isLoading = false;
             }

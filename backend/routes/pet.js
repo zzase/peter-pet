@@ -245,13 +245,8 @@ router.post('/tinkerbell',async function(req,res,next) {
               const imgHash = await contract.methods.getPetImgByDid(`${lastDid}`).call();
               console.log(name);
   
-              if(tinkerbellType === 1){
-                msg = '입력하신 주소로 외장칩이 발송되었습니다';
-              }
-  
-              else {
-                msg = '가까운 동물병원으로 가셔서 발급된 QR코드나 DID를 알려주세요!'
-              }
+              msg = 'PETER-PET 목걸이가 입력하신 주소로 배송 됩니다'
+
               res.status(200).send({peterpet : {name : name, did : lastDid, imgLink:`https://ipfs.io/ipfs/${imgHash}`, url : `"http://210.114.18.112:8080/#/pet/own/${lastDid}"`}, checkUpdate:checkUpdate, tinkerbellType : tinkerbellType, msg : msg});
             } 
           }); 
