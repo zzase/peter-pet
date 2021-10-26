@@ -375,9 +375,9 @@ router.post('/buy/did/:did/token/:tokenId',async function(req,res,next){
   var status = 400
 
   try{
-    const result = await contract.methods.changeWenddy(did,buyer).send({ from: buyer, gas: 5000000 });
+    const result = await contract.methods.changeWenddy(did,to).send({ from: to, gas: 5000000 });
     const reicpt = await kip17.transferNft(tokenId,owner,to,nftCA);
-    connection.query(`select u_id as id from user where address = "${buyer}"`,function(err,rows){
+    connection.query(`select u_id as id from user where address = "${to}"`,function(err,rows){
       connection.query(`update did set u_id = "${rows[0].id}" where did = "${did}"`,async function(err,rows2){
         if(err) {
           msg = '존재하지 않는 DID'
