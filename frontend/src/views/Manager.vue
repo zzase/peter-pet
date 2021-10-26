@@ -108,7 +108,7 @@ export default {
     },
 
     makeQR: function (params) {
-      this.text = `http://210.114.18.112:8080/pet/own/${params.row.did}`;
+      this.text = `http://210.114.18.112:8080/#/pet/own/${params.row.did}`;
       this.did = `${params.row.did}`;
       this.qId = params.row.did;
       this.showModal = true;
