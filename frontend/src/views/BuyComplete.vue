@@ -6,7 +6,7 @@
         <div class="my-box1"></div>
         <div class="container">
         <div class="md-layout">
-          <div class="content">
+          <div class="content-buy">
             <!-- <h4>두남이의 Peter-Pet 등록이 완료되었습니다!</h4> -->
             <img
               id="check"
@@ -14,11 +14,11 @@
               src="@/assets/img/nft/ccomplete.png"
             />
           </div>
-          <div class="hat">
+          <div class="hat1">
             <img :src="img1" alt="brand" />
           </div>
 
-          <div class="my-box2" style="color: black;">
+          <div class="box-complete" style="color: black;">
             <label><b>이름 : </b></label>
             <label>{{ peterpet.name }}</label>
             <br />
@@ -27,22 +27,19 @@
             <label>{{ $route.query.result.did }}</label>
             <br />
             <br />
-            <label><b>분양 영수증 : </b></label>
-            <div class="recipt"
-                 style="z-index:1 ;">
-            <md-button src="success"> receipt</md-button>
-            </div>
+            <label><b>분양 TX Hash: </b></label>
+           
             <h7>{{$route.query.result.transactionHash}}</h7>
             <br />
             <br />
           </div>
             
 
-          <div class="query-line"></div>
-          <div class="query-1">
+          <div class="query-line-1"></div>
+          <div class="query-b1">
             <label><b>{{ peterpet.name }}를 잘 부탁해요!</b></label>
           </div>
-          <div class="complete-img">
+          <div class="complete-img1">
             <img
               id="dog"
               :src="peterpet.imgLink"
@@ -50,18 +47,9 @@
               class="img-raised rounded-circle img-fluid"
             />
           </div>
-          <div class="my-box3"></div>
+          <div class="my-box-nc"></div>
           <div class="my-box4"></div>
-          <div class="mypage-c">
-            <md-button id="mypage" href="#/mypage" class="md-success">
-              <b>마이 페이지</b></md-button
-            >
-          </div>
-          <div class="mainpage-c">
-            <md-button id="mainpage" href="#/" class="md-default">
-              <b>메인 페이지</b></md-button
-            >
-          </div>
+          
         </div>
         </div>
       </div>
@@ -120,18 +108,18 @@ export default {
 
 <style lang="css">
 
-.complete-img {
+.complete-img1 {
   z-index: 2;
   position: absolute;
   width: 180px;
   height: 180px;
   overflow: hidden;
   margin-top: 285px;
-  margin-left: 1090px;
+  margin-left: 1000px;
   left: -850px;
   border-radius: 50px;
 }
-.complete-img img {
+.complete-img1 img {
   position: absolute;
   top: 0;
   left: 0;
@@ -156,20 +144,19 @@ export default {
   background-color: rgba(235, 235, 235, 0.897);
 }
 
-.content {
-  font-family: Georgia, "Times New Roman", Times, serif;
+.content-buy {
   position: relative;
   display: inline-block;
-  left: 150px;
+  left: 170px;
   top: -200px;
   margin: auto;
 }
 .check {
   margin-left: 100px;
 }
-.hat {
+.hat1 {
   z-index: 3;
-  left: 180px;
+  left: 80px;
   top: 340px;
   z-index: 1;
   position: absolute;
@@ -177,41 +164,41 @@ export default {
   height: 300px;
   margin: auto;
 }
-.my-box2 {
+.box-complete {
   position: relative;
   display: inline-block;
-  left: -320px;
+  left: -350px;
   top: 120px;
-  width: 30%;
+  width: 40%;
   height: 0.3%;
   font-size: 19px;
   color:rgb(41, 41, 43);
   margin: auto;
 }
-.query-1 {
+.query-b1 {
   position: relative;
   top: 20px;
-  left: -330px;
+  left: -450px;
   font-size: 20px;
   color:rgb(23, 23, 26);
 
 }
-.query-line {
+.query-line-1 {
   position: relative;
-  width: 750px;
+  width: 850px;
   height: 2px;
   top: 0px;
-  left: 140px;
+  left: 50px;
   background-color: rgba(235, 235, 235, 0.897);
 }
-.my-box3 {
+.my-box-nc {
   position: relative;
   display: inline-block;
-  width: 870px;
+  width: 9000px;
   height: 380px;
   border-radius: 3em;
   top: -335px;
-  left: 0px;
+  left: -50px;
   border: 2px solid rgba(221, 219, 219, 0.897);
   margin: auto;
 }
@@ -225,24 +212,6 @@ export default {
 .check {
   margin-left: 40%;
   margin-top: 20%;
-}
-.my-box4 {
-  position: relative;
-  display: inline-block;
-  width: 30%;
-  height: 0.3%;
-  left: 200px;
-  top: 400px;
-  background-color: rgba(12, 255, 4, 0.897);
-}
-.my-box5 {
-  position: relative;
-  display: inline-block;
-  width: 50%;
-  height: 0.2%;
-  left: 25%;
-  top: 38%;
-  background-color: rgba(248, 129, 17, 0.788);
 }
 .mypage-c {
   z-index: 2;

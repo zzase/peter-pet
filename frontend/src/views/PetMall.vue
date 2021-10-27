@@ -5,7 +5,7 @@
     <div class="main main-raised">
       <div class="section">
         <div class="md-layout">
-          <h2 style="margin-left: 700px"><b>Peter-Pet 분양</b></h2>
+          <h2 style="margin-left: 700px"><b>반려견 &nbsp; 분양</b></h2>
           <hr width="1570px;" />
           <br /><br /><br />
           <div class="market-tab">
