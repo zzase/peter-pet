@@ -9,7 +9,7 @@
         <div class="box">
        <img alt="brand" src="@/assets/img/Neverland/NeverlandBackground.jpg">
         </div>
-        <div class="neverland-link1-1"><img onclick="javascript:location.href='#/regist';" src="@/assets/img/Neverland/menu1.png" 
+        <div class="neverland-link1-1"><img onclick="javascript:location.href='#/mall';" src="@/assets/img/Neverland/menu1.png" 
         style="cursor:pointer;"/></div>
          <div class="neverland-link2-1"><img onclick="javascript:location.href='#/select/form';" src="@/assets/img/Neverland/menu2.png" 
         style="cursor:pointer;"/></div>

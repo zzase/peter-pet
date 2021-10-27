@@ -44,7 +44,7 @@
                   </div>
                 </section>
 
-                <p>I'm the first tab</p></b-tab
+              </b-tab
               >
 
               <b-tab title="견종별 모아보기"><p>I'm the second tab</p></b-tab>

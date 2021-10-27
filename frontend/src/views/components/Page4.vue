@@ -266,8 +266,8 @@ export default {
   position: absolute;
   width: 170px;
   height: 70px;
-  top: 1000px;
-  margin-top: -300px;
+  top: 880px;
+  margin-top: -160px;
   margin-bottom: 200px;
   text-align: center;
   left: 30px;

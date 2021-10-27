@@ -11,14 +11,14 @@
             <img
               id="check"
               alt="brand"
-              src="@/assets/img/Regist/complete.png"
+              src="@/assets/img/nft/ccomplete.png"
             />
           </div>
           <div class="hat">
             <img :src="img1" alt="brand" />
           </div>
 
-          <div class="my-box2">
+          <div class="my-box2" style="color: black;">
             <label><b>이름 : </b></label>
             <label>{{ peterpet.name }}</label>
             <br />
@@ -28,12 +28,18 @@
             <br />
             <br />
             <label><b>분양 영수증 : </b></label>
+            <div class="recipt"
+                 style="z-index:1 ;">
+            <md-button src="success"> receipt</md-button>
+            </div>
             <h7>{{$route.query.result.transactionHash}}</h7>
             <br />
             <br />
           </div>
+            
+
           <div class="query-line"></div>
-          <div class="query">
+          <div class="query-1">
             <label><b>{{ peterpet.name }}를 잘 부탁해요!</b></label>
           </div>
           <div class="complete-img">
@@ -46,12 +52,12 @@
           </div>
           <div class="my-box3"></div>
           <div class="my-box4"></div>
-          <div class="mypage">
+          <div class="mypage-c">
             <md-button id="mypage" href="#/mypage" class="md-success">
               <b>마이 페이지</b></md-button
             >
           </div>
-          <div class="mainpage">
+          <div class="mainpage-c">
             <md-button id="mainpage" href="#/" class="md-default">
               <b>메인 페이지</b></md-button
             >
@@ -179,15 +185,15 @@ export default {
   width: 30%;
   height: 0.3%;
   font-size: 19px;
-  color:rgb(125, 125, 133);
+  color:rgb(41, 41, 43);
   margin: auto;
 }
-.query {
+.query-1 {
   position: relative;
   top: 20px;
-  left: 340px;
+  left: -330px;
   font-size: 20px;
-  color:rgb(125, 125, 133);
+  color:rgb(23, 23, 26);
 
 }
 .query-line {
@@ -238,17 +244,17 @@ export default {
   top: 38%;
   background-color: rgba(248, 129, 17, 0.788);
 }
-.mypage {
+.mypage-c {
   z-index: 2;
   position: relative;
   display: inline-block;
-  top: 1000px;
-  left: 750px;
+  top: -300px;
+  left: 65px;
 }
-.mainpage {
+.mainpage-c {
   position: relative;
   display: inline-block;
-  top: 1000px;
-  left: 900px;
+  top: -300px;
+  left: 85px;
 }
 </style>

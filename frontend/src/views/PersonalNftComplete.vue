@@ -11,8 +11,7 @@
             </div>
           </div>
           <div class="content" v-else>
-            <!-- <h4>두남이의 Peter-Pet 등록이 완료되었습니다!</h4> -->
-            <div class="complete-m1">
+            <div class="complete-pm1">
               <img id="check" alt="brand" src="@/assets/img/nft/nft-c.png" />
             </div>
             <div class="nftcard2">
@@ -160,13 +159,13 @@ export default {
   position: relative;
   display: inline-block;
   top: 150px;
-  left: -200px;
+  left: -180px;
 }
 .mainpage2 {
   position: relative;
   display: inline-block;
   top: 150px;
-  left: -180px;
+  left: -160px;
 }
 .personal-nft img {
   position: absolute;
@@ -177,13 +176,13 @@ export default {
   height: 100%;
   object-fit: cover;
 }
-.complete-m1 {
+.complete-pm1 {
   position: relative;
-  left: -360px;
+  margin-left: -350px;
 }
 .nftcard2 {
   position: relative;
-  left: -330px;
+  left: -220px;
 }
 </style>
 

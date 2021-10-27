@@ -157,7 +157,7 @@ export default {
 .my-box2 {
   position: relative;
   display: inline-block;
-  left: -320px;
+  left: -350px;
   top: 120px;
   width: 30%;
   height: 0.3%;
@@ -168,7 +168,7 @@ export default {
 .query {
   position: relative;
   top: 20px;
-  left: 340px;
+  left: 330px;
   font-size: 20px;
   color:rgb(125, 125, 133);
 

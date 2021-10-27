@@ -222,9 +222,9 @@
                       <login-card header-color="orange">
                         <h2 slot="title" class="card-title">Wenddy</h2>
                         <md-field class="md-form-group" slot="inputs">
-                          <h4>
+                          <h6 style="margin-left: 90px;">
                             {{ this.$store.state.user.id }}님의 동물등록 이력이 있어 번호를 제외한 주민등록 정보만 확인합니다.
-                          </h4>
+                          </h6>
                         </md-field>
                         <md-field class="md-form-group" slot="inputs">
                           <label> <md-icon>person_outline</md-icon>이름</label>
@@ -361,6 +361,7 @@
                                     />
                                   </div>
                                 </dlv>
+                                <br>
                               </div>
 
                               <div class="checkBox check02">
@@ -852,6 +853,7 @@ export default {
       secondRRNView: "",
 
       colors: [
+        "흰색",
         "혼합색",
         "검정&은색",
         "금색",
