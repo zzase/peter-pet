@@ -995,6 +995,7 @@ export default {
     },
   },
   methods: {
+    
     setImgHash(hash) {
       this.peterpet.imgHash = hash;
     },
@@ -1156,38 +1157,6 @@ export default {
         } catch (e) {
           console.error(e);
         }
-
-        // this.$http
-        //   .post(
-        //     "http://localhost:3000/api/pet/tinkerbell",
-        //     {
-        //       tinkerbellType: tinkerbellType,
-        //       address: address,
-        //     },
-        //     { "Content-Type": "application-json" }
-        //   )
-        //   .then((res) => {
-        //     setTimeout(() => {
-        //       this.isLoading = false;
-        //     }, 5000);
-        //     console.log(res.data);
-        //     if (res.data.checkUpdate) {
-        //       this.$router
-        //         .push({
-        //           name: "complete",
-        //           query: {
-        //             peterpet: res.data.peterpet,
-        //             msg: res.data.msg,
-        //           },
-        //         })
-        //         .catch(() => {});
-        //     } else {
-        //       alert("입력하신 정보가 잘못되었습니다.");
-        //     }
-        //   })
-        //   .catch((err) => {
-        //     console.error(err);
-        //   });
       }
     },
 
@@ -1237,7 +1206,7 @@ export default {
       let convertStr = "";
       if (this.secondRRN.length > 0) {
         convertStr =
-          this.secondRRN[0] +
+          this.secondRRN[0] + 
           String(this.secondRRN.join("")).replace(/./g, "•").substr(1);
       }
       this.secondRRNView = convertStr;
