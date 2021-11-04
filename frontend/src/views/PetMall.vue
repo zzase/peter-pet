@@ -78,7 +78,7 @@ export default {
     },
     getCertiNfts: async function () {
       const certiOfOwner = await this.$http.get(
-        `http://210.114.18.112:3000/api/nft/certi/list/all`,
+        `http://${process.env.BACKEND_SERVER}/api/nft/certi/list/all`,
         {}
       );
       if (certiOfOwner.data.msg) {
@@ -114,7 +114,7 @@ export default {
               console.log('confirm : ' + this.buyConfirm);
               const did = 'did:peterpet:' + tokenId.substring(2);
               const to = this.$store.state.user.address;
-              this.$http.post(`http://210.114.18.112:3000/api/pet/buy/did/${did}/token/${tokenId}`,
+              this.$http.post(`http://${process.env.BACKEND_SERVER}/api/pet/buy/did/${did}/token/${tokenId}`,
               {
                 to : to
               },{"Content-Type": "application-json"})

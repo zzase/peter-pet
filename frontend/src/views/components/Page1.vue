@@ -114,7 +114,7 @@ export default {
     },
     getDids: function (address) {
       this.$http
-        .get(`http://210.114.18.112:3000/api/pet/dids/owner/${address}`, {})
+        .get(`http:/${process.env.BACKEND_SERVER}/api/pet/dids/owner/${address}`, {})
         .then((res) => {
           console.log(res.data);
           
@@ -132,7 +132,7 @@ export default {
     },
     getInfo: function (did) {
       this.$http
-        .get(`http://210.114.18.112:3000/api/pet/info/did/${did}`, {})
+        .get(`http://${process.env.BACKEND_SERVER}/api/pet/info/did/${did}`, {})
         .then((res) => {
           console.log(res.data);
           this.peterpet = res.data.peterpet;

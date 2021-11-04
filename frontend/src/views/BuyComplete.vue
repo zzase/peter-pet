@@ -91,7 +91,7 @@ export default {
   methods : {
     getInfo: function (did) {
       this.$http
-        .get(`http://210.114.18.112:3000/api/pet/info/did/${did}`, {})
+        .get(`http://${process.env.BACKEND_SERVER}/api/pet/info/did/${did}`, {})
         .then((res) => {
           console.log(res.data);
           this.peterpet = res.data.peterpet;

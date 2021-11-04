@@ -47,7 +47,7 @@
    },
    methods: {
      getBalance: function(address) {
-       this.$http.get(`http://210.114.18.112:3000/api/wenddy/balance/address/${address}`,{
+       this.$http.get(`http://${process.env.BACKEND_SERVER}/api/wenddy/balance/address/${address}`,{
        })
        .then((res) => {
          console.log(res.data);
@@ -58,7 +58,7 @@
        })
      },
      getDidInfo: function(address) {
-       this.$http.get(`http://210.114.18.112:3000/api/pet/dids/owner/${address}`,{
+       this.$http.get(`http://${process.env.BACKEND_SERVER}/api/pet/dids/owner/${address}`,{
        })
        .then((res) => {
          console.log(res.data);

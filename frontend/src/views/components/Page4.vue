@@ -135,7 +135,7 @@ export default {
     },
     getCertiNfts: async function(address) {
       const certiOfOwner = await this.$http.get(
-        `http://210.114.18.112:3000/api/nft/certi/list/owner/${address}`,
+        `http://${process.env.BACKEND_SERVER}/api/nft/certi/list/owner/${address}`,
         {}
       );
 
@@ -166,7 +166,7 @@ export default {
 
     getPersonalNfts: async function(address) {
       const personalOfOwner = await this.$http.get(
-        `http://210.114.18.112:3000/api/nft/personal/list/owner/${address}`,
+        `http://${process.env.BACKEND_SERVER}/api/nft/personal/list/owner/${address}`,
         {}
       );
 
@@ -209,7 +209,7 @@ export default {
             console.log('this.deleteConfirm : ' + this.deleteConfirm)
             if(this.deleteConfirm){
               //console.log("check");
-              this.$http.delete(`http://210.114.18.112:3000/api/nft/${type}/token/${tokenId}`,
+              this.$http.delete(`http://${process.env.BACKEND_SERVER}/api/nft/${type}/token/${tokenId}`,
               {
                 data: {
                   address : this.$store.state.user.address

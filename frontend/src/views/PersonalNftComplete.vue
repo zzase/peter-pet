@@ -70,7 +70,7 @@ export default {
       try {
         await this.$http
           .get(
-            `http://210.114.18.112:3000/api/nft/personal/info/token/${tokenId}`,
+            `http://${process.env.BACKEND_SERVER}/api/nft/personal/info/token/${tokenId}`,
             {}
           )
           .then((res) => {

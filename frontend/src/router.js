@@ -183,14 +183,6 @@ export default new Router({
         footer: { backgroundColor: "black" }
       }
     },
-    {
-      path: "/login",
-      name: "login",
-      components: { default: Login, header: MainNavbar, footer: MainFooter },
-      props: {
-        header: { colorOnScroll: 400 }
-      }
-    },
   
     {
       path: "/manager",

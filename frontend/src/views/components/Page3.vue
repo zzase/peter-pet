@@ -49,7 +49,7 @@ export default {
     methods : {
       getMissingPets: function () {
       this.$http
-        .get(`http://210.114.18.112:3000/api/pet/missing`)
+        .get(`http://${process.env.BACKEND_SERVER}/api/pet/missing`)
         .then((res) => {
           if (res.data.rows) {
             console.log(res.data.rows);
@@ -81,7 +81,7 @@ export default {
             this.deleteConfirm = value
             if(this.deleteConfirm){
               //console.log("check");
-              this.$http.delete(`http://210.114.18.112:3000/api/pet/report/missing/cancel`,
+              this.$http.delete(`http://${process.env.BACKEND_SERVER}/api/pet/report/missing/cancel`,
                 {
                   data : {
                     did : did,

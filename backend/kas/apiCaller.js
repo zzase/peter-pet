@@ -13,7 +13,7 @@ class ApiCaller {
 
         options.headers['x-chain-id'] = '1001';
         options.headers['content-type'] = 'application/json';
-        options.headers.Authorization = 'Basic S0FTS1ZMNThRUUtaWFE2NUVQUEJERjJOOnJFRW9MdUJvUjVHdXBsU08tSlpMZXZ1X2xYOC1OeGc3dHhESmVBZDM='
+        options.headers.Authorization = process.env.KAS_AUTH
 
         return new Promise((resolve, reject) => {
             request(options,function(error, _response, body){

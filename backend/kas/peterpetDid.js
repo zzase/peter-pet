@@ -1,8 +1,8 @@
 const CaverExtKas = require('caver-js-ext-kas')
 
 const chainId = 1001
-const accessKeyId = 'KASKVL58QQKZXQ65EPPBDF2N'
-const secretAccessKey = 'rEEoLuBoR5GuplSO-JZLevu_lX8-Nxg7txDJeAd3'
+const accessKeyId = process.env.KAS_ACCESS_KEY_ID
+const secretAccessKey = process.env.KAS_SECRET_ACCESS_KEY
 
 const caver = new CaverExtKas(chainId,accessKeyId,secretAccessKey);
 

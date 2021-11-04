@@ -320,7 +320,7 @@ export default {
       this.isLoading = true;
       this.$http
         .post(
-          "http://210.114.18.112:3000/api/wenddy/login",
+          `http://${process.env.BACKEND_SERVER}/api/wenddy/login`,
           { user: this.user },
           { "Content-Type": "application-json" }
         )

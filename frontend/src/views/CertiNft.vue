@@ -88,7 +88,7 @@ export default{
         this.isCerti = false;
       },
       getNft : function(tokenId)  {
-        this.$http.get(`http://210.114.18.112:3000/api/nft/certi/info/token/${tokenId}`,{})
+        this.$http.get(`http://${process.env.BACKEND_SERVER}/api/nft/certi/info/token/${tokenId}`,{})
         .then((res)=> {
           if(res.data.msg){
             this.$http.get(res.data.tokenUri)

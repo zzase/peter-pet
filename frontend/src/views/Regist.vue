@@ -1018,7 +1018,7 @@ export default {
 
     checkIsReg: function (uid) {
       this.$http
-        .get(`http://210.114.18.112:3000/api/wenddy/check/gov/id/${uid}`)
+        .get(`http://${process.env.BACKEND_SERVER}/api/wenddy/check/gov/id/${uid}`)
         .then((res) => {
           if (res.data.isReg) {
             console.log(res.data.wenddy);
@@ -1044,7 +1044,7 @@ export default {
       this.validCheck();
       this.$http
         .post(
-          "http://210.114.18.112:3000/api/pet/regist",
+          `http://${process.env.BACKEND_SERVER}/api/pet/regist`,
           {
             peterpet: peterpet,
             address: address,
@@ -1083,7 +1083,7 @@ export default {
 
           this.$http
             .post(
-              "http://210.114.18.112:3000/api/wenddy/regist/gov",
+              `http://${process.env.BACKEND_SERVER}/api/wenddy/regist/gov`,
               {
                 wenddy: wenddy,
               },
@@ -1127,7 +1127,7 @@ export default {
 
         try {
           const result = await this.$http.post(
-            "http://210.114.18.112:3000/api/pet/tinkerbell",
+            `http://${process.env.BACKEND_SERVER}/api/pet/tinkerbell`,
             {
               tinkerbellType: tinkerbellType,
               address: address,

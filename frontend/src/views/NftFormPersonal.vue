@@ -111,7 +111,7 @@ export default {
             "Content-Type": "multipart/form-data",
             "x-chain-id": "1001",
             Authorization:
-              "Basic S0FTS1ZMNThRUUtaWFE2NUVQUEJERjJOOnJFRW9MdUJvUjVHdXBsU08tSlpMZXZ1X2xYOC1OeGc3dHhESmVBZDM=",
+              process.env.KAS_AUTH,
           },
         })
         .then((res) => {
@@ -131,7 +131,7 @@ export default {
       console.log({address : address, id: id, metadata : metadata});
 
       try{
-        await this.$http.post("http://210.114.18.112:3000/api/nft/make/personalNFT",{
+        await this.$http.post(`http://${process.env.BACKEND_SERVER}/api/nft/make/personalNFT`,{
           address : address,
           id : id,
           metadata : metadata
@@ -152,7 +152,7 @@ export default {
 
     getNftListLength: async function(address){
       try{
-        await this.$http.get(`http://210.114.18.112:3000/api/nft/personal/list/owner/${address}`,{})
+        await this.$http.get(`http://${process.env.BACKEND_SERVER}/api/nft/personal/list/owner/${address}`,{})
         .then((res)=>{
           this.id = `${res.data.items.length+1}${this.$store.state.user.address.substring(2,10)}${res.data.items.length+1}`;
           console.log(this.id);

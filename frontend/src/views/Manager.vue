@@ -79,7 +79,7 @@ export default {
 
     printQR: function () {
       this.$http
-        .put(`http://210.114.18.112:3000/api/pet/make/qr`, { did: this.qId })
+        .put(`http://${process.env.BACKEND_SERVER}/api/pet/make/qr`, { did: this.qId })
         .then((res) => {
           console.log(res.data);
           alert(res.data.msg);
@@ -93,7 +93,7 @@ export default {
 
     getNoQrDids: function () {
       this.$http
-        .get(`http://210.114.18.112:3000/api/pet/noqr`)
+        .get(`http://${process.env.BACKEND_SERVER}/api/pet/noqr`)
         .then((res) => {
           if (res.data.rows) {
             console.log(res.data.rows);
@@ -108,7 +108,7 @@ export default {
     },
 
     makeQR: function (params) {
-      this.text = `http://210.114.18.112:8080/#/pet/own/${params.row.did}`;
+      this.text = `http://${process.env.FRONTEND_SERVER}/#/pet/own/${params.row.did}`;
       this.did = `${params.row.did}`;
       this.qId = params.row.did;
       this.showModal = true;

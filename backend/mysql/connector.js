@@ -8,20 +8,19 @@ const path = require("path");
 const dbServer = {
   host: "localhost",
   port: 3306,
-  user: "root",
-  password: "hoon3827",
-  database: "peterpet",
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 };
 
 const tunnelConfig = {
-  host: "152.70.94.95",
+  host: process.env.DB_SERVER_HOST_IP,
   port: 22,
   username: "ubuntu",
-  //password: 'hoon3827',
   privateKey: fs.readFileSync(
     path.join(__dirname, "../wallet/oracle_instance.ppk")
   ),
-  passphrase: "hoon3827",
+  passphrase: process.env.DB_SERVER_PASSWORD,
 };
 
 const forwardConfig = {
