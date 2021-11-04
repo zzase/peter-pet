@@ -15,9 +15,15 @@ contract PeterPetDID is Ownable, StringFormat {
         string adoptionDate; // 입양일    
         bool isNeutering; // 중성화 여부
         string furColor; //모색
-        string vaccinationHistory; //접종내역
+        string[] vaccinationHistory; //접종내역
         string notes; //특이사항
+        bool missing; //실종상태
+        
+        string paNftId; 
+        
     }
+    
+    string myNftId;
 
     struct Did {
         string did; // did 번호
@@ -32,10 +38,10 @@ contract PeterPetDID is Ownable, StringFormat {
     mapping(string => PeterPet) didToPetMapper;
     mapping(address => Did[]) addressToDidMapper;
     mapping(string => address) wenddyFinder;
-
-    constructor() public {
-        //addressToPetMapper[msg.sender] = peterPets;
-    }
+    
+    mapping(string => string) didToNFTMapper;
+    
+    
 
     /*
      * makeDid() 
@@ -52,8 +58,8 @@ contract PeterPetDID is Ownable, StringFormat {
      * - 입력받은 반려견 정보를 peterPets 배열에 push 
      */
     function _addPet(string memory _imgHash, string memory _name, string memory _birth, string memory _breedOfDog, string memory _gender, string memory _adoptionDate, 
-    bool _isNeutering, string memory _furColor, string memory _vaccinationHistory, string memory _notes) private {
-        peterPets.push(PeterPet(_imgHash, _name,_breedOfDog, _gender,_birth, _adoptionDate, _isNeutering, _furColor, _vaccinationHistory, _notes));
+    bool _isNeutering, string memory _furColor, string[] memory _vaccinationHistory, string memory _notes, string memory _paNftId) private {
+        peterPets.push(PeterPet(_imgHash, _name,_breedOfDog, _gender,_birth, _adoptionDate, _isNeutering, _furColor, _vaccinationHistory, _notes,false,_paNftId));
     }
 
     /*
@@ -61,8 +67,8 @@ contract PeterPetDID is Ownable, StringFormat {
      * - addPet()과 makeDid()를 호출하여 반려견 정보를 담은 did를 만들고 did와 반려견정보를 매핑
      */
     function addDid(string memory _imgHash, string memory _name, string memory _birth, string memory _breedOfDog, string memory _gender, string memory _adoptionDate, 
-    bool _isNeutering, string memory _furColor, string memory _vaccinationHistory, string memory _notes) public {
-        _addPet(_imgHash, _name, _birth, _breedOfDog, _gender, _adoptionDate, _isNeutering, _furColor, _vaccinationHistory, _notes);
+    bool _isNeutering, string memory _furColor, string[] memory _vaccinationHistory, string memory _notes, string memory _paNftId) public {
+        _addPet(_imgHash, _name, _birth, _breedOfDog, _gender, _adoptionDate, _isNeutering, _furColor, _vaccinationHistory, _notes, _paNftId);
         index = peterPets.length - 1;
         dids.push(Did(_makeDid(index)));
         addressToDidMapper[msg.sender].push(dids[index]);
@@ -71,13 +77,21 @@ contract PeterPetDID is Ownable, StringFormat {
             wenddyFinder[dids[index].did] = msg.sender;
         }
     }
+    
+    function mappingNFT(string memory _did, string memory _myNft) public {
+        require(msg.sender == wenddyFinder[_did]);
+        
+        didToNFTMapper[_did] = _myNft;
+    }
+    
+    
 
     /*
      * updateDid() 
      * - did를 통해 기존 반려견 정보 수정  
      */
     function updateDid( string memory _did,string memory _imgHash, string memory _name, string memory _birth, string memory _breedOfDog, string memory _gender, string memory _adoptionDate, 
-    bool _isNeutering, string memory _furColor, string memory _vaccinationHistory, string memory _notes ) public {
+    bool _isNeutering, string memory _furColor, string[] memory _vaccinationHistory, string memory _notes ) public {
         require(msg.sender == wenddyFinder[_did]);
         didToPetMapper[_did].imgHash = _imgHash;
         didToPetMapper[_did].name = _name;
@@ -90,9 +104,43 @@ contract PeterPetDID is Ownable, StringFormat {
         didToPetMapper[_did].vaccinationHistory = _vaccinationHistory;
         didToPetMapper[_did].notes = _notes;
     }
+    
+    /*
+     * updateMissingStatus() 
+     * - did를 반려견 실종상태 변경  
+     */
+     
+    function updateMissingStatus(string memory _did,bool _status) public{
+        require(msg.sender == wenddyFinder[_did]);
+        didToPetMapper[_did].missing = _status;
+    }
+    
+    /*
+     * changeWenddy() 
+     * - 분양시 제공할 api, 반려견의 부모주소를 분양받는 사람의 주소로 바꿔줌  
+     */
+    function changeWenddy(string memory _did, address  _recipient) public{
+        require(msg.sender == _recipient);
+        
+        uint did_index;
+        for(uint i=0; i< addressToDidMapper[wenddyFinder[_did]].length; i++){
+            string memory check =  addressToDidMapper[wenddyFinder[_did]][i].did;
+            if(keccak256(abi.encodePacked(check)) == keccak256(abi.encodePacked(_did))) {
+                did_index = i;
+            }
+        }
+        addressToDidMapper[msg.sender].push(addressToDidMapper[wenddyFinder[_did]][did_index]);
+        delete addressToDidMapper[wenddyFinder[_did]][did_index];
+        
+        wenddyFinder[_did] = _recipient;
+    }
 
     function getDid(uint _index) public view returns(Did memory) {
         return dids[_index];
+    }
+    
+    function getAllInfoByDid(string memory _did) public view returns (PeterPet memory) {
+        return didToPetMapper[_did];
     }
 
     function getWenddyByDid(string memory _did) public view returns (address) {
@@ -109,6 +157,10 @@ contract PeterPetDID is Ownable, StringFormat {
     
     function getDidByWenddy(address _wenddy, uint _index) public view returns (Did memory){
         return addressToDidMapper[_wenddy][_index];
+    }
+    
+    function getLastDidByWenddy(address _wenddy) public view returns (Did memory){
+        return addressToDidMapper[_wenddy][getCountDidByWenddy(_wenddy)-1];
     }
 
     /*
@@ -147,13 +199,27 @@ contract PeterPetDID is Ownable, StringFormat {
         _furColor = didToPetMapper[_did].furColor; 
      }
 
-     function getPetHistoryByDid(string memory _did) public view returns(string memory _vaccinationHistory) {
+     function getPetHistoryByDid(string memory _did) public view returns(string[] memory _vaccinationHistory) {
         _vaccinationHistory = didToPetMapper[_did].vaccinationHistory; 
      }
 
      function getPetNoteByDid(string memory _did) public view returns(string memory _notes) {
         _notes = didToPetMapper[_did].notes; 
      }
+     
+     function getPetMissingByDid(string memory _did) public view returns(bool _missing) {
+        _missing = didToPetMapper[_did].missing; 
+     }
+     
+     function getMyNftByDid(string memory _did) public view returns(string memory _myNft) {
+         _myNft = didToNFTMapper[_did];
+     }
+     
+     function getMyParNftByDid(string memory _did) public view returns(string memory _paNftId) {
+         _paNftId = didToPetMapper[_did].paNftId;
+     }
+     
+     
      
      /*
      * checkLength() 
