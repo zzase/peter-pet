@@ -1,9 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Index from "./views/Index.vue";
 import PetOwn from "./views/PetOwnPage.vue";
 import Login from "./views/Login.vue";
-import Profile from "./views/Profile.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 import Regist from "./views/Regist.vue";
@@ -24,10 +22,6 @@ import BuyComplete from "./views/BuyComplete.vue"
 import Neverland from "./views/Neverland.vue";
 import RegisterComplete from "./views/RegisterComplete.vue"
 import MyPage from "./views/MyPage.vue"
-import MyPageVuetify from "./views/MyPageVuetify.vue"
-
-import Test from "./views/Test.vue";
-import result from "./views/result.vue";
 
 Vue.use(Router);
 
@@ -47,28 +41,6 @@ export default new Router({
       path: "/about",
       name: "about",
       components: { default: About, header: MainNavbar, footer: MainFooter  },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
-      }
-    },
-
-    
-
-    {
-      path: "/result",
-      name: "result",
-      components: { default: result, header: MainNavbar, footer: MainFooter },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
-      }
-    },
-
-    {
-      path: "/test",
-      name: "test",
-      components: { default: Test, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
@@ -111,15 +83,7 @@ export default new Router({
         footer: { backgroundColor: "black" }
       }
     },
-    {
-      path: "/index",
-      name: "index",
-      components: { default: Index, header: MainNavbar, footer: MainFooter },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
-      }
-    },
+    
     {
       path: "/pet/own/:did",
       name: "petOwn",
@@ -227,15 +191,7 @@ export default new Router({
         header: { colorOnScroll: 400 }
       }
     },
-    {
-      path: "/profile",
-      name: "profile",
-      components: { default: Profile, header: MainNavbar, footer: MainFooter },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
-      }
-    },
+  
     {
       path: "/manager",
       name: "manager",
